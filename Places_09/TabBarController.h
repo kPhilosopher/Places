@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TopRatedTableViewController.h"
-#import "FavoritesTableViewController.h"
+#import "MostRecentTableViewController.h"
 
 @interface TabBarController : UITabBarController
 {
@@ -16,6 +16,6 @@
 	UINavigationController *topRatedNavigationViewController;
 	UINavigationController *favoritesNavigationViewController;
 	TopRatedTableViewController *topRatedTableViewController;
-	FavoritesTableViewController *favoritesTableViewController;
+	MostRecentTableViewController *mostRecentTableViewController;
 }
 @end

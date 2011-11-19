@@ -9,7 +9,7 @@
 #import "FlickrDataSource.h"
 
 @implementation FlickrDataSource
-@synthesize flickrTopPlacesArray, flickrFavoritePlacesArray;
+@synthesize flickrTopPlacesArray, flickrMostRecentPlacesArray;
 
 
 -(id) init
@@ -26,6 +26,11 @@
 	id temporaryFlickrTopPlaces = [FlickrFetcher topPlaces];
 	if ([temporaryFlickrTopPlaces isKindOfClass:[NSArray class]])
 		self.flickrTopPlacesArray = (NSArray *) temporaryFlickrTopPlaces;
+}
+
+-(void) addToTheMostRecentListOfPlacesAsTheIndexOfTopPlacesUsing:(NSIndexPath *)indexPath
+{
+	[self.flickrMostRecentPlacesArray insertObject:[NSNumber numberWithInt:indexPath.row] atIndex:0];
 }
 
 -(NSArray *) retrievePhotosAtSpecific:(NSString *)flickrPlaceId
@@ -51,6 +56,12 @@
 //    }
 //	return flickrTopPlacesArray;
 //}
+-(NSMutableArray *) flickrMostRecentPlacesArray
+{
+	if (!flickrMostRecentPlacesArray)
+		flickrMostRecentPlacesArray = [[NSMutableArray alloc] init];
+	return flickrMostRecentPlacesArray;
+}
 #pragma mark -
 #pragma mark Dealloc
 -(void)dealloc

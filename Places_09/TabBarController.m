@@ -20,12 +20,12 @@
 @property (retain) UINavigationController *topRatedNavigationViewController;
 @property (retain) UINavigationController *favoritesNavigationViewController;	
 @property (retain) TopRatedTableViewController *topRatedTableViewController;
-@property (retain) FavoritesTableViewController *favoritesTableViewController;
+@property (retain) MostRecentTableViewController *mostRecentTableViewController;
 @end
 
 @implementation TabBarController
 @synthesize topRatedNavigationViewController, favoritesNavigationViewController;
-@synthesize topRatedTableViewController, favoritesTableViewController;
+@synthesize topRatedTableViewController, mostRecentTableViewController;
 
 #pragma mark -
 #pragma mark Initalization
@@ -66,19 +66,19 @@
 		-(void) allocInitTheCustomTableViewControllers
 		{
 			self.topRatedTableViewController = [[TopRatedTableViewController alloc] initWithStyle:UITableViewStylePlain];
-			self.favoritesTableViewController = [[FavoritesTableViewController alloc] initWithStyle:UITableViewStylePlain];
+			self.mostRecentTableViewController = [[MostRecentTableViewController alloc] initWithStyle:UITableViewStylePlain];
 			[self setupTheDataSourceForTheTableViewControllersToShareTheFlickrDataSource];
 			[self pushViewControllersToNavigationViewControllers];
 		}
 			-(void) setupTheDataSourceForTheTableViewControllersToShareTheFlickrDataSource
 			{
 				self.topRatedTableViewController.flickrDataSource = [[FlickrDataSource alloc] init];
-				self.favoritesTableViewController.flickrDataSource = self.topRatedTableViewController.flickrDataSource;
+				self.mostRecentTableViewController.flickrDataSource = self.topRatedTableViewController.flickrDataSource;
 			}
 			-(void) pushViewControllersToNavigationViewControllers
 			{
 				[self.topRatedNavigationViewController pushViewController:self.topRatedTableViewController animated:YES];
-				[self.favoritesNavigationViewController pushViewController:self.favoritesTableViewController animated:YES];
+				[self.favoritesNavigationViewController pushViewController:self.mostRecentTableViewController animated:YES];
 			}
 		-(void) setTabBarItemToSystemItems
 		{
@@ -91,7 +91,7 @@
 		{
 			[self.topRatedNavigationViewController release];
 			[self.favoritesNavigationViewController release];
-			[self.favoritesTableViewController release];
+			[self.mostRecentTableViewController release];
 			[self.topRatedTableViewController release];
 		}
 

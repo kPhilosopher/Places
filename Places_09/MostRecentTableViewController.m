@@ -1,15 +1,15 @@
 //
-//  TopPlacesTableViewController.m
-//  Places
+//  MostRecentTableViewController.m
+//  Places_09
 //
-//  Created by Jinwoo Baek on 11/4/11.
+//  Created by Jinwoo Baek on 11/18/11.
 //  Copyright (c) 2011 Rose-Hulman Institute of Technology. All rights reserved.
 //
 
-#import "TopRatedTableViewController.h"
+#import "MostRecentTableViewController.h"
 
 
-@implementation TopRatedTableViewController
+@implementation MostRecentTableViewController
 @synthesize flickrDataSource;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -17,8 +17,8 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-		self.title =@"Top Rated";
     }
+	self.title = @"Most Recent";
     return self;
 }
 
@@ -34,11 +34,14 @@
 
 - (void)viewDidLoad
 {
+	NSLog(@"viewDidLoad");
+	[self.tableView reloadData];
+	NSLog([[NSNumber numberWithInt:[self.flickrDataSource.flickrMostRecentPlacesArray count]] description]);
     [super viewDidLoad];
-	
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
-	
+ 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -52,42 +55,44 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+	NSLog(@"viewWillAppear");
     [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
+	NSLog(@"viewDidAppear");
     [super viewDidAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+	NSLog(@"viewWillDisappear");
     [super viewWillDisappear:animated];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-	NSLog([[NSNumber numberWithInt:[self.flickrDataSource.flickrMostRecentPlacesArray count]] description]);
+	NSLog(@"viewDidDisappear");
     [super viewDidDisappear:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-	return (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationLandscapeRight
-            || interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	return 1;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return [self.flickrDataSource.flickrTopPlacesArray count];
+    return [self.flickrDataSource.flickrMostRecentPlacesArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -98,8 +103,8 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
-	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    NSDictionary *dictionaryOfCell = [self.flickrDataSource.flickrTopPlacesArray objectAtIndex:indexPath.row];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    NSDictionary *dictionaryOfCell = [self.flickrDataSource.flickrTopPlacesArray objectAtIndex:[[self.flickrDataSource.flickrMostRecentPlacesArray objectAtIndex:indexPath.row] integerValue]];
 	NSString *contentString = [dictionaryOfCell objectForKey:@"_content"];
 	NSArray *arrayOfContentString = [contentString componentsSeparatedByString:@","];
 	NSString *titleString = [arrayOfContentString objectAtIndex:0];
@@ -109,54 +114,52 @@
 		NSString *subTitle = [contentString substringFromIndex:titleString.length +1];
 		cell.detailTextLabel.text = [subTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 	}
-	return cell;
+    return cell;
 }
 
 /*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
+}
+*/
 
 /*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }   
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }   
- }
- */
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }   
+    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }   
+}
+*/
 
 /*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
+// Override to support rearranging the table view.
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+{
+}
+*/
 
 /*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
+// Override to support conditional rearranging of the table view.
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Return NO if you do not want the item to be re-orderable.
+    return YES;
+}
+*/
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	NSLog(@"adding To The Most Recent List");
-	[self.flickrDataSource addToTheMostRecentListOfPlacesAsTheIndexOfTopPlacesUsing:indexPath];
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
