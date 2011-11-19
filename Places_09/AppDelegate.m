@@ -2,7 +2,7 @@
 //  AppDelegate.m
 //  Places_09
 //
-//  Created by Jinwoo Baek on 11/18/11.
+//  Created by Jinwoo Baek on 10/31/11.
 //  Copyright (c) 2011 Rose-Hulman Institute of Technology. All rights reserved.
 //
 
@@ -11,9 +11,11 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
+@synthesize tab_Bar_Controller;
 
 - (void)dealloc
 {
+	[tab_Bar_Controller release];
 	[_window release];
     [super dealloc];
 }
@@ -21,9 +23,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    // Override point for customization after application launch.
+	self.tab_Bar_Controller = [[TabBarController alloc] init];
+	[self.window addSubview:self.tab_Bar_Controller.view];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+	
+	//	NSArray *array = [FlickrFetcher topPlaces];
+	//	NSArray *arrayOfPictures = [FlickrFetcher photosAtPlace:[[array objectAtIndex:0] objectForKey:@"place_id"]];
+	//	NSLog([arrayOfPictures description]);
     return YES;
 }
 
