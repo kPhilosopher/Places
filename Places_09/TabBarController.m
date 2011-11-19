@@ -49,7 +49,7 @@
 		{
 			navController = [self.viewControllers objectAtIndex:0];
 			NSLog(@"got to the nav controller");
-			if([navController.topViewController isKindOfClass:[FavoritesTableViewController class]])
+			if([navController.topViewController isKindOfClass:[TopRatedTableViewController class]])
 			{
 				NSLog(@"got to the top rated table view controller");
 			}

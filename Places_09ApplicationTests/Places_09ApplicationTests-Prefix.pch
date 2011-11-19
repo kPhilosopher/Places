@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'Places_09ApplicationTests' target in the 'Places_09ApplicationTests' project
+//
+
+#ifdef __OBJC__
+	#import <UIKit/UIKit.h>
+	#import <Foundation/Foundation.h>
+#endif
