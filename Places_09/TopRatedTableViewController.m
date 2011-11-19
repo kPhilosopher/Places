@@ -95,12 +95,20 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
+	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     NSDictionary *dictionaryOfCell = [self.flickrDataSource.flickrTopPlacesArray objectAtIndex:indexPath.row];
-	cell.textLabel.text = [dictionaryOfCell objectForKey:@"_content"];
-    
-    return cell;
+	NSString *contentString = [dictionaryOfCell objectForKey:@"_content"];
+	NSArray *arrayOfContentString = [contentString componentsSeparatedByString:@","];
+	NSString *titleString = [arrayOfContentString objectAtIndex:0];
+	cell.textLabel.text = [titleString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+	if ([arrayOfContentString count] > 1) 
+	{
+		NSString *subTitle = [contentString substringFromIndex:titleString.length +1];
+		cell.detailTextLabel.text = [subTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+	}
+	return cell;
 }
 
 /*

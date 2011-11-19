@@ -46,7 +46,6 @@
 	{
 		self.topRatedTableViewController = (TopRatedTableViewController *)self.leftNavigationViewController.topViewController;
 		self.favoritesTableViewController = (FavoritesTableViewController *)self.rightNavigationViewController.topViewController;
-//		NSLog([self.topRatedTableViewController.flickrDataSource.flickrTopPlacesArray description]);
 	}	
 }
 
@@ -131,20 +130,27 @@
 	if (!(self.topRatedTableViewController.flickrDataSource.flickrTopPlacesArray == nil))
 	{
 		STAssertTrue([self.topRatedTableViewController.flickrDataSource.flickrTopPlacesArray isKindOfClass:[NSArray class]],@"The Flickr Top Places Data is not an array");
-//		STAssertTrue(([self.topRatedTableViewController.flickrDataSource.flickrTopPlacesArray count] >= 1),@"The Flickr Top Places Data is empty");
-//		if([self.topRatedTableViewController.flickrDataSource.flickrTopPlacesArray  isKindOfClass:[NSArray class]] && 
-//		   ([self.topRatedTableViewController.flickrDataSource.flickrTopPlacesArray  count] >= 1))
-//		{
-//			NSDictionary *temporaryDictionary = [self.topRatedTableViewController.flickrDataSource.flickrTopPlacesArray  objectAtIndex:0];
-//			STAssertTrue([[temporaryDictionary objectForKey:@"_content"] isKindOfClass:[NSString class]],@"The first dictionary from the flickr top places array does not have a valid object for the key of '_content'.");
-//		}
+		STAssertTrue(([self.topRatedTableViewController.flickrDataSource.flickrTopPlacesArray count] >= 1),@"The Flickr Top Places Data is empty");
+		if([self.topRatedTableViewController.flickrDataSource.flickrTopPlacesArray  isKindOfClass:[NSArray class]] && 
+		   ([self.topRatedTableViewController.flickrDataSource.flickrTopPlacesArray  count] >= 1))
+		{
+			NSDictionary *temporaryDictionary = [self.topRatedTableViewController.flickrDataSource.flickrTopPlacesArray  objectAtIndex:0];
+			STAssertTrue([[temporaryDictionary objectForKey:@"_content"] isKindOfClass:[NSString class]],@"The first dictionary from the flickr top places array does not have a valid object for the key of '_content'.");
+		}
 	}
 }
 
-//-(void) testUITableViewDataSourceProtocolCallsForTopRatedTableViewController
-//{
-//	STAssertTrue(([self.topRatedTableViewController.tableView.dataSource numberOfSectionsInTableView:self.topRatedTableViewController.tableView] == 0),@"check if this can work out");
-//	STAssertTrue(([self.topRatedTableViewController.tableView.dataSource tableView:self.topRatedTableViewController.tableView numberOfRowsInSection:0] == [self.topRatedTableViewController.flickrDataSource.flickrTopPlacesArray count]),@"The numbers of rows in the first section is not correct");
-//bad access
-//}
+
+
+
+
+
+
+
+
+
+
+
+
+
 @end
