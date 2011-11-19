@@ -112,7 +112,6 @@
 		CE8098F514773EE60067AAC2 /* Places_09ApplicationTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Places_09ApplicationTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8098FB14773EE60067AAC2 /* Places_09ApplicationTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Places_09ApplicationTests-Info.plist"; sourceTree = "<group>"; };
 		CE8098FD14773EE60067AAC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		CE8098FF14773EE60067AAC2 /* Places_09ApplicationTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Places_09ApplicationTests.h; sourceTree = "<group>"; };
 		CE80990014773EE60067AAC2 /* Places_09ApplicationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Places_09ApplicationTests.m; sourceTree = "<group>"; };
 		CE80990214773EE60067AAC2 /* Places_09ApplicationTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Places_09ApplicationTests-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -284,7 +283,6 @@
 		CE8098F914773EE60067AAC2 /* Places_09ApplicationTests */ = {
 			isa = PBXGroup;
 			children = (
-				CE8098FF14773EE60067AAC2 /* Places_09ApplicationTests.h */,
 				CE80990014773EE60067AAC2 /* Places_09ApplicationTests.m */,
 				CE8098FA14773EE60067AAC2 /* Supporting Files */,
 			);

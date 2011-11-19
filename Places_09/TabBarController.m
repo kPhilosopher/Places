@@ -24,8 +24,11 @@
 @end
 
 @implementation TabBarController
-@synthesize topRatedNavigationViewController, favoritesNavigationViewController, topRatedTableViewController, favoritesTableViewController;
+@synthesize topRatedNavigationViewController, favoritesNavigationViewController;
+@synthesize topRatedTableViewController, favoritesTableViewController;
 
+#pragma mark -
+#pragma mark Initalization
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -35,6 +38,7 @@
 	[self setup];
     return self;
 }
+#pragma mark setupMethods
 	-(void) setup
 	{
 		[self allocInitTheNavigationViewControllers];
@@ -42,18 +46,17 @@
 		[self setTabBarItemToSystemItems];
 		self.viewControllers = [NSArray arrayWithObjects: self.topRatedNavigationViewController, 
 														  self.favoritesNavigationViewController, nil];
-		[self releaseViewControllersThatArePushedIntoTheViewControllerHierarchy];
-		
-		UINavigationController *navController;
-		if([[self.viewControllers objectAtIndex:0] isKindOfClass:[UINavigationController class]])
-		{
-			navController = [self.viewControllers objectAtIndex:0];
-			NSLog(@"got to the nav controller");
-			if([navController.topViewController isKindOfClass:[TopRatedTableViewController class]])
-			{
-				NSLog(@"got to the top rated table view controller");
-			}
-		}
+		//uncomment the following line and erase the nslog test
+//		[self releaseViewControllersThatArePushedIntoTheViewControllerHierarchy];
+		NSLog(@"nslog test");
+		NSLog(@"----------");
+		NSLog(@"----------");	
+		NSLog([self.topRatedTableViewController.flickrDataSource.flickrTopPlacesArray description]);
+		NSLog(@"----------");
+		NSLog(@"----------");
+		NSLog([[self.topRatedTableViewController.flickrDataSource.flickrTopPlacesArray objectAtIndex:0] description]);
+		NSLog(@"----------");
+		NSLog(@"----------");
 	}
 		-(void) allocInitTheNavigationViewControllers
 		{
@@ -140,9 +143,4 @@
 {
 	[super dealloc];
 }
-
-#pragma mark -
-#pragma mark Private API
-
-
 @end

@@ -71,14 +71,8 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
-	BOOL returningBoolean = NO;
-    if (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationLandscapeRight
-		|| interfaceOrientation == UIInterfaceOrientationLandscapeLeft)
-	{
-		returningBoolean = YES;
-	}
-	return returningBoolean;
+	return (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationLandscapeRight
+			|| interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
 }
 
 #pragma mark - Table view data source

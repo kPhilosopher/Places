@@ -19,6 +19,6 @@
 @property (nonatomic,retain) NSArray *flickrFavoritePlacesArray;
 
 -(NSArray *) retrievePhotosAtSpecific:(NSString *)flickrPlaceId;
-//-(NSArray *) retrieveTopPlacesFromFlickr;
+-(void) setThePropertyToTheTopPlacesFromFlickr;
 -(BOOL) notifyRecentlyViewedPlaceWith:(int) index;
 @end

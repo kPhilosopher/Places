@@ -87,7 +87,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	return [self.flickrDataSource.flickrTopPlacesArray count];
-//	return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -98,8 +97,8 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-    
-    // Configure the cell...
+    NSDictionary *dictionaryOfCell = [self.flickrDataSource.flickrTopPlacesArray objectAtIndex:indexPath.row];
+	cell.textLabel.text = [dictionaryOfCell objectForKey:@"_content"];
     
     return cell;
 }
