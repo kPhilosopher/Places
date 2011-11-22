@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE553793147B53C100C20686 /* PictureListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE553792147B53C100C20686 /* PictureListTableViewController.m */; };
+		CE553794147B53C100C20686 /* PictureListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE553792147B53C100C20686 /* PictureListTableViewController.m */; };
+		CE553795147B53C100C20686 /* PictureListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE553792147B53C100C20686 /* PictureListTableViewController.m */; };
 		CE80988C147738290067AAC2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE80988B147738290067AAC2 /* UIKit.framework */; };
 		CE80988E147738290067AAC2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE80988D147738290067AAC2 /* Foundation.framework */; };
 		CE809890147738290067AAC2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE80988F147738290067AAC2 /* CoreGraphics.framework */; };
@@ -68,6 +71,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE553791147B53C100C20686 /* PictureListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureListTableViewController.h; sourceTree = "<group>"; };
+		CE553792147B53C100C20686 /* PictureListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureListTableViewController.m; sourceTree = "<group>"; };
 		CE809887147738290067AAC2 /* Places_09.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Places_09.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE80988B147738290067AAC2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CE80988D147738290067AAC2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -151,6 +156,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE553797147B53CB00C20686 /* SecondTables */ = {
+			isa = PBXGroup;
+			children = (
+				CE553791147B53C100C20686 /* PictureListTableViewController.h */,
+				CE553792147B53C100C20686 /* PictureListTableViewController.m */,
+			);
+			name = SecondTables;
+			sourceTree = "<group>";
+		};
 		CE80987C147738290067AAC2 = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +205,7 @@
 				CE8098D1147739E80067AAC2 /* TabBarController.h */,
 				CE8098D2147739E80067AAC2 /* TabBarController.m */,
 				CE8098ED147739EE0067AAC2 /* FirstTables */,
+				CE553797147B53CB00C20686 /* SecondTables */,
 				CE8098EF14773B720067AAC2 /* Images */,
 				CE8098EE14773A2A0067AAC2 /* Flickr */,
 				CE809892147738290067AAC2 /* Supporting Files */,
@@ -461,6 +476,7 @@
 				CE8098E9147739E80067AAC2 /* TabBarController.m in Sources */,
 				CE8098EB147739E80067AAC2 /* TopRatedTableViewController.m in Sources */,
 				CE80992D147779580067AAC2 /* MostRecentTableViewController.m in Sources */,
+				CE553793147B53C100C20686 /* PictureListTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,6 +497,7 @@
 				CE8098EA147739E80067AAC2 /* TabBarController.m in Sources */,
 				CE8098EC147739E80067AAC2 /* TopRatedTableViewController.m in Sources */,
 				CE80992E147779580067AAC2 /* MostRecentTableViewController.m in Sources */,
+				CE553794147B53C100C20686 /* PictureListTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,6 +507,7 @@
 			files = (
 				CE80990114773EE60067AAC2 /* Places_09ApplicationTests.m in Sources */,
 				CE80992F147779580067AAC2 /* MostRecentTableViewController.m in Sources */,
+				CE553795147B53C100C20686 /* PictureListTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -686,6 +704,7 @@
 				CE8098B61477382A0067AAC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE8098B71477382A0067AAC2 /* Build configuration list for PBXNativeTarget "Places_09Tests" */ = {
 			isa = XCConfigurationList;
@@ -694,6 +713,7 @@
 				CE8098B91477382A0067AAC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE80990314773EE60067AAC2 /* Build configuration list for PBXNativeTarget "Places_09ApplicationTests" */ = {
 			isa = XCConfigurationList;
@@ -702,6 +722,7 @@
 				CE80990514773EE60067AAC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

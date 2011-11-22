@@ -28,12 +28,18 @@
 		self.flickrTopPlacesArray = (NSArray *) temporaryFlickrTopPlaces;
 }
 
+-(NSDictionary *) getTheDictionaryFromMostRecentListAt:(NSIndexPath *) indexPath
+{
+	NSNumber *indexOfFlickrTopPlacesList = [self.flickrMostRecentPlacesArray objectAtIndex:indexPath.row];
+	return [self.flickrTopPlacesArray objectAtIndex:[indexOfFlickrTopPlacesList intValue]];
+}
+
 -(void) addToTheMostRecentListOfPlacesAsTheIndexOfTopPlacesUsing:(NSIndexPath *)indexPath
 {
 	[self.flickrMostRecentPlacesArray insertObject:[NSNumber numberWithInt:indexPath.row] atIndex:0];
 }
 
--(NSArray *) retrievePhotosAtSpecific:(NSString *)flickrPlaceId
+-(NSArray *) retrievePhotoListForSpecific:(NSString *)flickrPlaceId
 {
 	NSArray *arrayOfPhotos;
 	id temporaryRetrievedPhotos = [FlickrFetcher photosAtPlace:flickrPlaceId];

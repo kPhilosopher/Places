@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FlickrDataSource.h"
+#import "PictureListTableViewController.h"
 
 @interface TopRatedTableViewController : UITableViewController
 {

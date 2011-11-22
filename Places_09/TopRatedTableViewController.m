@@ -8,6 +8,7 @@
 
 #import "TopRatedTableViewController.h"
 
+#define NUMBER_OF_SECTIONS 1
 
 @implementation TopRatedTableViewController
 @synthesize flickrDataSource;
@@ -67,7 +68,6 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-	NSLog([[NSNumber numberWithInt:[self.flickrDataSource.flickrMostRecentPlacesArray count]] description]);
     [super viewDidDisappear:animated];
 }
 
@@ -82,7 +82,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	return 1;
+	return NUMBER_OF_SECTIONS;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -155,16 +155,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	NSLog(@"adding To The Most Recent List");
 	[self.flickrDataSource addToTheMostRecentListOfPlacesAsTheIndexOfTopPlacesUsing:indexPath];
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+	PictureListTableViewController *pltvc = [[PictureListTableViewController alloc] init];
+ 	NSString *placeId = [[self.flickrDataSource.flickrTopPlacesArray objectAtIndex:indexPath.row] objectForKey:@"place_id"];
+	pltvc.listOfPictures_theModel = [self.flickrDataSource retrievePhotoListForSpecific:placeId];
+	[self.navigationController pushViewController:pltvc animated:YES];
+	[pltvc release];
+	//refactor this to have a mother class
 }
 
 @end

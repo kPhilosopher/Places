@@ -18,8 +18,9 @@
 @property (nonatomic,retain) NSArray *flickrTopPlacesArray;
 @property (nonatomic,retain) NSMutableArray *flickrMostRecentPlacesArray;
 
--(NSArray *) retrievePhotosAtSpecific:(NSString *)flickrPlaceId;
+-(NSArray *) retrievePhotoListForSpecific:(NSString *)flickrPlaceId;
 -(void) setThePropertyToTheTopPlacesFromFlickr;
 -(void) addToTheMostRecentListOfPlacesAsTheIndexOfTopPlacesUsing:(NSIndexPath *)indexPath;
 -(BOOL) notifyRecentlyViewedPlaceWith:(int) index;
+-(NSDictionary *) getTheDictionaryFromMostRecentListAt:(NSIndexPath *) indexPath;
 @end

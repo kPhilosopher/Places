@@ -1,17 +1,18 @@
 //
-//  MostRecentTableViewController.m
+//  PictureListTableViewController.m
 //  Places_09
 //
-//  Created by Jinwoo Baek on 11/18/11.
+//  Created by Jinwoo Baek on 11/21/11.
 //  Copyright (c) 2011 Rose-Hulman Institute of Technology. All rights reserved.
 //
 
-#import "MostRecentTableViewController.h"
+#import "PictureListTableViewController.h"
 
 #define NUMBER_OF_SECTIONS 1
 
-@implementation MostRecentTableViewController
-@synthesize flickrDataSource;
+
+@implementation PictureListTableViewController
+@synthesize listOfPictures_theModel;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -19,7 +20,6 @@
     if (self) {
         // Custom initialization
     }
-	self.title = @"Most Recent";
     return self;
 }
 
@@ -35,7 +35,6 @@
 
 - (void)viewDidLoad
 {
-	[self.tableView reloadData];
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -80,14 +79,27 @@
 
 #pragma mark - Table view data source
 
+//-(void) bunchOfTests
+//{
+//	NSLog( [self.listOfPictures_theModel description]);
+//	NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:1], @"key1", [NSNumber numberWithInt:2], @"key2", nil];
+//	id key2stuff = [dictionary objectForKey:@"key2"];
+//	id key3stuff = [dictionary objectForKey:@"key3"];
+//	id key1stuff = [dictionary objectForKey:@"key1"];
+//}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+//#warning Potentially incomplete method implementation.
+    // Return the number of sections.
     return NUMBER_OF_SECTIONS;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.flickrDataSource.flickrMostRecentPlacesArray count];
+//#warning Incomplete method implementation.
+    // Return the number of rows in the section.
+    return [self.listOfPictures_theModel count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -99,16 +111,21 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    NSDictionary *dictionaryOfCell = [self.flickrDataSource.flickrTopPlacesArray objectAtIndex:[[self.flickrDataSource.flickrMostRecentPlacesArray objectAtIndex:indexPath.row] integerValue]];
-	NSString *contentString = [dictionaryOfCell objectForKey:@"_content"];
-	NSArray *arrayOfContentString = [contentString componentsSeparatedByString:@","];
-	NSString *titleString = [arrayOfContentString objectAtIndex:0];
-	cell.textLabel.text = [titleString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-	if ([arrayOfContentString count] > 1)
-	{
-		NSString *subTitle = [contentString substringFromIndex:titleString.length +1];
-		cell.detailTextLabel.text = [subTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSDictionary *cellDictionary = [self.listOfPictures_theModel objectAtIndex:indexPath.row];
+    //maybe exceptions needed
+	id temporaryTitleString = [cellDictionary objectForKey:@"title"];
+	NSString *titleString;
+	if ([temporaryTitleString isKindOfClass:[NSString class]] ) {
+		titleString = (NSString *)temporaryTitleString;
 	}
+	else{
+		NSLog(@"temporaryTitleString in cellForRowAtIndexPath is not a string");
+		return cell;
+	}
+	cell.textLabel.text = titleString;
+//	NSString *subTitleString = 
+//	cell.detailTextLabel.text = [subTitleString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+	
     return cell;
 }
 
@@ -155,11 +172,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	PictureListTableViewController *pltvc = [[PictureListTableViewController alloc] init];
- 	NSString *placeId = [[self.flickrDataSource getTheDictionaryFromMostRecentListAt:indexPath] objectForKey:@"place_id"];
-	pltvc.listOfPictures_theModel = [self.flickrDataSource retrievePhotoListForSpecific:placeId];
-	[self.navigationController pushViewController:pltvc animated:YES];
-	[pltvc release];
+    // Navigation logic may go here. Create and push another view controller.
+    /*
+     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     // ...
+     // Pass the selected object to the new view controller.
+     [self.navigationController pushViewController:detailViewController animated:YES];
+     [detailViewController release];
+     */
 }
 
 @end
