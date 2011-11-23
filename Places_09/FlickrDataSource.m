@@ -8,8 +8,14 @@
 
 #import "FlickrDataSource.h"
 
+@interface FlickrDataSource()
+
+@property (nonatomic,retain) NSMutableSet *flickrMostRecentPlacesSet;
+@end
+
+
 @implementation FlickrDataSource
-@synthesize flickrTopPlacesArray, flickrMostRecentPlacesArray;
+@synthesize flickrTopPlacesArray, flickrMostRecentPlacesArray, flickrMostRecentPlacesSet;
 
 
 -(id) init
@@ -23,26 +29,51 @@
 #pragma mark FlickrFunctions
 -(void) setThePropertyToTheTopPlacesFromFlickr
 {
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	id temporaryFlickrTopPlaces = [FlickrFetcher topPlaces];
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 	if ([temporaryFlickrTopPlaces isKindOfClass:[NSArray class]])
 		self.flickrTopPlacesArray = (NSArray *) temporaryFlickrTopPlaces;
+	
 }
 
--(NSDictionary *) getTheDictionaryFromMostRecentListAt:(NSIndexPath *) indexPath
+//-(NSDictionary *) getTheDictionaryFromMostRecentListAt:(NSIndexPath *) indexPath
+//{
+//	NSNumber *indexOfFlickrTopPlacesList = [NSNumber numberWithInt:[[self.flickrMostRecentPlacesArray objectAtIndex:indexPath.row] intValue]];
+//	return [self.flickrTopPlacesArray objectAtIndex:[indexOfFlickrTopPlacesList intValue]];
+//}
+
+-(void) addToTheMostRecentListOfPlacesTheFollowing:(NSDictionary *)dictionary
 {
-	NSNumber *indexOfFlickrTopPlacesList = [self.flickrMostRecentPlacesArray objectAtIndex:indexPath.row];
-	return [self.flickrTopPlacesArray objectAtIndex:[indexOfFlickrTopPlacesList intValue]];
+	NSLog(@"=-=======");
+	NSLog(@"addToTheMostRecentListOfPlacesTheFollowing");
+	NSLog(@"=-=======");
+	if ([self.flickrMostRecentPlacesSet containsObject:dictionary])
+	{
+		NSLog(@"addToTheMostRecentListOfPlacesTheFollowing[self.flickrMostRecentPlacesArray removeObject:dictionary];");
+		[self.flickrMostRecentPlacesArray removeObject:dictionary];
+	}
+	else
+	{
+		[self.flickrMostRecentPlacesSet addObject:dictionary];
+	}
+	[self.flickrMostRecentPlacesArray insertObject:dictionary atIndex:0];
 }
 
--(void) addToTheMostRecentListOfPlacesAsTheIndexOfTopPlacesUsing:(NSIndexPath *)indexPath
+-(NSMutableArray *) flickrMostRecentPlacesArray
 {
-	[self.flickrMostRecentPlacesArray insertObject:[NSNumber numberWithInt:indexPath.row] atIndex:0];
+	if (!flickrMostRecentPlacesArray) {
+		flickrMostRecentPlacesArray = [[NSMutableArray alloc] init];
+	}
+	return flickrMostRecentPlacesArray;
 }
 
 -(NSArray *) retrievePhotoListForSpecific:(NSString *)flickrPlaceId
 {
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	NSArray *arrayOfPhotos;
 	id temporaryRetrievedPhotos = [FlickrFetcher photosAtPlace:flickrPlaceId];
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 	if ([temporaryRetrievedPhotos isKindOfClass:[NSArray class]])
 		arrayOfPhotos = (NSArray *) temporaryRetrievedPhotos;
 	return arrayOfPhotos;
@@ -52,26 +83,13 @@
 {
 	return YES;
 }
-#pragma mark -
-#pragma mark Properties
-//-(NSArray *) flickrTopPlacesArray
-//{
-//    if (!flickrTopPlacesArray) 
-//	{
-//        flickrTopPlacesArray = [[NSArray alloc] init];
-//    }
-//	return flickrTopPlacesArray;
-//}
--(NSMutableArray *) flickrMostRecentPlacesArray
-{
-	if (!flickrMostRecentPlacesArray)
-		flickrMostRecentPlacesArray = [[NSMutableArray alloc] init];
-	return flickrMostRecentPlacesArray;
-}
+
 #pragma mark -
 #pragma mark Dealloc
 -(void)dealloc
 {
+	[flickrMostRecentPlacesArray release];
+	[flickrMostRecentPlacesSet release];
 	[flickrTopPlacesArray release];
 	[super dealloc];
 }

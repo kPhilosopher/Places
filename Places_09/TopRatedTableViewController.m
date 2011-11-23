@@ -74,8 +74,7 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-	return (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationLandscapeRight
-            || interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
+	return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 #pragma mark - Table view data source
@@ -155,13 +154,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	[self.flickrDataSource addToTheMostRecentListOfPlacesAsTheIndexOfTopPlacesUsing:indexPath];
+	[self.flickrDataSource addToTheMostRecentListOfPlacesTheFollowing:[self.flickrDataSource.flickrTopPlacesArray objectAtIndex:indexPath.row]];
 	PictureListTableViewController *pltvc = [[PictureListTableViewController alloc] init];
  	NSString *placeId = [[self.flickrDataSource.flickrTopPlacesArray objectAtIndex:indexPath.row] objectForKey:@"place_id"];
 	pltvc.listOfPictures_theModel = [self.flickrDataSource retrievePhotoListForSpecific:placeId];
 	[self.navigationController pushViewController:pltvc animated:YES];
 	[pltvc release];
-	//refactor this to have a mother class
 }
 
 @end

@@ -81,17 +81,22 @@
 
 //-(void) bunchOfTests
 //{
-//	NSLog( [self.listOfPictures_theModel description]);
+////	NSLog( [self.listOfPictures_theModel description]);
 //	NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:1], @"key1", [NSNumber numberWithInt:2], @"key2", nil];
 //	id key2stuff = [dictionary objectForKey:@"key2"];
 //	id key3stuff = [dictionary objectForKey:@"key3"];
 //	id key1stuff = [dictionary objectForKey:@"key1"];
+//	if (!key3stuff) {
+//		NSLog(@"works the way i want it");
+//	}
 //}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
 //#warning Potentially incomplete method implementation.
     // Return the number of sections.
+//	NSLog( [self.listOfPictures_theModel description]);
+//	[self bunchOfTests];
     return NUMBER_OF_SECTIONS;
 }
 
@@ -110,23 +115,50 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
+	cell.detailTextLabel.text = @"";
+	cell.textLabel.text = @"";
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     NSDictionary *cellDictionary = [self.listOfPictures_theModel objectAtIndex:indexPath.row];
-    //maybe exceptions needed
 	id temporaryTitleString = [cellDictionary objectForKey:@"title"];
-	NSString *titleString;
-	if ([temporaryTitleString isKindOfClass:[NSString class]] ) {
+	id temporaryDescriptionDictionary = [cellDictionary objectForKey:@"description"];
+	id temporaryDescriptionString = nil;
+	if ([temporaryDescriptionDictionary isKindOfClass:[NSDictionary class]]) {
+		temporaryDescriptionString = [temporaryDescriptionDictionary objectForKey:@"_content"];
+	}
+	
+	NSString *titleString = nil;
+	NSString *subTitleString = nil;
+	if ([temporaryTitleString isKindOfClass:[NSString class]])
+	{
 		titleString = (NSString *)temporaryTitleString;
 	}
-	else{
-		NSLog(@"temporaryTitleString in cellForRowAtIndexPath is not a string");
-		return cell;
+	if ([temporaryDescriptionString isKindOfClass:[NSString class]]) {
+		subTitleString = (NSString *)temporaryDescriptionString;
 	}
-	cell.textLabel.text = titleString;
-//	NSString *subTitleString = 
-//	cell.detailTextLabel.text = [subTitleString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 	
-    return cell;
+	if ([titleString length] == 0) 
+	{
+		titleString = subTitleString;		
+		if ([subTitleString length] == 0) {
+			titleString = @"Unknown";
+		}
+		subTitleString = @"";
+	}
+//	else
+//	{
+//		if (temporaryDescriptionString && [temporaryDescriptionString isKindOfClass:[NSString class]]) {
+//			titleString = (NSString *)temporaryDescriptionString;
+//		}
+//	}
+//	
+//	if (!titleString || [titleString length] == 0) {
+//		titleString = @"Unknown";
+//	}
+	cell.textLabel.text = [titleString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+	if (!([subTitleString length] == 0)) {
+		cell.detailTextLabel.text = [subTitleString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+	}
+	return cell;
 }
 
 /*

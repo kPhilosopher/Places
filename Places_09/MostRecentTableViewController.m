@@ -35,6 +35,7 @@
 
 - (void)viewDidLoad
 {
+	NSLog(@"viewDidLoad");
 	[self.tableView reloadData];
     [super viewDidLoad];
 
@@ -47,6 +48,7 @@
 
 - (void)viewDidUnload
 {
+	NSLog(@"viewDidUnload");
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -54,21 +56,26 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+	NSLog(@"viewWillAppear");
+	[self.tableView reloadData];
     [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
+	NSLog(@"viewDidAppear");
     [super viewDidAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+	NSLog(@"viewWillDisappear");
     [super viewWillDisappear:animated];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
+	NSLog(@"viewDidDisappear");
     [super viewDidDisappear:animated];
 }
 
@@ -99,7 +106,7 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    NSDictionary *dictionaryOfCell = [self.flickrDataSource.flickrTopPlacesArray objectAtIndex:[[self.flickrDataSource.flickrMostRecentPlacesArray objectAtIndex:indexPath.row] integerValue]];
+    NSDictionary *dictionaryOfCell = [self.flickrDataSource.flickrMostRecentPlacesArray objectAtIndex:indexPath.row];
 	NSString *contentString = [dictionaryOfCell objectForKey:@"_content"];
 	NSArray *arrayOfContentString = [contentString componentsSeparatedByString:@","];
 	NSString *titleString = [arrayOfContentString objectAtIndex:0];
@@ -156,7 +163,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	PictureListTableViewController *pltvc = [[PictureListTableViewController alloc] init];
- 	NSString *placeId = [[self.flickrDataSource getTheDictionaryFromMostRecentListAt:indexPath] objectForKey:@"place_id"];
+ 	NSString *placeId = [[self.flickrDataSource.flickrMostRecentPlacesArray objectAtIndex:indexPath.row] objectForKey:@"place_id"];
 	pltvc.listOfPictures_theModel = [self.flickrDataSource retrievePhotoListForSpecific:placeId];
 	[self.navigationController pushViewController:pltvc animated:YES];
 	[pltvc release];

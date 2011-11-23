@@ -11,8 +11,10 @@
 
 @interface FlickrDataSource : NSObject
 {
+	@private
 	NSArray *flickrTopPlacesArray;
     NSMutableArray *flickrMostRecentPlacesArray;
+	NSMutableSet *flickrMostRecentPlacesSet;
 }
 
 @property (nonatomic,retain) NSArray *flickrTopPlacesArray;
@@ -20,7 +22,5 @@
 
 -(NSArray *) retrievePhotoListForSpecific:(NSString *)flickrPlaceId;
 -(void) setThePropertyToTheTopPlacesFromFlickr;
--(void) addToTheMostRecentListOfPlacesAsTheIndexOfTopPlacesUsing:(NSIndexPath *)indexPath;
--(BOOL) notifyRecentlyViewedPlaceWith:(int) index;
--(NSDictionary *) getTheDictionaryFromMostRecentListAt:(NSIndexPath *) indexPath;
+-(void) addToTheMostRecentListOfPlacesTheFollowing:(NSDictionary *)dictionary;
 @end
