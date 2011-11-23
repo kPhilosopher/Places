@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ScrollableImageViewController.h"
+#import "FlickrFetcher.h"
 
 @interface PictureListTableViewController : UITableViewController
 {

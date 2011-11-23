@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface ScrollableImageViewController : UIViewController
-
+{
+	@private
+	UIImage *image;
+	UIImageView *viewWithImage;
+}
+@property (retain) UIImage *image;
+@property (retain) UIImageView *imageView;
 @end

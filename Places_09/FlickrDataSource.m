@@ -29,9 +29,7 @@
 #pragma mark FlickrFunctions
 -(void) setThePropertyToTheTopPlacesFromFlickr
 {
-	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	id temporaryFlickrTopPlaces = [FlickrFetcher topPlaces];
-	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 	if ([temporaryFlickrTopPlaces isKindOfClass:[NSArray class]])
 		self.flickrTopPlacesArray = (NSArray *) temporaryFlickrTopPlaces;
 	
@@ -70,10 +68,8 @@
 
 -(NSArray *) retrievePhotoListForSpecific:(NSString *)flickrPlaceId
 {
-	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	NSArray *arrayOfPhotos;
 	id temporaryRetrievedPhotos = [FlickrFetcher photosAtPlace:flickrPlaceId];
-	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 	if ([temporaryRetrievedPhotos isKindOfClass:[NSArray class]])
 		arrayOfPhotos = (NSArray *) temporaryRetrievedPhotos;
 	return arrayOfPhotos;
@@ -84,6 +80,7 @@
 	return YES;
 }
 
+//TODO: working
 #pragma mark -
 #pragma mark Dealloc
 -(void)dealloc

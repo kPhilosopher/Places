@@ -9,12 +9,14 @@
 #import "ScrollableImageViewController.h"
 
 @implementation ScrollableImageViewController
+@synthesize image, imageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+		
     }
     return self;
 }
@@ -29,12 +31,16 @@
 
 #pragma mark - View lifecycle
 
-/*
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView
 {
+	self.imageView = [[UIImageView alloc] initWithImage:self.image];
+	UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+	self.view = scrollView;
+	[self.view addSubview:self.imageView];
+	scrollView.contentSize = self.imageView.bounds.size;
 }
-*/
+
 
 /*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -51,10 +57,23 @@
     // e.g. self.myOutlet = nil;
 }
 
+-(UIImage *) image
+{
+	if (!image) {
+		image = [[UIImage alloc] init];
+	}
+	return image;
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+-(void)dealloc
+{
+	[image release];
+	[super dealloc];
 }
 
 @end
