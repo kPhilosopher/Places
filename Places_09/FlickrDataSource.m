@@ -43,12 +43,13 @@
 
 -(void) addToTheMostRecentListOfPlacesTheFollowing:(NSDictionary *)dictionary
 {
-	NSLog(@"=-=======");
-	NSLog(@"addToTheMostRecentListOfPlacesTheFollowing");
-	NSLog(@"=-=======");
+//	NSLog(@"=-=======");
+//	NSLog(@"addToTheMostRecentListOfPlacesTheFollowing");
+//	NSLog(@"=-=======");
+	
 	if ([self.flickrMostRecentPlacesSet containsObject:dictionary])
 	{
-		NSLog(@"addToTheMostRecentListOfPlacesTheFollowing[self.flickrMostRecentPlacesArray removeObject:dictionary];");
+//		NSLog(@"addToTheMostRecentListOfPlacesTheFollowing[self.flickrMostRecentPlacesArray removeObject:dictionary];");
 		[self.flickrMostRecentPlacesArray removeObject:dictionary];
 	}
 	else

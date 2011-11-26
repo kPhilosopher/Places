@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ScrollableImageViewController : UIViewController
+@interface ScrollableImageViewController : UIViewController <UIScrollViewDelegate>
 {
 	@private
 	UIImage *image;
 	UIImageView *viewWithImage;
 }
-@property (retain) UIImage *image;
+@property (nonatomic, retain) UIImage *image;
 @property (retain) UIImageView *imageView;
 @end

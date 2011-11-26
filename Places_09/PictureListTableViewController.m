@@ -205,7 +205,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ScrollableImageViewController *imageController = [[ScrollableImageViewController alloc] init];
-	imageController.image = [UIImage imageWithData:[FlickrFetcher imageDataForPhotoWithFlickrInfo:[self.listOfPictures_theModel objectAtIndex:indexPath.row] format:FlickrFetcherPhotoFormatOriginal]];
+	imageController.image = [UIImage imageWithData:[FlickrFetcher imageDataForPhotoWithFlickrInfo:[self.listOfPictures_theModel objectAtIndex:indexPath.row] format:FlickrFetcherPhotoFormatLarge]];
 	[self.navigationController pushViewController:imageController animated:YES];
 	[imageController release];
 }
