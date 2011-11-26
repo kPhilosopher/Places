@@ -7,6 +7,7 @@
 //
 
 #import "FlickrDataSource.h"
+#define MAX_MOST_RECENT_LIST 10
 
 @interface FlickrDataSource()
 
@@ -37,7 +38,6 @@
 
 -(void) addToTheMostRecentListOfPlacesTheFollowing:(NSIndexPath *)indexPath
 {
-	
 	id elementOfPlaceId = [[self.flickrTopPlacesArray objectAtIndex:indexPath.row] objectForKey:@"place_id"];
 	NSString *stringOfPlaceId;
 	if ([elementOfPlaceId isKindOfClass:[NSString class]]) {
@@ -64,6 +64,11 @@
 		[self.flickrMostRecentPlacesSet addObject:stringOfPlaceId];
 	}
 	[self.flickrMostRecentPlacesArray insertObject:[self.flickrTopPlacesArray objectAtIndex:indexPath.row] atIndex:0];
+	
+	if (self.flickrMostRecentPlacesArray.count == MAX_MOST_RECENT_LIST) {
+		[self.flickrMostRecentPlacesArray removeLastObject];
+	}
+	
 }
 
 -(NSMutableArray *) flickrMostRecentPlacesArray
