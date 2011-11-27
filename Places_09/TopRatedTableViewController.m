@@ -155,10 +155,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	[self.flickrDataSource addToTheMostRecentListOfPlacesTheFollowing:indexPath];
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	PictureListTableViewController *pltvc = [[PictureListTableViewController alloc] init];
  	NSString *placeId = [[self.flickrDataSource.flickrTopPlacesArray objectAtIndex:indexPath.row] objectForKey:@"place_id"];
 	pltvc.listOfPictures_theModel = [self.flickrDataSource retrievePhotoListForSpecific:placeId];
 	[self.navigationController pushViewController:pltvc animated:YES];
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 	[pltvc release];
 }
 

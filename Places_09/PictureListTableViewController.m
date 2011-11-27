@@ -204,9 +204,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     ScrollableImageViewController *imageController = [[ScrollableImageViewController alloc] init];
 	imageController.image = [UIImage imageWithData:[FlickrFetcher imageDataForPhotoWithFlickrInfo:[self.listOfPictures_theModel objectAtIndex:indexPath.row] format:FlickrFetcherPhotoFormatLarge]];
 	[self.navigationController pushViewController:imageController animated:YES];
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 	[imageController release];
 }
 
