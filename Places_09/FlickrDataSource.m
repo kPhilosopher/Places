@@ -23,6 +23,8 @@
 {
 	[super init];
 	[self setThePropertyToTheTopPlacesFromFlickr];
+	self.flickrMostRecentPlacesArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"most_recent_array"];
+	self.flickrMostRecentPlacesSet = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"most_recent_set"]];
 	return self;
 }
 
@@ -33,8 +35,6 @@
 	id temporaryFlickrTopPlaces = [FlickrFetcher topPlaces];
 	if ([temporaryFlickrTopPlaces isKindOfClass:[NSArray class]])
 		self.flickrTopPlacesArray = (NSArray *) temporaryFlickrTopPlaces;
-	self.flickrMostRecentPlacesArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"most_recent_array"];
-	self.flickrMostRecentPlacesSet = [[NSUserDefaults standardUserDefaults] objectForKey:@"most_recent_set"];
 }
 
 -(void) addToTheMostRecentListOfPlacesTheFollowing:(NSIndexPath *)indexPath
@@ -70,8 +70,8 @@
 		[self.flickrMostRecentPlacesArray removeLastObject];
 	}
 	
-	[[NSUserDefaults standardUserDefaults] setValue:self.flickrMostRecentPlacesArray forKey:@"most_recent_array"];
-	[[NSUserDefaults standardUserDefaults] setValue:self.flickrMostRecentPlacesSet forKey:@"most_recent_set"];
+	[[NSUserDefaults standardUserDefaults] setObject:self.flickrMostRecentPlacesArray forKey:@"most_recent_array"];
+	[[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:self.flickrMostRecentPlacesSet] forKey:@"most_recent_set"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
