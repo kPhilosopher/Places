@@ -12,7 +12,7 @@
 
 
 @implementation PictureListTableViewController
-@synthesize listOfPictures_theModel;
+@synthesize listOfPictures_theModel, delegate;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -205,11 +205,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    ScrollableImageViewController *imageController = [[ScrollableImageViewController alloc] init];
-	imageController.image = [UIImage imageWithData:[FlickrFetcher imageDataForPhotoWithFlickrInfo:[self.listOfPictures_theModel objectAtIndex:indexPath.row] format:FlickrFetcherPhotoFormatLarge]];
-	[self.navigationController pushViewController:imageController animated:YES];
+	ScrollableImageViewController *imageController = [self.delegate retrieveScrollableImageViewControllerFor:self];
+	UIImage *image = [UIImage imageWithData:[FlickrFetcher imageDataForPhotoWithFlickrInfo:[self.listOfPictures_theModel objectAtIndex:indexPath.row] format:FlickrFetcherPhotoFormatLarge]];
+	if (imageController.view.window == nil) 
+		[self.navigationController pushViewController:imageController animated:YES];
+	[imageController initiateTheImageSetupWithGiven:image];
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-	[imageController release];
 }
 
 @end

@@ -17,5 +17,8 @@
 	UINavigationController *favoritesNavigationViewController;
 	TopRatedTableViewController *topRatedTableViewController;
 	MostRecentTableViewController *mostRecentTableViewController;
+	id <PictureListTableViewControllerDelegateProtocol> delegateToTransfer;
 }
+@property (retain) id <PictureListTableViewControllerDelegateProtocol> delegateToTransfer;
+-(id)initWithDelegate:(id)delegate;
 @end

@@ -12,25 +12,45 @@
 
 @synthesize window = _window;
 @synthesize tab_Bar_Controller;
+@synthesize scrollableImageVC;
 
 - (void)dealloc
 {
 	[tab_Bar_Controller release];
+	[scrollableImageVC release];
 	[_window release];
     [super dealloc];
+}
+
+
+-(ScrollableImageViewController *)retrieveScrollableImageViewControllerFor:(PictureListTableViewController *)controller
+{
+	return self.scrollableImageVC;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-	self.tab_Bar_Controller = [[TabBarController alloc] init];
-	[self.window addSubview:self.tab_Bar_Controller.view];
-    self.window.backgroundColor = [UIColor whiteColor];
+	self.scrollableImageVC = [[ScrollableImageViewController alloc] init];
+	self.scrollableImageVC.title = @"Photo";
+	self.tab_Bar_Controller = [[TabBarController alloc] initWithDelegate:self];
+	if ([[UIScreen mainScreen] bounds].size.height > 500) 
+	{
+		UINavigationController *mocknav = [[UINavigationController alloc] init];
+		UINavigationController *nav = [[UINavigationController alloc] init];
+		UISplitViewController *splitVC = [[UISplitViewController alloc] init];
+		splitVC.delegate = self.scrollableImageVC;
+		[nav pushViewController:self.scrollableImageVC animated:NO];
+		splitVC.viewControllers = [NSArray arrayWithObjects:self.tab_Bar_Controller, nav, nil];
+		[nav release];
+		[self.window addSubview:splitVC.view];
+	}
+	else
+	{
+		[self.window addSubview:self.tab_Bar_Controller.view];
+    }
+	self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-	
-	//	NSArray *array = [FlickrFetcher topPlaces];
-	//	NSArray *arrayOfPictures = [FlickrFetcher photosAtPlace:[[array objectAtIndex:0] objectForKey:@"place_id"]];
-	//	NSLog([arrayOfPictures description]);
     return YES;
 }
 

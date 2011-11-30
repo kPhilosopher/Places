@@ -11,7 +11,7 @@
 #define NUMBER_OF_SECTIONS 1
 
 @implementation MostRecentTableViewController
-@synthesize flickrDataSource;
+@synthesize flickrDataSource, delegateToTransfer;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -80,7 +80,6 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
@@ -163,6 +162,7 @@
 {
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	PictureListTableViewController *pltvc = [[PictureListTableViewController alloc] init];
+	pltvc.delegate = self.delegateToTransfer;
  	NSString *placeId = [[self.flickrDataSource.flickrMostRecentPlacesArray objectAtIndex:indexPath.row] objectForKey:@"place_id"];
 	pltvc.listOfPictures_theModel = [self.flickrDataSource retrievePhotoListForSpecific:placeId];
 	[self.navigationController pushViewController:pltvc animated:YES];

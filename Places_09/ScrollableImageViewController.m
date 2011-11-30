@@ -8,6 +8,11 @@
 
 #import "ScrollableImageViewController.h"
 
+@interface ScrollableImageViewController()
+
+@property (nonatomic, retain) UIImage *image;
+@end
+
 @implementation ScrollableImageViewController
 @synthesize image, imageView;
 
@@ -18,6 +23,7 @@
         // Custom initialization
     }
     return self;
+	
 }
 
 - (void)didReceiveMemoryWarning
@@ -27,6 +33,32 @@
     
     // Release any cached data, images, etc that aren't in use.
 }
+
+#pragma mark - Split View Delegate Methods
+
+//-(BOOL)splitViewController:(UISplitViewController *)svc shouldHideViewController:(UIViewController *)vc inOrientation:(UIInterfaceOrientation)orientation
+//{
+//	return (orientation == UIInterfaceOrientationPortrait);
+//}
+
+
+- (void)splitViewController:(UISplitViewController *)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)pc
+{
+	barButtonItem.title = aViewController.title;
+//	self.navigationItem.rightBarButtonItem = barButtonItem;
+	[self.navigationItem setLeftBarButtonItem:barButtonItem animated:NO];
+//	self.navigationItem.
+}
+//TODO: make sure the barbutton works
+- (void)splitViewController:(UISplitViewController *)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)button
+{
+//	self.navigationItem.rightBarButtonItem = nil;
+	[self.navigationItem setLeftBarButtonItem:nil animated:NO];
+}
+//- (void)splitViewController:(UISplitViewController *)svc popoverController:(UIPopoverController *)pc willPresentViewController:(UIViewController *)aViewController
+//{
+//	
+//}
 
 #pragma mark - View lifecycle
 
@@ -50,6 +82,17 @@
 	return theRectToReturn;
 }
 
+-(void) initiateTheImageSetupWithGiven:(UIImage *)givenImage
+{
+	self.image = givenImage;
+	[self loadView];
+	if ([self.view isKindOfClass:[UIScrollView class]])
+	{
+		UIScrollView *scrollView = (UIScrollView *)self.view;
+		[scrollView zoomToRect:[self getTheRectSizeThatWillUtilizeTheScreenSpace] animated:YES];
+	}
+}
+
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView
 {
@@ -69,14 +112,14 @@
     [super viewDidLoad];
 }
 
--(void) viewWillAppear:(BOOL)animated
-{
-	if ([self.view isKindOfClass:[UIScrollView class]])
-	{
-		UIScrollView *scrollView = (UIScrollView *)self.view;
-		[scrollView zoomToRect:[self getTheRectSizeThatWillUtilizeTheScreenSpace] animated:NO];
-	}
-}
+//-(void) viewWillAppear:(BOOL)animated
+//{
+//	if ([self.view isKindOfClass:[UIScrollView class]])
+//	{
+//		UIScrollView *scrollView = (UIScrollView *)self.view;
+//		[scrollView zoomToRect:[self getTheRectSizeThatWillUtilizeTheScreenSpace] animated:YES];
+//	}
+//}
 
 
 - (void)viewDidUnload
@@ -109,7 +152,14 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+	if ([self.view isKindOfClass:[UIScrollView class]])
+	{
+		UIScrollView *scrollView = (UIScrollView *)self.view;
+		[scrollView zoomToRect:[self getTheRectSizeThatWillUtilizeTheScreenSpace] animated:YES];
+		
+	}
+    return ((interfaceOrientation == UIInterfaceOrientationPortrait) || (interfaceOrientation == UIInterfaceOrientationLandscapeRight) || (interfaceOrientation == UIInterfaceOrientationLandscapeLeft));
+	
 }
 -(void)dealloc
 {

@@ -11,7 +11,7 @@
 #define NUMBER_OF_SECTIONS 1
 
 @implementation TopRatedTableViewController
-@synthesize flickrDataSource;
+@synthesize flickrDataSource, delegateToTransfer;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -157,6 +157,7 @@
 	[self.flickrDataSource addToTheMostRecentListOfPlacesTheFollowing:indexPath];
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	PictureListTableViewController *pltvc = [[PictureListTableViewController alloc] init];
+	pltvc.delegate = self.delegateToTransfer;
  	NSString *placeId = [[self.flickrDataSource.flickrTopPlacesArray objectAtIndex:indexPath.row] objectForKey:@"place_id"];
 	pltvc.listOfPictures_theModel = [self.flickrDataSource retrievePhotoListForSpecific:placeId];
 	[self.navigationController pushViewController:pltvc animated:YES];

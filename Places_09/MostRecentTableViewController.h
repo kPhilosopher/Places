@@ -13,6 +13,8 @@
 @interface MostRecentTableViewController : UITableViewController
 {
 	FlickrDataSource *flickrDataSource;
+	id <PictureListTableViewControllerDelegateProtocol> delegateToTransfer;
 }
 @property (retain) FlickrDataSource *flickrDataSource;
+@property (retain) id <PictureListTableViewControllerDelegateProtocol> delegateToTransfer;
 @end

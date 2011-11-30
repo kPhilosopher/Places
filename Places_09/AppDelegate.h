@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "TabBarController.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, PictureListTableViewControllerDelegateProtocol>
 {
 @private
 	TabBarController *tab_Bar_Controller;
+	ScrollableImageViewController *scrollableImageVC;
 }
 
 @property (strong, nonatomic) UIWindow *window;
 @property (retain) TabBarController *tab_Bar_Controller;
+@property (retain) ScrollableImageViewController *scrollableImageVC;
 @end

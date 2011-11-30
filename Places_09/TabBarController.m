@@ -26,9 +26,16 @@
 @implementation TabBarController
 @synthesize topRatedNavigationViewController, favoritesNavigationViewController;
 @synthesize topRatedTableViewController, mostRecentTableViewController;
+@synthesize delegateToTransfer;
 
 #pragma mark -
 #pragma mark Initalization
+- (id) initWithDelegate:(id) delegate
+{
+	self.delegateToTransfer = delegate;
+	return [self init];
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -67,6 +74,8 @@
 		{
 			self.topRatedTableViewController = [[TopRatedTableViewController alloc] initWithStyle:UITableViewStylePlain];
 			self.mostRecentTableViewController = [[MostRecentTableViewController alloc] initWithStyle:UITableViewStylePlain];
+			self.topRatedTableViewController.delegateToTransfer = self.delegateToTransfer;
+			self.mostRecentTableViewController.delegateToTransfer = self.delegateToTransfer;
 			[self setupTheDataSourceForTheTableViewControllersToShareTheFlickrDataSource];
 			[self pushViewControllersToNavigationViewControllers];
 		}
