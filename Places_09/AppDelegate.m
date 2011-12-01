@@ -36,7 +36,6 @@
 	self.tab_Bar_Controller = [[TabBarController alloc] initWithDelegate:self];
 	if ([[UIScreen mainScreen] bounds].size.height > 500) 
 	{
-		UINavigationController *mocknav = [[UINavigationController alloc] init];
 		UINavigationController *nav = [[UINavigationController alloc] init];
 		UISplitViewController *splitVC = [[UISplitViewController alloc] init];
 		splitVC.delegate = self.scrollableImageVC;

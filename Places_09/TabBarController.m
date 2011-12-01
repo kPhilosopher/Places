@@ -55,15 +55,15 @@
 														  self.favoritesNavigationViewController, nil];
 		//uncomment the following line and erase the nslog test
 		[self releaseViewControllersThatArePushedIntoTheViewControllerHierarchy];
-		NSLog(@"nslog test");
-		NSLog(@"----------");
-		NSLog(@"----------");	
-		NSLog([self.topRatedTableViewController.flickrDataSource.flickrTopPlacesArray description]);
-		NSLog(@"----------");
-		NSLog(@"----------");
-		NSLog([[self.topRatedTableViewController.flickrDataSource.flickrTopPlacesArray objectAtIndex:0] description]);
-		NSLog(@"----------");
-		NSLog(@"----------");
+//		NSLog(@"nslog test");
+//		NSLog(@"----------");
+//		NSLog(@"----------");	
+//		NSLog([self.topRatedTableViewController.flickrDataSource.flickrTopPlacesArray description]);
+//		NSLog(@"----------");
+//		NSLog(@"----------");
+//		NSLog([[self.topRatedTableViewController.flickrDataSource.flickrTopPlacesArray objectAtIndex:0] description]);
+//		NSLog(@"----------");
+//		NSLog(@"----------");
 	}
 		-(void) allocInitTheNavigationViewControllers
 		{

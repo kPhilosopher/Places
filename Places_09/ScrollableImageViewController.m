@@ -40,25 +40,21 @@
 //{
 //	return (orientation == UIInterfaceOrientationPortrait);
 //}
-
-
-- (void)splitViewController:(UISplitViewController *)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)pc
+- (void)splitViewController:(UISplitViewController*)svc popoverController:(UIPopoverController*)pc willPresentViewController:(UIViewController *)aViewController
 {
-	barButtonItem.title = aViewController.title;
-//	self.navigationItem.rightBarButtonItem = barButtonItem;
-	[self.navigationItem setLeftBarButtonItem:barButtonItem animated:NO];
-//	self.navigationItem.
 }
-//TODO: make sure the barbutton works
-- (void)splitViewController:(UISplitViewController *)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)button
+
+- (void)splitViewController:(UISplitViewController*)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem*)barButtonItem forPopoverController:(UIPopoverController*)pc
 {
-//	self.navigationItem.rightBarButtonItem = nil;
-	[self.navigationItem setLeftBarButtonItem:nil animated:NO];
+//	barButtonItem.title = aViewController.title;
+	self.navigationItem.rightBarButtonItem = barButtonItem;
 }
-//- (void)splitViewController:(UISplitViewController *)svc popoverController:(UIPopoverController *)pc willPresentViewController:(UIViewController *)aViewController
-//{
-//	
-//}
+
+- (void)splitViewController:(UISplitViewController*)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)button
+{
+	self.navigationItem.rightBarButtonItem = nil;
+}
+
 
 #pragma mark - View lifecycle
 
@@ -105,10 +101,12 @@
 	self.view = scrollView;
 	[scrollView release];
 	[self.view addSubview:self.imageView];
+	[super loadView];
 }
 
 - (void)viewDidLoad
 {
+	NSLog(@"viewDidLoad");
     [super viewDidLoad];
 }
 
@@ -151,6 +149,9 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
+	
+	[self loadView];
+	[self viewDidLoad];
     // Return YES for supported orientations
 	if ([self.view isKindOfClass:[UIScrollView class]])
 	{
