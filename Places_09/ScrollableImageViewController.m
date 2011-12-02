@@ -101,12 +101,11 @@
 	self.view = scrollView;
 	[scrollView release];
 	[self.view addSubview:self.imageView];
-	[super loadView];
+//	[super loadView];
 }
 
 - (void)viewDidLoad
 {
-	NSLog(@"viewDidLoad");
     [super viewDidLoad];
 }
 
@@ -151,7 +150,7 @@
 {
 	
 	[self loadView];
-	[self viewDidLoad];
+//	[self viewDidLoad];
     // Return YES for supported orientations
 	if ([self.view isKindOfClass:[UIScrollView class]])
 	{
