@@ -11,6 +11,8 @@
 
 @interface FlickrDataSource()
 
+
+-(void) updateMostRecentDataToStandardUserDefaults;
 @property (nonatomic,retain) NSMutableSet *flickrMostRecentPlacesSet;
 @end
 
@@ -70,6 +72,17 @@
 		[self.flickrMostRecentPlacesArray removeLastObject];
 	}
 	
+	[self updateMostRecentDataToStandardUserDefaults];
+}
+
+-(void) deleteFromMostRecentListThePlaceWithTheFollowing:(NSIndexPath *) indexPath
+{
+	[self.flickrMostRecentPlacesSet removeObject:[self.flickrMostRecentPlacesArray objectAtIndex:indexPath.row]];
+	[self.flickrMostRecentPlacesArray removeObjectAtIndex:indexPath.row];
+}
+
+-(void) updateMostRecentDataToStandardUserDefaults
+{
 	[[NSUserDefaults standardUserDefaults] setObject:self.flickrMostRecentPlacesArray forKey:@"most_recent_array"];
 	[[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:self.flickrMostRecentPlacesSet] forKey:@"most_recent_set"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
@@ -80,6 +93,7 @@
 	if (!flickrMostRecentPlacesArray) {
 		flickrMostRecentPlacesArray = [[NSMutableArray alloc] init];
 	}
+	[self performSelector:@selector(updateMostRecentDataToStandardUserDefaults) withObject:self afterDelay:0.5];
 	return flickrMostRecentPlacesArray;
 }
 

@@ -23,4 +23,5 @@
 -(NSArray *) retrievePhotoListForSpecific:(NSString *)flickrPlaceId;
 -(void) setThePropertyToTheTopPlacesFromFlickr;
 -(void) addToTheMostRecentListOfPlacesTheFollowing:(NSIndexPath *)indexPath;
+-(void) deleteFromMostRecentListThePlaceWithTheFollowing:(NSIndexPath *) indexPath;
 @end
