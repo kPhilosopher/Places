@@ -13,7 +13,6 @@
 -(void) allocInitTheNavigationViewControllers;
 -(void) allocInitTheCustomTableViewControllers;
 -(void) pushViewControllersToNavigationViewControllers;
--(void) setupTheDataSourceForTheTableViewControllersToShareTheFlickrDataSource;
 -(void) setTabBarItemToSystemItems;
 -(void) releaseViewControllersThatArePushedIntoTheViewControllerHierarchy;
 
@@ -53,17 +52,7 @@
 		[self setTabBarItemToSystemItems];
 		self.viewControllers = [NSArray arrayWithObjects: self.topRatedNavigationViewController, 
 														  self.favoritesNavigationViewController, nil];
-		//uncomment the following line and erase the nslog test
 		[self releaseViewControllersThatArePushedIntoTheViewControllerHierarchy];
-//		NSLog(@"nslog test");
-//		NSLog(@"----------");
-//		NSLog(@"----------");	
-//		NSLog([self.topRatedTableViewController.flickrDataSource.flickrTopPlacesArray description]);
-//		NSLog(@"----------");
-//		NSLog(@"----------");
-//		NSLog([[self.topRatedTableViewController.flickrDataSource.flickrTopPlacesArray objectAtIndex:0] description]);
-//		NSLog(@"----------");
-//		NSLog(@"----------");
 	}
 		-(void) allocInitTheNavigationViewControllers
 		{
@@ -73,19 +62,13 @@
 		-(void) allocInitTheCustomTableViewControllers
 		{
 			FlickrDataSource *theFlickrDataSource = [[FlickrDataSource alloc] init];
-			self.topRatedTableViewController = [[TopRatedTableViewController alloc] initWithStyle:UITableViewStylePlain and:theFlickrDataSource];
-			self.mostRecentTableViewController = [[MostRecentTableViewController alloc] initWithStyle:UITableViewStylePlain and:theFlickrDataSource];
+			self.topRatedTableViewController = [[TopRatedTableViewController alloc] initWithStyle:UITableViewStylePlain andWith:theFlickrDataSource];
+			self.mostRecentTableViewController = [[MostRecentTableViewController alloc] initWithStyle:UITableViewStylePlain andWith:theFlickrDataSource];
 			[theFlickrDataSource release];
 			self.topRatedTableViewController.delegateToTransfer = self.delegateToTransfer;
 			self.mostRecentTableViewController.delegateToTransfer = self.delegateToTransfer;
-//			[self setupTheDataSourceForTheTableViewControllersToShareTheFlickrDataSource];
 			[self pushViewControllersToNavigationViewControllers];
 		}
-			-(void) setupTheDataSourceForTheTableViewControllersToShareTheFlickrDataSource
-			{
-				self.topRatedTableViewController.flickrDataSource = [[FlickrDataSource alloc] init];
-				self.mostRecentTableViewController.flickrDataSource = self.topRatedTableViewController.flickrDataSource;
-			}
 			-(void) pushViewControllersToNavigationViewControllers
 			{
 				[self.topRatedNavigationViewController pushViewController:self.topRatedTableViewController animated:YES];

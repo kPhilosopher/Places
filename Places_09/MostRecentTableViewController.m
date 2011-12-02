@@ -12,11 +12,11 @@
 
 @implementation MostRecentTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style and:(FlickrDataSource *)theFlickrDataSource
+- (id)initWithStyle:(UITableViewStyle)style andWith:(FlickrDataSource *)theFlickrDataSource
 {
-    self = [super initWithStyle:style and:theFlickrDataSource];
+	self = [super initWithStyle:style andWith:theFlickrDataSource];
     if (self) {
-		self.flickrArray = self.flickrDataSource.flickrMostRecentPlacesArray;
+		self.rawData = self.flickrDataSource.flickrMostRecentPlacesArray;
 		self.title = @"Most Recent";
     }
     return self;
@@ -80,11 +80,6 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 #pragma mark - Table view data source

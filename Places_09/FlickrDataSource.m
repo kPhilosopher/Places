@@ -37,6 +37,7 @@
 	id temporaryFlickrTopPlaces = [FlickrFetcher topPlaces];
 	if ([temporaryFlickrTopPlaces isKindOfClass:[NSArray class]])
 		self.flickrTopPlacesArray = (NSArray *) temporaryFlickrTopPlaces;
+//	NSArray *sectionArrays;
 }
 
 -(void) addToTheMostRecentListOfPlacesTheFollowing:(NSIndexPath *)indexPath

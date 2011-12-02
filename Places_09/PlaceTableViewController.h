@@ -7,18 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FlickrDataSource.h"
 #import "PictureListTableViewController.h"
+#import "IndexedTableViewController.h"
 
-@interface PlaceTableViewController : UITableViewController
+@interface PlaceTableViewController : IndexedTableViewController
 {
+	@private
 	FlickrDataSource *flickrDataSource;
-	NSArray *flickrArray;
 	id <PictureListTableViewControllerDelegateProtocol> delegateToTransfer;
 }
 @property (retain) FlickrDataSource *flickrDataSource;
-@property (retain) NSArray *flickrArray;
 @property (assign) id <PictureListTableViewControllerDelegateProtocol> delegateToTransfer;
-- (id)initWithStyle:(UITableViewStyle)style and:(FlickrDataSource *)theFlickrDataSource;
+- (id)initWithStyle:(UITableViewStyle)style andWith:(FlickrDataSource *)theFlickrDataSource;
 @end
-

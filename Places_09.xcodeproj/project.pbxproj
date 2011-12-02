@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE22D30E14897F8000E5973F /* IndexedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE22D30D14897F8000E5973F /* IndexedTableViewController.m */; };
+		CE22D30F14897F8000E5973F /* IndexedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE22D30D14897F8000E5973F /* IndexedTableViewController.m */; };
+		CE22D31014897F8000E5973F /* IndexedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE22D30D14897F8000E5973F /* IndexedTableViewController.m */; };
+		CE22D31314897FDE00E5973F /* DataObjectForPlaces.m in Sources */ = {isa = PBXBuildFile; fileRef = CE22D31214897FDE00E5973F /* DataObjectForPlaces.m */; };
+		CE22D31414897FDE00E5973F /* DataObjectForPlaces.m in Sources */ = {isa = PBXBuildFile; fileRef = CE22D31214897FDE00E5973F /* DataObjectForPlaces.m */; };
+		CE22D31514897FDE00E5973F /* DataObjectForPlaces.m in Sources */ = {isa = PBXBuildFile; fileRef = CE22D31214897FDE00E5973F /* DataObjectForPlaces.m */; };
 		CE553793147B53C100C20686 /* PictureListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE553792147B53C100C20686 /* PictureListTableViewController.m */; };
 		CE553794147B53C100C20686 /* PictureListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE553792147B53C100C20686 /* PictureListTableViewController.m */; };
 		CE553795147B53C100C20686 /* PictureListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE553792147B53C100C20686 /* PictureListTableViewController.m */; };
@@ -74,6 +80,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE22D30C14897F8000E5973F /* IndexedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexedTableViewController.h; sourceTree = "<group>"; };
+		CE22D30D14897F8000E5973F /* IndexedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexedTableViewController.m; sourceTree = "<group>"; };
+		CE22D31114897FDE00E5973F /* DataObjectForPlaces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataObjectForPlaces.h; sourceTree = "<group>"; };
+		CE22D31214897FDE00E5973F /* DataObjectForPlaces.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataObjectForPlaces.m; sourceTree = "<group>"; };
 		CE553791147B53C100C20686 /* PictureListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureListTableViewController.h; sourceTree = "<group>"; };
 		CE553792147B53C100C20686 /* PictureListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureListTableViewController.m; sourceTree = "<group>"; };
 		CE809887147738290067AAC2 /* Places_09.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Places_09.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,6 +171,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE22D30A14897F5700E5973F /* IndexedTableView */ = {
+			isa = PBXGroup;
+			children = (
+				CE22D30C14897F8000E5973F /* IndexedTableViewController.h */,
+				CE22D30D14897F8000E5973F /* IndexedTableViewController.m */,
+				CE22D31114897FDE00E5973F /* DataObjectForPlaces.h */,
+				CE22D31214897FDE00E5973F /* DataObjectForPlaces.m */,
+			);
+			name = IndexedTableView;
+			sourceTree = "<group>";
+		};
 		CE553797147B53CB00C20686 /* SecondTables */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +230,7 @@
 				CE80989B1477382A0067AAC2 /* AppDelegate.m */,
 				CE8098D1147739E80067AAC2 /* TabBarController.h */,
 				CE8098D2147739E80067AAC2 /* TabBarController.m */,
+				CE22D30A14897F5700E5973F /* IndexedTableView */,
 				CE8098ED147739EE0067AAC2 /* FirstTables */,
 				CE553797147B53CB00C20686 /* SecondTables */,
 				CE8098EF14773B720067AAC2 /* Images */,
@@ -485,6 +507,8 @@
 				CE80992D147779580067AAC2 /* MostRecentTableViewController.m in Sources */,
 				CE553793147B53C100C20686 /* PictureListTableViewController.m in Sources */,
 				CEB4C2C41488C4AC00DDF51F /* PlaceTableViewController.m in Sources */,
+				CE22D30E14897F8000E5973F /* IndexedTableViewController.m in Sources */,
+				CE22D31314897FDE00E5973F /* DataObjectForPlaces.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +531,8 @@
 				CE80992E147779580067AAC2 /* MostRecentTableViewController.m in Sources */,
 				CE553794147B53C100C20686 /* PictureListTableViewController.m in Sources */,
 				CEB4C2C51488C4AC00DDF51F /* PlaceTableViewController.m in Sources */,
+				CE22D30F14897F8000E5973F /* IndexedTableViewController.m in Sources */,
+				CE22D31414897FDE00E5973F /* DataObjectForPlaces.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,6 +544,8 @@
 				CE80992F147779580067AAC2 /* MostRecentTableViewController.m in Sources */,
 				CE553795147B53C100C20686 /* PictureListTableViewController.m in Sources */,
 				CEB4C2C61488C4AC00DDF51F /* PlaceTableViewController.m in Sources */,
+				CE22D31014897F8000E5973F /* IndexedTableViewController.m in Sources */,
+				CE22D31514897FDE00E5973F /* DataObjectForPlaces.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

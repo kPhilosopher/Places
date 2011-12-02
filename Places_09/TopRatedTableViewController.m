@@ -12,11 +12,11 @@
 
 @implementation TopRatedTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style and:(FlickrDataSource *)theFlickrDataSource
+- (id)initWithStyle:(UITableViewStyle)style andWith:(FlickrDataSource *)theFlickrDataSource
 {
-    self = [super initWithStyle:style and:theFlickrDataSource];
+    self = [super initWithStyle:style andWith:theFlickrDataSource];
     if (self) {
-		self.flickrArray = self.flickrDataSource.flickrTopPlacesArray;
+		self.rawData = self.flickrDataSource.flickrTopPlacesArray;
 		self.title = @"Top Places";
 	}
     return self;
@@ -68,12 +68,6 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-	return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 #pragma mark - Table view data source

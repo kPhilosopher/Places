@@ -11,9 +11,9 @@
 #define NUMBER_OF_SECTIONS 1
 
 @implementation PlaceTableViewController
-@synthesize flickrDataSource, delegateToTransfer, flickrArray;
+@synthesize flickrDataSource, delegateToTransfer;
 
-- (id)initWithStyle:(UITableViewStyle)style and:(FlickrDataSource *)theFlickrDataSource
+- (id)initWithStyle:(UITableViewStyle)style andWith:(FlickrDataSource *)theFlickrDataSource
 {
     self = [super initWithStyle:style];
     if (self) {
@@ -79,11 +79,25 @@
 -(void)dealloc
 {
 	[flickrDataSource release];
-	[flickrArray release];
 	[super dealloc];
 }
 
 #pragma mark - Table view data source
+
+//- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+//{
+//	return [[UILocalizedIndexedCollation currentCollation] sectionIndexTitles];
+//}
+//
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//{
+//    return [[[UILocalizedIndexedCollation currentCollation] sectionTitles] objectAtIndex:section];
+//}
+//
+//- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+//{
+//    return [[UILocalizedIndexedCollation currentCollation] sectionForSectionIndexTitleAtIndex:index];
+//}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -92,7 +106,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return [self.flickrArray count];
+	return [self.rawData count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -105,15 +119,15 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	if (self.flickrArray == nil) {
-		self.flickrArray = [NSArray array];
+	if (self.rawData == nil) {
+		self.rawData = [NSArray array];
 	}
-    NSDictionary *dictionaryOfCell = [self.flickrArray objectAtIndex:indexPath.row];
+    NSDictionary *dictionaryOfCell = [self.rawData objectAtIndex:indexPath.row];
 	NSString *contentString = [dictionaryOfCell objectForKey:@"_content"];
 	NSArray *arrayOfContentString = [contentString componentsSeparatedByString:@","];
 	NSString *titleString = [arrayOfContentString objectAtIndex:0];
 	cell.textLabel.text = [titleString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-	if ([arrayOfContentString count] > 1) 
+	if ([arrayOfContentString count] > 1)
 	{
 		NSString *subTitle = [contentString substringFromIndex:titleString.length +1];
 		cell.detailTextLabel.text = [subTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
@@ -167,7 +181,7 @@
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	PictureListTableViewController *pltvc = [[PictureListTableViewController alloc] init];
 	pltvc.delegate = self.delegateToTransfer;
- 	NSString *placeId = [[self.flickrArray objectAtIndex:indexPath.row] objectForKey:@"place_id"];
+ 	NSString *placeId = [[self.rawData objectAtIndex:indexPath.row] objectForKey:@"place_id"];
 	pltvc.listOfPictures_theModel = [self.flickrDataSource retrievePhotoListForSpecific:placeId];
 	[self.navigationController pushViewController:pltvc animated:YES];
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
