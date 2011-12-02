@@ -11,15 +11,14 @@
 #define NUMBER_OF_SECTIONS 1
 
 @implementation MostRecentTableViewController
-@synthesize flickrDataSource, delegateToTransfer;
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithStyle:(UITableViewStyle)style and:(FlickrDataSource *)theFlickrDataSource
 {
-    self = [super initWithStyle:style];
+    self = [super initWithStyle:style and:theFlickrDataSource];
     if (self) {
-        // Custom initialization
+		self.flickrArray = self.flickrDataSource.flickrMostRecentPlacesArray;
+		self.title = @"Most Recent";
     }
-	self.title = @"Most Recent";
     return self;
 }
 
@@ -42,16 +41,10 @@
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     [super setEditing:editing animated:animated];
     [self.tableView setEditing:editing animated:YES];
-//    if (editing) {
-//        addButton.enabled = NO;
-//    } else {
-//        addButton.enabled = YES;
-//    }
 }
 
 - (void)viewDidLoad
 {
-	NSLog(@"viewDidLoad");
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -63,7 +56,6 @@
 
 - (void)viewDidUnload
 {
-	NSLog(@"viewDidUnload");
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -71,26 +63,22 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-	NSLog(@"viewWillAppear");
 	[self.tableView reloadData];
     [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-	NSLog(@"viewDidAppear");
     [super viewDidAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-	NSLog(@"viewWillDisappear");
     [super viewWillDisappear:animated];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-	NSLog(@"viewDidDisappear");
     [super viewDidDisappear:animated];
 }
 
@@ -101,37 +89,6 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return NUMBER_OF_SECTIONS;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [self.flickrDataSource.flickrMostRecentPlacesArray count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-    }
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    NSDictionary *dictionaryOfCell = [self.flickrDataSource.flickrMostRecentPlacesArray objectAtIndex:indexPath.row];
-	NSString *contentString = [dictionaryOfCell objectForKey:@"_content"];
-	NSArray *arrayOfContentString = [contentString componentsSeparatedByString:@","];
-	NSString *titleString = [arrayOfContentString objectAtIndex:0];
-	cell.textLabel.text = [titleString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-	if ([arrayOfContentString count] > 1)
-	{
-		NSString *subTitle = [contentString substringFromIndex:titleString.length +1];
-		cell.detailTextLabel.text = [subTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-	}
-    return cell;
-}
 
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -145,9 +102,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
 		[self.flickrDataSource deleteFromMostRecentListThePlaceWithTheFollowing:indexPath];
-//		[self.flickrDataSource.flickrMostRecentPlacesArray removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 		
     }   
@@ -173,18 +128,6 @@
 */
 
 #pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-	PictureListTableViewController *pltvc = [[PictureListTableViewController alloc] init];
-	pltvc.delegate = self.delegateToTransfer;
- 	NSString *placeId = [[self.flickrDataSource.flickrMostRecentPlacesArray objectAtIndex:indexPath.row] objectForKey:@"place_id"];
-	pltvc.listOfPictures_theModel = [self.flickrDataSource retrievePhotoListForSpecific:placeId];
-	[self.navigationController pushViewController:pltvc animated:YES];
-	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-	[pltvc release];
-}
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {

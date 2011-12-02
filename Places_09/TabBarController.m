@@ -72,11 +72,13 @@
 		}
 		-(void) allocInitTheCustomTableViewControllers
 		{
-			self.topRatedTableViewController = [[TopRatedTableViewController alloc] initWithStyle:UITableViewStylePlain];
-			self.mostRecentTableViewController = [[MostRecentTableViewController alloc] initWithStyle:UITableViewStylePlain];
+			FlickrDataSource *theFlickrDataSource = [[FlickrDataSource alloc] init];
+			self.topRatedTableViewController = [[TopRatedTableViewController alloc] initWithStyle:UITableViewStylePlain and:theFlickrDataSource];
+			self.mostRecentTableViewController = [[MostRecentTableViewController alloc] initWithStyle:UITableViewStylePlain and:theFlickrDataSource];
+			[theFlickrDataSource release];
 			self.topRatedTableViewController.delegateToTransfer = self.delegateToTransfer;
 			self.mostRecentTableViewController.delegateToTransfer = self.delegateToTransfer;
-			[self setupTheDataSourceForTheTableViewControllersToShareTheFlickrDataSource];
+//			[self setupTheDataSourceForTheTableViewControllersToShareTheFlickrDataSource];
 			[self pushViewControllersToNavigationViewControllers];
 		}
 			-(void) setupTheDataSourceForTheTableViewControllersToShareTheFlickrDataSource

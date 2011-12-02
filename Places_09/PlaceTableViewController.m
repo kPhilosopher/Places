@@ -1,23 +1,23 @@
 //
-//  TopPlacesTableViewController.m
-//  Places
+//  PlaceTableViewController.m
+//  Places_09
 //
-//  Created by Jinwoo Baek on 11/4/11.
+//  Created by Jinwoo Baek on 12/2/11.
 //  Copyright (c) 2011 Rose-Hulman Institute of Technology. All rights reserved.
 //
 
-#import "TopRatedTableViewController.h"
+#import "PlaceTableViewController.h"
 
 #define NUMBER_OF_SECTIONS 1
 
-@implementation TopRatedTableViewController
+@implementation PlaceTableViewController
+@synthesize flickrDataSource, delegateToTransfer, flickrArray;
 
 - (id)initWithStyle:(UITableViewStyle)style and:(FlickrDataSource *)theFlickrDataSource
 {
-    self = [super initWithStyle:style and:theFlickrDataSource];
+    self = [super initWithStyle:style];
     if (self) {
-		self.flickrArray = self.flickrDataSource.flickrTopPlacesArray;
-		self.title = @"Top Places";
+		self.flickrDataSource = theFlickrDataSource;
 	}
     return self;
 }
@@ -76,7 +76,50 @@
 	return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+-(void)dealloc
+{
+	[flickrDataSource release];
+	[flickrArray release];
+	[super dealloc];
+}
+
 #pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+	return NUMBER_OF_SECTIONS;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	return [self.flickrArray count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) 
+	{
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+    }
+	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	if (self.flickrArray == nil) {
+		self.flickrArray = [NSArray array];
+	}
+    NSDictionary *dictionaryOfCell = [self.flickrArray objectAtIndex:indexPath.row];
+	NSString *contentString = [dictionaryOfCell objectForKey:@"_content"];
+	NSArray *arrayOfContentString = [contentString componentsSeparatedByString:@","];
+	NSString *titleString = [arrayOfContentString objectAtIndex:0];
+	cell.textLabel.text = [titleString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+	if ([arrayOfContentString count] > 1) 
+	{
+		NSString *subTitle = [contentString substringFromIndex:titleString.length +1];
+		cell.detailTextLabel.text = [subTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+	}
+	return cell;
+}
 
 /*
  // Override to support conditional editing of the table view.
@@ -121,8 +164,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	[self.flickrDataSource addToTheMostRecentListOfPlacesTheFollowing:indexPath];
-	[super tableView:tableView didSelectRowAtIndexPath:indexPath];
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+	PictureListTableViewController *pltvc = [[PictureListTableViewController alloc] init];
+	pltvc.delegate = self.delegateToTransfer;
+ 	NSString *placeId = [[self.flickrArray objectAtIndex:indexPath.row] objectForKey:@"place_id"];
+	pltvc.listOfPictures_theModel = [self.flickrDataSource retrievePhotoListForSpecific:placeId];
+	[self.navigationController pushViewController:pltvc animated:YES];
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+	[pltvc release];
 }
 
 @end

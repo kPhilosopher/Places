@@ -7,14 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FlickrDataSource.h"
-#import "PictureListTableViewController.h"
+#import "PlaceTableViewController.h"
 
-@interface TopRatedTableViewController : UITableViewController
+@interface TopRatedTableViewController : PlaceTableViewController
 {
-	FlickrDataSource *flickrDataSource;
-	id <PictureListTableViewControllerDelegateProtocol> delegateToTransfer;
 }
-@property (retain) FlickrDataSource *flickrDataSource;
-@property (retain) id <PictureListTableViewControllerDelegateProtocol> delegateToTransfer;
 @end
