@@ -84,30 +84,15 @@
 
 #pragma mark - Table view data source
 
-//- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 //{
-//	return [[UILocalizedIndexedCollation currentCollation] sectionIndexTitles];
+//	return NUMBER_OF_SECTIONS;
 //}
 //
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 //{
-//    return [[[UILocalizedIndexedCollation currentCollation] sectionTitles] objectAtIndex:section];
+//	return [self.rawData count];
 //}
-//
-//- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
-//{
-//    return [[UILocalizedIndexedCollation currentCollation] sectionForSectionIndexTitleAtIndex:index];
-//}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-	return NUMBER_OF_SECTIONS;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-	return [self.rawData count];
-}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -119,10 +104,13 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	if (self.rawData == nil) {
-		self.rawData = [NSArray array];
-	}
-    NSDictionary *dictionaryOfCell = [self.rawData objectAtIndex:indexPath.row];
+	NSArray *sectionArray = [self.theElementSections objectAtIndex:indexPath.section];
+//	if (self.rawData == nil) {
+//		self.rawData = [NSArray array];
+//	}
+//  NSDictionary *dictionaryOfCell = [self.rawData objectAtIndex:indexPath.row];
+	RefinedElementForPlaces *refinedElement = (RefinedElementForPlaces *)[sectionArray objectAtIndex:indexPath.row];
+	NSDictionary *dictionaryOfCell = refinedElement.dictionary;
 	NSString *contentString = [dictionaryOfCell objectForKey:@"_content"];
 	NSArray *arrayOfContentString = [contentString componentsSeparatedByString:@","];
 	NSString *titleString = [arrayOfContentString objectAtIndex:0];

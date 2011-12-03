@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FlickrDataSource.h"
+#import "RefinedElementForPlaces.h"
 
 @interface IndexedTableViewController : UITableViewController
 {

@@ -1,5 +1,5 @@
 //
-//  DataObjectForPlaces.h
+//  RefinedElement.h
 //  Places_09
 //
 //  Created by Jinwoo Baek on 12/2/11.
@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DataObjectForPlaces : NSObject
+@interface RefinedElement : NSObject
 {
-	@private
+@private
 	NSString *name;
 	NSDictionary *dictionary;
 	NSInteger sectionNumber;
@@ -18,4 +18,5 @@
 @property (copy) NSString *name;
 @property (retain) NSDictionary *dictionary;
 @property NSInteger sectionNumber;
+-(NSString *)extractNameFrom:(NSDictionary *)rawElement;
 @end

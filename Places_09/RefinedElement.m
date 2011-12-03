@@ -1,16 +1,21 @@
 //
-//  DataObjectForPlaces.m
+//  RefinedElement.m
 //  Places_09
 //
 //  Created by Jinwoo Baek on 12/2/11.
 //  Copyright (c) 2011 Rose-Hulman Institute of Technology. All rights reserved.
 //
 
-#import "DataObjectForPlaces.h"
+#import "RefinedElement.h"
 
-@implementation DataObjectForPlaces
+@implementation RefinedElement
 @synthesize name, dictionary, sectionNumber;
 
+
+-(NSString *)extractNameFrom:(NSDictionary *)rawElement
+{
+	return nil;
+}
 
 -(void)dealloc
 {

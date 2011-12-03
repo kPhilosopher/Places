@@ -10,12 +10,18 @@
 		CE22D30E14897F8000E5973F /* IndexedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE22D30D14897F8000E5973F /* IndexedTableViewController.m */; };
 		CE22D30F14897F8000E5973F /* IndexedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE22D30D14897F8000E5973F /* IndexedTableViewController.m */; };
 		CE22D31014897F8000E5973F /* IndexedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE22D30D14897F8000E5973F /* IndexedTableViewController.m */; };
-		CE22D31314897FDE00E5973F /* DataObjectForPlaces.m in Sources */ = {isa = PBXBuildFile; fileRef = CE22D31214897FDE00E5973F /* DataObjectForPlaces.m */; };
-		CE22D31414897FDE00E5973F /* DataObjectForPlaces.m in Sources */ = {isa = PBXBuildFile; fileRef = CE22D31214897FDE00E5973F /* DataObjectForPlaces.m */; };
-		CE22D31514897FDE00E5973F /* DataObjectForPlaces.m in Sources */ = {isa = PBXBuildFile; fileRef = CE22D31214897FDE00E5973F /* DataObjectForPlaces.m */; };
 		CE553793147B53C100C20686 /* PictureListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE553792147B53C100C20686 /* PictureListTableViewController.m */; };
 		CE553794147B53C100C20686 /* PictureListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE553792147B53C100C20686 /* PictureListTableViewController.m */; };
 		CE553795147B53C100C20686 /* PictureListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE553792147B53C100C20686 /* PictureListTableViewController.m */; };
+		CE6FB264148993B400DA2A1D /* RefinedElementForPictureList.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6FB263148993B400DA2A1D /* RefinedElementForPictureList.m */; };
+		CE6FB265148993B400DA2A1D /* RefinedElementForPictureList.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6FB263148993B400DA2A1D /* RefinedElementForPictureList.m */; };
+		CE6FB266148993B400DA2A1D /* RefinedElementForPictureList.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6FB263148993B400DA2A1D /* RefinedElementForPictureList.m */; };
+		CE6FB26A148993C600DA2A1D /* RefinedElementForPlaces.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6FB269148993C600DA2A1D /* RefinedElementForPlaces.m */; };
+		CE6FB26B148993C600DA2A1D /* RefinedElementForPlaces.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6FB269148993C600DA2A1D /* RefinedElementForPlaces.m */; };
+		CE6FB26C148993C600DA2A1D /* RefinedElementForPlaces.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6FB269148993C600DA2A1D /* RefinedElementForPlaces.m */; };
+		CE6FB26F148993F900DA2A1D /* RefinedElement.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6FB26E148993F900DA2A1D /* RefinedElement.m */; };
+		CE6FB270148993F900DA2A1D /* RefinedElement.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6FB26E148993F900DA2A1D /* RefinedElement.m */; };
+		CE6FB271148993F900DA2A1D /* RefinedElement.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6FB26E148993F900DA2A1D /* RefinedElement.m */; };
 		CE80988C147738290067AAC2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE80988B147738290067AAC2 /* UIKit.framework */; };
 		CE80988E147738290067AAC2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE80988D147738290067AAC2 /* Foundation.framework */; };
 		CE809890147738290067AAC2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE80988F147738290067AAC2 /* CoreGraphics.framework */; };
@@ -82,10 +88,14 @@
 /* Begin PBXFileReference section */
 		CE22D30C14897F8000E5973F /* IndexedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexedTableViewController.h; sourceTree = "<group>"; };
 		CE22D30D14897F8000E5973F /* IndexedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexedTableViewController.m; sourceTree = "<group>"; };
-		CE22D31114897FDE00E5973F /* DataObjectForPlaces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataObjectForPlaces.h; sourceTree = "<group>"; };
-		CE22D31214897FDE00E5973F /* DataObjectForPlaces.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataObjectForPlaces.m; sourceTree = "<group>"; };
 		CE553791147B53C100C20686 /* PictureListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureListTableViewController.h; sourceTree = "<group>"; };
 		CE553792147B53C100C20686 /* PictureListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureListTableViewController.m; sourceTree = "<group>"; };
+		CE6FB262148993B400DA2A1D /* RefinedElementForPictureList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefinedElementForPictureList.h; sourceTree = "<group>"; };
+		CE6FB263148993B400DA2A1D /* RefinedElementForPictureList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefinedElementForPictureList.m; sourceTree = "<group>"; };
+		CE6FB268148993C600DA2A1D /* RefinedElementForPlaces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefinedElementForPlaces.h; sourceTree = "<group>"; };
+		CE6FB269148993C600DA2A1D /* RefinedElementForPlaces.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefinedElementForPlaces.m; sourceTree = "<group>"; };
+		CE6FB26D148993F900DA2A1D /* RefinedElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefinedElement.h; sourceTree = "<group>"; };
+		CE6FB26E148993F900DA2A1D /* RefinedElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefinedElement.m; sourceTree = "<group>"; };
 		CE809887147738290067AAC2 /* Places_09.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Places_09.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE80988B147738290067AAC2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CE80988D147738290067AAC2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -176,8 +186,12 @@
 			children = (
 				CE22D30C14897F8000E5973F /* IndexedTableViewController.h */,
 				CE22D30D14897F8000E5973F /* IndexedTableViewController.m */,
-				CE22D31114897FDE00E5973F /* DataObjectForPlaces.h */,
-				CE22D31214897FDE00E5973F /* DataObjectForPlaces.m */,
+				CE6FB26D148993F900DA2A1D /* RefinedElement.h */,
+				CE6FB26E148993F900DA2A1D /* RefinedElement.m */,
+				CE6FB268148993C600DA2A1D /* RefinedElementForPlaces.h */,
+				CE6FB269148993C600DA2A1D /* RefinedElementForPlaces.m */,
+				CE6FB262148993B400DA2A1D /* RefinedElementForPictureList.h */,
+				CE6FB263148993B400DA2A1D /* RefinedElementForPictureList.m */,
 			);
 			name = IndexedTableView;
 			sourceTree = "<group>";
@@ -508,7 +522,9 @@
 				CE553793147B53C100C20686 /* PictureListTableViewController.m in Sources */,
 				CEB4C2C41488C4AC00DDF51F /* PlaceTableViewController.m in Sources */,
 				CE22D30E14897F8000E5973F /* IndexedTableViewController.m in Sources */,
-				CE22D31314897FDE00E5973F /* DataObjectForPlaces.m in Sources */,
+				CE6FB264148993B400DA2A1D /* RefinedElementForPictureList.m in Sources */,
+				CE6FB26A148993C600DA2A1D /* RefinedElementForPlaces.m in Sources */,
+				CE6FB26F148993F900DA2A1D /* RefinedElement.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,7 +548,9 @@
 				CE553794147B53C100C20686 /* PictureListTableViewController.m in Sources */,
 				CEB4C2C51488C4AC00DDF51F /* PlaceTableViewController.m in Sources */,
 				CE22D30F14897F8000E5973F /* IndexedTableViewController.m in Sources */,
-				CE22D31414897FDE00E5973F /* DataObjectForPlaces.m in Sources */,
+				CE6FB265148993B400DA2A1D /* RefinedElementForPictureList.m in Sources */,
+				CE6FB26B148993C600DA2A1D /* RefinedElementForPlaces.m in Sources */,
+				CE6FB270148993F900DA2A1D /* RefinedElement.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,7 +563,9 @@
 				CE553795147B53C100C20686 /* PictureListTableViewController.m in Sources */,
 				CEB4C2C61488C4AC00DDF51F /* PlaceTableViewController.m in Sources */,
 				CE22D31014897F8000E5973F /* IndexedTableViewController.m in Sources */,
-				CE22D31514897FDE00E5973F /* DataObjectForPlaces.m in Sources */,
+				CE6FB266148993B400DA2A1D /* RefinedElementForPictureList.m in Sources */,
+				CE6FB26C148993C600DA2A1D /* RefinedElementForPlaces.m in Sources */,
+				CE6FB271148993F900DA2A1D /* RefinedElement.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,6 @@
 
 #import "IndexedTableViewController.h"
 
-
 @implementation IndexedTableViewController
 @synthesize theElementSections, rawData;
 
@@ -35,10 +34,44 @@
 {
     [super viewDidLoad];
 	
-//	UILocalizedIndexedCollation *theCollation = [UILocalizedIndexedCollation currentCollation];
-//	self.theElementSections = [[NSMutableArray alloc] initWithCapacity:1];
+	UILocalizedIndexedCollation *theCollation = [UILocalizedIndexedCollation currentCollation];
+	self.theElementSections = [[NSMutableArray alloc] init];
 	
+	NSMutableArray *temporaryDataElements;
+	if (self.rawData) {
+		temporaryDataElements = [[NSMutableArray alloc] initWithCapacity:1];
+		for (NSDictionary *rawElement in self.rawData) {
+			RefinedElementForPlaces *refinedElement = [[RefinedElementForPlaces alloc] init];
+			refinedElement.name = [refinedElement extractNameFrom:rawElement];
+			refinedElement.dictionary = rawElement;
+			[temporaryDataElements addObject:refinedElement];
+			[refinedElement release];
+		}
+	}
+	else
+	{
+		return;
+	}
+	for (RefinedElementForPlaces *refinedElement in temporaryDataElements) {
+		NSInteger sectionNumber = [theCollation sectionForObject:refinedElement collationStringSelector:@selector(name)];
+		refinedElement.sectionNumber = sectionNumber;
+	}
 	
+	NSInteger highSection = [[theCollation sectionTitles] count];
+	NSMutableArray *sectionArrays = [[NSMutableArray alloc]initWithCapacity:highSection];
+	for (int i = 0 ; i < highSection ; i++) {
+		NSMutableArray *sectionArray = [[NSMutableArray alloc] initWithCapacity:1];
+		[sectionArrays addObject:sectionArray];
+	}
+	
+	for (RefinedElementForPlaces *element in temporaryDataElements) {
+		[(NSMutableArray *)[sectionArrays objectAtIndex:element.sectionNumber] addObject:element];
+	}
+	
+	for (NSMutableArray *sectionArray in sectionArrays) {
+		NSArray *sortedSection = [theCollation sortedArrayFromArray:sectionArray collationStringSelector:@selector(name)];
+		[self.theElementSections addObject:sortedSection];
+	}
 }
 
 - (void)viewDidUnload
@@ -82,21 +115,34 @@
 }
 
 #pragma mark - Table view data source
-//
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//#warning Potentially incomplete method implementation.
-//    // Return the number of sections.
-//    return 0;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//#warning Incomplete method implementation.
-//    // Return the number of rows in the section.
-//    return 0;
-//}
-//
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+	return [[UILocalizedIndexedCollation currentCollation] sectionIndexTitles];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if ([[self.theElementSections objectAtIndex:section] count] > 0) {
+        return [[[UILocalizedIndexedCollation currentCollation] sectionTitles] objectAtIndex:section];
+    }
+    return nil;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+{
+    return [[UILocalizedIndexedCollation currentCollation] sectionForSectionIndexTitleAtIndex:index];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return [self.theElementSections count];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [(NSArray *)[self.theElementSections objectAtIndex:section] count];
+}
+
 //- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 //{
 //    static NSString *CellIdentifier = @"Cell";

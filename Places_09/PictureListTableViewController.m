@@ -79,16 +79,16 @@
 
 #pragma mark - Table view data source
 
-//-(void) bunchOfTests
-//{
-////	NSLog( [self.listOfPictures_theModel description]);
+-(void) bunchOfTests
+{
+//	NSLog( [self.listOfPictures_theModel description]);
 //	NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:1], @"key1", [NSNumber numberWithInt:2], @"key2", nil];
 //	id key2stuff = [dictionary objectForKey:@"key2"];
 //	id key3stuff = [dictionary objectForKey:@"key3"];
 //	id key1stuff = [dictionary objectForKey:@"key1"];
 //	if (!key3stuff) {
 //		NSLog(@"works the way i want it");
-//	}
+	}
 //}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -96,7 +96,7 @@
 //#warning Potentially incomplete method implementation.
     // Return the number of sections.
 //	NSLog( [self.listOfPictures_theModel description]);
-//	[self bunchOfTests];
+	[self bunchOfTests];
     return NUMBER_OF_SECTIONS;
 }
 
