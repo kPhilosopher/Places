@@ -9,8 +9,9 @@
 #import "RefinedElementForPlaces.h"
 
 @implementation RefinedElementForPlaces
+@synthesize name;
 
--(NSString *)extractNameFrom:(NSDictionary *)rawElement
++(NSString *)extractNameFrom:(NSDictionary *)rawElement
 {
 	NSString *contentString = [rawElement objectForKey:@"_content"];
 	NSArray *arrayOfContentString = [contentString componentsSeparatedByString:@","];

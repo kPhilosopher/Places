@@ -8,6 +8,7 @@
 
 #import "IndexedTableViewController.h"
 
+
 @implementation IndexedTableViewController
 @synthesize theElementSections, rawData;
 
@@ -30,22 +31,39 @@
 
 #pragma mark - View lifecycle
 
+
+-(void)sortTheElementsInEach:(NSMutableArray *)sectionArray andAddTo:(NSMutableArray *)elementSections
+{
+//	NSArray *sortedSection = [[UILocalizedIndexedCollation currentCollation] sortedArrayFromArray:sectionArray collationStringSelector:@selector(name)];
+//	[elementSections addObject:sortedSection];
+}
+//
+-(void)setTheSectionNumberForEach:(RefinedElement *)refinedElement
+{
+//	NSInteger sectionNumber = [[UILocalizedIndexedCollation currentCollation] sectionForObject:refinedElement collationStringSelector:@selector(name)];
+//	refinedElement.sectionNumber = sectionNumber;
+}
+//
+-(void)convertThe:(NSDictionary *)rawElement IntoRefinedElementsAndAddTo:(NSMutableArray *)temporaryDataElements
+{
+//	RefinedElementForPlaces *refinedElement = [[RefinedElementForPlaces alloc] init];
+//	refinedElement.name = [RefinedElementForPlaces extractNameFrom:rawElement];
+//	refinedElement.dictionary = rawElement;
+//	[temporaryDataElements addObject:refinedElement];
+//	[refinedElement release];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	
-	UILocalizedIndexedCollation *theCollation = [UILocalizedIndexedCollation currentCollation];
 	self.theElementSections = [[NSMutableArray alloc] init];
 	
 	NSMutableArray *temporaryDataElements;
 	if (self.rawData) {
 		temporaryDataElements = [[NSMutableArray alloc] initWithCapacity:1];
 		for (NSDictionary *rawElement in self.rawData) {
-			RefinedElementForPlaces *refinedElement = [[RefinedElementForPlaces alloc] init];
-			refinedElement.name = [refinedElement extractNameFrom:rawElement];
-			refinedElement.dictionary = rawElement;
-			[temporaryDataElements addObject:refinedElement];
-			[refinedElement release];
+			[self convertThe:rawElement IntoRefinedElementsAndAddTo:temporaryDataElements];
 		}
 	}
 	else
@@ -53,11 +71,10 @@
 		return;
 	}
 	for (RefinedElementForPlaces *refinedElement in temporaryDataElements) {
-		NSInteger sectionNumber = [theCollation sectionForObject:refinedElement collationStringSelector:@selector(name)];
-		refinedElement.sectionNumber = sectionNumber;
+		[self setTheSectionNumberForEach:refinedElement];
 	}
 	
-	NSInteger highSection = [[theCollation sectionTitles] count];
+	NSInteger highSection = [[[UILocalizedIndexedCollation currentCollation] sectionTitles] count];
 	NSMutableArray *sectionArrays = [[NSMutableArray alloc]initWithCapacity:highSection];
 	for (int i = 0 ; i < highSection ; i++) {
 		NSMutableArray *sectionArray = [[NSMutableArray alloc] initWithCapacity:1];
@@ -69,10 +86,10 @@
 	}
 	
 	for (NSMutableArray *sectionArray in sectionArrays) {
-		NSArray *sortedSection = [theCollation sortedArrayFromArray:sectionArray collationStringSelector:@selector(name)];
-		[self.theElementSections addObject:sortedSection];
+		[self sortTheElementsInEach:sectionArray andAddTo:(NSMutableArray *)self.theElementSections];
 	}
 }
+
 
 - (void)viewDidUnload
 {
@@ -115,23 +132,6 @@
 }
 
 #pragma mark - Table view data source
-
-- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
-{
-	return [[UILocalizedIndexedCollation currentCollation] sectionIndexTitles];
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if ([[self.theElementSections objectAtIndex:section] count] > 0) {
-        return [[[UILocalizedIndexedCollation currentCollation] sectionTitles] objectAtIndex:section];
-    }
-    return nil;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
-{
-    return [[UILocalizedIndexedCollation currentCollation] sectionForSectionIndexTitleAtIndex:index];
-}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

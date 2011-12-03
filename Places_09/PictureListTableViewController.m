@@ -32,6 +32,18 @@
 }
 
 #pragma mark - View lifecycle
+//TODO: Implement how to rearrange the elements
+-(void)sortTheElementsInEach:(NSMutableArray *)sectionArray andAddTo:(NSMutableArray *)elementSections
+{
+}
+
+-(void)setTheSectionNumberForEach:(RefinedElement *)refinedElement
+{
+}
+
+-(void)convertThe:(NSDictionary *)rawElement IntoRefinedElementsAndAddTo:(NSMutableArray *)temporaryDataElements
+{
+}
 
 - (void)viewDidLoad
 {
@@ -81,7 +93,7 @@
 
 -(void) bunchOfTests
 {
-//	NSLog( [self.listOfPictures_theModel description]);
+	NSLog( [self.listOfPictures_theModel description]);
 //	NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:1], @"key1", [NSNumber numberWithInt:2], @"key2", nil];
 //	id key2stuff = [dictionary objectForKey:@"key2"];
 //	id key3stuff = [dictionary objectForKey:@"key3"];

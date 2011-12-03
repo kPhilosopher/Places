@@ -40,9 +40,9 @@
 //	NSArray *sectionArrays;
 }
 
--(void) addToTheMostRecentListOfPlacesTheFollowing:(NSIndexPath *)indexPath
+-(void) addToTheMostRecentListOfPlacesTheFollowing:(NSDictionary *)dictionaryToAddToMostRecentList
 {
-	id elementOfPlaceId = [[self.flickrTopPlacesArray objectAtIndex:indexPath.row] objectForKey:@"place_id"];
+	id elementOfPlaceId = [dictionaryToAddToMostRecentList objectForKey:@"place_id"];
 	NSString *stringOfPlaceId;
 	if ([elementOfPlaceId isKindOfClass:[NSString class]]) {
 		stringOfPlaceId = (NSString *)elementOfPlaceId;
@@ -67,7 +67,7 @@
 	{
 		[self.flickrMostRecentPlacesSet addObject:stringOfPlaceId];
 	}
-	[self.flickrMostRecentPlacesArray insertObject:[self.flickrTopPlacesArray objectAtIndex:indexPath.row] atIndex:0];
+	[self.flickrMostRecentPlacesArray insertObject:dictionaryToAddToMostRecentList atIndex:0];
 	
 	if (self.flickrMostRecentPlacesArray.count == MAX_MOST_RECENT_LIST) {
 		[self.flickrMostRecentPlacesArray removeLastObject];
@@ -78,6 +78,7 @@
 
 -(void) deleteFromMostRecentListThePlaceWithTheFollowing:(NSIndexPath *) indexPath
 {
+	//redo this parts
 	[self.flickrMostRecentPlacesSet removeObject:[self.flickrMostRecentPlacesArray objectAtIndex:indexPath.row]];
 	[self.flickrMostRecentPlacesArray removeObjectAtIndex:indexPath.row];
 }

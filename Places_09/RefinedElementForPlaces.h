@@ -9,4 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "RefinedElement.h"
 @interface RefinedElementForPlaces : RefinedElement
+{
+@private
+	NSString *name;
+}
+@property (copy) NSString *name;
+
 @end

@@ -307,14 +307,14 @@
 		CE8098ED147739EE0067AAC2 /* FirstTables */ = {
 			isa = PBXGroup;
 			children = (
-				CE8098BD147739E80067AAC2 /* FlickrDataSource.h */,
-				CE8098BE147739E80067AAC2 /* FlickrDataSource.m */,
 				CEB4C2C21488C4AC00DDF51F /* PlaceTableViewController.h */,
 				CEB4C2C31488C4AC00DDF51F /* PlaceTableViewController.m */,
 				CE8098D3147739E80067AAC2 /* TopRatedTableViewController.h */,
 				CE8098D4147739E80067AAC2 /* TopRatedTableViewController.m */,
 				CE80992B147779580067AAC2 /* MostRecentTableViewController.h */,
 				CE80992C147779580067AAC2 /* MostRecentTableViewController.m */,
+				CE8098BD147739E80067AAC2 /* FlickrDataSource.h */,
+				CE8098BE147739E80067AAC2 /* FlickrDataSource.m */,
 			);
 			name = FirstTables;
 			sourceTree = "<group>";

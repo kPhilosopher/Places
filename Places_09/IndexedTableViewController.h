@@ -16,6 +16,9 @@
 	NSMutableArray *theElementSections;
 	NSArray *rawData;
 }
+@end
+
+@interface IndexedTableViewController()
 @property (retain) NSMutableArray *theElementSections;
 @property (retain) NSArray *rawData;
 @end

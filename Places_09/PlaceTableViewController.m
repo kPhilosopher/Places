@@ -31,6 +31,26 @@
 }
 
 #pragma mark - View lifecycle
+-(void)sortTheElementsInEach:(NSMutableArray *)sectionArray andAddTo:(NSMutableArray *)elementSections
+{
+	NSArray *sortedSection = [[UILocalizedIndexedCollation currentCollation] sortedArrayFromArray:sectionArray collationStringSelector:@selector(name)];
+	[elementSections addObject:sortedSection];
+}
+
+-(void)setTheSectionNumberForEach:(RefinedElement *)refinedElement
+{
+	NSInteger sectionNumber = [[UILocalizedIndexedCollation currentCollation] sectionForObject:refinedElement collationStringSelector:@selector(name)];
+	refinedElement.sectionNumber = sectionNumber;
+}
+
+-(void)convertThe:(NSDictionary *)rawElement IntoRefinedElementsAndAddTo:(NSMutableArray *)temporaryDataElements
+{
+	RefinedElementForPlaces *refinedElement = [[RefinedElementForPlaces alloc] init];
+	refinedElement.name = [RefinedElementForPlaces extractNameFrom:rawElement];
+	refinedElement.dictionary = rawElement;
+	[temporaryDataElements addObject:refinedElement];
+	[refinedElement release];
+}
 
 - (void)viewDidLoad
 {
@@ -84,15 +104,22 @@
 
 #pragma mark - Table view data source
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//	return NUMBER_OF_SECTIONS;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//	return [self.rawData count];
-//}
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+	return [[UILocalizedIndexedCollation currentCollation] sectionIndexTitles];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if ([[self.theElementSections objectAtIndex:section] count] > 0) {
+        return [[[UILocalizedIndexedCollation currentCollation] sectionTitles] objectAtIndex:section];
+    }
+    return nil;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+{
+    return [[UILocalizedIndexedCollation currentCollation] sectionForSectionIndexTitleAtIndex:index];
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -169,7 +196,9 @@
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	PictureListTableViewController *pltvc = [[PictureListTableViewController alloc] init];
 	pltvc.delegate = self.delegateToTransfer;
- 	NSString *placeId = [[self.rawData objectAtIndex:indexPath.row] objectForKey:@"place_id"];
+	RefinedElementForPlaces *refinedElement = [(NSArray *)[self.theElementSections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+	NSString *placeId = [refinedElement.dictionary objectForKey:@"place_id"];
+// 	NSString *placeId = [[self.rawData objectAtIndex:indexPath.row] objectForKey:@"place_id"];
 	pltvc.listOfPictures_theModel = [self.flickrDataSource retrievePhotoListForSpecific:placeId];
 	[self.navigationController pushViewController:pltvc animated:YES];
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;

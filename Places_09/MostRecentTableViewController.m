@@ -64,6 +64,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	[self.tableView reloadData];
+//	[self.tableView reloadSectionIndexTitles];
     [super viewWillAppear:animated];
 }
 

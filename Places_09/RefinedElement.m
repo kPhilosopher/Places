@@ -12,7 +12,7 @@
 @synthesize name, dictionary, sectionNumber;
 
 
--(NSString *)extractNameFrom:(NSDictionary *)rawElement
++(NSString *)extractNameFrom:(NSDictionary *)rawElement
 {
 	return nil;
 }

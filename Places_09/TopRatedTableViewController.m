@@ -115,7 +115,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	[self.flickrDataSource addToTheMostRecentListOfPlacesTheFollowing:indexPath];
+	RefinedElementForPlaces * refinedElement = [(NSArray *)[self.theElementSections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+	NSDictionary *dictionaryToAddToMostRecentList = refinedElement.dictionary;
+	[self.flickrDataSource addToTheMostRecentListOfPlacesTheFollowing:dictionaryToAddToMostRecentList];
 	[super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 
