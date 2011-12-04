@@ -37,20 +37,46 @@
 	[elementSections addObject:sortedSection];
 }
 
+
+
+-(void)convertThe:(NSDictionary *)rawElement IntoRefinedElementsAndAddTo:(NSMutableArray *)temporaryDataElements
+{
+	RefinedElementForPlaces	*refinedElement = [[RefinedElementForPlaces alloc] init];
+	refinedElement.name = [RefinedElementForPlaces extractNameFrom:rawElement];
+	refinedElement.dictionary = rawElement;
+	[temporaryDataElements addObject:refinedElement];
+	[refinedElement release];
+}
+
 -(void)setTheSectionNumberForEach:(RefinedElement *)refinedElement
 {
 	NSInteger sectionNumber = [[UILocalizedIndexedCollation currentCollation] sectionForObject:refinedElement collationStringSelector:@selector(name)];
 	refinedElement.sectionNumber = sectionNumber;
 }
 
--(void)convertThe:(NSDictionary *)rawElement IntoRefinedElementsAndAddTo:(NSMutableArray *)temporaryDataElements
+-(void)setTheSectionNumberForAllTheElementsIn:(NSMutableArray *)temporaryDataElements
 {
-	RefinedElementForPlaces *refinedElement = [[RefinedElementForPlaces alloc] init];
-	refinedElement.name = [RefinedElementForPlaces extractNameFrom:rawElement];
-	refinedElement.dictionary = rawElement;
-	[temporaryDataElements addObject:refinedElement];
-	[refinedElement release];
+	for (RefinedElement *refinedElement in temporaryDataElements) {
+		[self setTheSectionNumberForEach:refinedElement];
+	}
 }
+
+
+
+//-(void)setTheSectionNumberForEach:(RefinedElement *)refinedElement
+//{
+//	NSInteger sectionNumber = [[UILocalizedIndexedCollation currentCollation] sectionForObject:refinedElement collationStringSelector:@selector(name)];
+//	refinedElement.sectionNumber = sectionNumber;
+//}
+//
+//-(void)convertThe:(NSDictionary *)rawElement IntoRefinedElementsAndAddTo:(NSMutableArray *)temporaryDataElements
+//{
+//	RefinedElementForPlaces *refinedElement = [[RefinedElementForPlaces alloc] init];
+//	refinedElement.name = [RefinedElementForPlaces extractNameFrom:rawElement];
+//	refinedElement.dictionary = rawElement;
+//	[temporaryDataElements addObject:refinedElement];
+//	[refinedElement release];
+//}
 
 - (void)viewDidLoad
 {
@@ -194,12 +220,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-	PictureListTableViewController *pltvc = [[PictureListTableViewController alloc] init];
-	pltvc.delegate = self.delegateToTransfer;
 	RefinedElementForPlaces *refinedElement = [(NSArray *)[self.theElementSections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 	NSString *placeId = [refinedElement.dictionary objectForKey:@"place_id"];
 // 	NSString *placeId = [[self.rawData objectAtIndex:indexPath.row] objectForKey:@"place_id"];
-	pltvc.listOfPictures_theModel = [self.flickrDataSource retrievePhotoListForSpecific:placeId];
+	PictureListTableViewController *pltvc = [[PictureListTableViewController alloc] initWithStyle:UITableViewStylePlain andWith:[self.flickrDataSource retrievePhotoListForSpecific:placeId]];
+	pltvc.delegate = self.delegateToTransfer;
+//	pltvc.listOfPictures_theModel = [self.flickrDataSource retrievePhotoListForSpecific:placeId];
 	[self.navigationController pushViewController:pltvc animated:YES];
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 	[pltvc release];

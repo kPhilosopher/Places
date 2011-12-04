@@ -37,17 +37,24 @@
 //	NSArray *sortedSection = [[UILocalizedIndexedCollation currentCollation] sortedArrayFromArray:sectionArray collationStringSelector:@selector(name)];
 //	[elementSections addObject:sortedSection];
 }
-//
--(void)setTheSectionNumberForEach:(RefinedElement *)refinedElement
+
+//-(void)setTheSectionNumberForEach:(RefinedElement *)refinedElement
+//{
+////	NSInteger sectionNumber = [[UILocalizedIndexedCollation currentCollation] sectionForObject:refinedElement collationStringSelector:@selector(name)];
+////	refinedElement.sectionNumber = sectionNumber;
+//}
+
+-(void)setTheSectionNumberForAllTheElementsIn:(NSMutableArray *)temporaryDataElements
 {
-//	NSInteger sectionNumber = [[UILocalizedIndexedCollation currentCollation] sectionForObject:refinedElement collationStringSelector:@selector(name)];
-//	refinedElement.sectionNumber = sectionNumber;
+//	for (RefinedElement *refinedElement in temporaryDataElements) {
+//		[self setTheSectionNumberForEach:refinedElement];
+//	}
 }
-//
+
 -(void)convertThe:(NSDictionary *)rawElement IntoRefinedElementsAndAddTo:(NSMutableArray *)temporaryDataElements
 {
-//	RefinedElementForPlaces *refinedElement = [[RefinedElementForPlaces alloc] init];
-//	refinedElement.name = [RefinedElementForPlaces extractNameFrom:rawElement];
+//	RefinedElement *refinedElement = [[RefinedElement alloc] init];
+//	refinedElement.name = [RefinedElement extractNameFrom:rawElement];
 //	refinedElement.dictionary = rawElement;
 //	[temporaryDataElements addObject:refinedElement];
 //	[refinedElement release];
@@ -70,10 +77,11 @@
 	{
 		return;
 	}
-	for (RefinedElementForPlaces *refinedElement in temporaryDataElements) {
-		[self setTheSectionNumberForEach:refinedElement];
-	}
-	
+	[self setTheSectionNumberForAllTheElementsIn:temporaryDataElements];
+//	for (RefinedElement *refinedElement in temporaryDataElements) {
+//		[self setTheSectionNumberForEach:refinedElement];
+//	}
+	//create a function that can be transferred down to be overriden.
 	NSInteger highSection = [[[UILocalizedIndexedCollation currentCollation] sectionTitles] count];
 	NSMutableArray *sectionArrays = [[NSMutableArray alloc]initWithCapacity:highSection];
 	for (int i = 0 ; i < highSection ; i++) {
@@ -81,11 +89,13 @@
 		[sectionArrays addObject:sectionArray];
 	}
 	
-	for (RefinedElementForPlaces *element in temporaryDataElements) {
+	for (RefinedElement *element in temporaryDataElements) 
+	{
 		[(NSMutableArray *)[sectionArrays objectAtIndex:element.sectionNumber] addObject:element];
 	}
 	
-	for (NSMutableArray *sectionArray in sectionArrays) {
+	for (NSMutableArray *sectionArray in sectionArrays) 
+	{
 		[self sortTheElementsInEach:sectionArray andAddTo:(NSMutableArray *)self.theElementSections];
 	}
 }

@@ -9,9 +9,4 @@
 #import <Foundation/Foundation.h>
 #import "RefinedElement.h"
 @interface RefinedElementForPictureList : RefinedElement
-{
-	@private
-	NSDate *hoursSinceUpload;
-}
-@property (retain) NSDate *hoursSinceUpload;
 @end

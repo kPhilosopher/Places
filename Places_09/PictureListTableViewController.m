@@ -14,11 +14,12 @@
 @implementation PictureListTableViewController
 @synthesize listOfPictures_theModel, delegate;
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithStyle:(UITableViewStyle)style andWith:(NSArray *)pictureList
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+		self.listOfPictures_theModel = pictureList;
+		self.rawData = self.listOfPictures_theModel;
     }
     return self;
 }
@@ -32,17 +33,46 @@
 }
 
 #pragma mark - View lifecycle
-//TODO: Implement how to rearrange the elements
+
 -(void)sortTheElementsInEach:(NSMutableArray *)sectionArray andAddTo:(NSMutableArray *)elementSections
 {
-}
-
--(void)setTheSectionNumberForEach:(RefinedElement *)refinedElement
-{
+	//	NSArray *sortedSection = [[UILocalizedIndexedCollation currentCollation] sortedArrayFromArray:sectionArray collationStringSelector:@selector(name)];
+	//	[elementSections addObject:sortedSection];
+	[elementSections addObject:sectionArray];
 }
 
 -(void)convertThe:(NSDictionary *)rawElement IntoRefinedElementsAndAddTo:(NSMutableArray *)temporaryDataElements
 {
+	RefinedElementForPictureList *refinedElement = [[RefinedElementForPictureList alloc] init];
+	refinedElement.name = [RefinedElementForPictureList extractNameFrom:rawElement];
+	refinedElement.dictionary = rawElement;
+	[temporaryDataElements addObject:refinedElement];
+	[refinedElement release];
+}
+
+-(void)setTheSectionNumberForEach:(RefinedElement *)refinedElement
+{
+//	NSInteger sectionNumber = [[UILocalizedIndexedCollation currentCollation] sectionForObject:refinedElement collationStringSelector:@selector(name)];
+//	refinedElement.sectionNumber = sectionNumber;
+}
+
+-(void)setTheSectionNumberForAllTheElementsIn:(NSMutableArray *)temporaryDataElements
+{
+	RefinedElement *previousRefinedElement;
+	for (RefinedElement *refinedElement in temporaryDataElements) {
+		if (previousRefinedElement == nil) {
+			refinedElement.sectionNumber = 0;
+		}
+		else if([previousRefinedElement.name intValue] < [refinedElement.name intValue])
+		{
+			refinedElement.sectionNumber = previousRefinedElement.sectionNumber+1;
+		}
+		else
+		{
+			refinedElement.sectionNumber = previousRefinedElement.sectionNumber;
+		}
+		previousRefinedElement = refinedElement;
+	}
 }
 
 - (void)viewDidLoad
@@ -91,9 +121,34 @@
 
 #pragma mark - Table view data source
 
+//- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+//{
+//	return [[UILocalizedIndexedCollation currentCollation] sectionIndexTitles];
+//}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if ([[self.theElementSections objectAtIndex:section] count] > 0)
+	{
+		RefinedElement *refinedElement = [[self.theElementSections objectAtIndex:section] objectAtIndex:0];
+		if ([refinedElement.name intValue] == 0) {
+			return @"Right Now";
+		}
+        return [refinedElement.name stringByAppendingString:@" Hour(s) Ago"];
+    }
+    return nil;
+}
+
+//- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+//{
+//    return [[UILocalizedIndexedCollation currentCollation] sectionForSectionIndexTitleAtIndex:index];
+//}
+
+
 -(void) bunchOfTests
 {
-	NSLog( [self.listOfPictures_theModel description]);
+//	NSLog( [self.listOfPictures_theModel description]);
+//	NSDictionary *dictionary = [self.listOfPictures_theModel objectAtIndex:0];
+//	NSLog([dictionary objectForKey:@"dateupload"]);
 //	NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:1], @"key1", [NSNumber numberWithInt:2], @"key2", nil];
 //	id key2stuff = [dictionary objectForKey:@"key2"];
 //	id key3stuff = [dictionary objectForKey:@"key3"];
@@ -103,21 +158,21 @@
 	}
 //}
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-//#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-//	NSLog( [self.listOfPictures_theModel description]);
-	[self bunchOfTests];
-    return NUMBER_OF_SECTIONS;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-//#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return [self.listOfPictures_theModel count];
-}
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+////#warning Potentially incomplete method implementation.
+//    // Return the number of sections.
+////	NSLog( [self.listOfPictures_theModel description]);
+//	[self bunchOfTests];
+//    return NUMBER_OF_SECTIONS;
+//}
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+////#warning Incomplete method implementation.
+//    // Return the number of rows in the section.
+//    return [self.listOfPictures_theModel count];
+//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -130,7 +185,9 @@
 	cell.detailTextLabel.text = @"";
 	cell.textLabel.text = @"";
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    NSDictionary *cellDictionary = [self.listOfPictures_theModel objectAtIndex:indexPath.row];
+//    NSDictionary *cellDictionary = [self.listOfPictures_theModel objectAtIndex:indexPath.row];
+	RefinedElement *refinedElement = [[self.theElementSections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+	NSDictionary *cellDictionary = refinedElement.dictionary;
 	id temporaryTitleString = [cellDictionary objectForKey:@"title"];
 	id temporaryDescriptionDictionary = [cellDictionary objectForKey:@"description"];
 	id temporaryDescriptionString = nil;
@@ -218,7 +275,10 @@
 {
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	ScrollableImageViewController *imageController = [self.delegate retrieveScrollableImageViewControllerFor:self];
-	UIImage *image = [UIImage imageWithData:[FlickrFetcher imageDataForPhotoWithFlickrInfo:[self.listOfPictures_theModel objectAtIndex:indexPath.row] format:FlickrFetcherPhotoFormatLarge]];
+	RefinedElement *refinedElement = [[self.theElementSections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+	NSDictionary *dictionaryWithPictureInfo = refinedElement.dictionary;
+//	UIImage *image = [UIImage imageWithData:[FlickrFetcher imageDataForPhotoWithFlickrInfo:[self.listOfPictures_theModel objectAtIndex:indexPath.row] format:FlickrFetcherPhotoFormatLarge]];
+	UIImage *image = [UIImage imageWithData:[FlickrFetcher imageDataForPhotoWithFlickrInfo:dictionaryWithPictureInfo format:FlickrFetcherPhotoFormatLarge]];
 	if (imageController.view.window == nil) 
 		[self.navigationController pushViewController:imageController animated:YES];
 	[imageController initiateTheImageSetupWithGiven:image];

@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ScrollableImageViewController.h"
 #import "FlickrFetcher.h"
+#import "IndexedTableViewController.h"
+#import "RefinedElementForPictureList.h"
 
 @class PictureListTableViewController;
 
@@ -18,7 +20,7 @@
 
 @end
 
-@interface PictureListTableViewController : UITableViewController
+@interface PictureListTableViewController : IndexedTableViewController
 {
 	@private
 	NSArray *listOfPictures_theModel;
@@ -27,4 +29,5 @@
 
 @property (retain) NSArray *listOfPictures_theModel;
 @property (retain) id <PictureListTableViewControllerDelegateProtocol> delegate;
+- (id)initWithStyle:(UITableViewStyle)style andWith:(NSArray *)pictureList;
 @end

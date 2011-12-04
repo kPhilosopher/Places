@@ -9,19 +9,18 @@
 #import "RefinedElement.h"
 
 @implementation RefinedElement
-@synthesize name, dictionary, sectionNumber;
-
-
-+(NSString *)extractNameFrom:(NSDictionary *)rawElement
-{
-	return nil;
-}
+@synthesize dictionary, sectionNumber, name;
 
 -(void)dealloc
 {
 	[name release];
 	[dictionary release];
 	[super dealloc];
+}
+
++(NSString *)extractNameFrom:(NSDictionary *)rawElement
+{
+	return nil;
 }
 
 @end

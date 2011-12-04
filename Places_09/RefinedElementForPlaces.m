@@ -9,7 +9,6 @@
 #import "RefinedElementForPlaces.h"
 
 @implementation RefinedElementForPlaces
-@synthesize name;
 
 +(NSString *)extractNameFrom:(NSDictionary *)rawElement
 {
@@ -17,6 +16,11 @@
 	NSArray *arrayOfContentString = [contentString componentsSeparatedByString:@","];
 	NSString *titleString = [arrayOfContentString objectAtIndex:0];
 	return [titleString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+}
+
+-(void)dealloc
+{
+	[super dealloc];
 }
 @end
 
