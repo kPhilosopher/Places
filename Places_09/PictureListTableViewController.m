@@ -18,8 +18,9 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-		self.listOfPictures_theModel = pictureList;
-		self.rawData = self.listOfPictures_theModel;
+		if (pictureList) {
+			self.rawData = pictureList;
+		}
     }
     return self;
 }
@@ -268,6 +269,14 @@
     return YES;
 }
 */
+//
+//-(NSArray *)listOfPictures_theModel
+//{
+//	if (!listOfPictures_theModel) {
+//		listOfPictures_theModel = [[NSArray alloc] init];
+//	}
+//	return listOfPictures_theModel;
+//}
 
 #pragma mark - Table view delegate
 

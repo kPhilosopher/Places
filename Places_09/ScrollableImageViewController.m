@@ -46,7 +46,7 @@
 
 - (void)splitViewController:(UISplitViewController*)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem*)barButtonItem forPopoverController:(UIPopoverController*)pc
 {
-//	barButtonItem.title = aViewController.title;
+	barButtonItem.title = aViewController.title;
 	self.navigationItem.rightBarButtonItem = barButtonItem;
 }
 

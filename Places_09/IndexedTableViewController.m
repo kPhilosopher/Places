@@ -60,10 +60,8 @@
 //	[refinedElement release];
 }
 
-- (void)viewDidLoad
+-(void) loadDataFromRawData
 {
-    [super viewDidLoad];
-	
 	self.theElementSections = [[NSMutableArray alloc] init];
 	
 	NSMutableArray *temporaryDataElements;
@@ -78,9 +76,9 @@
 		return;
 	}
 	[self setTheSectionNumberForAllTheElementsIn:temporaryDataElements];
-//	for (RefinedElement *refinedElement in temporaryDataElements) {
-//		[self setTheSectionNumberForEach:refinedElement];
-//	}
+	//	for (RefinedElement *refinedElement in temporaryDataElements) {
+	//		[self setTheSectionNumberForEach:refinedElement];
+	//	}
 	//create a function that can be transferred down to be overriden.
 	NSInteger highSection = [[[UILocalizedIndexedCollation currentCollation] sectionTitles] count];
 	NSMutableArray *sectionArrays = [[NSMutableArray alloc]initWithCapacity:highSection];
@@ -98,7 +96,16 @@
 	{
 		[self sortTheElementsInEach:sectionArray andAddTo:(NSMutableArray *)self.theElementSections];
 	}
+
 }
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	[self loadDataFromRawData];
+}
+
+
 
 
 - (void)viewDidUnload
@@ -205,6 +212,14 @@
     return YES;
 }
 */
+
+-(NSArray *)rawData
+{
+	if (!rawData) {
+		rawData = [[NSArray alloc] init];
+	}
+	return rawData;
+}
 
 #pragma mark - Table view delegate
 

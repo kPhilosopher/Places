@@ -40,47 +40,67 @@
 //	NSArray *sectionArrays;
 }
 
--(void) addToTheMostRecentListOfPlacesTheFollowing:(NSDictionary *)dictionaryToAddToMostRecentList
+-(int) returnIndexOf_flickrMostRecentPlacesArray_ThatContains:(NSString *)placed_idOfItsDictionary
+{
+	int indexToRemove = -1;
+	for (int counter = 0; self.flickrMostRecentPlacesArray.count > counter ; counter++) {
+		if ([[self.flickrMostRecentPlacesArray objectAtIndex:counter] isKindOfClass:[NSDictionary class]])
+		{
+			NSDictionary *dictionary = [self.flickrMostRecentPlacesArray objectAtIndex:counter];
+			if ([[dictionary objectForKey:@"place_id"] isEqual:placed_idOfItsDictionary])
+			{
+				indexToRemove = counter;
+				counter = self.flickrMostRecentPlacesArray.count;
+			}
+		}
+	}
+	return indexToRemove;
+}
+
+-(void) addToTheMostRecentListOfPlacesTheFollowing:(NSDictionary *)dictionaryToAddToMostRecentList;
 {
 	id elementOfPlaceId = [dictionaryToAddToMostRecentList objectForKey:@"place_id"];
 	NSString *stringOfPlaceId;
 	if ([elementOfPlaceId isKindOfClass:[NSString class]]) {
 		stringOfPlaceId = (NSString *)elementOfPlaceId;
-	}
-	if ([self.flickrMostRecentPlacesSet containsObject:stringOfPlaceId])
-	{
-		int indexToRemove = -1;
-		for (int counter = 0; self.flickrMostRecentPlacesArray.count > counter ; counter++) {
-			if ([[self.flickrMostRecentPlacesArray objectAtIndex:counter] isKindOfClass:[NSDictionary class]])
-			{
-				NSDictionary *dictionary = [self.flickrMostRecentPlacesArray objectAtIndex:counter];
-				if ([[dictionary objectForKey:@"place_id"] isEqual:stringOfPlaceId]) {
-					indexToRemove = counter;
-					counter = self.flickrMostRecentPlacesArray.count;
-				}
-			}
+		if ([self.flickrMostRecentPlacesSet containsObject:stringOfPlaceId])
+		{
+			int indexToRemove = [self returnIndexOf_flickrMostRecentPlacesArray_ThatContains:stringOfPlaceId];
+//			for (int counter = 0; self.flickrMostRecentPlacesArray.count > counter ; counter++) {
+//				if ([[self.flickrMostRecentPlacesArray objectAtIndex:counter] isKindOfClass:[NSDictionary class]])
+//				{
+//					NSDictionary *dictionary = [self.flickrMostRecentPlacesArray objectAtIndex:counter];
+//					if ([[dictionary objectForKey:@"place_id"] isEqual:stringOfPlaceId])
+//					{
+//						indexToRemove = counter;
+//						counter = self.flickrMostRecentPlacesArray.count;
+//					}
+//				}
+//			}
+			if (indexToRemove != -1)
+				[self.flickrMostRecentPlacesArray removeObjectAtIndex:indexToRemove];
 		}
-		if (indexToRemove != -1)
-			[self.flickrMostRecentPlacesArray removeObjectAtIndex:indexToRemove];
+		else
+		{
+			[self.flickrMostRecentPlacesSet addObject:stringOfPlaceId];
+		}
+		
+		
+		[self.flickrMostRecentPlacesArray insertObject:dictionaryToAddToMostRecentList atIndex:0];
+		
+		if (self.flickrMostRecentPlacesArray.count == MAX_MOST_RECENT_LIST) {
+			[self.flickrMostRecentPlacesArray removeLastObject];
+		}
+		
+		[self updateMostRecentDataToStandardUserDefaults];
 	}
-	else
-	{
-		[self.flickrMostRecentPlacesSet addObject:stringOfPlaceId];
-	}
-	[self.flickrMostRecentPlacesArray insertObject:dictionaryToAddToMostRecentList atIndex:0];
-	
-	if (self.flickrMostRecentPlacesArray.count == MAX_MOST_RECENT_LIST) {
-		[self.flickrMostRecentPlacesArray removeLastObject];
-	}
-	
-	[self updateMostRecentDataToStandardUserDefaults];
 }
 
--(void) deleteFromMostRecentListThePlaceWithTheFollowing:(NSIndexPath *) indexPath
+-(void) deleteFromMostRecentListThePlaceWithTheFollowing:(NSDictionary *)dictionaryToDelete
 {
 	//redo this parts
-	[self.flickrMostRecentPlacesSet removeObject:[self.flickrMostRecentPlacesArray objectAtIndex:indexPath.row]];
-	[self.flickrMostRecentPlacesArray removeObjectAtIndex:indexPath.row];
+	[self.flickrMostRecentPlacesSet removeObject:[dictionaryToDelete valueForKey:@"place_id"]];
+	[self.flickrMostRecentPlacesArray removeObjectAtIndex:[self returnIndexOf_flickrMostRecentPlacesArray_ThatContains:[dictionaryToDelete valueForKey:@"place_id"]]];
 }
 
 -(void) updateMostRecentDataToStandardUserDefaults
@@ -113,6 +133,12 @@
 	id temporaryRetrievedPhotos = [FlickrFetcher photosAtPlace:flickrPlaceId];
 	if ([temporaryRetrievedPhotos isKindOfClass:[NSArray class]])
 		arrayOfPhotos = (NSArray *) temporaryRetrievedPhotos;
+	else
+	{
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cannot Retrieve Data" message:@"We couldn't retrieve the data from Flickr" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[alert show];
+		[alert release];
+	}
 	return arrayOfPhotos;
 }
 

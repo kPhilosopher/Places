@@ -22,14 +22,6 @@
     return self;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
 #pragma mark - View lifecycle
 -(void)sortTheElementsInEach:(NSMutableArray *)sectionArray andAddTo:(NSMutableArray *)elementSections
 {
@@ -220,12 +212,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+	
+	
 	RefinedElementForPlaces *refinedElement = [(NSArray *)[self.theElementSections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 	NSString *placeId = [refinedElement.dictionary objectForKey:@"place_id"];
-// 	NSString *placeId = [[self.rawData objectAtIndex:indexPath.row] objectForKey:@"place_id"];
 	PictureListTableViewController *pltvc = [[PictureListTableViewController alloc] initWithStyle:UITableViewStylePlain andWith:[self.flickrDataSource retrievePhotoListForSpecific:placeId]];
+	NSString *contentString = [refinedElement.dictionary objectForKey:@"_content"];
+	NSArray *arrayOfContentString = [contentString componentsSeparatedByString:@","];
+	pltvc.title = [arrayOfContentString objectAtIndex:0];
 	pltvc.delegate = self.delegateToTransfer;
-//	pltvc.listOfPictures_theModel = [self.flickrDataSource retrievePhotoListForSpecific:placeId];
 	[self.navigationController pushViewController:pltvc animated:YES];
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 	[pltvc release];

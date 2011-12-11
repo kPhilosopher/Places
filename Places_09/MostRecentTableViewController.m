@@ -63,6 +63,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+	[super viewDidLoad];
 	[self.tableView reloadData];
 //	[self.tableView reloadSectionIndexTitles];
     [super viewWillAppear:animated];
@@ -98,8 +99,11 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-		[self.flickrDataSource deleteFromMostRecentListThePlaceWithTheFollowing:indexPath];
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+		NSArray *array = [self.theElementSections objectAtIndex:indexPath.section];
+		RefinedElementForPlaces *refinedPlace = [array objectAtIndex:indexPath.row];
+		[self.flickrDataSource deleteFromMostRecentListThePlaceWithTheFollowing:refinedPlace.dictionary];
+		[super viewDidLoad];
+		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 		
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert)
