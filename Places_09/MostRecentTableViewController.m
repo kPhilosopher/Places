@@ -19,6 +19,7 @@
 		self.rawData = self.flickrDataSource.flickrMostRecentPlacesArray;
 		self.title = @"Most Recent";
     }
+	self.view.accessibilityLabel = @"mostRecentTableView";
     return self;
 }
 

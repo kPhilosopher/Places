@@ -66,6 +66,36 @@
 		CEB4C2C41488C4AC00DDF51F /* PlaceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB4C2C31488C4AC00DDF51F /* PlaceTableViewController.m */; };
 		CEB4C2C51488C4AC00DDF51F /* PlaceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB4C2C31488C4AC00DDF51F /* PlaceTableViewController.m */; };
 		CEB4C2C61488C4AC00DDF51F /* PlaceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB4C2C31488C4AC00DDF51F /* PlaceTableViewController.m */; };
+		CEF3ADB6149C4E2800D53424 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF3ADB5149C4E2800D53424 /* libOCMock.a */; };
+		CEF3ADB7149C4E2800D53424 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF3ADB5149C4E2800D53424 /* libOCMock.a */; };
+		CEF3ADCA149C4FC600D53424 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098971477382A0067AAC2 /* main.m */; };
+		CEF3ADCB149C4FC600D53424 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE80989B1477382A0067AAC2 /* AppDelegate.m */; };
+		CEF3ADCC149C4FC600D53424 /* FlickrDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098BE147739E80067AAC2 /* FlickrDataSource.m */; };
+		CEF3ADCD149C4FC600D53424 /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098C0147739E80067AAC2 /* FlickrFetcher.m */; };
+		CEF3ADCE149C4FC600D53424 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098C4147739E80067AAC2 /* NSObject+SBJSON.m */; };
+		CEF3ADCF149C4FC600D53424 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098C6147739E80067AAC2 /* NSString+SBJSON.m */; };
+		CEF3ADD0149C4FC600D53424 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098C8147739E80067AAC2 /* SBJSON.m */; };
+		CEF3ADD1149C4FC600D53424 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098CA147739E80067AAC2 /* SBJsonBase.m */; };
+		CEF3ADD2149C4FC600D53424 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098CC147739E80067AAC2 /* SBJsonParser.m */; };
+		CEF3ADD3149C4FC600D53424 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098CE147739E80067AAC2 /* SBJsonWriter.m */; };
+		CEF3ADD4149C4FC600D53424 /* ScrollableImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098D0147739E80067AAC2 /* ScrollableImageViewController.m */; };
+		CEF3ADD5149C4FC600D53424 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098D2147739E80067AAC2 /* TabBarController.m */; };
+		CEF3ADD6149C4FC600D53424 /* TopRatedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098D4147739E80067AAC2 /* TopRatedTableViewController.m */; };
+		CEF3ADD7149C4FC600D53424 /* MostRecentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE80992C147779580067AAC2 /* MostRecentTableViewController.m */; };
+		CEF3ADD8149C4FC600D53424 /* PictureListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE553792147B53C100C20686 /* PictureListTableViewController.m */; };
+		CEF3ADD9149C4FC600D53424 /* PlaceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB4C2C31488C4AC00DDF51F /* PlaceTableViewController.m */; };
+		CEF3ADDA149C4FC600D53424 /* IndexedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE22D30D14897F8000E5973F /* IndexedTableViewController.m */; };
+		CEF3ADDB149C4FC600D53424 /* RefinedElementForPictureList.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6FB263148993B400DA2A1D /* RefinedElementForPictureList.m */; };
+		CEF3ADDC149C4FC600D53424 /* RefinedElementForPlaces.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6FB269148993C600DA2A1D /* RefinedElementForPlaces.m */; };
+		CEF3ADDD149C4FC600D53424 /* RefinedElement.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6FB26E148993F900DA2A1D /* RefinedElement.m */; };
+		CEF3ADDF149C4FC600D53424 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE80988B147738290067AAC2 /* UIKit.framework */; };
+		CEF3ADE0149C4FC600D53424 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE80988D147738290067AAC2 /* Foundation.framework */; };
+		CEF3ADE1149C4FC600D53424 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE80988F147738290067AAC2 /* CoreGraphics.framework */; };
+		CEF3ADE3149C4FC600D53424 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE809894147738290067AAC2 /* InfoPlist.strings */; };
+		CEF3ADEA149C500A00D53424 /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF3ADC7149C4FA900D53424 /* libKIF.a */; };
+		CEF3ADF9149C51BD00D53424 /* PlacesKIFTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF3ADF8149C51BD00D53424 /* PlacesKIFTestController.m */; };
+		CEF3ADFD149C51FA00D53424 /* KIFTestScenario+PlacesAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF3ADFC149C51FA00D53424 /* KIFTestScenario+PlacesAdditions.m */; };
+		CEF3AE00149C521400D53424 /* KIFTestStep+PlacesAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF3ADFF149C521400D53424 /* KIFTestStep+PlacesAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +112,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = CE809886147738290067AAC2;
 			remoteInfo = Places_09;
+		};
+		CEF3ADC6149C4FA900D53424 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CEF3ADBF149C4FA900D53424 /* KIF.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AAB07268139719AC008AF393;
+			remoteInfo = KIF;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -110,7 +147,6 @@
 		CE8098A31477382A0067AAC2 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		CE8098AB1477382A0067AAC2 /* Places_09Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Places_09Tests-Info.plist"; sourceTree = "<group>"; };
 		CE8098AD1477382A0067AAC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		CE8098AF1477382A0067AAC2 /* Places_09Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Places_09Tests.h; sourceTree = "<group>"; };
 		CE8098B01477382A0067AAC2 /* Places_09Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Places_09Tests.m; sourceTree = "<group>"; };
 		CE8098BC147739E80067AAC2 /* FlickrAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAPIKey.h; sourceTree = "<group>"; };
 		CE8098BD147739E80067AAC2 /* FlickrDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrDataSource.h; sourceTree = "<group>"; };
@@ -145,6 +181,22 @@
 		CE80992C147779580067AAC2 /* MostRecentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MostRecentTableViewController.m; sourceTree = "<group>"; };
 		CEB4C2C21488C4AC00DDF51F /* PlaceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceTableViewController.h; sourceTree = "<group>"; };
 		CEB4C2C31488C4AC00DDF51F /* PlaceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceTableViewController.m; sourceTree = "<group>"; };
+		CEF3ADB5149C4E2800D53424 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
+		CEF3ADB9149C4E3000D53424 /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
+		CEF3ADBA149C4E3000D53424 /* OCMArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
+		CEF3ADBB149C4E3000D53424 /* OCMConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMConstraint.h; sourceTree = "<group>"; };
+		CEF3ADBC149C4E3000D53424 /* OCMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMock.h; sourceTree = "<group>"; };
+		CEF3ADBD149C4E3000D53424 /* OCMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockObject.h; sourceTree = "<group>"; };
+		CEF3ADBE149C4E3000D53424 /* OCMockRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockRecorder.h; sourceTree = "<group>"; };
+		CEF3ADBF149C4FA900D53424 /* KIF.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KIF.xcodeproj; path = Frameworks/KIF/KIF.xcodeproj; sourceTree = "<group>"; };
+		CEF3ADE7149C4FC600D53424 /* UI Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UI Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEF3ADE9149C4FC700D53424 /* Places_09 copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Places_09 copy-Info.plist"; path = "/Users/jinwoobaek/Documents/workspace/CS193P/Places_09/Places_09 copy-Info.plist"; sourceTree = "<absolute>"; };
+		CEF3ADF7149C51BD00D53424 /* PlacesKIFTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlacesKIFTestController.h; path = KIF/PlacesKIFTestController.h; sourceTree = SOURCE_ROOT; };
+		CEF3ADF8149C51BD00D53424 /* PlacesKIFTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlacesKIFTestController.m; path = KIF/PlacesKIFTestController.m; sourceTree = SOURCE_ROOT; };
+		CEF3ADFB149C51FA00D53424 /* KIFTestScenario+PlacesAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "KIFTestScenario+PlacesAdditions.h"; path = "KIF/KIFTestScenario+PlacesAdditions.h"; sourceTree = SOURCE_ROOT; };
+		CEF3ADFC149C51FA00D53424 /* KIFTestScenario+PlacesAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "KIFTestScenario+PlacesAdditions.m"; path = "KIF/KIFTestScenario+PlacesAdditions.m"; sourceTree = SOURCE_ROOT; };
+		CEF3ADFE149C521400D53424 /* KIFTestStep+PlacesAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "KIFTestStep+PlacesAdditions.h"; path = "KIF/KIFTestStep+PlacesAdditions.h"; sourceTree = SOURCE_ROOT; };
+		CEF3ADFF149C521400D53424 /* KIFTestStep+PlacesAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "KIFTestStep+PlacesAdditions.m"; path = "KIF/KIFTestStep+PlacesAdditions.m"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +217,7 @@
 				CE8098A41477382A0067AAC2 /* SenTestingKit.framework in Frameworks */,
 				CE8098A51477382A0067AAC2 /* UIKit.framework in Frameworks */,
 				CE8098A61477382A0067AAC2 /* Foundation.framework in Frameworks */,
+				CEF3ADB6149C4E2800D53424 /* libOCMock.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,6 +228,18 @@
 				CE8098F614773EE60067AAC2 /* SenTestingKit.framework in Frameworks */,
 				CE8098F714773EE60067AAC2 /* UIKit.framework in Frameworks */,
 				CE8098F814773EE60067AAC2 /* Foundation.framework in Frameworks */,
+				CEF3ADB7149C4E2800D53424 /* libOCMock.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEF3ADDE149C4FC600D53424 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEF3ADEA149C500A00D53424 /* libKIF.a in Frameworks */,
+				CEF3ADDF149C4FC600D53424 /* UIKit.framework in Frameworks */,
+				CEF3ADE0149C4FC600D53424 /* Foundation.framework in Frameworks */,
+				CEF3ADE1149C4FC600D53424 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,11 +273,15 @@
 		CE80987C147738290067AAC2 = {
 			isa = PBXGroup;
 			children = (
+				CEF3ADBF149C4FA900D53424 /* KIF.xcodeproj */,
+				CEF3ADB4149C4BB600D53424 /* Libraries */,
 				CE809891147738290067AAC2 /* Places_09 */,
 				CE8098A91477382A0067AAC2 /* Places_09Tests */,
 				CE8098F914773EE60067AAC2 /* Places_09ApplicationTests */,
+				CEF3ADF6149C518300D53424 /* KIF */,
 				CE80988A147738290067AAC2 /* Frameworks */,
 				CE809888147738290067AAC2 /* Products */,
+				CEF3ADE9149C4FC700D53424 /* Places_09 copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -222,6 +291,7 @@
 				CE809887147738290067AAC2 /* Places_09.app */,
 				CE8098A21477382A0067AAC2 /* Places_09Tests.octest */,
 				CE8098F514773EE60067AAC2 /* Places_09ApplicationTests.octest */,
+				CEF3ADE7149C4FC600D53424 /* UI Test.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -268,7 +338,6 @@
 		CE8098A91477382A0067AAC2 /* Places_09Tests */ = {
 			isa = PBXGroup;
 			children = (
-				CE8098AF1477382A0067AAC2 /* Places_09Tests.h */,
 				CE8098B01477382A0067AAC2 /* Places_09Tests.m */,
 				CE8098AA1477382A0067AAC2 /* Supporting Files */,
 			);
@@ -358,6 +427,50 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		CEF3ADB4149C4BB600D53424 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				CEF3ADB8149C4E3000D53424 /* OCMock */,
+				CEF3ADB5149C4E2800D53424 /* libOCMock.a */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		CEF3ADB8149C4E3000D53424 /* OCMock */ = {
+			isa = PBXGroup;
+			children = (
+				CEF3ADB9149C4E3000D53424 /* NSNotificationCenter+OCMAdditions.h */,
+				CEF3ADBA149C4E3000D53424 /* OCMArg.h */,
+				CEF3ADBB149C4E3000D53424 /* OCMConstraint.h */,
+				CEF3ADBC149C4E3000D53424 /* OCMock.h */,
+				CEF3ADBD149C4E3000D53424 /* OCMockObject.h */,
+				CEF3ADBE149C4E3000D53424 /* OCMockRecorder.h */,
+			);
+			path = OCMock;
+			sourceTree = "<group>";
+		};
+		CEF3ADC0149C4FA900D53424 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CEF3ADC7149C4FA900D53424 /* libKIF.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CEF3ADF6149C518300D53424 /* KIF */ = {
+			isa = PBXGroup;
+			children = (
+				CEF3ADF7149C51BD00D53424 /* PlacesKIFTestController.h */,
+				CEF3ADF8149C51BD00D53424 /* PlacesKIFTestController.m */,
+				CEF3ADFB149C51FA00D53424 /* KIFTestScenario+PlacesAdditions.h */,
+				CEF3ADFC149C51FA00D53424 /* KIFTestScenario+PlacesAdditions.m */,
+				CEF3ADFE149C521400D53424 /* KIFTestStep+PlacesAdditions.h */,
+				CEF3ADFF149C521400D53424 /* KIFTestStep+PlacesAdditions.m */,
+			);
+			name = KIF;
+			path = Places_09ApplicationTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -416,6 +529,23 @@
 			productReference = CE8098F514773EE60067AAC2 /* Places_09ApplicationTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
+		CEF3ADC8149C4FC600D53424 /* UI Test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEF3ADE4149C4FC600D53424 /* Build configuration list for PBXNativeTarget "UI Test" */;
+			buildPhases = (
+				CEF3ADC9149C4FC600D53424 /* Sources */,
+				CEF3ADDE149C4FC600D53424 /* Frameworks */,
+				CEF3ADE2149C4FC600D53424 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "UI Test";
+			productName = Places_09;
+			productReference = CEF3ADE7149C4FC600D53424 /* UI Test.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -435,14 +565,31 @@
 			mainGroup = CE80987C147738290067AAC2;
 			productRefGroup = CE809888147738290067AAC2 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = CEF3ADC0149C4FA900D53424 /* Products */;
+					ProjectRef = CEF3ADBF149C4FA900D53424 /* KIF.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				CE809886147738290067AAC2 /* Places_09 */,
 				CE8098A11477382A0067AAC2 /* Places_09Tests */,
 				CE8098F414773EE60067AAC2 /* Places_09ApplicationTests */,
+				CEF3ADC8149C4FC600D53424 /* UI Test */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		CEF3ADC7149C4FA900D53424 /* libKIF.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libKIF.a;
+			remoteRef = CEF3ADC6149C4FA900D53424 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CE809885147738290067AAC2 /* Resources */ = {
@@ -466,6 +613,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE8098FE14773EE60067AAC2 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEF3ADE2149C4FC600D53424 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEF3ADE3149C4FC600D53424 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,6 +721,36 @@
 				CE6FB266148993B400DA2A1D /* RefinedElementForPictureList.m in Sources */,
 				CE6FB26C148993C600DA2A1D /* RefinedElementForPlaces.m in Sources */,
 				CE6FB271148993F900DA2A1D /* RefinedElement.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEF3ADC9149C4FC600D53424 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEF3ADCA149C4FC600D53424 /* main.m in Sources */,
+				CEF3ADCB149C4FC600D53424 /* AppDelegate.m in Sources */,
+				CEF3ADCC149C4FC600D53424 /* FlickrDataSource.m in Sources */,
+				CEF3ADCD149C4FC600D53424 /* FlickrFetcher.m in Sources */,
+				CEF3ADCE149C4FC600D53424 /* NSObject+SBJSON.m in Sources */,
+				CEF3ADCF149C4FC600D53424 /* NSString+SBJSON.m in Sources */,
+				CEF3ADD0149C4FC600D53424 /* SBJSON.m in Sources */,
+				CEF3ADD1149C4FC600D53424 /* SBJsonBase.m in Sources */,
+				CEF3ADD2149C4FC600D53424 /* SBJsonParser.m in Sources */,
+				CEF3ADD3149C4FC600D53424 /* SBJsonWriter.m in Sources */,
+				CEF3ADD4149C4FC600D53424 /* ScrollableImageViewController.m in Sources */,
+				CEF3ADD5149C4FC600D53424 /* TabBarController.m in Sources */,
+				CEF3ADD6149C4FC600D53424 /* TopRatedTableViewController.m in Sources */,
+				CEF3ADD7149C4FC600D53424 /* MostRecentTableViewController.m in Sources */,
+				CEF3ADD8149C4FC600D53424 /* PictureListTableViewController.m in Sources */,
+				CEF3ADD9149C4FC600D53424 /* PlaceTableViewController.m in Sources */,
+				CEF3ADDA149C4FC600D53424 /* IndexedTableViewController.m in Sources */,
+				CEF3ADDB149C4FC600D53424 /* RefinedElementForPictureList.m in Sources */,
+				CEF3ADDC149C4FC600D53424 /* RefinedElementForPlaces.m in Sources */,
+				CEF3ADDD149C4FC600D53424 /* RefinedElement.m in Sources */,
+				CEF3ADF9149C51BD00D53424 /* PlacesKIFTestController.m in Sources */,
+				CEF3ADFD149C51FA00D53424 /* KIFTestScenario+PlacesAdditions.m in Sources */,
+				CEF3AE00149C521400D53424 /* KIFTestStep+PlacesAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -690,7 +875,17 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Places_09/Places_09-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Libraries/**";
 				INFOPLIST_FILE = "Places_09Tests/Places_09Tests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-force_load",
+					"$(PROJECT_DIR)/Libraries/libOCMock.a",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -705,7 +900,17 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Places_09/Places_09-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Libraries/**";
 				INFOPLIST_FILE = "Places_09Tests/Places_09Tests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-force_load",
+					"$(PROJECT_DIR)/Libraries/libOCMock.a",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -721,7 +926,17 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Places_09ApplicationTests/Places_09ApplicationTests-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Libraries/**";
 				INFOPLIST_FILE = "Places_09ApplicationTests/Places_09ApplicationTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-force_load",
+					"$(PROJECT_DIR)/Libraries/libOCMock.a",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
@@ -738,10 +953,64 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Places_09ApplicationTests/Places_09ApplicationTests-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Libraries/**";
 				INFOPLIST_FILE = "Places_09ApplicationTests/Places_09ApplicationTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-force_load",
+					"$(PROJECT_DIR)/Libraries/libOCMock.a",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+		CEF3ADE5149C4FC600D53424 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Places_09/Places_09-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = RUN_KIF_TESTS;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Frameworks/KIF/**",
+				);
+				INFOPLIST_FILE = "Places_09 copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "UI Test";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		CEF3ADE6149C4FC600D53424 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Places_09/Places_09-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = RUN_KIF_TESTS;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Frameworks/KIF/**",
+				);
+				INFOPLIST_FILE = "Places_09 copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "UI Test";
+				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
@@ -780,6 +1049,15 @@
 			buildConfigurations = (
 				CE80990414773EE60067AAC2 /* Debug */,
 				CE80990514773EE60067AAC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CEF3ADE4149C4FC600D53424 /* Build configuration list for PBXNativeTarget "UI Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEF3ADE5149C4FC600D53424 /* Debug */,
+				CEF3ADE6149C4FC600D53424 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

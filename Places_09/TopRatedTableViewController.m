@@ -19,6 +19,7 @@
 		self.rawData = self.flickrDataSource.flickrTopPlacesArray;
 		self.title = @"Top Places";
 	}
+	self.view.accessibilityLabel = @"topPlacesTableView";
     return self;
 }
 

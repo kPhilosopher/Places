@@ -7,7 +7,9 @@
 //
 
 #import "AppDelegate.h"
-
+#if RUN_KIF_TESTS
+#import "PlacesKIFTestController.h"
+#endif
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -50,6 +52,12 @@
     }
 	self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+	#if RUN_KIF_TESTS
+		[[PlacesKIFTestController sharedInstance] startTestingWithCompletionBlock:^{
+			// Exit after the tests complete so that CI knows we're done
+			exit([[PlacesKIFTestController sharedInstance] failureCount]);
+		}];
+	#endif
     return YES;
 }
 

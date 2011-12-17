@@ -36,10 +36,6 @@
 
 #pragma mark - Split View Delegate Methods
 
-//-(BOOL)splitViewController:(UISplitViewController *)svc shouldHideViewController:(UIViewController *)vc inOrientation:(UIInterfaceOrientation)orientation
-//{
-//	return (orientation == UIInterfaceOrientationPortrait);
-//}
 - (void)splitViewController:(UISplitViewController*)svc popoverController:(UIPopoverController*)pc willPresentViewController:(UIViewController *)aViewController
 {
 }
