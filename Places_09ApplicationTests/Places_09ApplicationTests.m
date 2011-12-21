@@ -1,38 +1,20 @@
 //
 //  Places_09ApplicationTests.m
-//  PlacesApplicationTests
+//  Places_09
 //
-//  Created by Jinwoo Baek on 10/31/11.
+//  Created by Jinwoo Baek on 12/17/11.
 //  Copyright (c) 2011 Rose-Hulman Institute of Technology. All rights reserved.
 //
-#import <SenTestingKit/SenTestingKit.h>
-#import "AppDelegate.h"
 
-@interface PlacesApplicationTests : SenTestCase
-{
-@private
-	AppDelegate *appDelegate;
-	UINavigationController *rightNavigationViewController;
-	UINavigationController *leftNavigationViewController;
-	TopRatedTableViewController *topRatedTableViewController;
-	FavoritesTableViewController *favoritesTableViewController;
-}
+#import "Places_09ApplicationTests.h"
 
-@property (retain) AppDelegate *appDelegate;
-@property (retain) UINavigationController *leftNavigationViewController;
-@property (retain) UINavigationController *rightNavigationViewController;
-@property (retain) TopRatedTableViewController *topRatedTableViewController;
-@property (retain) FavoritesTableViewController *favoritesTableViewController;
-
-@end
-
-
-@implementation PlacesApplicationTests
-@synthesize appDelegate, leftNavigationViewController, rightNavigationViewController, topRatedTableViewController, favoritesTableViewController;
+@implementation Places_09ApplicationTests
+@synthesize appDelegate, leftNavigationViewController, rightNavigationViewController, topRatedTableViewController, mostRecentTableViewController;
 
 - (void)setUp
 {
     [super setUp];
+	//use this for the tab bar controller tests
 	self.appDelegate = [[UIApplication sharedApplication] delegate];
 	if ([[self.appDelegate.tab_Bar_Controller.viewControllers objectAtIndex:0] isKindOfClass:[UINavigationController class]] &&
 		[[self.appDelegate.tab_Bar_Controller.viewControllers objectAtIndex:1] isKindOfClass:[UINavigationController class]])
@@ -42,12 +24,18 @@
 	}
 	
 	if ([self.leftNavigationViewController.topViewController isMemberOfClass:[TopRatedTableViewController class]] &&
-		[self.rightNavigationViewController.topViewController isMemberOfClass:[FavoritesTableViewController class]])
+		[self.rightNavigationViewController.topViewController isMemberOfClass:[MostRecentTableViewController class]])
 	{
 		self.topRatedTableViewController = (TopRatedTableViewController *)self.leftNavigationViewController.topViewController;
-		self.favoritesTableViewController = (FavoritesTableViewController *)self.rightNavigationViewController.topViewController;
+		self.mostRecentTableViewController = (MostRecentTableViewController *)self.rightNavigationViewController.topViewController;
 	}	
 }
+
+- (void)tearDown
+{
+    [super tearDown];
+}
+
 
 - (void) testAppDelegate {
 	STAssertNotNil(self.appDelegate, @"Cannot find the application delegate");
@@ -72,16 +60,16 @@
 	}
 }
 
--(void) testTopRatedAndFavoritesTableViewControllers
+-(void) testTopRatedAndMostRecentTableViewControllers
 {	
 	STAssertTrue(([[[self.appDelegate.tab_Bar_Controller.viewControllers objectAtIndex:0] view] window] != nil),@"the navigation controller with the top places does not show up.");
 	STAssertTrue([self.leftNavigationViewController.topViewController isKindOfClass:[UITableViewController class]], @"The top view controller in the navigation controller of the Top Places tab is not a UITableViewController");
 	STAssertTrue([self.leftNavigationViewController.topViewController isKindOfClass:[TopRatedTableViewController class]], @"The top view controller in the navigation controller of the Top Places tab is not a TopRatedTableViewController");
-	STAssertTrue([self.leftNavigationViewController.topViewController.title isEqualToString:@"Top Rated"], @"The top table view controller's title is not 'Top Rated'");
+	STAssertTrue([self.leftNavigationViewController.topViewController.title isEqualToString:@"Top Places"], @"The top table view controller's title is not 'Top Rated'");
 	
 	STAssertTrue([self.rightNavigationViewController.topViewController isKindOfClass:[UITableViewController class]], @"The top view controller in the navigation controller of the Favorites tab is not a UITableViewController");
-	STAssertTrue([self.rightNavigationViewController.topViewController isKindOfClass:[FavoritesTableViewController class]], @"The top view controller in the navigation controller of the Favorites tab is not a UITableViewController");
-	STAssertTrue([self.rightNavigationViewController.topViewController.title isEqualToString:@"Favorites"], @"The top table view controller's title is not 'Top Rated'");
+	STAssertTrue([self.rightNavigationViewController.topViewController isKindOfClass:[MostRecentTableViewController class]], @"The top view controller in the navigation controller of the Favorites tab is not a MostRecentTableViewController");
+	STAssertTrue([self.rightNavigationViewController.topViewController.title isEqualToString:@"Most Recent"], @"The top table view controller's title is not 'Most Recent'");
 }
 
 //-(void) testTabBarButtonSettings
@@ -102,21 +90,21 @@
 	STAssertFalse([self.appDelegate.tab_Bar_Controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationPortraitUpsideDown],@"TopRated TableViewController should not support upside-down Oritentation");
 	
 	STAssertTrue([self.leftNavigationViewController.topViewController shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationPortrait],@"TopRated TableViewController does not supports Portrait Orientation");
-	STAssertTrue([self.leftNavigationViewController.topViewController shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeLeft],@"TopRated TableViewController does not supports Landscape Orientation to the Left");
-	STAssertTrue([self.leftNavigationViewController.topViewController shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeRight],@"TopRated TableViewController does not supports Landsacape Orientation to the Right");
+//	STAssertTrue([self.leftNavigationViewController.topViewController shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeLeft],@"TopRated TableViewController does not supports Landscape Orientation to the Left");
+//	STAssertTrue([self.leftNavigationViewController.topViewController shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeRight],@"TopRated TableViewController does not supports Landsacape Orientation to the Right");
 	STAssertFalse([self.leftNavigationViewController.topViewController shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationPortraitUpsideDown],@"TopRated TableViewController should not support upside-down Oritentation");
 	
 	STAssertTrue([self.rightNavigationViewController.topViewController shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationPortrait],@"Favorites TableViewController does not supports Portrait Orientation");
-	STAssertTrue([self.rightNavigationViewController.topViewController shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeLeft],@"Favorites TableViewController does not supports Landscape Orientation to the Left");
-	STAssertTrue([self.rightNavigationViewController.topViewController shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeRight],@"Favorites TableViewController does not supports Landsacape Orientation to the Right");
+//	STAssertTrue([self.rightNavigationViewController.topViewController shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeLeft],@"Favorites TableViewController does not supports Landscape Orientation to the Left");
+//	STAssertTrue([self.rightNavigationViewController.topViewController shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeRight],@"Favorites TableViewController does not supports Landsacape Orientation to the Right");
 	STAssertFalse([self.rightNavigationViewController.topViewController shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationPortraitUpsideDown],@"Favorites TableViewController should not support upside-down Oritentation");
 }
 
--(void) testIfTheTopRatedAndFavoritesTableViewControllersHaveSameModel
+-(void) testIfTheTopRatedAndMostRecentTableViewControllersHaveSameModel
 {
-	if(self.topRatedTableViewController.flickrDataSource && self.favoritesTableViewController.flickrDataSource)
+	if(self.topRatedTableViewController.flickrDataSource && self.mostRecentTableViewController.flickrDataSource)
 	{
-		STAssertTrue([self.topRatedTableViewController.flickrDataSource isEqual:self.favoritesTableViewController.flickrDataSource],@"The model is not shared between the TopRated and Favorites Table View Controllers");
+		STAssertTrue([self.topRatedTableViewController.flickrDataSource isEqual:self.mostRecentTableViewController.flickrDataSource],@"The model is not shared between the TopRated and Favorites Table View Controllers");
 	}
 	else
 	{

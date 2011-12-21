@@ -1,31 +1,28 @@
 
 //  TabBarController.m
-//  Places
+//  Places_09
 //
 //  Created by Jinwoo Baek on 11/7/11.
 //  Copyright (c) 2011 Rose-Hulman Institute of Technology. All rights reserved.
 //
 
-#import "TabBarController.h"
+#include "TabBarController_Hidden.h"
 
 @interface TabBarController()
--(void) setup;
--(void) allocInitTheNavigationViewControllers;
--(void) allocInitTheCustomTableViewControllers;
--(void) pushViewControllersToNavigationViewControllers;
--(void) setTabBarItemToSystemItems;
--(void) releaseViewControllersThatArePushedIntoTheViewControllerHierarchy;
 
-@property (retain) UINavigationController *topRatedNavigationViewController;
+@property (retain) UINavigationController *topPlacesNavigationViewController;
 @property (retain) UINavigationController *favoritesNavigationViewController;	
-@property (retain) TopRatedTableViewController *topRatedTableViewController;
+@property (retain) TopPlacesTableViewController *topPlacesTableViewController;
 @property (retain) MostRecentTableViewController *mostRecentTableViewController;
+
 @end
 
 @implementation TabBarController
-@synthesize topRatedNavigationViewController, favoritesNavigationViewController;
-@synthesize topRatedTableViewController, mostRecentTableViewController;
-@synthesize delegateToTransfer;
+@synthesize topPlacesNavigationViewController = _topPlacesNavigationViewController;
+@synthesize favoritesNavigationViewController = _favoritesNavigationViewController;
+@synthesize topPlacesTableViewController = _topPlacesTableViewController;
+@synthesize mostRecentTableViewController = _mostRecentTableViewController;
+@synthesize delegateToTransfer = _delegateToTransfer;
 
 #pragma mark -
 #pragma mark Initalization
@@ -35,7 +32,7 @@
 	return [self init];
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -44,97 +41,80 @@
 	[self setup];
     return self;
 }
-#pragma mark setupMethods
-	-(void) setup
+#pragma mark Setup Methods
+	-(void) setup;
 	{
 		[self allocInitTheNavigationViewControllers];
-		[self allocInitTheCustomTableViewControllers];
+		[self setupTheCustomTableViewControllers];
 		[self setTabBarItemToSystemItems];
-		self.viewControllers = [NSArray arrayWithObjects: self.topRatedNavigationViewController, 
-														  self.favoritesNavigationViewController, nil];
+		[self addTheNavigationControllersToThisTabBarController];
 		[self releaseViewControllersThatArePushedIntoTheViewControllerHierarchy];
 	}
-		-(void) allocInitTheNavigationViewControllers
+		-(void) allocInitTheNavigationViewControllers;
 		{
-			self.topRatedNavigationViewController = [[UINavigationController alloc] init];
-			self.favoritesNavigationViewController = [[UINavigationController alloc] init];
+			self.topPlacesNavigationViewController = [[[UINavigationController alloc] init] autorelease];
+			self.favoritesNavigationViewController = [[[UINavigationController alloc] init] autorelease];
 		}
-		-(void) allocInitTheCustomTableViewControllers
+		-(void) setupTheCustomTableViewControllers;
 		{
-			FlickrDataSource *theFlickrDataSource = [[FlickrDataSource alloc] init];
-			self.topRatedTableViewController = [[TopRatedTableViewController alloc] initWithStyle:UITableViewStylePlain andWith:theFlickrDataSource];
-			self.mostRecentTableViewController = [[MostRecentTableViewController alloc] initWithStyle:UITableViewStylePlain andWith:theFlickrDataSource];
-			[theFlickrDataSource release];
-			self.topRatedTableViewController.delegateToTransfer = self.delegateToTransfer;
-			self.mostRecentTableViewController.delegateToTransfer = self.delegateToTransfer;
+			[self allocInitThePlaceTableViewControllersWithTheSameFlickrDataSource];
+			[self setDelegateToTransferForTableViewControllers];
 			[self pushViewControllersToNavigationViewControllers];
 		}
-			-(void) pushViewControllersToNavigationViewControllers
+			- (void)allocInitThePlaceTableViewControllersWithTheSameFlickrDataSource;
 			{
-				[self.topRatedNavigationViewController pushViewController:self.topRatedTableViewController animated:YES];
+				FlickrDataSource *theFlickrDataSource = [[FlickrDataSource alloc] init];
+				self.topPlacesTableViewController = 
+				[[[TopPlacesTableViewController alloc] initWithStyle:UITableViewStylePlain andWith:theFlickrDataSource] autorelease];
+				self.mostRecentTableViewController = 
+				[[[MostRecentTableViewController alloc] initWithStyle:UITableViewStylePlain andWith:theFlickrDataSource] autorelease];
+				[theFlickrDataSource release];
+			}
+			- (void)setDelegateToTransferForTableViewControllers;
+			{
+				self.topPlacesTableViewController.delegateToTransfer = self.delegateToTransfer;
+				self.mostRecentTableViewController.delegateToTransfer = self.delegateToTransfer;
+			}
+			-(void) pushViewControllersToNavigationViewControllers;
+			{
+				[self.topPlacesNavigationViewController pushViewController:self.topPlacesTableViewController animated:YES];
 				[self.favoritesNavigationViewController pushViewController:self.mostRecentTableViewController animated:YES];
 			}
-		-(void) setTabBarItemToSystemItems
+		-(void) setTabBarItemToSystemItems;
 		{
-			self.topRatedNavigationViewController.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemTopRated tag:1];
-//			self.topRatedNavigationViewController.tabBarItem.accessibilityLabel = @"topRatedTabBarItem";
-			self.favoritesNavigationViewController.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemMostRecent tag:2];
-//			self.favoritesNavigationViewController.tabBarItem.accessibilityLabel = @"favoritesTabBarItem";
+			self.topPlacesNavigationViewController.tabBarItem = 
+			[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemTopRated tag:1];
+			self.favoritesNavigationViewController.tabBarItem = 
+			[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemMostRecent tag:2];
 		}
-		-(void) releaseViewControllersThatArePushedIntoTheViewControllerHierarchy
+		- (void)addTheNavigationControllersToThisTabBarController;
 		{
-			[self.topRatedNavigationViewController release];
+			self.viewControllers = [NSArray arrayWithObjects: self.topPlacesNavigationViewController, 
+									self.favoritesNavigationViewController, nil];
+		}
+		-(void) releaseViewControllersThatArePushedIntoTheViewControllerHierarchy;
+		{
+			[self.topPlacesNavigationViewController release];
 			[self.favoritesNavigationViewController release];
 			[self.mostRecentTableViewController release];
-			[self.topRatedTableViewController release];
+			[self.topPlacesTableViewController release];
 		}
-
--(BOOL) notifyRecentlyViewedPlaceWith:(int) index from:(id) sender
-{
-	return NO;
-}
-
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
 
 #pragma mark - View lifecycle
 
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
-}
-*/
-
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-*/
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-	return (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationLandscapeRight
-			|| interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
+	return (interfaceOrientation == UIInterfaceOrientationPortrait ||
+			interfaceOrientation == UIInterfaceOrientationLandscapeRight ||
+			interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
 }
 
 -(void) dealloc
 {
+	[_topPlacesTableViewController release];
+	[_mostRecentTableViewController release];
+	[_topPlacesNavigationViewController release];
+	[_favoritesNavigationViewController release];
 	[super dealloc];
 }
 @end

@@ -7,7 +7,7 @@
 //
 #import <SenTestingKit/SenTestingKit.h>
 #import <OCMock/OCMock.h>
-#import "AppDelegate.h"
+//#import "PlacesUnitTestsForAppDelegate.m"
 
 @interface Places_09Tests : SenTestCase
 {
@@ -28,6 +28,15 @@
 {
     [super tearDown];
 }
+
+- (void)testSimpleFail {
+    STAssertTrue(NO, nil);
+}
+//- (void)runTests
+//{
+//	PlacesUnitTestsForAppDelegate* appDelegateTests = [[PlacesUnitTestsForAppDelegate alloc] init];
+//	[appDelegateTests testAppDelegate];
+//}
 
 
 @end
