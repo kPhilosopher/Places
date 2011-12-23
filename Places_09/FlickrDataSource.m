@@ -42,8 +42,6 @@
 		self.flickrTopPlacesArray = (NSArray *) temporaryFlickrTopPlaces;
 }
 
-
-
 -(void) addToTheMostRecentListOfPlacesTheFollowing:(NSDictionary *)dictionaryToAddToMostRecentList;
 {
 	id elementOfPlaceId = [dictionaryToAddToMostRecentList objectForKey:@"place_id"];

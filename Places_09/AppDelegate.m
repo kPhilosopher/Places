@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate-Hidden.h"
+#import "SplitViewController.h"
 #if RUN_KIF_TESTS
 #import "PlacesKIFTestController.h"
 #endif
@@ -25,8 +26,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
 {
-	
-	
 	[self setupTheAppDelegateWindow];
 	[self initializeTabBarController];
 	[self setupForScrollableImageViewController];
@@ -63,20 +62,18 @@
 			UINavigationController *navcon = [[UINavigationController alloc] init];
 			[self setupSplitViewController:navcon];
 			[navcon pushViewController:self.scrollableImageVC animated:NO];
-//			[self.window addSubview:self.splitVC.view];
 			self.window.rootViewController = self.splitVC;
 			[navcon release];
 		}
 			- (void)setupSplitViewController:(UINavigationController*)navcon;
 			{
-				self.splitVC = [[[UISplitViewController alloc] init] autorelease];
+				self.splitVC = [[[SplitViewController alloc] init] autorelease];
 				self.splitVC.delegate = self.scrollableImageVC;
 				self.splitVC.viewControllers = 
 				[NSArray arrayWithObjects:self.tab_Bar_Controller, navcon, nil];
 			}
 		- (void)setupForiPhoneOriPod;
 		{
-//			[self.window addSubview:self.tab_Bar_Controller.view];
 			self.window.rootViewController = self.tab_Bar_Controller;
 		}
 	- (void)runKIFIfRunningIntegrationTest;

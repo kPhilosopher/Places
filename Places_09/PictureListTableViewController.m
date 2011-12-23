@@ -179,7 +179,8 @@
 	cell.detailTextLabel.text = @"";
 	cell.textLabel.text = @"";
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	RefinedElement *refinedElement = [[[self getTheElementSections] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+//	RefinedElement *refinedElement = [[[self getTheElementSections] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+	RefinedElement *refinedElement = [self getTheRefinedElementInTheElementSectionsWithThe:indexPath];
 	NSDictionary *cellDictionary = refinedElement.dictionary;
 	id temporaryTitleString = [cellDictionary objectForKey:@"title"];
 	id temporaryDescriptionDictionary = [cellDictionary objectForKey:@"description"];
@@ -216,17 +217,24 @@
 
 #pragma mark - Table view delegate
 
+- (BOOL)currentDeviceIsiPad_DetermineThatWith:(UIViewController *)imageController
+{
+	return imageController.view.window == nil;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	ScrollableImageViewController *imageController = [self.delegate retrieveScrollableImageViewControllerFor:self];
-	RefinedElement *refinedElement = [[[self getTheElementSections] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+	RefinedElement *refinedElement = [self getTheRefinedElementInTheElementSectionsWithThe:indexPath];
 	NSDictionary *dictionaryWithPictureInfo = refinedElement.dictionary;
 	UIImage *image = [UIImage imageWithData:[FlickrFetcher imageDataForPhotoWithFlickrInfo:dictionaryWithPictureInfo format:FlickrFetcherPhotoFormatLarge]];
-	if (imageController.view.window == nil) 
+	if ([self currentDeviceIsiPad_DetermineThatWith:imageController]) 
 		[self.navigationController pushViewController:imageController animated:YES];
 	[imageController initiateTheImageSetupWithGiven:image];
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
+
+
 
 @end

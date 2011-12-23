@@ -13,8 +13,8 @@
 @interface PlaceTableViewController : IndexedTableViewController
 {
 	@private
-	FlickrDataSource *flickrDataSource;
-	id <PictureListTableViewControllerDelegateProtocol> delegateToTransfer;
+	FlickrDataSource *_flickrDataSource;
+	id <PictureListTableViewControllerDelegateProtocol> _delegateToTransfer;
 }
 @property (retain) FlickrDataSource *flickrDataSource;
 @property (assign) id <PictureListTableViewControllerDelegateProtocol> delegateToTransfer;

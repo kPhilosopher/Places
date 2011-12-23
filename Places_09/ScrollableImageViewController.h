@@ -11,8 +11,8 @@
 @interface ScrollableImageViewController : UIViewController <UIScrollViewDelegate, UISplitViewControllerDelegate>
 {
 	@private
-	UIImage *image;
-	UIImageView *viewWithImage;
+	UIImage *_image;
+	UIImageView *_viewWithImage;
 }
 @property (retain) UIImageView *imageView;
 -(void) initiateTheImageSetupWithGiven:(UIImage *)givenImage;

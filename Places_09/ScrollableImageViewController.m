@@ -14,7 +14,8 @@
 @end
 
 @implementation ScrollableImageViewController
-@synthesize image, imageView;
+@synthesize image = _image;
+@synthesize imageView = _imageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -23,7 +24,6 @@
         // Custom initialization
     }
     return self;
-	
 }
 
 - (void)didReceiveMemoryWarning
@@ -136,31 +136,30 @@
 
 -(UIImage *) image
 {
-	if (!image) {
-		image = [[UIImage alloc] init];
+	if (!_image) {
+		_image = [[UIImage alloc] init];
 	}
-	return image;
+	return _image;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 	
 	[self loadView];
-//	[self viewDidLoad];
-    // Return YES for supported orientations
 	if ([self.view isKindOfClass:[UIScrollView class]])
 	{
 		UIScrollView *scrollView = (UIScrollView *)self.view;
 		[scrollView zoomToRect:[self getTheRectSizeThatWillUtilizeTheScreenSpace] animated:YES];
-		
 	}
-    return ((interfaceOrientation == UIInterfaceOrientationPortrait) || (interfaceOrientation == UIInterfaceOrientationLandscapeRight) || (interfaceOrientation == UIInterfaceOrientationLandscapeLeft));
-	
+    return ((interfaceOrientation == UIInterfaceOrientationPortrait) || 
+			(interfaceOrientation == UIInterfaceOrientationLandscapeRight) || 
+			(interfaceOrientation == UIInterfaceOrientationLandscapeLeft));
 }
+
 -(void)dealloc
 {
-	[image release];
-	[imageView release];
+	[_image release];
+	[_imageView release];
 	[super dealloc];
 }
 @end

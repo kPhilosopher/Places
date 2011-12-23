@@ -14,9 +14,8 @@
 // !!!: This class is designed to be subclassed
 
 @interface IndexedTableViewController : UITableViewController
-{
-	@private
-}
+
+- (RefinedElement *)getTheRefinedElementInTheElementSectionsWithThe:(NSIndexPath *)indexPath;
 
 // !!!: Must override these methods by subclassing to use this class.
 - (void)sortTheElementsInEach:(NSMutableArray *)sectionArray andAddTo:(NSMutableArray *)elementSections;

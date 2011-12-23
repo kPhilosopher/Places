@@ -11,6 +11,11 @@
 
 @implementation IndexedTableViewController
 
+- (RefinedElement *)getTheRefinedElementInTheElementSectionsWithThe:(NSIndexPath *)indexPath;
+{
+	return [(NSArray *)[[self getTheElementSections] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+}
+
 #pragma mark - Methods to be overridden
 
 - (void)sortTheElementsInEach:(NSMutableArray *)sectionArray andAddTo:(NSMutableArray *)elementSections;
@@ -81,16 +86,6 @@
 {
     [super viewDidLoad];
 	[self loadDataFromRawData];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
--(void)dealloc
-{
-	[super dealloc];
 }
 
 #pragma mark - Table view data source

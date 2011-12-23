@@ -103,13 +103,6 @@
 
 #pragma mark - View lifecycle
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-	return (interfaceOrientation == UIInterfaceOrientationPortrait ||
-			interfaceOrientation == UIInterfaceOrientationLandscapeRight ||
-			interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
-}
-
 -(void)dealloc
 {
 	[_topPlacesTableViewController release];
