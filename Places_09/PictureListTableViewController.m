@@ -8,11 +8,10 @@
 
 #import "PictureListTableViewController.h"
 
-#define NUMBER_OF_SECTIONS 1
-
-
 @implementation PictureListTableViewController
-@synthesize listOfPictures_theModel, delegate;
+@synthesize listOfPictures_theModel = _listOfPictures_theModel;
+@synthesize listOfPicturesIndexed_theModel = _listOfPicturesIndexed_theModel;
+@synthesize delegate;
 
 - (id)initWithStyle:(UITableViewStyle)style andWith:(NSArray *)pictureList
 {
@@ -20,7 +19,7 @@
     if (self) {
 		if (pictureList)
 		{
-			self.rawData = pictureList;
+			self.listOfPictures_theModel = pictureList;
 		}
     }
 	self.view.accessibilityLabel = @"pictureListTableView";
@@ -33,6 +32,23 @@
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
+}
+
+#pragma mark - Methods to override the IndexedTableViewController
+
+- (void)setTheElementSectionsToTheFollowing:(NSMutableArray *)array
+{
+	self.listOfPicturesIndexed_theModel = array;
+}
+
+- (NSMutableArray *)getTheElementSections
+{
+	return self.listOfPicturesIndexed_theModel;
+}
+
+- (NSArray *)getTheRawData
+{
+	return self.listOfPictures_theModel;
 }
 
 #pragma mark - View lifecycle
@@ -122,9 +138,9 @@
 //}
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if ([[self.theElementSections objectAtIndex:section] count] > 0)
+    if ([[[self getTheElementSections] objectAtIndex:section] count] > 0)
 	{
-		RefinedElement *refinedElement = [[self.theElementSections objectAtIndex:section] objectAtIndex:0];
+		RefinedElement *refinedElement = [[[self getTheElementSections] objectAtIndex:section] objectAtIndex:0];
 		if ([refinedElement.name intValue] == 0) {
 			return @"Right Now";
 		}
@@ -163,7 +179,7 @@
 	cell.detailTextLabel.text = @"";
 	cell.textLabel.text = @"";
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	RefinedElement *refinedElement = [[self.theElementSections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+	RefinedElement *refinedElement = [[[self getTheElementSections] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 	NSDictionary *cellDictionary = refinedElement.dictionary;
 	id temporaryTitleString = [cellDictionary objectForKey:@"title"];
 	id temporaryDescriptionDictionary = [cellDictionary objectForKey:@"description"];
@@ -204,9 +220,8 @@
 {
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	ScrollableImageViewController *imageController = [self.delegate retrieveScrollableImageViewControllerFor:self];
-	RefinedElement *refinedElement = [[self.theElementSections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+	RefinedElement *refinedElement = [[[self getTheElementSections] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 	NSDictionary *dictionaryWithPictureInfo = refinedElement.dictionary;
-//	UIImage *image = [UIImage imageWithData:[FlickrFetcher imageDataForPhotoWithFlickrInfo:[self.listOfPictures_theModel objectAtIndex:indexPath.row] format:FlickrFetcherPhotoFormatLarge]];
 	UIImage *image = [UIImage imageWithData:[FlickrFetcher imageDataForPhotoWithFlickrInfo:dictionaryWithPictureInfo format:FlickrFetcherPhotoFormatLarge]];
 	if (imageController.view.window == nil) 
 		[self.navigationController pushViewController:imageController animated:YES];

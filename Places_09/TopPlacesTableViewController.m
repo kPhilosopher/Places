@@ -8,27 +8,35 @@
 
 #import "TopPlacesTableViewController.h"
 
-#define NUMBER_OF_SECTIONS 1
-
 @implementation TopPlacesTableViewController
+@synthesize delegateToUpdateMostRecentPlaces = _delegateToUpdateMostRecentPlaces;
 
 - (id)initWithStyle:(UITableViewStyle)style andWith:(FlickrDataSource *)theFlickrDataSource
 {
     self = [super initWithStyle:style andWith:theFlickrDataSource];
     if (self) {
-		self.rawData = self.flickrDataSource.flickrTopPlacesArray;
+//		self.rawData = self.flickrDataSource.flickrTopPlacesArray;
 		self.title = @"Top Places";
 	}
 	self.view.accessibilityLabel = @"topPlacesTableView";
     return self;
 }
 
-- (void)didReceiveMemoryWarning
+#pragma mark - Methods to override the IndexedTableViewController
+
+- (void)setTheElementSectionsToTheFollowing:(NSMutableArray *)array
 {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
+	self.flickrDataSource.theElementSectionsForTopPlaces = array;
+}
+
+- (NSMutableArray *)getTheElementSections
+{
+	return self.flickrDataSource.theElementSectionsForTopPlaces;
+}
+
+- (NSArray *)getTheRawData
+{
+	return self.flickrDataSource.flickrTopPlacesArray;
 }
 
 #pragma mark - View lifecycle
@@ -116,9 +124,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	RefinedElementForPlaces * refinedElement = [(NSArray *)[self.theElementSections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+	RefinedElementForPlaces * refinedElement = [[(NSArray *)[self getTheElementSections] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 	NSDictionary *dictionaryToAddToMostRecentList = refinedElement.dictionary;
 	[self.flickrDataSource addToTheMostRecentListOfPlacesTheFollowing:dictionaryToAddToMostRecentList];
+	[self.delegateToUpdateMostRecentPlaces reIndexTheMostRecentTableViewData];
 	[super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 

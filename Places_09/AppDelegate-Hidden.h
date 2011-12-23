@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-@interface AppDelegate()
+@interface AppDelegate ()
 
 - (void)setupTheAppDelegateWindow;
 - (void)initializeTabBarController;
@@ -17,6 +17,6 @@
 - (BOOL)determineIfTheDeviceIsiPadOrNot;
 - (void)setupForiPad;
 - (void)setupForiPhoneOriPod;
-- (void)runKIF;
-- (void)setupSplitViewController:(UINavigationController*) navcon;
+- (void)runKIFIfRunningIntegrationTest;
+- (void)setupSplitViewController:(UINavigationController*)navcon;
 @end

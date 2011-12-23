@@ -16,7 +16,7 @@
 {
 	self = [super initWithStyle:style andWith:theFlickrDataSource];
     if (self) {
-		self.rawData = self.flickrDataSource.flickrMostRecentPlacesArray;
+//		self.rawData = self.flickrDataSource.flickrMostRecentPlacesArray;
 		self.title = @"Most Recent";
     }
 	self.view.accessibilityLabel = @"mostRecentTableView";
@@ -29,6 +29,23 @@
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
+}
+
+#pragma mark - Methods to override the IndexedTableViewController
+
+- (void)setTheElementSectionsToTheFollowing:(NSMutableArray *)array
+{
+	self.flickrDataSource.theElementSectionsForMostRecentPlaces = array;
+}
+
+- (NSMutableArray *)getTheElementSections
+{
+	return self.flickrDataSource.theElementSectionsForMostRecentPlaces;
+}
+
+- (NSArray *)getTheRawData
+{
+	return self.flickrDataSource.flickrMostRecentPlacesArray;
 }
 
 #pragma mark - View lifecycle
@@ -64,9 +81,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-	[super viewDidLoad];
-	[self.tableView reloadData];
-//	[self.tableView reloadSectionIndexTitles];
+//	[super viewDidLoad];
+//	[self.tableView reloadData];
     [super viewWillAppear:animated];
 }
 
@@ -94,13 +110,17 @@
     return YES;
 }
 
-
+- (void)reIndexTheMostRecentTableViewData
+{
+	[super viewDidLoad];
+	[self.tableView reloadData];
+}
 
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-		NSArray *array = [self.theElementSections objectAtIndex:indexPath.section];
+		NSArray *array = [[self getTheElementSections] objectAtIndex:indexPath.section];
 		RefinedElementForPlaces *refinedPlace = [array objectAtIndex:indexPath.row];
 		[self.flickrDataSource deleteFromMostRecentListThePlaceWithTheFollowing:refinedPlace.dictionary];
 		[super viewDidLoad];

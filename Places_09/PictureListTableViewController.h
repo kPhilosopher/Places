@@ -23,11 +23,13 @@
 @interface PictureListTableViewController : IndexedTableViewController
 {
 	@private
-	NSArray *listOfPictures_theModel;
+	NSArray *_listOfPictures_theModel;
+	NSMutableArray *_listOfPicturesIndexed_theModel;
 	id <PictureListTableViewControllerDelegateProtocol> delegate;
 }
 
 @property (retain) NSArray *listOfPictures_theModel;
+@property (retain) NSMutableArray *listOfPicturesIndexed_theModel;
 @property (retain) id <PictureListTableViewControllerDelegateProtocol> delegate;
 - (id)initWithStyle:(UITableViewStyle)style andWith:(NSArray *)pictureList;
 @end

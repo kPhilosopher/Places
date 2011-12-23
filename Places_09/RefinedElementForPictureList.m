@@ -15,14 +15,12 @@
 	NSDate *endDate = [NSDate date];
 	NSString *dateUpload = [rawElement objectForKey:@"dateupload"];
 	NSDate *startDate = [NSDate dateWithTimeIntervalSince1970:[dateUpload intValue]];
-	
-	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-	
+	NSCalendar *gregorian = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
 	NSUInteger unitFlags = NSHourCalendarUnit;
-	
 	NSDateComponents *components = [gregorian components:unitFlags
 												fromDate:startDate
-												  toDate:endDate options:0];
+												  toDate:endDate 
+												 options:0];
 	NSString *string = [NSString stringWithFormat:@"%d",[components hour]];
 	return string;
 }

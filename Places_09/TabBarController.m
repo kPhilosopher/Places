@@ -6,7 +6,7 @@
 //  Copyright (c) 2011 Rose-Hulman Institute of Technology. All rights reserved.
 //
 
-#include "TabBarController_Hidden.h"
+#include "TabBarController-Hidden.h"
 
 @interface TabBarController()
 
@@ -26,7 +26,7 @@
 
 #pragma mark -
 #pragma mark Initalization
-- (id) initWithDelegate:(id) delegate
+- (id)initWithDelegate:(id)delegate
 {
 	self.delegateToTransfer = delegate;
 	return [self init];
@@ -42,7 +42,7 @@
     return self;
 }
 #pragma mark Setup Methods
-	-(void) setup;
+	-(void)setup;
 	{
 		[self allocInitTheNavigationViewControllers];
 		[self setupTheCustomTableViewControllers];
@@ -50,14 +50,15 @@
 		[self addTheNavigationControllersToThisTabBarController];
 		[self releaseViewControllersThatArePushedIntoTheViewControllerHierarchy];
 	}
-		-(void) allocInitTheNavigationViewControllers;
+		-(void)allocInitTheNavigationViewControllers;
 		{
 			self.topPlacesNavigationViewController = [[[UINavigationController alloc] init] autorelease];
 			self.favoritesNavigationViewController = [[[UINavigationController alloc] init] autorelease];
 		}
-		-(void) setupTheCustomTableViewControllers;
+		-(void)setupTheCustomTableViewControllers;
 		{
 			[self allocInitThePlaceTableViewControllersWithTheSameFlickrDataSource];
+			self.topPlacesTableViewController.delegateToUpdateMostRecentPlaces = self.mostRecentTableViewController;
 			[self setDelegateToTransferForTableViewControllers];
 			[self pushViewControllersToNavigationViewControllers];
 		}
@@ -75,12 +76,12 @@
 				self.topPlacesTableViewController.delegateToTransfer = self.delegateToTransfer;
 				self.mostRecentTableViewController.delegateToTransfer = self.delegateToTransfer;
 			}
-			-(void) pushViewControllersToNavigationViewControllers;
+			-(void)pushViewControllersToNavigationViewControllers;
 			{
 				[self.topPlacesNavigationViewController pushViewController:self.topPlacesTableViewController animated:YES];
 				[self.favoritesNavigationViewController pushViewController:self.mostRecentTableViewController animated:YES];
 			}
-		-(void) setTabBarItemToSystemItems;
+		-(void)setTabBarItemToSystemItems;
 		{
 			self.topPlacesNavigationViewController.tabBarItem = 
 			[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemTopRated tag:1];
@@ -89,10 +90,10 @@
 		}
 		- (void)addTheNavigationControllersToThisTabBarController;
 		{
-			self.viewControllers = [NSArray arrayWithObjects: self.topPlacesNavigationViewController, 
-									self.favoritesNavigationViewController, nil];
+			self.viewControllers =
+			[NSArray arrayWithObjects: self.topPlacesNavigationViewController, self.favoritesNavigationViewController, nil];
 		}
-		-(void) releaseViewControllersThatArePushedIntoTheViewControllerHierarchy;
+		-(void)releaseViewControllersThatArePushedIntoTheViewControllerHierarchy;
 		{
 			[self.topPlacesNavigationViewController release];
 			[self.favoritesNavigationViewController release];
@@ -109,7 +110,7 @@
 			interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
 }
 
--(void) dealloc
+-(void)dealloc
 {
 	[_topPlacesTableViewController release];
 	[_mostRecentTableViewController release];

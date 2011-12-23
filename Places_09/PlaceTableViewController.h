@@ -19,4 +19,5 @@
 @property (retain) FlickrDataSource *flickrDataSource;
 @property (assign) id <PictureListTableViewControllerDelegateProtocol> delegateToTransfer;
 - (id)initWithStyle:(UITableViewStyle)style andWith:(FlickrDataSource *)theFlickrDataSource;
+
 @end

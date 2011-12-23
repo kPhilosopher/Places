@@ -6,7 +6,7 @@
 //  Copyright (c) 2011 Rose-Hulman Institute of Technology. All rights reserved.
 //
 
-#import "AppDelegate_Hidden.h"
+#import "AppDelegate-Hidden.h"
 #if RUN_KIF_TESTS
 #import "PlacesKIFTestController.h"
 #endif
@@ -25,12 +25,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
 {
+	
+	
 	[self setupTheAppDelegateWindow];
 	[self initializeTabBarController];
 	[self setupForScrollableImageViewController];
 	[self determineTheSetupSequenceForDifferingDevices];
 	[self.window makeKeyAndVisible];
-	[self runKIF];
+	[self runKIFIfRunningIntegrationTest];
     return YES;
 }
 	- (void)setupTheAppDelegateWindow;
@@ -61,20 +63,23 @@
 			UINavigationController *navcon = [[UINavigationController alloc] init];
 			[self setupSplitViewController:navcon];
 			[navcon pushViewController:self.scrollableImageVC animated:NO];
-			[self.window addSubview:self.splitVC.view];
+//			[self.window addSubview:self.splitVC.view];
+			self.window.rootViewController = self.splitVC;
 			[navcon release];
 		}
-			- (void)setupSplitViewController:(UINavigationController*) navcon;
+			- (void)setupSplitViewController:(UINavigationController*)navcon;
 			{
 				self.splitVC = [[[UISplitViewController alloc] init] autorelease];
 				self.splitVC.delegate = self.scrollableImageVC;
-				self.splitVC.viewControllers = [NSArray arrayWithObjects:self.tab_Bar_Controller, navcon, nil];
+				self.splitVC.viewControllers = 
+				[NSArray arrayWithObjects:self.tab_Bar_Controller, navcon, nil];
 			}
 		- (void)setupForiPhoneOriPod;
 		{
-			[self.window addSubview:self.tab_Bar_Controller.view];
+//			[self.window addSubview:self.tab_Bar_Controller.view];
+			self.window.rootViewController = self.tab_Bar_Controller;
 		}
-	- (void)runKIF
+	- (void)runKIFIfRunningIntegrationTest;
 	{
 		#if RUN_KIF_TESTS
 			[[PlacesKIFTestController sharedInstance] startTestingWithCompletionBlock:^{

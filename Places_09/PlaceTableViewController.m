@@ -53,23 +53,6 @@
 	}
 }
 
-
-
-//-(void)setTheSectionNumberForEach:(RefinedElement *)refinedElement
-//{
-//	NSInteger sectionNumber = [[UILocalizedIndexedCollation currentCollation] sectionForObject:refinedElement collationStringSelector:@selector(name)];
-//	refinedElement.sectionNumber = sectionNumber;
-//}
-//
-//-(void)convertThe:(NSDictionary *)rawElement IntoRefinedElementsAndAddTo:(NSMutableArray *)temporaryDataElements
-//{
-//	RefinedElementForPlaces *refinedElement = [[RefinedElementForPlaces alloc] init];
-//	refinedElement.name = [RefinedElementForPlaces extractNameFrom:rawElement];
-//	refinedElement.dictionary = rawElement;
-//	[temporaryDataElements addObject:refinedElement];
-//	[refinedElement release];
-//}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -128,7 +111,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if ([[self.theElementSections objectAtIndex:section] count] > 0) {
+    if ([[[self getTheElementSections] objectAtIndex:section] count] > 0) {
         return [[[UILocalizedIndexedCollation currentCollation] sectionTitles] objectAtIndex:section];
     }
     return nil;
@@ -149,11 +132,7 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	NSArray *sectionArray = [self.theElementSections objectAtIndex:indexPath.section];
-//	if (self.rawData == nil) {
-//		self.rawData = [NSArray array];
-//	}
-//  NSDictionary *dictionaryOfCell = [self.rawData objectAtIndex:indexPath.row];
+	NSArray *sectionArray = [[self getTheElementSections] objectAtIndex:indexPath.section];
 	RefinedElementForPlaces *refinedElement = (RefinedElementForPlaces *)[sectionArray objectAtIndex:indexPath.row];
 	NSDictionary *dictionaryOfCell = refinedElement.dictionary;
 	NSString *contentString = [dictionaryOfCell objectForKey:@"_content"];
@@ -214,7 +193,7 @@
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	
 	
-	RefinedElementForPlaces *refinedElement = [(NSArray *)[self.theElementSections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+	RefinedElementForPlaces *refinedElement = [(NSArray *)[[self getTheElementSections] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 	NSString *placeId = [refinedElement.dictionary objectForKey:@"place_id"];
 	PictureListTableViewController *pltvc = [[PictureListTableViewController alloc] initWithStyle:UITableViewStylePlain andWith:[self.flickrDataSource retrievePhotoListForSpecific:placeId]];
 	NSString *contentString = [refinedElement.dictionary objectForKey:@"_content"];

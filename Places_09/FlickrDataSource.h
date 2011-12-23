@@ -12,16 +12,20 @@
 @interface FlickrDataSource : NSObject
 {
 	@private
-	NSArray *flickrTopPlacesArray;
-    NSMutableArray *flickrMostRecentPlacesArray;
-	NSMutableSet *flickrMostRecentPlacesSet;
+	NSArray *_flickrTopPlacesArray;
+    NSMutableArray *_flickrMostRecentPlacesArray;
+	NSMutableArray *_theElementSectionsForTopPlaces;
+	NSMutableArray *_theElementSectionsForMostRecentPlaces;
+	NSMutableSet *_flickrMostRecentPlacesSet;
 }
 
 @property (nonatomic,retain) NSArray *flickrTopPlacesArray;
 @property (nonatomic,retain) NSMutableArray *flickrMostRecentPlacesArray;
+@property (nonatomic,retain) NSMutableArray *theElementSectionsForTopPlaces;
+@property (nonatomic,retain) NSMutableArray *theElementSectionsForMostRecentPlaces;
 
--(NSArray *) retrievePhotoListForSpecific:(NSString *)flickrPlaceId;
--(void) setThePropertyToTheTopPlacesFromFlickr;
--(void) addToTheMostRecentListOfPlacesTheFollowing:(NSDictionary *)dictionaryToAddToMostRecentList;
--(void) deleteFromMostRecentListThePlaceWithTheFollowing:(NSDictionary *)dictionaryToDelete;
+- (NSArray *)retrievePhotoListForSpecific:(NSString *)flickrPlaceId;
+- (void)addToTheMostRecentListOfPlacesTheFollowing:(NSDictionary *)dictionaryToAddToMostRecentList;
+- (void)deleteFromMostRecentListThePlaceWithTheFollowing:(NSDictionary *)dictionaryToDelete;
+
 @end

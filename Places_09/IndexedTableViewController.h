@@ -10,15 +10,19 @@
 #import "FlickrDataSource.h"
 #import "RefinedElementForPlaces.h"
 
+
+// !!!: This class is designed to be subclassed
+
 @interface IndexedTableViewController : UITableViewController
 {
 	@private
-	NSMutableArray *theElementSections;
-	NSArray *rawData;
 }
-@end
 
-@interface IndexedTableViewController()
-@property (retain) NSMutableArray *theElementSections;
-@property (nonatomic, retain) NSArray *rawData;
+// !!!: Must override these methods by subclassing to use this class.
+- (void)sortTheElementsInEach:(NSMutableArray *)sectionArray andAddTo:(NSMutableArray *)elementSections;
+- (void)setTheSectionNumberForAllTheElementsIn:(NSMutableArray *)temporaryDataElements;
+- (void)convertThe:(NSDictionary *)rawElement IntoRefinedElementsAndAddTo:(NSMutableArray *)temporaryDataElements;
+- (void)setTheElementSectionsToTheFollowing:(NSMutableArray *)array;
+- (NSMutableArray *)getTheElementSections;
+- (NSArray *)getTheRawData;
 @end
