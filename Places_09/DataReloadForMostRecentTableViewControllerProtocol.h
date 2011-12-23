@@ -10,6 +10,7 @@
 
 @protocol DataReloadForMostRecentTableViewControllerProtocol <NSObject>
 
+
 - (void)reIndexTheMostRecentTableViewData;
 
 @end
