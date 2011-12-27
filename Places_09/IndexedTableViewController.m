@@ -8,30 +8,30 @@
 
 #import "IndexedTableViewController.h"
 
-
 @implementation IndexedTableViewController
+@synthesize dataIndexer = _dataIndexer;
 
+#pragma mark - Initialization
+
+- (id)initWithStyle:(UITableViewStyle)style
+{
+	self = [super initWithStyle:style];
+	if (self) 
+	{
+		self.dataIndexer = [[[DataIndexer alloc] init] autorelease];
+	}
+	return self;
+}
+
+#pragma mark - Convenience method
+
+//TODO: see if I can change the location of this method.
 - (RefinedElement *)getTheRefinedElementInTheElementSectionsWithThe:(NSIndexPath *)indexPath;
 {
 	return [(NSArray *)[[self getTheElementSections] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 }
 
 #pragma mark - Methods to be overridden
-
-- (void)sortTheElementsInEach:(NSMutableArray *)sectionArray andAddTo:(NSMutableArray *)elementSections;
-{
-	return;
-}
-
-- (void)setTheSectionNumberForAllTheElementsIn:(NSMutableArray *)temporaryDataElements;
-{
-	return;
-}
-
-- (void)convertThe:(NSDictionary *)rawElement IntoRefinedElementsAndAddTo:(NSMutableArray *)temporaryDataElements;
-{
-	return;
-}
 
 - (void)setTheElementSectionsToTheFollowing:(NSMutableArray *)array;
 {
@@ -50,42 +50,16 @@
 
 #pragma mark - View lifecycle
 
--(void) loadDataFromRawData
-{
-	[self setTheElementSectionsToTheFollowing:[[NSMutableArray alloc] init]];
-	
-	NSMutableArray *temporaryDataElements;
-	if ([self getTheRawData]) {
-		temporaryDataElements = [[NSMutableArray alloc] initWithCapacity:1];
-		for (NSDictionary *rawElement in [self getTheRawData]) 
-		{
-			[self convertThe:rawElement IntoRefinedElementsAndAddTo:temporaryDataElements];
-		}
-	}
-	else
-		return;
-	[self setTheSectionNumberForAllTheElementsIn:temporaryDataElements];
-	
-	NSInteger highSection = [[[UILocalizedIndexedCollation currentCollation] sectionTitles] count];
-	NSMutableArray *sectionArrays = [[NSMutableArray alloc]initWithCapacity:highSection];
-	
-	for (int i = 0 ; i < highSection ; i++) 
-	{
-		NSMutableArray *sectionArray = [[NSMutableArray alloc] initWithCapacity:1];
-		[sectionArrays addObject:sectionArray];
-	}
-	
-	for (RefinedElement *element in temporaryDataElements) 
-		[(NSMutableArray *)[sectionArrays objectAtIndex:element.sectionNumber] addObject:element];
-	
-	for (NSMutableArray *sectionArray in sectionArrays) 
-		[self sortTheElementsInEach:sectionArray andAddTo:[self getTheElementSections]];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	[self loadDataFromRawData];
+	[self setTheElementSectionsToTheFollowing:[self.dataIndexer returnTheIndexedSectionsOfTheGiven:[self getTheRawData]]];
+}
+
+- (void)dealloc
+{
+	[_dataIndexer release];
+	[super dealloc];
 }
 
 #pragma mark - Table view data source

@@ -6,7 +6,8 @@
 //  Copyright (c) 2011 Rose-Hulman Institute of Technology. All rights reserved.
 //
 
-#import "PlaceTableViewController.h"
+//#import "PlaceTableViewController.h"
+#import "PlaceTableViewController-Hidden.h"
 
 #define NUMBER_OF_SECTIONS 1
 
@@ -18,39 +19,13 @@
 {
     self = [super initWithStyle:style];
     if (self) {
+		self.dataIndexer = [[[PlacesDataIndexer alloc] init] autorelease];
 		self.flickrDataSource = theFlickrDataSource;
 	}
     return self;
 }
 
 #pragma mark - View lifecycle
-- (void)sortTheElementsInEach:(NSMutableArray *)sectionArray andAddTo:(NSMutableArray *)elementSections
-{
-	NSArray *sortedSection = [[UILocalizedIndexedCollation currentCollation] sortedArrayFromArray:sectionArray collationStringSelector:@selector(name)];
-	[elementSections addObject:sortedSection];
-}
-
-- (void)convertThe:(NSDictionary *)rawElement IntoRefinedElementsAndAddTo:(NSMutableArray *)temporaryDataElements
-{
-	RefinedElementForPlaces	*refinedElement = [[RefinedElementForPlaces alloc] init];
-	refinedElement.name = [RefinedElementForPlaces extractNameFrom:rawElement];
-	refinedElement.dictionary = rawElement;
-	[temporaryDataElements addObject:refinedElement];
-	[refinedElement release];
-}
-
-- (void)setTheSectionNumberForEach:(RefinedElement *)refinedElement
-{
-	NSInteger sectionNumber = [[UILocalizedIndexedCollation currentCollation] sectionForObject:refinedElement collationStringSelector:@selector(name)];
-	refinedElement.sectionNumber = sectionNumber;
-}
-
-- (void)setTheSectionNumberForAllTheElementsIn:(NSMutableArray *)temporaryDataElements
-{
-	for (RefinedElement *refinedElement in temporaryDataElements) {
-		[self setTheSectionNumberForEach:refinedElement];
-	}
-}
 
 - (void)dealloc
 {
@@ -66,9 +41,8 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if ([[[self getTheElementSections] objectAtIndex:section] count] > 0) {
+    if ([[[self getTheElementSections] objectAtIndex:section] count] > 0)
         return [[[UILocalizedIndexedCollation currentCollation] sectionTitles] objectAtIndex:section];
-    }
     return nil;
 }
 
@@ -89,19 +63,15 @@
 	
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	
-//	NSArray *sectionArray = [[self getTheElementSections] objectAtIndex:indexPath.section];
-//	RefinedElementForPlaces *refinedElement = (RefinedElementForPlaces *)[sectionArray objectAtIndex:indexPath.row];
-//	RefinedElementForPlaces *refinedElement = [(NSArray *)[[self getTheElementSections] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 	RefinedElement *refinedElement = [self getTheRefinedElementInTheElementSectionsWithThe:indexPath];
 	
 	NSString *contentString = [refinedElement.dictionary objectForKey:@"_content"];
-	NSArray *arrayOfContentString = [contentString componentsSeparatedByString:@","];
-	NSString *titleString = [arrayOfContentString objectAtIndex:0];
-	cell.textLabel.text = [titleString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+	cell.textLabel.text = [contentString extractTheFirstStringWithCommaDelimeter];
 	
-	if ([arrayOfContentString count] > 1)
+	if ([contentString enumerateStringToFindExistanceOfCharacterOfSet:[self characterSetWithOnlyComma]])
 	{
-		NSString *subTitle = [contentString substringFromIndex:titleString.length +1];
+		int startingIndexOfSubTitle = [contentString rangeOfCharacterFromSet:[self characterSetWithOnlyComma]].location + 1;
+		NSString *subTitle = [contentString substringFromIndex:startingIndexOfSubTitle +1];
 		cell.detailTextLabel.text = [subTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 	}
 	return cell;
@@ -114,21 +84,25 @@
 {
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	
-//	RefinedElementForPlaces *refinedElement = [(NSArray *)[[self getTheElementSections] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 	RefinedElement *refinedElement = [self getTheRefinedElementInTheElementSectionsWithThe:indexPath];
 	NSString *placeId = [refinedElement.dictionary objectForKey:@"place_id"];
 	PictureListTableViewController *pltvc = [[PictureListTableViewController alloc] initWithStyle:UITableViewStylePlain andWith:[self.flickrDataSource retrievePhotoListForSpecific:placeId]];
 	pltvc.delegate = self.delegateToTransfer;
 	
 	NSString *contentString = [refinedElement.dictionary objectForKey:@"_content"];
-	NSArray *arrayOfContentString = [contentString componentsSeparatedByString:@","];
-	NSString *titleString = [arrayOfContentString objectAtIndex:0];
-	pltvc.title = [titleString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+	pltvc.title = [contentString extractTheFirstStringWithCommaDelimeter];
 	
 	[self.navigationController pushViewController:pltvc animated:YES];
 	[pltvc release];
 	
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}
+
+#pragma mark - Helper
+
+- (NSCharacterSet *)characterSetWithOnlyComma;
+{
+	return [NSCharacterSet characterSetWithCharactersInString:@","];
 }
 
 @end

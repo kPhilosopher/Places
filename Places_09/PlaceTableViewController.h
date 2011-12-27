@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "PictureListTableViewController.h"
 #import "IndexedTableViewController.h"
+#import "PlacesDataIndexer.h"
+#import "NSString+TitleExtractor.h"
 
 @interface PlaceTableViewController : IndexedTableViewController
 {

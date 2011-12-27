@@ -12,10 +12,7 @@
 
 +(NSString *)extractNameFrom:(NSDictionary *)rawElement
 {
-	NSString *contentString = [rawElement objectForKey:@"_content"];
-	NSArray *arrayOfContentString = [contentString componentsSeparatedByString:@","];
-	NSString *titleString = [arrayOfContentString objectAtIndex:0];
-	return [titleString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+	return [[rawElement objectForKey:@"_content"] extractTheFirstStringWithCommaDelimeter];
 }
 
 -(void)dealloc

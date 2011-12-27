@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "RefinedElement.h"
+#import "NSString+TitleExtractor.h"
+
 @interface RefinedElementForPlaces : RefinedElement
 
 @end

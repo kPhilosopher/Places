@@ -11,9 +11,9 @@
 @interface RefinedElement : NSObject
 {
 @private
-	NSDictionary *dictionary;
-	NSInteger sectionNumber;
-	NSString *name;
+	NSDictionary *_dictionary;
+	NSInteger _sectionNumber;
+	NSString *_name;
 }
 @property (retain) NSDictionary *dictionary;
 @property NSInteger sectionNumber;

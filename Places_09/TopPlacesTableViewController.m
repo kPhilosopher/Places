@@ -14,10 +14,11 @@
 - (id)initWithStyle:(UITableViewStyle)style andWith:(FlickrDataSource *)theFlickrDataSource
 {
     self = [super initWithStyle:style andWith:theFlickrDataSource];
-    if (self) {
+    if (self) 
+	{
 		self.title = @"Top Places";
+		self.view.accessibilityLabel = @"topPlacesTableView";
 	}
-	self.view.accessibilityLabel = @"topPlacesTableView";
     return self;
 }
 

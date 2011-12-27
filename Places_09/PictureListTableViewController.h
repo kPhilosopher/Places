@@ -10,7 +10,7 @@
 #import "ScrollableImageViewController.h"
 #import "FlickrFetcher.h"
 #import "IndexedTableViewController.h"
-#import "RefinedElementForPictureList.h"
+#import "PictureListDataIndexer.h"
 
 @class PictureListTableViewController;
 
@@ -25,7 +25,7 @@
 	@private
 	NSArray *_listOfPictures_theModel;
 	NSMutableArray *_listOfPicturesIndexed_theModel;
-	id <PictureListTableViewControllerDelegateProtocol> delegate;
+	id <PictureListTableViewControllerDelegateProtocol> _delegate;
 }
 
 @property (retain) NSArray *listOfPictures_theModel;

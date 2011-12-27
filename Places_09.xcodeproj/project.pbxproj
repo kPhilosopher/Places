@@ -64,6 +64,18 @@
 		CEB4C2C41488C4AC00DDF51F /* PlaceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB4C2C31488C4AC00DDF51F /* PlaceTableViewController.m */; };
 		CEB4C2C51488C4AC00DDF51F /* PlaceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB4C2C31488C4AC00DDF51F /* PlaceTableViewController.m */; };
 		CECD2C9614A1A16100301E45 /* FlickrDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CECD2C9514A1A16100301E45 /* FlickrDataSourceTests.m */; };
+		CED1648D14A973EB008EAF72 /* DataIndexer.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1648C14A973EB008EAF72 /* DataIndexer.m */; };
+		CED1648E14A973EB008EAF72 /* DataIndexer.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1648C14A973EB008EAF72 /* DataIndexer.m */; };
+		CED1648F14A973EB008EAF72 /* DataIndexer.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1648C14A973EB008EAF72 /* DataIndexer.m */; };
+		CED1649914A97CCD008EAF72 /* PlacesDataIndexer.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1649814A97CCD008EAF72 /* PlacesDataIndexer.m */; };
+		CED1649A14A97CCD008EAF72 /* PlacesDataIndexer.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1649814A97CCD008EAF72 /* PlacesDataIndexer.m */; };
+		CED1649B14A97CCD008EAF72 /* PlacesDataIndexer.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1649814A97CCD008EAF72 /* PlacesDataIndexer.m */; };
+		CED164A914A99A8A008EAF72 /* PictureListDataIndexer.m in Sources */ = {isa = PBXBuildFile; fileRef = CED164A814A99A8A008EAF72 /* PictureListDataIndexer.m */; };
+		CED164AA14A99A8A008EAF72 /* PictureListDataIndexer.m in Sources */ = {isa = PBXBuildFile; fileRef = CED164A814A99A8A008EAF72 /* PictureListDataIndexer.m */; };
+		CED164AB14A99A8A008EAF72 /* PictureListDataIndexer.m in Sources */ = {isa = PBXBuildFile; fileRef = CED164A814A99A8A008EAF72 /* PictureListDataIndexer.m */; };
+		CED164B414A9A356008EAF72 /* NSString+TitleExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = CED164B314A9A356008EAF72 /* NSString+TitleExtractor.m */; };
+		CED164B514A9A356008EAF72 /* NSString+TitleExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = CED164B314A9A356008EAF72 /* NSString+TitleExtractor.m */; };
+		CED164B614A9A356008EAF72 /* NSString+TitleExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = CED164B314A9A356008EAF72 /* NSString+TitleExtractor.m */; };
 		CEF3ADB6149C4E2800D53424 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF3ADB5149C4E2800D53424 /* libOCMock.a */; };
 		CEF3ADB7149C4E2800D53424 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF3ADB5149C4E2800D53424 /* libOCMock.a */; };
 		CEF3ADCA149C4FC600D53424 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098971477382A0067AAC2 /* main.m */; };
@@ -182,6 +194,15 @@
 		CECD2C9414A1A16100301E45 /* FlickrDataSourceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrDataSourceTests.h; sourceTree = "<group>"; };
 		CECD2C9514A1A16100301E45 /* FlickrDataSourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrDataSourceTests.m; sourceTree = "<group>"; };
 		CECD2C9714A1AF1700301E45 /* FlickrDataSource-Hidden.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FlickrDataSource-Hidden.h"; sourceTree = "<group>"; };
+		CED1648B14A973EB008EAF72 /* DataIndexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataIndexer.h; sourceTree = "<group>"; };
+		CED1648C14A973EB008EAF72 /* DataIndexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataIndexer.m; sourceTree = "<group>"; };
+		CED1649714A97CCD008EAF72 /* PlacesDataIndexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesDataIndexer.h; sourceTree = "<group>"; };
+		CED1649814A97CCD008EAF72 /* PlacesDataIndexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesDataIndexer.m; sourceTree = "<group>"; };
+		CED164A714A99A8A008EAF72 /* PictureListDataIndexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureListDataIndexer.h; sourceTree = "<group>"; };
+		CED164A814A99A8A008EAF72 /* PictureListDataIndexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureListDataIndexer.m; sourceTree = "<group>"; };
+		CED164B214A9A356008EAF72 /* NSString+TitleExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TitleExtractor.h"; sourceTree = "<group>"; };
+		CED164B314A9A356008EAF72 /* NSString+TitleExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TitleExtractor.m"; sourceTree = "<group>"; };
+		CED164B714A9AEAC008EAF72 /* PlaceTableViewController-Hidden.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PlaceTableViewController-Hidden.h"; sourceTree = "<group>"; };
 		CEF3ADB5149C4E2800D53424 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
 		CEF3ADB9149C4E3000D53424 /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
 		CEF3ADBA149C4E3000D53424 /* OCMArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
@@ -247,11 +268,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CE22D30A14897F5700E5973F /* IndexedTableView */ = {
+		CE22D30A14897F5700E5973F /* IndexedTableMVC */ = {
 			isa = PBXGroup;
 			children = (
 				CE22D30C14897F8000E5973F /* IndexedTableViewController.h */,
 				CE22D30D14897F8000E5973F /* IndexedTableViewController.m */,
+				CED1648B14A973EB008EAF72 /* DataIndexer.h */,
+				CED1648C14A973EB008EAF72 /* DataIndexer.m */,
 				CE6FB26D148993F900DA2A1D /* RefinedElement.h */,
 				CE6FB26E148993F900DA2A1D /* RefinedElement.m */,
 				CE6FB268148993C600DA2A1D /* RefinedElementForPlaces.h */,
@@ -259,25 +282,27 @@
 				CE6FB262148993B400DA2A1D /* RefinedElementForPictureList.h */,
 				CE6FB263148993B400DA2A1D /* RefinedElementForPictureList.m */,
 			);
-			name = IndexedTableView;
+			name = IndexedTableMVC;
 			sourceTree = "<group>";
 		};
-		CE50C14514A48C6600D2E083 /* iPad */ = {
+		CE50C14514A48C6600D2E083 /* iPadMVC */ = {
 			isa = PBXGroup;
 			children = (
 				CE50C14014A48C5B00D2E083 /* SplitViewController.h */,
 				CE50C14114A48C5B00D2E083 /* SplitViewController.m */,
 			);
-			name = iPad;
+			name = iPadMVC;
 			sourceTree = "<group>";
 		};
-		CE553797147B53CB00C20686 /* SecondTables */ = {
+		CE553797147B53CB00C20686 /* PictureListTableMVC */ = {
 			isa = PBXGroup;
 			children = (
 				CE553791147B53C100C20686 /* PictureListTableViewController.h */,
 				CE553792147B53C100C20686 /* PictureListTableViewController.m */,
+				CED164A714A99A8A008EAF72 /* PictureListDataIndexer.h */,
+				CED164A814A99A8A008EAF72 /* PictureListDataIndexer.m */,
 			);
-			name = SecondTables;
+			name = PictureListTableMVC;
 			sourceTree = "<group>";
 		};
 		CE80987C147738290067AAC2 = {
@@ -320,17 +345,14 @@
 		CE809891147738290067AAC2 /* Places_09 */ = {
 			isa = PBXGroup;
 			children = (
-				CECD2C8314A1411400301E45 /* AppDelegate.h */,
-				CE5534AA14A1D0DF00068207 /* AppDelegate-Hidden.h */,
-				CE80989B1477382A0067AAC2 /* AppDelegate.m */,
-				CE8098D1147739E80067AAC2 /* TabBarController.h */,
-				CE5FE1F314A07A0A00BB682C /* TabBarController-Hidden.h */,
-				CE8098D2147739E80067AAC2 /* TabBarController.m */,
-				CE50C14514A48C6600D2E083 /* iPad */,
-				CE22D30A14897F5700E5973F /* IndexedTableView */,
-				CE8098ED147739EE0067AAC2 /* FirstTables */,
-				CE553797147B53CB00C20686 /* SecondTables */,
-				CE8098EF14773B720067AAC2 /* Images */,
+				CED164AC14A9A294008EAF72 /* Title Extractors */,
+				CED1649014A974AB008EAF72 /* AppDelegate */,
+				CED1649114A974B9008EAF72 /* TabBarController */,
+				CE50C14514A48C6600D2E083 /* iPadMVC */,
+				CE22D30A14897F5700E5973F /* IndexedTableMVC */,
+				CE8098ED147739EE0067AAC2 /* PlacesTableMVC */,
+				CE553797147B53CB00C20686 /* PictureListTableMVC */,
+				CE8098EF14773B720067AAC2 /* ImagesMVC */,
 				CE8098EE14773A2A0067AAC2 /* Flickr */,
 				CE809892147738290067AAC2 /* Supporting Files */,
 			);
@@ -387,11 +409,14 @@
 			path = JSON;
 			sourceTree = "<group>";
 		};
-		CE8098ED147739EE0067AAC2 /* FirstTables */ = {
+		CE8098ED147739EE0067AAC2 /* PlacesTableMVC */ = {
 			isa = PBXGroup;
 			children = (
 				CEB4C2C21488C4AC00DDF51F /* PlaceTableViewController.h */,
+				CED164B714A9AEAC008EAF72 /* PlaceTableViewController-Hidden.h */,
 				CEB4C2C31488C4AC00DDF51F /* PlaceTableViewController.m */,
+				CED1649714A97CCD008EAF72 /* PlacesDataIndexer.h */,
+				CED1649814A97CCD008EAF72 /* PlacesDataIndexer.m */,
 				CE50C13F14A40E7C00D2E083 /* DataReloadForMostRecentTableViewControllerProtocol.h */,
 				CE5FE1EE14A0759200BB682C /* TopPlacesTableViewController.h */,
 				CE5FE1EF14A0759200BB682C /* TopPlacesTableViewController.m */,
@@ -401,7 +426,7 @@
 				CECD2C9714A1AF1700301E45 /* FlickrDataSource-Hidden.h */,
 				CE8098BE147739E80067AAC2 /* FlickrDataSource.m */,
 			);
-			name = FirstTables;
+			name = PlacesTableMVC;
 			sourceTree = "<group>";
 		};
 		CE8098EE14773A2A0067AAC2 /* Flickr */ = {
@@ -415,13 +440,13 @@
 			name = Flickr;
 			sourceTree = "<group>";
 		};
-		CE8098EF14773B720067AAC2 /* Images */ = {
+		CE8098EF14773B720067AAC2 /* ImagesMVC */ = {
 			isa = PBXGroup;
 			children = (
 				CE8098CF147739E80067AAC2 /* ScrollableImageViewController.h */,
 				CE8098D0147739E80067AAC2 /* ScrollableImageViewController.m */,
 			);
-			name = Images;
+			name = ImagesMVC;
 			sourceTree = "<group>";
 		};
 		CE8098F914773EE60067AAC2 /* Places_09ApplicationTests */ = {
@@ -444,6 +469,35 @@
 				CE80990214773EE60067AAC2 /* Places_09ApplicationTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CED1649014A974AB008EAF72 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				CECD2C8314A1411400301E45 /* AppDelegate.h */,
+				CE5534AA14A1D0DF00068207 /* AppDelegate-Hidden.h */,
+				CE80989B1477382A0067AAC2 /* AppDelegate.m */,
+			);
+			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		CED1649114A974B9008EAF72 /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				CE8098D1147739E80067AAC2 /* TabBarController.h */,
+				CE5FE1F314A07A0A00BB682C /* TabBarController-Hidden.h */,
+				CE8098D2147739E80067AAC2 /* TabBarController.m */,
+			);
+			name = TabBarController;
+			sourceTree = "<group>";
+		};
+		CED164AC14A9A294008EAF72 /* Title Extractors */ = {
+			isa = PBXGroup;
+			children = (
+				CED164B214A9A356008EAF72 /* NSString+TitleExtractor.h */,
+				CED164B314A9A356008EAF72 /* NSString+TitleExtractor.m */,
+			);
+			name = "Title Extractors";
 			sourceTree = "<group>";
 		};
 		CEF3ADB4149C4BB600D53424 /* Libraries */ = {
@@ -699,6 +753,10 @@
 				CE6FB26F148993F900DA2A1D /* RefinedElement.m in Sources */,
 				CE5FE1F014A0759200BB682C /* TopPlacesTableViewController.m in Sources */,
 				CE50C14214A48C5C00D2E083 /* SplitViewController.m in Sources */,
+				CED1648D14A973EB008EAF72 /* DataIndexer.m in Sources */,
+				CED1649914A97CCD008EAF72 /* PlacesDataIndexer.m in Sources */,
+				CED164A914A99A8A008EAF72 /* PictureListDataIndexer.m in Sources */,
+				CED164B414A9A356008EAF72 /* NSString+TitleExtractor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -727,6 +785,10 @@
 				CE5FE1F114A0759200BB682C /* TopPlacesTableViewController.m in Sources */,
 				CECD2C9614A1A16100301E45 /* FlickrDataSourceTests.m in Sources */,
 				CE50C14314A48C5C00D2E083 /* SplitViewController.m in Sources */,
+				CED1648E14A973EB008EAF72 /* DataIndexer.m in Sources */,
+				CED1649A14A97CCD008EAF72 /* PlacesDataIndexer.m in Sources */,
+				CED164AA14A99A8A008EAF72 /* PictureListDataIndexer.m in Sources */,
+				CED164B514A9A356008EAF72 /* NSString+TitleExtractor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -767,6 +829,10 @@
 				CEF3AE00149C521400D53424 /* KIFTestStep+PlacesAdditions.m in Sources */,
 				CE5FE1F214A0759200BB682C /* TopPlacesTableViewController.m in Sources */,
 				CE50C14414A48C5C00D2E083 /* SplitViewController.m in Sources */,
+				CED1648F14A973EB008EAF72 /* DataIndexer.m in Sources */,
+				CED1649B14A97CCD008EAF72 /* PlacesDataIndexer.m in Sources */,
+				CED164AB14A99A8A008EAF72 /* PictureListDataIndexer.m in Sources */,
+				CED164B614A9A356008EAF72 /* NSString+TitleExtractor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,7 +11,7 @@
 @implementation PictureListTableViewController
 @synthesize listOfPictures_theModel = _listOfPictures_theModel;
 @synthesize listOfPicturesIndexed_theModel = _listOfPicturesIndexed_theModel;
-@synthesize delegate;
+@synthesize delegate = _delegate;
 
 - (id)initWithStyle:(UITableViewStyle)style andWith:(NSArray *)pictureList
 {
@@ -19,19 +19,12 @@
     if (self) {
 		if (pictureList)
 		{
+			self.dataIndexer = [[[PictureListDataIndexer alloc] init] autorelease];
 			self.listOfPictures_theModel = pictureList;
 		}
     }
 	self.view.accessibilityLabel = @"pictureListTableView";
     return self;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
 }
 
 #pragma mark - Methods to override the IndexedTableViewController
@@ -53,81 +46,11 @@
 
 #pragma mark - View lifecycle
 
--(void)sortTheElementsInEach:(NSMutableArray *)sectionArray andAddTo:(NSMutableArray *)elementSections
+- (void)dealloc
 {
-	[elementSections addObject:sectionArray];
-}
-
--(void)convertThe:(NSDictionary *)rawElement IntoRefinedElementsAndAddTo:(NSMutableArray *)temporaryDataElements
-{
-	RefinedElementForPictureList *refinedElement = [[RefinedElementForPictureList alloc] init];
-	refinedElement.name = [RefinedElementForPictureList extractNameFrom:rawElement];
-	refinedElement.dictionary = rawElement;
-	[temporaryDataElements addObject:refinedElement];
-	[refinedElement release];
-}
-
--(void)setTheSectionNumberForEach:(RefinedElement *)refinedElement
-{
-//	NSInteger sectionNumber = [[UILocalizedIndexedCollation currentCollation] sectionForObject:refinedElement collationStringSelector:@selector(name)];
-//	refinedElement.sectionNumber = sectionNumber;
-}
-
--(void)setTheSectionNumberForAllTheElementsIn:(NSMutableArray *)temporaryDataElements
-{
-	RefinedElement *previousRefinedElement;
-	for (RefinedElement *refinedElement in temporaryDataElements) {
-		if (previousRefinedElement == nil) {
-			refinedElement.sectionNumber = 0;
-		}
-		else if([previousRefinedElement.name intValue] < [refinedElement.name intValue])
-		{
-			refinedElement.sectionNumber = previousRefinedElement.sectionNumber+1;
-		}
-		else
-		{
-			refinedElement.sectionNumber = previousRefinedElement.sectionNumber;
-		}
-		previousRefinedElement = refinedElement;
-	}
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
+	[_listOfPictures_theModel release];
+	[_listOfPicturesIndexed_theModel release];
+	[super dealloc];
 }
 
 #pragma mark - Table view data source
@@ -147,25 +70,6 @@
         return [refinedElement.name stringByAppendingString:@" Hour(s) Ago"];
     }
     return nil;
-}
-
-//- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
-//{
-//    return [[UILocalizedIndexedCollation currentCollation] sectionForSectionIndexTitleAtIndex:index];
-//}
-
-
--(void) bunchOfTests
-{
-//	NSLog( [self.listOfPictures_theModel description]);
-//	NSDictionary *dictionary = [self.listOfPictures_theModel objectAtIndex:0];
-//	NSLog([dictionary objectForKey:@"dateupload"]);
-//	NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:1], @"key1", [NSNumber numberWithInt:2], @"key2", nil];
-//	id key2stuff = [dictionary objectForKey:@"key2"];
-//	id key3stuff = [dictionary objectForKey:@"key3"];
-//	id key1stuff = [dictionary objectForKey:@"key1"];
-//	if (!key3stuff) {
-//		NSLog(@"works the way i want it");
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -209,7 +113,8 @@
 	}
 
 	cell.textLabel.text = [titleString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-	if (!([subTitleString length] == 0)) {
+	if (!([subTitleString length] == 0))
+	{
 		cell.detailTextLabel.text = [subTitleString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 	}
 	return cell;
@@ -225,13 +130,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-	ScrollableImageViewController *imageController = [self.delegate retrieveScrollableImageViewControllerFor:self];
+	
 	RefinedElement *refinedElement = [self getTheRefinedElementInTheElementSectionsWithThe:indexPath];
-	NSDictionary *dictionaryWithPictureInfo = refinedElement.dictionary;
-	UIImage *image = [UIImage imageWithData:[FlickrFetcher imageDataForPhotoWithFlickrInfo:dictionaryWithPictureInfo format:FlickrFetcherPhotoFormatLarge]];
+	UIImage *image = [UIImage imageWithData:[FlickrFetcher imageDataForPhotoWithFlickrInfo:refinedElement.dictionary format:FlickrFetcherPhotoFormatLarge]];
+	
+	ScrollableImageViewController *imageController = [self.delegate retrieveScrollableImageViewControllerFor:self];
 	if ([self currentDeviceIsiPad_DetermineThatWith:imageController]) 
 		[self.navigationController pushViewController:imageController animated:YES];
 	[imageController initiateTheImageSetupWithGiven:image];
+	
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 

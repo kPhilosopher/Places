@@ -9,12 +9,14 @@
 #import "RefinedElement.h"
 
 @implementation RefinedElement
-@synthesize dictionary, sectionNumber, name;
+@synthesize dictionary = _dictionary;
+@synthesize sectionNumber = _sectionNumber;
+@synthesize name = _name;
 
 -(void)dealloc
 {
-	[name release];
-	[dictionary release];
+	[_name release];
+	[_dictionary release];
 	[super dealloc];
 }
 
