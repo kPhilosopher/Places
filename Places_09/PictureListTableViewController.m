@@ -54,12 +54,7 @@
 }
 
 #pragma mark - Table view data source
-
-//- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
-//{
-//	return [[UILocalizedIndexedCollation currentCollation] sectionIndexTitles];
-//}
-
+//TODO: refactor this method.
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if ([[[self getTheElementSections] objectAtIndex:section] count] > 0)
 	{
@@ -72,6 +67,7 @@
     return nil;
 }
 
+//TODO: refactor this method.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
@@ -83,7 +79,6 @@
 	cell.detailTextLabel.text = @"";
 	cell.textLabel.text = @"";
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//	RefinedElement *refinedElement = [[[self getTheElementSections] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 	RefinedElement *refinedElement = [self getTheRefinedElementInTheElementSectionsWithThe:indexPath];
 	NSDictionary *cellDictionary = refinedElement.dictionary;
 	id temporaryTitleString = [cellDictionary objectForKey:@"title"];
@@ -127,6 +122,7 @@
 	return imageController.view.window == nil;
 }
 
+//TODO: refactor this method.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;

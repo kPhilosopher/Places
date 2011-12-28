@@ -23,13 +23,13 @@
 	return self;
 }
 
-#pragma mark - Convenience method
-
-//TODO: see if I can change the location of this method.
-- (RefinedElement *)getTheRefinedElementInTheElementSectionsWithThe:(NSIndexPath *)indexPath;
-{
-	return [(NSArray *)[[self getTheElementSections] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-}
+//#pragma mark - Convenience method
+//
+////TODO: see if I can change the location of this method.
+//- (RefinedElement *)getTheRefinedElementInTheElementSectionsWithThe:(NSIndexPath *)indexPath;
+//{
+//	return [(NSArray *)[[self getTheElementSections] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+//}
 
 #pragma mark - Methods to be overridden
 
@@ -74,4 +74,11 @@
     return [(NSArray *)[[self getTheElementSections] objectAtIndex:section] count];
 }
 
+#pragma mark - Helper method
+
+//TODO: see if I can change the location of this method.
+- (RefinedElement *)getTheRefinedElementInTheElementSectionsWithThe:(NSIndexPath *)indexPath;
+{
+	return [(NSArray *)[[self getTheElementSections] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+}
 @end

@@ -61,6 +61,8 @@
         cell = 
 		[[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
 	
+	cell.detailTextLabel.text = @"";
+	cell.textLabel.text = @"";
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	
 	RefinedElement *refinedElement = [self getTheRefinedElementInTheElementSectionsWithThe:indexPath];
@@ -98,7 +100,7 @@
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
-#pragma mark - Helper
+#pragma mark - Helper method
 
 - (NSCharacterSet *)characterSetWithOnlyComma;
 {

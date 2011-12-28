@@ -20,6 +20,7 @@
 - (NSMutableArray *)returnTheIndexedSectionsOfTheGiven:(NSArray *)rawData;
 - (void)convertThe:(NSDictionary *)rawElement IntoRefinedElementsAndAddTo:(NSMutableArray *)temporaryDataElements;
 - (void)setTheSectionNumberForAllTheElementsIn:(NSMutableArray *)temporaryDataElements;
+- (NSInteger)setTheTotalNumberOfSections;
 - (void)sortTheElementsInEach:(NSMutableArray *)sectionArray andAddTo:(NSMutableArray *)elementSections;
 
 @end

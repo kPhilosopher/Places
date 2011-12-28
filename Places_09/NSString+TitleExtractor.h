@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+//TODO: build logic unit test for this class.
 @interface NSString (TitleExtractor)
 
 - (NSString *)extractTheFirstStringWithCommaDelimeter;

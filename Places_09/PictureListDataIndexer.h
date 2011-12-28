@@ -11,5 +11,9 @@
 #import "RefinedElementForPictureList.h"
 
 @interface PictureListDataIndexer : DataIndexer
-
+{
+	@private
+	NSInteger _highSection;
+}
+@property NSInteger highSection;
 @end

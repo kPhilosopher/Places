@@ -9,13 +9,14 @@
 #import "PictureListDataIndexer.h"
 
 @implementation PictureListDataIndexer
+@synthesize highSection = _highSection;
 
--(void)sortTheElementsInEach:(NSMutableArray *)sectionArray andAddTo:(NSMutableArray *)elementSections
+- (void)sortTheElementsInEach:(NSMutableArray *)sectionArray andAddTo:(NSMutableArray *)elementSections
 {
 	[elementSections addObject:sectionArray];
 }
 
--(void)convertThe:(NSDictionary *)rawElement IntoRefinedElementsAndAddTo:(NSMutableArray *)temporaryDataElements
+- (void)convertThe:(NSDictionary *)rawElement IntoRefinedElementsAndAddTo:(NSMutableArray *)temporaryDataElements
 {
 	RefinedElementForPictureList *refinedElement = [[RefinedElementForPictureList alloc] init];
 	refinedElement.name = [RefinedElementForPictureList extractNameFrom:rawElement];
@@ -24,22 +25,20 @@
 	[refinedElement release];
 }
 
--(void)setTheSectionNumberForAllTheElementsIn:(NSMutableArray *)temporaryDataElements
+//TODO: see if I can find way to index with each hour being a section (I need to find a way to account for fluctuation of the hours)
+- (void)setTheSectionNumberForAllTheElementsIn:(NSMutableArray *)temporaryDataElements
 {
-	RefinedElement *previousRefinedElement;
-	for (RefinedElement *refinedElement in temporaryDataElements) {
-		if (previousRefinedElement == nil) {
-			refinedElement.sectionNumber = 0;
-		}
-		else if([previousRefinedElement.name intValue] < [refinedElement.name intValue])
-		{
-			refinedElement.sectionNumber = previousRefinedElement.sectionNumber+1;
-		}
-		else
-		{
-			refinedElement.sectionNumber = previousRefinedElement.sectionNumber;
-		}
-		previousRefinedElement = refinedElement;
+	self.highSection = 0;
+	for (RefinedElementForPictureList *refinedElement in temporaryDataElements) 
+	{
+		refinedElement.sectionNumber = [refinedElement.name intValue];
+		if (self.highSection < refinedElement.sectionNumber)
+			self.highSection = refinedElement.sectionNumber;
 	}
+}
+
+- (NSInteger)setTheTotalNumberOfSections
+{
+	return self.highSection+1;
 }
 @end

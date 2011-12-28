@@ -18,7 +18,7 @@
 @synthesize theElementSections = _theElementSections;
 
 #pragma mark - Indexing Sequence
-
+//TODO: Refactor this method.
 - (NSMutableArray *)returnTheIndexedSectionsOfTheGiven:(NSArray *)rawData;
 {
 	self.rawData = rawData;
@@ -33,13 +33,13 @@
 	else
 		return nil;
 	[self setTheSectionNumberForAllTheElementsIn:temporaryDataElements];
+	NSInteger highSection = [self setTheTotalNumberOfSections];
 	
-	NSInteger highSection = [[[UILocalizedIndexedCollation currentCollation] sectionTitles] count];
 	NSMutableArray *sectionArrays = [[NSMutableArray alloc]initWithCapacity:highSection];
 	
 	for (int i = 0 ; i < highSection ; i++) 
 	{
-		NSMutableArray *sectionArray = [[NSMutableArray alloc] initWithCapacity:1];
+		NSMutableArray *sectionArray = [[NSMutableArray alloc] initWithCapacity:0];
 		[sectionArrays addObject:sectionArray];
 	}
 	
@@ -62,6 +62,11 @@
 - (void)setTheSectionNumberForAllTheElementsIn:(NSMutableArray *)temporaryDataElements;
 {
 	return;
+}
+
+- (NSInteger)setTheTotalNumberOfSections;
+{
+	return 0;
 }
 
 - (void)sortTheElementsInEach:(NSMutableArray *)sectionArray andAddTo:(NSMutableArray *)elementSections;
