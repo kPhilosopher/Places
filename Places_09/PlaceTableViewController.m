@@ -70,7 +70,7 @@
 	NSString *contentString = [refinedElement.dictionary objectForKey:@"_content"];
 	cell.textLabel.text = [contentString extractTheFirstStringWithCommaDelimeter];
 	
-	if ([contentString enumerateStringToFindExistanceOfCharacterOfSet:[self characterSetWithOnlyComma]])
+	if ([contentString enumerateStringToDetermineTheExistanceOfCharacterOfSet:[self characterSetWithOnlyComma]])
 	{
 		int startingIndexOfSubTitle = [contentString rangeOfCharacterFromSet:[self characterSetWithOnlyComma]].location + 1;
 		NSString *subTitle = [contentString substringFromIndex:startingIndexOfSubTitle +1];

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "DataIndexer.h"
 #import "RefinedElementForPictureList.h"
+#import "JBBPriorityQueue.h"
 
 @interface PictureListDataIndexer : DataIndexer
 {

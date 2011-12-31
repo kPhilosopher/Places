@@ -18,7 +18,7 @@
 	return [titleString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 }
 
-- (BOOL)enumerateStringToFindExistanceOfCharacterOfSet:(NSCharacterSet *)aSet;
+- (BOOL)enumerateStringToDetermineTheExistanceOfCharacterOfSet:(NSCharacterSet *)aSet;
 {
 	BOOL verdict = NO;
 	for (int index = 0; index < [self length]; index++) 

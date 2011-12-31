@@ -39,7 +39,18 @@
 {
 	id temporaryFlickrTopPlaces = [FlickrFetcher topPlaces];
 	if ([temporaryFlickrTopPlaces isKindOfClass:[NSArray class]])
+	{
+		NSLog(@"got to where it is an ns array");
 		self.flickrTopPlacesArray = (NSArray *) temporaryFlickrTopPlaces;
+	}
+	else
+	{
+		self.flickrTopPlacesArray = [NSArray array];
+		//TODO: try to make sure that all the computation and work that is unneccesary doesn't commence
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cannot Retrieve Data" message:@"We couldn't retrieve the data from Flickr" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[alert show];
+		[alert release];
+	}
 }
 
 -(void) addToTheMostRecentListOfPlacesTheFollowing:(NSDictionary *)dictionaryToAddToMostRecentList;
@@ -122,6 +133,8 @@
 		arrayOfPhotos = (NSArray *) temporaryRetrievedPhotos;
 	else
 	{
+		//TODO: try to make sure that all the computation and work that is unneccesary doesn't commence
+		arrayOfPhotos = [NSArray array];
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cannot Retrieve Data" message:@"We couldn't retrieve the data from Flickr" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		[alert show];
 		[alert release];

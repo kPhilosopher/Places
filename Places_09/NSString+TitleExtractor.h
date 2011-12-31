@@ -12,5 +12,5 @@
 @interface NSString (TitleExtractor)
 
 - (NSString *)extractTheFirstStringWithCommaDelimeter;
-- (BOOL)enumerateStringToFindExistanceOfCharacterOfSet:(NSCharacterSet *)aSet;
+- (BOOL)enumerateStringToDetermineTheExistanceOfCharacterOfSet:(NSCharacterSet *)aSet;
 @end

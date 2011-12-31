@@ -18,6 +18,8 @@
 	{
 		self.title = @"Top Places";
 		self.view.accessibilityLabel = @"topPlacesTableView";
+//TODO: allow this bar button to refresh the TopPlaces by retrieving a new set of data from FlickrFetcher.
+		//		self.navigationItem.rightBarButtonItem = [UIBarButtonItem ]
 	}
     return self;
 }
@@ -43,7 +45,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//	RefinedElementForPlaces * refinedElement = [[(NSArray *)[self getTheElementSections] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 	RefinedElement *refinedElement = [self getTheRefinedElementInTheElementSectionsWithThe:indexPath];
 	NSDictionary *dictionaryToAddToMostRecentList = refinedElement.dictionary;
 	[self.flickrDataSource addToTheMostRecentListOfPlacesTheFollowing:dictionaryToAddToMostRecentList];

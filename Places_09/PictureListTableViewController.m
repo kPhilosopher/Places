@@ -62,7 +62,7 @@
 		if ([refinedElement.name intValue] == 0) {
 			return @"Right Now";
 		}
-        return [refinedElement.name stringByAppendingString:@" Hour(s) Ago"];
+        return [[NSString stringWithFormat:@"%d",[refinedElement.name intValue]] stringByAppendingString:@" Hour(s) Ago"];
     }
     return nil;
 }
@@ -122,7 +122,7 @@
 	return imageController.view.window == nil;
 }
 
-//TODO: refactor this method.
+//TODO: refactor this method. Also, stop the flow into the image controller if the data given from the FlickrFetcher is not valid.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
@@ -137,7 +137,5 @@
 	
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
-
-
 
 @end

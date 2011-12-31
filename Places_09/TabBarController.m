@@ -42,6 +42,7 @@
     return self;
 }
 #pragma mark Setup Methods
+//TODO: create Dependency injection by creating an object that will take Model, Delegate and TabBarSystemType to streamline the process.
 	-(void)setup;
 	{
 		[self allocInitTheNavigationViewControllers];

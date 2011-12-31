@@ -77,6 +77,14 @@
 		CED164B514A9A356008EAF72 /* NSString+TitleExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = CED164B314A9A356008EAF72 /* NSString+TitleExtractor.m */; };
 		CED164B614A9A356008EAF72 /* NSString+TitleExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = CED164B314A9A356008EAF72 /* NSString+TitleExtractor.m */; };
 		CED164C114AA886B008EAF72 /* PlacesDataIndexerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CED164C014AA886B008EAF72 /* PlacesDataIndexerTests.m */; };
+		CED164DA14AD6079008EAF72 /* PictureListDataIndexerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CED164D914AD6079008EAF72 /* PictureListDataIndexerTests.m */; };
+		CED1650D14AEA8CE008EAF72 /* JBBPriorityQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1650A14AEA8CE008EAF72 /* JBBPriorityQueue.m */; };
+		CED1650E14AEA8CE008EAF72 /* JBBPriorityQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1650A14AEA8CE008EAF72 /* JBBPriorityQueue.m */; };
+		CED1650F14AEA8CE008EAF72 /* JBBPriorityQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1650A14AEA8CE008EAF72 /* JBBPriorityQueue.m */; };
+		CED1651014AEA8CE008EAF72 /* NSObject+AssociatedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1650C14AEA8CE008EAF72 /* NSObject+AssociatedObjects.m */; };
+		CED1651114AEA8CE008EAF72 /* NSObject+AssociatedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1650C14AEA8CE008EAF72 /* NSObject+AssociatedObjects.m */; };
+		CED1651214AEA8CE008EAF72 /* NSObject+AssociatedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1650C14AEA8CE008EAF72 /* NSObject+AssociatedObjects.m */; };
+		CED1651514AEA905008EAF72 /* PriorityQueueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1651414AEA905008EAF72 /* PriorityQueueTests.m */; };
 		CEF3ADB6149C4E2800D53424 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF3ADB5149C4E2800D53424 /* libOCMock.a */; };
 		CEF3ADB7149C4E2800D53424 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF3ADB5149C4E2800D53424 /* libOCMock.a */; };
 		CEF3ADCA149C4FC600D53424 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098971477382A0067AAC2 /* main.m */; };
@@ -206,6 +214,14 @@
 		CED164B714A9AEAC008EAF72 /* PlaceTableViewController-Hidden.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PlaceTableViewController-Hidden.h"; sourceTree = "<group>"; };
 		CED164BF14AA886B008EAF72 /* PlacesDataIndexerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesDataIndexerTests.h; sourceTree = "<group>"; };
 		CED164C014AA886B008EAF72 /* PlacesDataIndexerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesDataIndexerTests.m; sourceTree = "<group>"; };
+		CED164D814AD6079008EAF72 /* PictureListDataIndexerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureListDataIndexerTests.h; sourceTree = "<group>"; };
+		CED164D914AD6079008EAF72 /* PictureListDataIndexerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureListDataIndexerTests.m; sourceTree = "<group>"; };
+		CED1650914AEA8CE008EAF72 /* JBBPriorityQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBBPriorityQueue.h; sourceTree = "<group>"; };
+		CED1650A14AEA8CE008EAF72 /* JBBPriorityQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBBPriorityQueue.m; sourceTree = "<group>"; };
+		CED1650B14AEA8CE008EAF72 /* NSObject+AssociatedObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AssociatedObjects.h"; sourceTree = "<group>"; };
+		CED1650C14AEA8CE008EAF72 /* NSObject+AssociatedObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AssociatedObjects.m"; sourceTree = "<group>"; };
+		CED1651314AEA905008EAF72 /* PriorityQueueTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriorityQueueTests.h; sourceTree = "<group>"; };
+		CED1651414AEA905008EAF72 /* PriorityQueueTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriorityQueueTests.m; sourceTree = "<group>"; };
 		CEF3ADB5149C4E2800D53424 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
 		CEF3ADB9149C4E3000D53424 /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
 		CEF3ADBA149C4E3000D53424 /* OCMArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
@@ -341,6 +357,7 @@
 		CE809891147738290067AAC2 /* Places_09 */ = {
 			isa = PBXGroup;
 			children = (
+				CED164EE14AEA895008EAF72 /* Priority Queue */,
 				CED164AC14A9A294008EAF72 /* Title Extractors */,
 				CED1649014A974AB008EAF72 /* AppDelegate */,
 				CED1649114A974B9008EAF72 /* TabBarController */,
@@ -369,10 +386,14 @@
 		CE8098A91477382A0067AAC2 /* Places_09Tests */ = {
 			isa = PBXGroup;
 			children = (
+				CED1651314AEA905008EAF72 /* PriorityQueueTests.h */,
+				CED1651414AEA905008EAF72 /* PriorityQueueTests.m */,
 				CECD2C9414A1A16100301E45 /* FlickrDataSourceTests.h */,
 				CECD2C9514A1A16100301E45 /* FlickrDataSourceTests.m */,
 				CED164BF14AA886B008EAF72 /* PlacesDataIndexerTests.h */,
 				CED164C014AA886B008EAF72 /* PlacesDataIndexerTests.m */,
+				CED164D814AD6079008EAF72 /* PictureListDataIndexerTests.h */,
+				CED164D914AD6079008EAF72 /* PictureListDataIndexerTests.m */,
 				CE8098AA1477382A0067AAC2 /* Supporting Files */,
 			);
 			path = Places_09Tests;
@@ -513,6 +534,17 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		CED164EE14AEA895008EAF72 /* Priority Queue */ = {
+			isa = PBXGroup;
+			children = (
+				CED1650914AEA8CE008EAF72 /* JBBPriorityQueue.h */,
+				CED1650A14AEA8CE008EAF72 /* JBBPriorityQueue.m */,
+				CED1650B14AEA8CE008EAF72 /* NSObject+AssociatedObjects.h */,
+				CED1650C14AEA8CE008EAF72 /* NSObject+AssociatedObjects.m */,
+			);
+			name = "Priority Queue";
+			sourceTree = "<group>";
+		};
 		CEF3ADB4149C4BB600D53424 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -646,6 +678,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				English,
 			);
 			mainGroup = CE80987C147738290067AAC2;
 			productRefGroup = CE809888147738290067AAC2 /* Products */;
@@ -770,6 +803,8 @@
 				CED1649914A97CCD008EAF72 /* PlacesDataIndexer.m in Sources */,
 				CED164A914A99A8A008EAF72 /* PictureListDataIndexer.m in Sources */,
 				CED164B414A9A356008EAF72 /* NSString+TitleExtractor.m in Sources */,
+				CED1650D14AEA8CE008EAF72 /* JBBPriorityQueue.m in Sources */,
+				CED1651014AEA8CE008EAF72 /* NSObject+AssociatedObjects.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -803,6 +838,10 @@
 				CED164AA14A99A8A008EAF72 /* PictureListDataIndexer.m in Sources */,
 				CED164B514A9A356008EAF72 /* NSString+TitleExtractor.m in Sources */,
 				CED164C114AA886B008EAF72 /* PlacesDataIndexerTests.m in Sources */,
+				CED164DA14AD6079008EAF72 /* PictureListDataIndexerTests.m in Sources */,
+				CED1650E14AEA8CE008EAF72 /* JBBPriorityQueue.m in Sources */,
+				CED1651114AEA8CE008EAF72 /* NSObject+AssociatedObjects.m in Sources */,
+				CED1651514AEA905008EAF72 /* PriorityQueueTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -847,6 +886,8 @@
 				CED1649B14A97CCD008EAF72 /* PlacesDataIndexer.m in Sources */,
 				CED164AB14A99A8A008EAF72 /* PictureListDataIndexer.m in Sources */,
 				CED164B614A9A356008EAF72 /* NSString+TitleExtractor.m in Sources */,
+				CED1650F14AEA8CE008EAF72 /* JBBPriorityQueue.m in Sources */,
+				CED1651214AEA8CE008EAF72 /* NSObject+AssociatedObjects.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

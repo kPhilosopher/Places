@@ -11,11 +11,6 @@
 @implementation PictureListDataIndexer
 @synthesize highSection = _highSection;
 
-- (void)sortTheElementsInEach:(NSMutableArray *)sectionArray andAddTo:(NSMutableArray *)elementSections
-{
-	[elementSections addObject:sectionArray];
-}
-
 - (void)convertThe:(NSDictionary *)rawElement IntoRefinedElementsAndAddTo:(NSMutableArray *)temporaryDataElements
 {
 	RefinedElementForPictureList *refinedElement = [[RefinedElementForPictureList alloc] init];
@@ -25,20 +20,56 @@
 	[refinedElement release];
 }
 
-//TODO: see if I can find way to index with each hour being a section (I need to find a way to account for fluctuation of the hours)
 - (void)setTheSectionNumberForAllTheElementsIn:(NSMutableArray *)temporaryDataElements
 {
+	
+	NSMutableSet *setOfHours = [NSMutableSet set];
 	self.highSection = 0;
 	for (RefinedElementForPictureList *refinedElement in temporaryDataElements) 
 	{
-		refinedElement.sectionNumber = [refinedElement.name intValue];
-		if (self.highSection < refinedElement.sectionNumber)
-			self.highSection = refinedElement.sectionNumber;
+		[setOfHours addObject:[NSNumber numberWithInt:[refinedElement.name intValue]]];
 	}
+	JBBPriorityQueue *priorityQueue = [[JBBPriorityQueue alloc] initWithClass:[NSNumber class] ordering:NSOrderedAscending];
+	for (NSNumber *number in setOfHours) 
+	{
+		[priorityQueue addObject:number];
+	}
+	self.highSection = [priorityQueue count];
+	
+	NSMutableArray *copiedArray = [NSMutableArray arrayWithArray:temporaryDataElements];
+	for (int indexForSections = 0; indexForSections < self.highSection; indexForSections++) 
+	{
+		NSNumber *temporaryHourNumber = [priorityQueue removeFirstObject];
+		for (int indexForEachElement = 0; indexForEachElement < [copiedArray count]; indexForEachElement++) 
+		{
+			RefinedElementForPictureList *refinedElement = [copiedArray objectAtIndex:indexForEachElement];
+			if ([temporaryHourNumber intValue] == [refinedElement.name intValue])
+			{
+				refinedElement.sectionNumber = indexForSections;
+				[copiedArray removeObjectAtIndex:indexForEachElement];
+				indexForEachElement = indexForEachElement - 1;
+			}
+		}
+	}
+	[priorityQueue release];
+}
+
+- (void)sortTheElementsInEach:(NSMutableArray *)sectionArray andAddTo:(NSMutableArray *)elementSections
+{
+	NSMutableArray *temporarySection = [NSMutableArray arrayWithCapacity:[sectionArray count]];
+	JBBPriorityQueue *priorityQueue = [[JBBPriorityQueue alloc] initWithClass:[RefinedElementForPictureList class] ordering:NSOrderedAscending];
+	for (RefinedElementForPictureList *refinedElement in sectionArray)
+		[priorityQueue addObject:refinedElement];
+	int upperLimit = [priorityQueue count];
+	for (int index = 0; index < upperLimit; index++) 
+		[temporarySection addObject:[priorityQueue removeFirstObject]];
+	[elementSections addObject:temporarySection];
+	[priorityQueue release];
 }
 
 - (NSInteger)setTheTotalNumberOfSections
 {
-	return self.highSection+1;
+	return self.highSection;
 }
+
 @end
