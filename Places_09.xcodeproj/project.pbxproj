@@ -85,6 +85,7 @@
 		CED1651114AEA8CE008EAF72 /* NSObject+AssociatedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1650C14AEA8CE008EAF72 /* NSObject+AssociatedObjects.m */; };
 		CED1651214AEA8CE008EAF72 /* NSObject+AssociatedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1650C14AEA8CE008EAF72 /* NSObject+AssociatedObjects.m */; };
 		CED1651514AEA905008EAF72 /* PriorityQueueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1651414AEA905008EAF72 /* PriorityQueueTests.m */; };
+		CED1651814AF0F18008EAF72 /* RefinedElementForPictureListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1651714AF0F18008EAF72 /* RefinedElementForPictureListTests.m */; };
 		CEF3ADB6149C4E2800D53424 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF3ADB5149C4E2800D53424 /* libOCMock.a */; };
 		CEF3ADB7149C4E2800D53424 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF3ADB5149C4E2800D53424 /* libOCMock.a */; };
 		CEF3ADCA149C4FC600D53424 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098971477382A0067AAC2 /* main.m */; };
@@ -151,11 +152,11 @@
 		CE5FE1EF14A0759200BB682C /* TopPlacesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TopPlacesTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		CE5FE1F314A07A0A00BB682C /* TabBarController-Hidden.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TabBarController-Hidden.h"; sourceTree = "<group>"; };
 		CE6FB262148993B400DA2A1D /* RefinedElementForPictureList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefinedElementForPictureList.h; sourceTree = "<group>"; };
-		CE6FB263148993B400DA2A1D /* RefinedElementForPictureList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefinedElementForPictureList.m; sourceTree = "<group>"; };
+		CE6FB263148993B400DA2A1D /* RefinedElementForPictureList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RefinedElementForPictureList.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		CE6FB268148993C600DA2A1D /* RefinedElementForPlaces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefinedElementForPlaces.h; sourceTree = "<group>"; };
-		CE6FB269148993C600DA2A1D /* RefinedElementForPlaces.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefinedElementForPlaces.m; sourceTree = "<group>"; };
-		CE6FB26D148993F900DA2A1D /* RefinedElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefinedElement.h; sourceTree = "<group>"; };
-		CE6FB26E148993F900DA2A1D /* RefinedElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefinedElement.m; sourceTree = "<group>"; };
+		CE6FB269148993C600DA2A1D /* RefinedElementForPlaces.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RefinedElementForPlaces.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		CE6FB26D148993F900DA2A1D /* RefinedElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RefinedElement.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		CE6FB26E148993F900DA2A1D /* RefinedElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RefinedElement.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		CE809887147738290067AAC2 /* Places_09.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Places_09.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE80988B147738290067AAC2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CE80988D147738290067AAC2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -206,9 +207,9 @@
 		CED1648B14A973EB008EAF72 /* DataIndexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataIndexer.h; sourceTree = "<group>"; };
 		CED1648C14A973EB008EAF72 /* DataIndexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataIndexer.m; sourceTree = "<group>"; };
 		CED1649714A97CCD008EAF72 /* PlacesDataIndexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesDataIndexer.h; sourceTree = "<group>"; };
-		CED1649814A97CCD008EAF72 /* PlacesDataIndexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesDataIndexer.m; sourceTree = "<group>"; };
+		CED1649814A97CCD008EAF72 /* PlacesDataIndexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PlacesDataIndexer.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		CED164A714A99A8A008EAF72 /* PictureListDataIndexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureListDataIndexer.h; sourceTree = "<group>"; };
-		CED164A814A99A8A008EAF72 /* PictureListDataIndexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureListDataIndexer.m; sourceTree = "<group>"; };
+		CED164A814A99A8A008EAF72 /* PictureListDataIndexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PictureListDataIndexer.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		CED164B214A9A356008EAF72 /* NSString+TitleExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TitleExtractor.h"; sourceTree = "<group>"; };
 		CED164B314A9A356008EAF72 /* NSString+TitleExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TitleExtractor.m"; sourceTree = "<group>"; };
 		CED164B714A9AEAC008EAF72 /* PlaceTableViewController-Hidden.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PlaceTableViewController-Hidden.h"; sourceTree = "<group>"; };
@@ -222,6 +223,8 @@
 		CED1650C14AEA8CE008EAF72 /* NSObject+AssociatedObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AssociatedObjects.m"; sourceTree = "<group>"; };
 		CED1651314AEA905008EAF72 /* PriorityQueueTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriorityQueueTests.h; sourceTree = "<group>"; };
 		CED1651414AEA905008EAF72 /* PriorityQueueTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriorityQueueTests.m; sourceTree = "<group>"; };
+		CED1651614AF0F18008EAF72 /* RefinedElementForPictureListTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefinedElementForPictureListTests.h; sourceTree = "<group>"; };
+		CED1651714AF0F18008EAF72 /* RefinedElementForPictureListTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RefinedElementForPictureListTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		CEF3ADB5149C4E2800D53424 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
 		CEF3ADB9149C4E3000D53424 /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
 		CEF3ADBA149C4E3000D53424 /* OCMArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
@@ -388,6 +391,8 @@
 			children = (
 				CED1651314AEA905008EAF72 /* PriorityQueueTests.h */,
 				CED1651414AEA905008EAF72 /* PriorityQueueTests.m */,
+				CED1651614AF0F18008EAF72 /* RefinedElementForPictureListTests.h */,
+				CED1651714AF0F18008EAF72 /* RefinedElementForPictureListTests.m */,
 				CECD2C9414A1A16100301E45 /* FlickrDataSourceTests.h */,
 				CECD2C9514A1A16100301E45 /* FlickrDataSourceTests.m */,
 				CED164BF14AA886B008EAF72 /* PlacesDataIndexerTests.h */,
@@ -842,6 +847,7 @@
 				CED1650E14AEA8CE008EAF72 /* JBBPriorityQueue.m in Sources */,
 				CED1651114AEA8CE008EAF72 /* NSObject+AssociatedObjects.m in Sources */,
 				CED1651514AEA905008EAF72 /* PriorityQueueTests.m in Sources */,
+				CED1651814AF0F18008EAF72 /* RefinedElementForPictureListTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

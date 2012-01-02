@@ -10,7 +10,7 @@
 
 @implementation RefinedElementForPlaces
 
-+(NSString *)extractNameFrom:(NSDictionary *)rawElement
++(NSString *)extractNameFromDictionary:(NSDictionary *)rawElement
 {
 	return [[rawElement objectForKey:@"_content"] extractTheFirstStringWithCommaDelimeter];
 }

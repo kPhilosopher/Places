@@ -18,5 +18,5 @@
 @property (retain) NSDictionary *dictionary;
 @property NSInteger sectionNumber;
 @property (copy) NSString *name;
-+(NSString *)extractNameFrom:(NSDictionary *)rawElement;
++(NSString *)extractNameFromDictionary:(NSDictionary *)rawElement;
 @end

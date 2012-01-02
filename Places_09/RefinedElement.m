@@ -20,7 +20,7 @@
 	[super dealloc];
 }
 
-+(NSString *)extractNameFrom:(NSDictionary *)rawElement
++(NSString *)extractNameFromDictionary:(NSDictionary *)rawElement
 {
 	return nil;
 }

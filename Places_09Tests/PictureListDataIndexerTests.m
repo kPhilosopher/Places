@@ -34,6 +34,7 @@
 	NSMutableArray *testData = [[NSMutableArray alloc] init];
 	
 	NSString *timeLapse;
+	//TODO: try negative values
 	
 	timeLapse = [self returnTheSecondsConvertedFromGivenHours:@"0"];
 	[testData addObject:[self returnTheRawDictionaryDataToAddWithGivenTimeLapse:timeLapse 

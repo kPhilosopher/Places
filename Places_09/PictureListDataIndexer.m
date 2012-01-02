@@ -14,7 +14,7 @@
 - (void)convertThe:(NSDictionary *)rawElement IntoRefinedElementsAndAddTo:(NSMutableArray *)temporaryDataElements
 {
 	RefinedElementForPictureList *refinedElement = [[RefinedElementForPictureList alloc] init];
-	refinedElement.name = [RefinedElementForPictureList extractNameFrom:rawElement];
+	refinedElement.name = [RefinedElementForPictureList extractNameFromDictionary:rawElement];
 	refinedElement.dictionary = rawElement;
 	[temporaryDataElements addObject:refinedElement];
 	[refinedElement release];

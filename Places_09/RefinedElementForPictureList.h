@@ -9,4 +9,5 @@
 #import <Foundation/Foundation.h>
 #import "RefinedElement.h"
 @interface RefinedElementForPictureList : RefinedElement
+- (NSComparisonResult)compare:(RefinedElementForPictureList *)aRefinedElementPicture;
 @end

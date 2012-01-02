@@ -13,7 +13,7 @@
 - (void)convertThe:(NSDictionary *)rawElement IntoRefinedElementsAndAddTo:(NSMutableArray *)temporaryDataElements
 {
 	RefinedElementForPlaces	*refinedElement = [[RefinedElementForPlaces alloc] init];
-	refinedElement.name = [RefinedElementForPlaces extractNameFrom:rawElement];
+	refinedElement.name = [RefinedElementForPlaces extractNameFromDictionary:rawElement];
 	refinedElement.dictionary = rawElement;
 	[temporaryDataElements addObject:refinedElement];
 	[refinedElement release];

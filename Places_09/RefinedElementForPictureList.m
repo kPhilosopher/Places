@@ -10,7 +10,7 @@
 
 @implementation RefinedElementForPictureList
 
-+ (NSString *)extractNameFrom:(NSDictionary *)rawElement
++ (NSString *)extractNameFromDictionary:(NSDictionary *)rawElement
 {
 	NSDate *endDate = [NSDate date];
 	NSString *dateUpload = [rawElement objectForKey:@"dateupload"];
@@ -27,9 +27,14 @@
 	return string;
 }
 
-- (NSComparisonResult)compare:(RefinedElementForPictureList *)aRefinedElementPicture
+- (NSComparisonResult)compare:(RefinedElementForPictureList *)aRefinedElementPicture;
 {
-	return [[NSNumber numberWithDouble:[self.name doubleValue]] compare:[NSNumber numberWithDouble:[aRefinedElementPicture.name doubleValue]]];
+	int result;
+	NSNumberFormatter *formatter = [[[NSNumberFormatter alloc] init] autorelease];
+	if ([formatter numberFromString:self.name] && [formatter numberFromString:aRefinedElementPicture.name])
+		result = [[NSNumber numberWithDouble:[self.name doubleValue]] compare:[NSNumber numberWithDouble:[aRefinedElementPicture.name doubleValue]]];
+	else
+		result = 0;
+	return result;
 }
-
 @end
