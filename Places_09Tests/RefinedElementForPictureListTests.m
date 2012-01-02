@@ -96,6 +96,7 @@
 	RefinedElementForPictureList *refinedElement1 = [[RefinedElementForPictureList alloc] init];
 	RefinedElementForPictureList *refinedElement2 = [[RefinedElementForPictureList alloc] init];
 	
+	//nil .name values
 	refinedElement1.name = nil;
 	refinedElement2.name = nil;
 	STAssertTrue([refinedElement1 compare:refinedElement2] == 0,@"The method should return 0 when both refinedElements are nil");
@@ -107,49 +108,7 @@
 	refinedElement2.name = nil;
 	STAssertTrue([refinedElement1 compare:refinedElement2] == 0,@"The method should return 0 when either of refinedElement is nil");
 	
-	//refinedElement1 is larger
-	refinedElement1.name = @"110";
-	refinedElement2.name = @"10";
-	STAssertTrue([refinedElement1 compare:refinedElement2] == 1,@"The method should return 0 when either of refinedElement is nil");
-	
-	refinedElement1.name = @"110";
-	refinedElement2.name = @"0";
-	STAssertTrue([refinedElement1 compare:refinedElement2] == 1,@"The method should return 0 when either of refinedElement is nil");
-	
-	refinedElement1.name = @"110";
-	refinedElement2.name = @"-10";
-	STAssertTrue([refinedElement1 compare:refinedElement2] == 1,@"The method should return 0 when either of refinedElement is nil");
-	
-	refinedElement1.name = @"0";
-	refinedElement2.name = @"-10";
-	STAssertTrue([refinedElement1 compare:refinedElement2] == 1,@"The method should return 0 when either of refinedElement is nil");
-	
-	refinedElement1.name = @"-10";
-	refinedElement2.name = @"-110";
-	STAssertTrue([refinedElement1 compare:refinedElement2] == 1,@"The method should return 0 when either of refinedElement is nil");
-	
-	//refinedElement2 is larger
-	refinedElement1.name = @"10";
-	refinedElement2.name = @"110";
-	STAssertTrue([refinedElement1 compare:refinedElement2] == -1,@"The method should return 0 when either of refinedElement is nil");
-	
-	refinedElement1.name = @"0";
-	refinedElement2.name = @"110";
-	STAssertTrue([refinedElement1 compare:refinedElement2] == -1,@"The method should return 0 when either of refinedElement is nil");
-	
-	refinedElement1.name = @"-10";
-	refinedElement2.name = @"110";
-	STAssertTrue([refinedElement1 compare:refinedElement2] == -1,@"The method should return 0 when either of refinedElement is nil");
-	
-	refinedElement1.name = @"-10";
-	refinedElement2.name = @"0";
-	STAssertTrue([refinedElement1 compare:refinedElement2] == -1,@"The method should return 0 when either of refinedElement is nil");
-	
-	refinedElement1.name = @"-110";
-	refinedElement2.name = @"-10";
-	STAssertTrue([refinedElement1 compare:refinedElement2] == -1,@"The method should return 0 when either of refinedElement is nil");
-	
-	//equals
+	//equal
 	refinedElement1.name = @"0";
 	refinedElement2.name = @"0";
 	STAssertTrue([refinedElement1 compare:refinedElement2] == 0,@"The method should return 0 when both are 0");
@@ -163,6 +122,47 @@
 	refinedElement2.name = @"-10";
 	STAssertTrue([refinedElement1 compare:refinedElement2] == 0,@"The method should return 0 when both have the same negative number");
 	
+	//refinedElement1 is larger
+	refinedElement1.name = @"110";
+	refinedElement2.name = @"10";
+	STAssertTrue([refinedElement1 compare:refinedElement2] == 1,@"The method should return 1.");
+	
+	refinedElement1.name = @"110";
+	refinedElement2.name = @"0";
+	STAssertTrue([refinedElement1 compare:refinedElement2] == 1,@"The method should return 1.");
+	
+	refinedElement1.name = @"110";
+	refinedElement2.name = @"-10";
+	STAssertTrue([refinedElement1 compare:refinedElement2] == 1,@"The method should return 1.");
+	
+	refinedElement1.name = @"0";
+	refinedElement2.name = @"-10";
+	STAssertTrue([refinedElement1 compare:refinedElement2] == 1,@"The method should return 1.");
+	
+	refinedElement1.name = @"-10";
+	refinedElement2.name = @"-110";
+	STAssertTrue([refinedElement1 compare:refinedElement2] == 1,@"The method should return 1.");
+	
+	//refinedElement2 is larger
+	refinedElement1.name = @"10";
+	refinedElement2.name = @"110";
+	STAssertTrue([refinedElement1 compare:refinedElement2] == -1,@"The method should return -1");
+	
+	refinedElement1.name = @"0";
+	refinedElement2.name = @"110";
+	STAssertTrue([refinedElement1 compare:refinedElement2] == -1,@"The method should return -1");
+	
+	refinedElement1.name = @"-10";
+	refinedElement2.name = @"110";
+	STAssertTrue([refinedElement1 compare:refinedElement2] == -1,@"The method should return -1");
+	
+	refinedElement1.name = @"-10";
+	refinedElement2.name = @"0";
+	STAssertTrue([refinedElement1 compare:refinedElement2] == -1,@"The method should return -1");
+	
+	refinedElement1.name = @"-110";
+	refinedElement2.name = @"-10";
+	STAssertTrue([refinedElement1 compare:refinedElement2] == -1,@"The method should return -1");
 }
 
 @end

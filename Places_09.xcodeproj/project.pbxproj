@@ -64,6 +64,8 @@
 		CEB4C2C41488C4AC00DDF51F /* PlaceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB4C2C31488C4AC00DDF51F /* PlaceTableViewController.m */; };
 		CEB4C2C51488C4AC00DDF51F /* PlaceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB4C2C31488C4AC00DDF51F /* PlaceTableViewController.m */; };
 		CECD2C9614A1A16100301E45 /* FlickrDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CECD2C9514A1A16100301E45 /* FlickrDataSourceTests.m */; };
+		CECDBAC814B1756D0097C9D7 /* RefinedElementTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CECDBAC714B1756D0097C9D7 /* RefinedElementTests.m */; };
+		CECDBACE14B181580097C9D7 /* NSString+TitleExtractorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CECDBACD14B181580097C9D7 /* NSString+TitleExtractorTests.m */; };
 		CED1648D14A973EB008EAF72 /* DataIndexer.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1648C14A973EB008EAF72 /* DataIndexer.m */; };
 		CED1648E14A973EB008EAF72 /* DataIndexer.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1648C14A973EB008EAF72 /* DataIndexer.m */; };
 		CED1648F14A973EB008EAF72 /* DataIndexer.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1648C14A973EB008EAF72 /* DataIndexer.m */; };
@@ -204,6 +206,10 @@
 		CECD2C9414A1A16100301E45 /* FlickrDataSourceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrDataSourceTests.h; sourceTree = "<group>"; };
 		CECD2C9514A1A16100301E45 /* FlickrDataSourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrDataSourceTests.m; sourceTree = "<group>"; };
 		CECD2C9714A1AF1700301E45 /* FlickrDataSource-Hidden.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FlickrDataSource-Hidden.h"; sourceTree = "<group>"; };
+		CECDBAC614B1756D0097C9D7 /* RefinedElementTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefinedElementTests.h; sourceTree = "<group>"; };
+		CECDBAC714B1756D0097C9D7 /* RefinedElementTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefinedElementTests.m; sourceTree = "<group>"; };
+		CECDBACC14B181580097C9D7 /* NSString+TitleExtractorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TitleExtractorTests.h"; sourceTree = "<group>"; };
+		CECDBACD14B181580097C9D7 /* NSString+TitleExtractorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TitleExtractorTests.m"; sourceTree = "<group>"; };
 		CED1648B14A973EB008EAF72 /* DataIndexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataIndexer.h; sourceTree = "<group>"; };
 		CED1648C14A973EB008EAF72 /* DataIndexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataIndexer.m; sourceTree = "<group>"; };
 		CED1649714A97CCD008EAF72 /* PlacesDataIndexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesDataIndexer.h; sourceTree = "<group>"; };
@@ -389,8 +395,12 @@
 		CE8098A91477382A0067AAC2 /* Places_09Tests */ = {
 			isa = PBXGroup;
 			children = (
+				CECDBACC14B181580097C9D7 /* NSString+TitleExtractorTests.h */,
+				CECDBACD14B181580097C9D7 /* NSString+TitleExtractorTests.m */,
 				CED1651314AEA905008EAF72 /* PriorityQueueTests.h */,
 				CED1651414AEA905008EAF72 /* PriorityQueueTests.m */,
+				CECDBAC614B1756D0097C9D7 /* RefinedElementTests.h */,
+				CECDBAC714B1756D0097C9D7 /* RefinedElementTests.m */,
 				CED1651614AF0F18008EAF72 /* RefinedElementForPictureListTests.h */,
 				CED1651714AF0F18008EAF72 /* RefinedElementForPictureListTests.m */,
 				CECD2C9414A1A16100301E45 /* FlickrDataSourceTests.h */,
@@ -848,6 +858,8 @@
 				CED1651114AEA8CE008EAF72 /* NSObject+AssociatedObjects.m in Sources */,
 				CED1651514AEA905008EAF72 /* PriorityQueueTests.m in Sources */,
 				CED1651814AF0F18008EAF72 /* RefinedElementForPictureListTests.m in Sources */,
+				CECDBAC814B1756D0097C9D7 /* RefinedElementTests.m in Sources */,
+				CECDBACE14B181580097C9D7 /* NSString+TitleExtractorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

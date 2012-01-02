@@ -8,26 +8,18 @@
 
 #import "DataIndexer.h"
 
-@interface DataIndexer()
-@property (retain) NSArray *rawData;
-@property (retain) NSMutableArray *theElementSections;
-@end
-
 @implementation DataIndexer
-@synthesize rawData = _rawData;
-@synthesize theElementSections = _theElementSections;
 
 #pragma mark - Indexing Sequence
 //TODO: Refactor this method.
 - (NSMutableArray *)returnTheIndexedSectionsOfTheGiven:(NSArray *)rawData;
 {
-	self.rawData = rawData;
-	self.theElementSections = [[NSMutableArray alloc] init];
+	NSMutableArray *theElementSections = [[NSMutableArray alloc] init];
 	NSMutableArray *temporaryDataElements;
-	if (self.rawData)
+	if (rawData)
 	{
 		temporaryDataElements = [[NSMutableArray alloc] initWithCapacity:1];
-		for (NSDictionary *rawElement in self.rawData) 
+		for (NSDictionary *rawElement in rawData) 
 			[self convertThe:rawElement IntoRefinedElementsAndAddTo:temporaryDataElements];
 	}
 	else
@@ -47,8 +39,8 @@
 		[(NSMutableArray *)[sectionArrays objectAtIndex:element.sectionNumber] addObject:element];
 	
 	for (NSMutableArray *sectionArray in sectionArrays) 
-		[self sortTheElementsInEach:sectionArray andAddTo:self.theElementSections];
-	return self.theElementSections;
+		[self sortTheElementsInEach:sectionArray andAddTo:theElementSections];
+	return theElementSections;
 }
 
 

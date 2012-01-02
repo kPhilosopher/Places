@@ -5,12 +5,12 @@
 //  Created by Jinwoo Baek on 12/2/11.
 //  Copyright (c) 2011 Rose-Hulman Institute of Technology. All rights reserved.
 //
+// !!!: This class is designed to be subclassed
 
 #import <UIKit/UIKit.h>
 #import "FlickrDataSource.h"
 #import "DataIndexer.h"
 
-// !!!: This class is designed to be subclassed
 
 @interface IndexedTableViewController : UITableViewController
 {

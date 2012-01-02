@@ -10,7 +10,6 @@
 
 @implementation FlickrDataSourceTests
 
-// All code under test must be linked into the Unit Test bundle
 - (void)setUp
 {
     [super setUp];

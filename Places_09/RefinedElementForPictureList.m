@@ -33,8 +33,7 @@
 	NSNumberFormatter *formatter = [[[NSNumberFormatter alloc] init] autorelease];
 	if ([formatter numberFromString:self.name] && [formatter numberFromString:aRefinedElementPicture.name])
 		result = [[NSNumber numberWithDouble:[self.name doubleValue]] compare:[NSNumber numberWithDouble:[aRefinedElementPicture.name doubleValue]]];
-	else
-		result = 0;
+	else	result = 0;
 	return result;
 }
 @end

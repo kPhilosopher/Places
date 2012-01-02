@@ -12,7 +12,6 @@
 
 - (NSString *)extractTheFirstStringWithCommaDelimeter;
 {
-//	NSString *contentString = [refinedElement.dictionary objectForKey:@"_content"];
 	NSArray *arrayOfContentString = [self componentsSeparatedByString:@","];
 	NSString *titleString = [arrayOfContentString objectAtIndex:0];
 	return [titleString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
@@ -29,6 +28,5 @@
 	}
 	return verdict;
 }
-											  
 
 @end
