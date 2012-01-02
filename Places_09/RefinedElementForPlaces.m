@@ -15,9 +15,4 @@
 	return [[rawElement objectForKey:@"_content"] extractTheFirstStringWithCommaDelimeter];
 }
 
--(void)dealloc
-{
-	[super dealloc];
-}
 @end
-

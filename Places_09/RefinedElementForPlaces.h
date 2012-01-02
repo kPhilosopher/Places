@@ -10,7 +10,6 @@
 #import "RefinedElement.h"
 #import "NSString+TitleExtractor.h"
 
-//TODO: build logic unit test for this class
 @interface RefinedElementForPlaces : RefinedElement
 
 @end
