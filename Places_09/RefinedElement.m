@@ -13,14 +13,14 @@
 @synthesize sectionNumber = _sectionNumber;
 @synthesize name = _name;
 
--(void)dealloc
+- (void)dealloc
 {
 	[_name release];
 	[_dictionary release];
 	[super dealloc];
 }
 
-+(NSString *)extractNameFromDictionary:(NSDictionary *)rawElement
++ (NSString *)extractNameFromDictionary:(NSDictionary *)rawElement
 {
 	return nil;
 }

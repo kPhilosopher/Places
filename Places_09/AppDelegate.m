@@ -6,7 +6,7 @@
 //  Copyright (c) 2011 Rose-Hulman Institute of Technology. All rights reserved.
 //
 
-#import "AppDelegate-Hidden.h"
+#import "AppDelegate-Internal.h"
 #import "SplitViewController.h"
 #if RUN_KIF_TESTS
 #import "PlacesKIFTestController.h"
@@ -100,7 +100,7 @@
 #pragma mark -
 #pragma mark PictureListTableViewController Delegate Protocol Method
 
--(ScrollableImageViewController *)retrieveScrollableImageViewControllerFor:(PictureListTableViewController *)controller;
+-(ScrollableImageViewController *)getScrollableImageViewControllerForRequestor:(PictureListTableViewController *)controller;
 {
 	return self.scrollableImageVC;
 }

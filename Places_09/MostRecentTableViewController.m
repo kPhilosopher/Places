@@ -61,48 +61,41 @@
 
 - (void)reIndexTheMostRecentTableViewData
 {
-//	[super viewDidLoad];
 	[self setTheElementSectionsToTheFollowing:[self.dataIndexer returnTheIndexedSectionsOfTheGiven:[self getTheRawData]]];
 	[self.tableView reloadData];
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-	NSLog(@"viewWillAppear");
-    [super viewWillAppear:animated];
-	[self.tableView reloadData];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-	NSLog(@"viewDidAppear");
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-	NSLog(@"viewWillDisappear");
-    [super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-	NSLog(@"viewDidDisappear");
-    [super viewDidDisappear:animated];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	NSLog(@"cellForRowAtIndexPath");
-	return [super tableView:tableView cellForRowAtIndexPath:indexPath];
-}
+//- (void)viewDidUnload
+//{
+//    [super viewDidUnload];
+//    // Release any retained subviews of the main view.
+//    // e.g. self.myOutlet = nil;
+//}
+//
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//	NSLog(@"viewWillAppear");
+//    [super viewWillAppear:animated];
+//	[self.tableView reloadData];
+//}
+//
+//- (void)viewDidAppear:(BOOL)animated
+//{
+//	NSLog(@"viewDidAppear");
+//    [super viewDidAppear:animated];
+//}
+//
+//- (void)viewWillDisappear:(BOOL)animated
+//{
+//	NSLog(@"viewWillDisappear");
+//    [super viewWillDisappear:animated];
+//}
+//
+//- (void)viewDidDisappear:(BOOL)animated
+//{
+//	NSLog(@"viewDidDisappear");
+//    [super viewDidDisappear:animated];
+//}
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {

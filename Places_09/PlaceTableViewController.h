@@ -12,8 +12,9 @@
 #import "IndexedTableViewController.h"
 #import "PlacesDataIndexer.h"
 #import "NSString+TitleExtractor.h"
+#import "DisplayAlertViewProtocol.h"
 
-@interface PlaceTableViewController : IndexedTableViewController
+@interface PlaceTableViewController : IndexedTableViewController <DisplayAlertViewProtocol>
 {
 	@private
 	FlickrDataSource *_flickrDataSource;
@@ -22,5 +23,6 @@
 @property (retain) FlickrDataSource *flickrDataSource;
 @property (assign) id <PictureListTableViewControllerDelegateProtocol> delegateToTransfer;
 - (id)initWithStyle:(UITableViewStyle)style andWith:(FlickrDataSource *)theFlickrDataSource;
+- (void)displayAlertViewWithTitle:(NSString *)title withMessage:(NSString *)message;
 
 @end

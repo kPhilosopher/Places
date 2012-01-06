@@ -6,7 +6,7 @@
 //  Copyright (c) 2011 Rose-Hulman Institute of Technology. All rights reserved.
 //
 
-#include "TabBarController-Hidden.h"
+#include "TabBarController-Internal.h"
 
 @interface TabBarController()
 
@@ -65,7 +65,8 @@
 		}
 			- (void)allocInitThePlaceTableViewControllersWithTheSameFlickrDataSource;
 			{
-				FlickrDataSource *theFlickrDataSource = [[FlickrDataSource alloc] init];
+				FlickrDataHandler *flickrDataHandler = [[FlickrDataHandler alloc] init];
+				FlickrDataSource *theFlickrDataSource = [[FlickrDataSource alloc] initWithFlickrDataHandler:flickrDataHandler];
 				self.topPlacesTableViewController = 
 				[[[TopPlacesTableViewController alloc] initWithStyle:UITableViewStylePlain andWith:theFlickrDataSource] autorelease];
 				self.mostRecentTableViewController = 

@@ -16,7 +16,7 @@
 
 @protocol PictureListTableViewControllerDelegateProtocol
 
--(ScrollableImageViewController *)retrieveScrollableImageViewControllerFor:(PictureListTableViewController *)controller;
+-(ScrollableImageViewController *)getScrollableImageViewControllerForRequestor:(PictureListTableViewController *)controller;
 
 @end
 

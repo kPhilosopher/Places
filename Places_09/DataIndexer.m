@@ -16,7 +16,7 @@
 {
 	NSMutableArray *theElementSections = [[NSMutableArray alloc] init];
 	NSMutableArray *temporaryDataElements;
-	if (rawData)
+	if (rawData)//TODO: this might work if && ([rawData count] > 0) will allow efficiency
 	{
 		temporaryDataElements = [[NSMutableArray alloc] initWithCapacity:1];
 		for (NSDictionary *rawElement in rawData) 

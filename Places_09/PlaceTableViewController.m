@@ -7,7 +7,7 @@
 //
 
 //#import "PlaceTableViewController.h"
-#import "PlaceTableViewController-Hidden.h"
+#import "PlaceTableViewController-Internal.h"
 
 #define NUMBER_OF_SECTIONS 1
 
@@ -21,6 +21,7 @@
     if (self) {
 		self.dataIndexer = [[[PlacesDataIndexer alloc] init] autorelease];
 		self.flickrDataSource = theFlickrDataSource;
+		self.flickrDataSource.alertDelegate = self;
 	}
     return self;
 }
@@ -66,7 +67,6 @@
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	
 	RefinedElement *refinedElement = [self getTheRefinedElementInTheElementSectionsWithThe:indexPath];
-	
 	NSString *contentString = [refinedElement.dictionary objectForKey:@"_content"];
 	cell.textLabel.text = [contentString extractTheFirstStringWithCommaDelimeter];
 	
@@ -88,7 +88,7 @@
 	
 	RefinedElement *refinedElement = [self getTheRefinedElementInTheElementSectionsWithThe:indexPath];
 	NSString *placeId = [refinedElement.dictionary objectForKey:@"place_id"];
-	PictureListTableViewController *pltvc = [[PictureListTableViewController alloc] initWithStyle:UITableViewStylePlain andWith:[self.flickrDataSource retrievePhotoListForSpecific:placeId]];
+	PictureListTableViewController *pltvc = [[PictureListTableViewController alloc] initWithStyle:UITableViewStylePlain andWith:[self.flickrDataSource getPhotoListForSpecificFlickrPlaceID:placeId]];
 	pltvc.delegate = self.delegateToTransfer;
 	
 	NSString *contentString = [refinedElement.dictionary objectForKey:@"_content"];
@@ -105,6 +105,15 @@
 - (NSCharacterSet *)characterSetWithOnlyComma;
 {
 	return [NSCharacterSet characterSetWithCharactersInString:@","];
+}
+
+#pragma mark - Protocol implementation
+
+- (void)displayAlertViewWithTitle:(NSString *)title withMessage:(NSString *)message;
+{
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	[alert show];
+	[alert release];
 }
 
 @end

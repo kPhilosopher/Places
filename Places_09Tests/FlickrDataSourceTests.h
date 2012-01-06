@@ -10,7 +10,23 @@
 //  See Also: http://developer.apple.com/iphone/library/documentation/Xcode/Conceptual/iphone_development/135-Unit_Testing_Applications/unit_testing_applications.html
 
 #import <SenTestingKit/SenTestingKit.h>
+#import <OCMock/OCMock.h>
+#import "FlickrDataSource.h"
+#import "FlickrDataSource-Internal.h"
+#import "PlaceTableViewController.h"
 
 @interface FlickrDataSourceTests : SenTestCase
+{
+	@private
+	FlickrDataSource *_flickrDataSource;
+	NSArray *_storedMostRecentPlacesArray;
+	id _mockFlickrDataHandler;
+	id _mockAlertDelegate;
+}
+
+@property (retain) FlickrDataSource *flickrDataSource;
+@property (retain) NSArray *storedMostRecentPlacesArray;
+@property (assign) id mockFlickrDataHandler;
+@property (assign) id mockAlertDelegate;
 
 @end

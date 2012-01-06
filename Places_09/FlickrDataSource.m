@@ -6,14 +6,10 @@
 //  Copyright (c) 2011 Rose-Hulman Institute of Technology. All rights reserved.
 //
 
-#import "FlickrDataSource-Hidden.h"
+#import "FlickrDataSource.h"
+#import "FlickrDataSource-Internal.h"
+
 #define MAX_MOST_RECENT_LIST 10
-
-@interface FlickrDataSource()
-
-@property (nonatomic,retain) NSMutableSet *flickrMostRecentPlacesSet;
-
-@end
 
 @implementation FlickrDataSource
 @synthesize flickrTopPlacesArray = _flickrTopPlacesArray;
@@ -21,45 +17,59 @@
 @synthesize flickrMostRecentPlacesSet = _flickrMostRecentPlacesSet;
 @synthesize theElementSectionsForTopPlaces = _theElementSectionsForTopPlaces;
 @synthesize theElementSectionsForMostRecentPlaces = _theElementSectionsForMostRecentPlaces;
+@synthesize flickrDataHandler = _flickrDataHandler;
+@synthesize alertDelegate = _alertDelegate;
 
-#pragma mark - Initialization
+NSString *keyForMostRecentArray = @"mostRecentArrayKey";
+NSString *keyForMostRecentSet = @"mostRecentSetKey";
+NSString *alertTitle = @"Cannot Obtain Data";
+NSString *alertMessage = @"We couldn't get the data from Flickr";
 
+#pragma mark - Initialization sequence
 - (id)init
 {
+	return [self initWithFlickrDataHandler:[[[FlickrDataHandler alloc] init] autorelease]];
+}
+
+- (id)initWithFlickrDataHandler:(FlickrDataHandler *)flickrDataHandler;
+{
 	[super init];
-	[self setThePropertyToTheTopPlacesFromFlickr];
-	self.flickrMostRecentPlacesArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"most_recent_array"];
-	self.flickrMostRecentPlacesSet = 
-	[NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"most_recent_set"]];
+	self.flickrDataHandler = flickrDataHandler;
+	[self setupForTopPlacesArrayFromFlickr];
+	[self setThePropertyForMostRecentPlaces];
 	return self;
 }
 
-#pragma mark - FlickrFunctions
-- (void)setThePropertyToTheTopPlacesFromFlickr;
+- (void)setupForTopPlacesArrayFromFlickr;
 {
-	id temporaryFlickrTopPlaces = [FlickrFetcher topPlaces];
+	id temporaryFlickrTopPlaces = [self.flickrDataHandler getTopPlacesFromFlickr];
 	if ([temporaryFlickrTopPlaces isKindOfClass:[NSArray class]])
 	{
-		NSLog(@"got to where it is an ns array");
-		self.flickrTopPlacesArray = (NSArray *) temporaryFlickrTopPlaces;
+		self.flickrTopPlacesArray = (NSArray *)temporaryFlickrTopPlaces;
 	}
 	else
 	{
 		self.flickrTopPlacesArray = [NSArray array];
-		//TODO: try to make sure that all the computation and work that is unneccesary doesn't commence
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cannot Retrieve Data" message:@"We couldn't retrieve the data from Flickr" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-		[alert show];
-		[alert release];
+		[self.alertDelegate displayAlertViewWithTitle:alertTitle withMessage:alertMessage];
 	}
 }
 
--(void) addToTheMostRecentListOfPlacesTheFollowing:(NSDictionary *)dictionaryToAddToMostRecentList;
+- (void)setThePropertyForMostRecentPlaces;
+{
+	self.flickrMostRecentPlacesArray = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:keyForMostRecentArray]];
+	self.flickrMostRecentPlacesSet = [NSMutableSet setWithSet:[NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:keyForMostRecentSet]]];
+}
+
+#pragma mark - FlickrFunctions
+
+- (void)addToTheMostRecentListOfPlacesTheFollowing:(NSDictionary *)dictionaryToAddToMostRecentList;
 {
 	id elementOfPlaceId = [dictionaryToAddToMostRecentList objectForKey:@"place_id"];
 	NSString *stringOfPlaceId;
 	if ([elementOfPlaceId isKindOfClass:[NSString class]])
 	{
 		stringOfPlaceId = (NSString *)elementOfPlaceId;
+		//handle the set
 		if ([self.flickrMostRecentPlacesSet containsObject:stringOfPlaceId])
 		{
 			int indexToRemove = [self returnIndexOf_flickrMostRecentPlacesArray_ThatContains:stringOfPlaceId];
@@ -68,10 +78,12 @@
 		}
 		else	[self.flickrMostRecentPlacesSet addObject:stringOfPlaceId];
 		
+		//handle the array
 		[self.flickrMostRecentPlacesArray insertObject:dictionaryToAddToMostRecentList atIndex:0];
 		
 		if ([self.flickrMostRecentPlacesArray count] > MAX_MOST_RECENT_LIST) 
 			[self.flickrMostRecentPlacesArray removeLastObject];
+		//add to persistence.
 		[self updateMostRecentDataToStandardUserDefaults];
 	}
 }
@@ -99,47 +111,44 @@
 	//redo this parts
 	[self.flickrMostRecentPlacesSet removeObject:[dictionaryToDelete valueForKey:@"place_id"]];
 	[self.flickrMostRecentPlacesArray removeObjectAtIndex:[self returnIndexOf_flickrMostRecentPlacesArray_ThatContains:[dictionaryToDelete valueForKey:@"place_id"]]];
+	[self updateMostRecentDataToStandardUserDefaults];
 }
 
 - (void)updateMostRecentDataToStandardUserDefaults
 {
-	[[NSUserDefaults standardUserDefaults] setObject:self.flickrMostRecentPlacesArray forKey:@"most_recent_array"];
-	[[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:self.flickrMostRecentPlacesSet] forKey:@"most_recent_set"];
+	[[NSUserDefaults standardUserDefaults] setObject:self.flickrMostRecentPlacesArray forKey:keyForMostRecentArray];
+	[[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:self.flickrMostRecentPlacesSet] forKey:keyForMostRecentSet];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
+
+- (NSArray *)getPhotoListForSpecificFlickrPlaceID:(NSString *)flickrPlaceId
+{
+	NSArray *arrayOfPhotos = nil;
+	id temporaryPhotoList = [self.flickrDataHandler getPhotoListsAtPlace:flickrPlaceId];
+	if ([temporaryPhotoList isKindOfClass:[NSArray class]])
+		arrayOfPhotos = (NSArray *) temporaryPhotoList;
+	else
+	{
+		arrayOfPhotos = [NSArray array];
+		[self.alertDelegate displayAlertViewWithTitle:alertTitle withMessage:alertMessage];
+	}
+	return arrayOfPhotos;
+}
+
+#pragma mark - Property
 
 - (NSMutableArray *)flickrMostRecentPlacesArray
 {
 	if (!_flickrMostRecentPlacesArray)
 		_flickrMostRecentPlacesArray = [[NSMutableArray alloc] init];
-	[self performSelector:@selector(updateMostRecentDataToStandardUserDefaults) withObject:self afterDelay:0.5];
 	return _flickrMostRecentPlacesArray;
 }
 
 - (NSMutableSet *)flickrMostRecentPlacesSet
 {
 	if (!_flickrMostRecentPlacesSet)
-	{
 		_flickrMostRecentPlacesSet = [[NSMutableSet alloc] init];
-	}
 	return _flickrMostRecentPlacesSet;
-}
-
-- (NSArray *)retrievePhotoListForSpecific:(NSString *)flickrPlaceId
-{
-	NSArray *arrayOfPhotos;
-	id temporaryRetrievedPhotos = [FlickrFetcher photosAtPlace:flickrPlaceId];
-	if ([temporaryRetrievedPhotos isKindOfClass:[NSArray class]])
-		arrayOfPhotos = (NSArray *) temporaryRetrievedPhotos;
-	else
-	{
-		//TODO: try to make sure that all the computation and work that is unneccesary doesn't commence
-		arrayOfPhotos = [NSArray array];
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cannot Retrieve Data" message:@"We couldn't retrieve the data from Flickr" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-		[alert show];
-		[alert release];
-	}
-	return arrayOfPhotos;
 }
 
 #pragma mark - Dealloc

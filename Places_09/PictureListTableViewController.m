@@ -130,7 +130,7 @@
 	RefinedElement *refinedElement = [self getTheRefinedElementInTheElementSectionsWithThe:indexPath];
 	UIImage *image = [UIImage imageWithData:[FlickrFetcher imageDataForPhotoWithFlickrInfo:refinedElement.dictionary format:FlickrFetcherPhotoFormatLarge]];
 	
-	ScrollableImageViewController *imageController = [self.delegate retrieveScrollableImageViewControllerFor:self];
+	ScrollableImageViewController *imageController = [self.delegate getScrollableImageViewControllerForRequestor:self];
 	if ([self currentDeviceIsiPad_DetermineThatWith:imageController]) 
 		[self.navigationController pushViewController:imageController animated:YES];
 	[imageController initiateTheImageSetupWithGiven:image];
