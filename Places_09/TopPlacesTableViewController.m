@@ -7,36 +7,44 @@
 //
 
 #import "TopPlacesTableViewController.h"
+#import "TopPlacesTableViewController-Internal.h"
 
 @implementation TopPlacesTableViewController
 @synthesize delegateToUpdateMostRecentPlaces = _delegateToUpdateMostRecentPlaces;
 
-- (id)initWithStyle:(UITableViewStyle)style andWith:(FlickrDataSource *)theFlickrDataSource
+#pragma mark - Initialization
+
+- (id)initWithStyle:(UITableViewStyle)style withTheFlickrDataSource:(FlickrDataSource *)theFlickrDataSource withTheDataIndexer:(DataIndexer *)dataIndexer;
 {
-    self = [super initWithStyle:style andWith:theFlickrDataSource];
+    self = [super initWithStyle:style withTheFlickrDataSource:theFlickrDataSource withTheDataIndexer:dataIndexer];
     if (self) 
 	{
 		self.title = @"Top Places";
 		self.view.accessibilityLabel = @"topPlacesTableView";
-//TODO: allow this bar button to refresh the TopPlaces by retrieving a new set of data from FlickrFetcher.
-		//		self.navigationItem.rightBarButtonItem = [UIBarButtonItem ]
+		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStylePlain target:self action:@selector(refreshTheTopPlacesList)];
 	}
     return self;
 }
 
+- (void)refreshTheTopPlacesList;
+{
+	[self.flickrDataSource setupForTopPlacesArrayFromFlickr];
+	[self reIndexTheTableViewData];
+}
+
 #pragma mark - Methods to override the IndexedTableViewController
 
-- (void)setTheElementSectionsToTheFollowing:(NSMutableArray *)array
+- (void)setTheElementSectionsToTheFollowingArray:(NSMutableArray *)array
 {
 	self.flickrDataSource.theElementSectionsForTopPlaces = array;
 }
 
-- (NSMutableArray *)getTheElementSections
+- (NSMutableArray *)fetchTheElementSections
 {
 	return self.flickrDataSource.theElementSectionsForTopPlaces;
 }
 
-- (NSArray *)getTheRawData
+- (NSArray *)fetchTheRawData
 {
 	return self.flickrDataSource.flickrTopPlacesArray;
 }
@@ -45,10 +53,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	RefinedElement *refinedElement = [self getTheRefinedElementInTheElementSectionsWithThe:indexPath];
+	RefinedElement *refinedElement = [self getTheRefinedElementInTheElementSectionsWithTheIndexPath:indexPath];
 	NSDictionary *dictionaryToAddToMostRecentList = refinedElement.dictionary;
 	[self.flickrDataSource addToTheMostRecentListOfPlacesTheFollowing:dictionaryToAddToMostRecentList];
-	[self.delegateToUpdateMostRecentPlaces reIndexTheMostRecentTableViewData];
+	[self.delegateToUpdateMostRecentPlaces reIndexTheTableViewData];
 	[super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 

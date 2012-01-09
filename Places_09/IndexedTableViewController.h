@@ -5,27 +5,31 @@
 //  Created by Jinwoo Baek on 12/2/11.
 //  Copyright (c) 2011 Rose-Hulman Institute of Technology. All rights reserved.
 //
-// !!!: This class is designed to be subclassed
+// !!!: This class is designed to be subclassed along with the Model classes (DataIndexer and RefinedElement) for specific needs
 
 #import <UIKit/UIKit.h>
 #import "FlickrDataSource.h"
 #import "DataIndexer.h"
-
 
 @interface IndexedTableViewController : UITableViewController
 {
 	@private
 	DataIndexer *_dataIndexer;
 }
-- (RefinedElement *)getTheRefinedElementInTheElementSectionsWithThe:(NSIndexPath *)indexPath;
 
-// !!!: Must override these methods by subclassing to use this class.
-//- (void)sortTheElementsInEach:(NSMutableArray *)sectionArray andAddTo:(NSMutableArray *)elementSections;
-//- (void)setTheSectionNumberForAllTheElementsIn:(NSMutableArray *)temporaryDataElements;
-//- (void)convertThe:(NSDictionary *)rawElement IntoRefinedElementsAndAddTo:(NSMutableArray *)temporaryDataElements;
-- (void)setTheElementSectionsToTheFollowing:(NSMutableArray *)array;
-- (NSMutableArray *)getTheElementSections;
-- (NSArray *)getTheRawData;
+#pragma mark - Properties
 
 @property (retain) DataIndexer *dataIndexer;
+
+#pragma mark - Methods to override
+
+//TODO: make this a set of protocol methods for the subclasses to implement.
+- (void)setTheElementSectionsToTheFollowingArray:(NSMutableArray *)array;
+- (NSMutableArray *)fetchTheElementSections;
+- (NSArray *)fetchTheRawData;
+
+#pragma mark - Helper method
+
+- (RefinedElement *)getTheRefinedElementInTheElementSectionsWithTheIndexPath:(NSIndexPath *)indexPath;
+
 @end

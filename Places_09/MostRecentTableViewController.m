@@ -12,29 +12,29 @@
 
 @implementation MostRecentTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style andWith:(FlickrDataSource *)theFlickrDataSource
+- (id)initWithStyle:(UITableViewStyle)style withTheFlickrDataSource:(FlickrDataSource *)theFlickrDataSource withTheDataIndexer:(DataIndexer *)dataIndexer;
 {
-	self = [super initWithStyle:style andWith:theFlickrDataSource];
+	self = [super initWithStyle:style withTheFlickrDataSource:theFlickrDataSource withTheDataIndexer:dataIndexer];
     if (self) {
 		self.title = @"Most Recent";
+		self.view.accessibilityLabel = @"mostRecentTableView";
     }
-	self.view.accessibilityLabel = @"mostRecentTableView";
     return self;
 }
 
 #pragma mark - Methods to override the IndexedTableViewController
 
-- (void)setTheElementSectionsToTheFollowing:(NSMutableArray *)array
+- (void)setTheElementSectionsToTheFollowingArray:(NSMutableArray *)array
 {
 	self.flickrDataSource.theElementSectionsForMostRecentPlaces = array;
 }
 
-- (NSMutableArray *)getTheElementSections
+- (NSMutableArray *)fetchTheElementSections
 {
 	return self.flickrDataSource.theElementSectionsForMostRecentPlaces;
 }
 
-- (NSArray *)getTheRawData
+- (NSArray *)fetchTheRawData
 {
 	return self.flickrDataSource.flickrMostRecentPlacesArray;
 }
@@ -59,49 +59,11 @@
     return YES;
 }
 
-- (void)reIndexTheMostRecentTableViewData
-{
-	[self setTheElementSectionsToTheFollowing:[self.dataIndexer returnTheIndexedSectionsOfTheGiven:[self getTheRawData]]];
-	[self.tableView reloadData];
-}
-
-//- (void)viewDidUnload
-//{
-//    [super viewDidUnload];
-//    // Release any retained subviews of the main view.
-//    // e.g. self.myOutlet = nil;
-//}
-//
-//- (void)viewWillAppear:(BOOL)animated
-//{
-//	NSLog(@"viewWillAppear");
-//    [super viewWillAppear:animated];
-//	[self.tableView reloadData];
-//}
-//
-//- (void)viewDidAppear:(BOOL)animated
-//{
-//	NSLog(@"viewDidAppear");
-//    [super viewDidAppear:animated];
-//}
-//
-//- (void)viewWillDisappear:(BOOL)animated
-//{
-//	NSLog(@"viewWillDisappear");
-//    [super viewWillDisappear:animated];
-//}
-//
-//- (void)viewDidDisappear:(BOOL)animated
-//{
-//	NSLog(@"viewDidDisappear");
-//    [super viewDidDisappear:animated];
-//}
-
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
 		//TODO: refactor the two lines into the helper method in the IndexerTableViewController
-		NSArray *array = [[self getTheElementSections] objectAtIndex:indexPath.section];
+		NSArray *array = [[self fetchTheElementSections] objectAtIndex:indexPath.section];
 		RefinedElementForPlaces *refinedPlace = [array objectAtIndex:indexPath.row];
 		[self.flickrDataSource deleteFromMostRecentListThePlaceWithTheFollowing:refinedPlace.dictionary];
 		[super viewDidLoad];

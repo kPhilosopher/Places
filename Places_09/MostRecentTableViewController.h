@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "PlaceTableViewController.h"
-#import "DataReloadForMostRecentTableViewControllerProtocol.h"
 
-@interface MostRecentTableViewController : PlaceTableViewController <DataReloadForMostRecentTableViewControllerProtocol>
+@interface MostRecentTableViewController : PlaceTableViewController
 {
 }
 @end

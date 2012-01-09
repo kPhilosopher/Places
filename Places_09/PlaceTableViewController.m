@@ -6,7 +6,7 @@
 //  Copyright (c) 2011 Rose-Hulman Institute of Technology. All rights reserved.
 //
 
-//#import "PlaceTableViewController.h"
+#import "PlaceTableViewController.h"
 #import "PlaceTableViewController-Internal.h"
 
 #define NUMBER_OF_SECTIONS 1
@@ -15,13 +15,14 @@
 @synthesize flickrDataSource = _flickrDataSource;
 @synthesize delegateToTransfer = _delegateToTransfer;
 
-- (id)initWithStyle:(UITableViewStyle)style andWith:(FlickrDataSource *)theFlickrDataSource
+- (id)initWithStyle:(UITableViewStyle)style withTheFlickrDataSource:(FlickrDataSource *)theFlickrDataSource withTheDataIndexer:(DataIndexer *)dataIndexer;
 {
     self = [super initWithStyle:style];
-    if (self) {
-		self.dataIndexer = [[[PlacesDataIndexer alloc] init] autorelease];
+    if (self)
+	{
+		self.dataIndexer = dataIndexer;
 		self.flickrDataSource = theFlickrDataSource;
-		self.flickrDataSource.alertDelegate = self;
+//		self.flickrDataSource.alertDelegate = self;
 	}
     return self;
 }
@@ -42,7 +43,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if ([[[self getTheElementSections] objectAtIndex:section] count] > 0)
+    if ([[[self fetchTheElementSections] objectAtIndex:section] count] > 0)
         return [[[UILocalizedIndexedCollation currentCollation] sectionTitles] objectAtIndex:section];
     return nil;
 }
@@ -66,7 +67,7 @@
 	cell.textLabel.text = @"";
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	
-	RefinedElement *refinedElement = [self getTheRefinedElementInTheElementSectionsWithThe:indexPath];
+	RefinedElement *refinedElement = [self getTheRefinedElementInTheElementSectionsWithTheIndexPath:indexPath];
 	NSString *contentString = [refinedElement.dictionary objectForKey:@"_content"];
 	cell.textLabel.text = [contentString extractTheFirstStringWithCommaDelimeter];
 	
@@ -86,7 +87,7 @@
 {
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	
-	RefinedElement *refinedElement = [self getTheRefinedElementInTheElementSectionsWithThe:indexPath];
+	RefinedElement *refinedElement = [self getTheRefinedElementInTheElementSectionsWithTheIndexPath:indexPath];
 	NSString *placeId = [refinedElement.dictionary objectForKey:@"place_id"];
 	PictureListTableViewController *pltvc = [[PictureListTableViewController alloc] initWithStyle:UITableViewStylePlain andWith:[self.flickrDataSource getPhotoListForSpecificFlickrPlaceID:placeId]];
 	pltvc.delegate = self.delegateToTransfer;
@@ -107,13 +108,22 @@
 	return [NSCharacterSet characterSetWithCharactersInString:@","];
 }
 
-#pragma mark - Protocol implementation
+//#pragma mark - DisplayAlertViewProtocol implementation
+//
+//- (void)displayAlertViewWithTitle:(NSString *)title withMessage:(NSString *)message;
+//{
+//	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//	[alert show];
+//	[alert release];
+//}
 
-- (void)displayAlertViewWithTitle:(NSString *)title withMessage:(NSString *)message;
+#pragma mark - DataReloadForTableViewControllerProtocol implementation
+
+- (void)reIndexTheTableViewData
 {
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-	[alert show];
-	[alert release];
+	[self setTheElementSectionsToTheFollowingArray:
+	 [self.dataIndexer returnTheIndexedSectionsOfTheGiven:[self fetchTheRawData]]];
+	[self.tableView reloadData];
 }
 
 @end

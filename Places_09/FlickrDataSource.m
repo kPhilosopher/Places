@@ -18,12 +18,21 @@
 @synthesize theElementSectionsForTopPlaces = _theElementSectionsForTopPlaces;
 @synthesize theElementSectionsForMostRecentPlaces = _theElementSectionsForMostRecentPlaces;
 @synthesize flickrDataHandler = _flickrDataHandler;
-@synthesize alertDelegate = _alertDelegate;
+//@synthesize alertDelegate = _alertDelegate;
 
 NSString *keyForMostRecentArray = @"mostRecentArrayKey";
 NSString *keyForMostRecentSet = @"mostRecentSetKey";
 NSString *alertTitle = @"Cannot Obtain Data";
 NSString *alertMessage = @"We couldn't get the data from Flickr";
+
+#pragma mark - DisplayAlertViewProtocol implementation
+
+- (void)displayAlertViewWithTitle:(NSString *)title withMessage:(NSString *)message;
+{
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	[alert show];
+	[alert release];
+}
 
 #pragma mark - Initialization sequence
 - (id)init
@@ -50,7 +59,8 @@ NSString *alertMessage = @"We couldn't get the data from Flickr";
 	else
 	{
 		self.flickrTopPlacesArray = [NSArray array];
-		[self.alertDelegate displayAlertViewWithTitle:alertTitle withMessage:alertMessage];
+//		[self.alertDelegate displayAlertViewWithTitle:alertTitle withMessage:alertMessage];
+		[self displayAlertViewWithTitle:alertTitle withMessage:alertMessage];
 	}
 }
 
@@ -130,10 +140,13 @@ NSString *alertMessage = @"We couldn't get the data from Flickr";
 	else
 	{
 		arrayOfPhotos = [NSArray array];
-		[self.alertDelegate displayAlertViewWithTitle:alertTitle withMessage:alertMessage];
+//		[self.alertDelegate displayAlertViewWithTitle:alertTitle withMessage:alertMessage];
+		[self displayAlertViewWithTitle:alertTitle withMessage:alertMessage];
 	}
 	return arrayOfPhotos;
 }
+
+
 
 #pragma mark - Property
 

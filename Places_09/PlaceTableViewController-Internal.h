@@ -6,7 +6,7 @@
 //  Copyright (c) 2011 Rose-Hulman Institute of Technology. All rights reserved.
 //
 
-#import "PlaceTableViewController.h"
+#import <UIKit/UIKit.h>
 
 @interface PlaceTableViewController ()
 - (NSCharacterSet *)characterSetWithOnlyComma;

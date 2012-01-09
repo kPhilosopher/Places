@@ -10,9 +10,26 @@
 //  See Also: http://developer.apple.com/iphone/library/documentation/Xcode/Conceptual/iphone_development/135-Unit_Testing_Applications/unit_testing_applications.html
 
 #import <SenTestingKit/SenTestingKit.h>
+#import <OCMock/OCMock.h>
 #import "TopPlacesTableViewController.h"
 #import "FlickrDataSource.h"
-@interface TopPlacesTableViewControllerTests : SenTestCase
+#import "PlacesDataIndexer.h"
+#import "RefinedElementForPlaces.h"
 
+@interface TopPlacesTableViewControllerTests : SenTestCase
+{
+	@private
+	NSArray *_rawDataForMock;
+	NSMutableArray *_theElementSectionsMock;
+	TopPlacesTableViewController *_controllerUnderTest;
+	id _mockFlickrDataSource;
+	id _mockPlacesDataIndexer;
+}
+
+@property (retain) NSArray *rawDataForMock;
+@property (retain) NSMutableArray *theElementSectionsMock;
+@property (retain) TopPlacesTableViewController *controllerUnderTest;
+@property (assign) id mockFlickrDataSource;
+@property (assign) id mockPlacesDataIndexer;
 
 @end

@@ -20,7 +20,6 @@ extern NSString *alertMessage;
 @property (nonatomic,retain) NSMutableSet *flickrMostRecentPlacesSet;
 @property (retain) FlickrDataHandler *flickrDataHandler;
 
-//- (void)setThePropertyToTheTopPlacesFromFlickr;
 - (void)setThePropertyForMostRecentPlaces;
 - (void)updateMostRecentDataToStandardUserDefaults;
 - (int)returnIndexOf_flickrMostRecentPlacesArray_ThatContains:(NSString *)placed_idOfItsDictionary;

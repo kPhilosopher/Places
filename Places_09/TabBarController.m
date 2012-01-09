@@ -66,12 +66,16 @@
 			- (void)allocInitThePlaceTableViewControllersWithTheSameFlickrDataSource;
 			{
 				FlickrDataHandler *flickrDataHandler = [[FlickrDataHandler alloc] init];
+				PlacesDataIndexer *placesDataIndexerForTopPlaces = [[PlacesDataIndexer alloc] init];
+				PlacesDataIndexer *placesDataIndexerForMostRecentPlaces = [[PlacesDataIndexer alloc] init];
 				FlickrDataSource *theFlickrDataSource = [[FlickrDataSource alloc] initWithFlickrDataHandler:flickrDataHandler];
 				self.topPlacesTableViewController = 
-				[[[TopPlacesTableViewController alloc] initWithStyle:UITableViewStylePlain andWith:theFlickrDataSource] autorelease];
+				[[[TopPlacesTableViewController alloc] initWithStyle:UITableViewStylePlain withTheFlickrDataSource:theFlickrDataSource withTheDataIndexer:placesDataIndexerForTopPlaces] autorelease];
 				self.mostRecentTableViewController = 
-				[[[MostRecentTableViewController alloc] initWithStyle:UITableViewStylePlain andWith:theFlickrDataSource] autorelease];
+				[[[MostRecentTableViewController alloc] initWithStyle:UITableViewStylePlain withTheFlickrDataSource:theFlickrDataSource withTheDataIndexer:placesDataIndexerForMostRecentPlaces] autorelease];
 				[theFlickrDataSource release];
+				[placesDataIndexerForMostRecentPlaces release];
+				[placesDataIndexerForTopPlaces release];
 			}
 			- (void)setDelegateToTransferForTableViewControllers;
 			{

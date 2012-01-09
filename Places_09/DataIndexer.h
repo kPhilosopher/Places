@@ -16,7 +16,13 @@
 	NSArray *_rawData;
 	NSMutableArray *_theElementSections;
 }
+
+#pragma mark - Methods
+
 - (NSMutableArray *)returnTheIndexedSectionsOfTheGiven:(NSArray *)rawData;
+
+#pragma mark - Methods to override
+
 - (void)convertThe:(NSDictionary *)rawElement IntoRefinedElementsAndAddTo:(NSMutableArray *)temporaryDataElements;
 - (void)setTheSectionNumberForAllTheElementsIn:(NSMutableArray *)temporaryDataElements;
 - (NSInteger)setTheTotalNumberOfSections;

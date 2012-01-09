@@ -29,17 +29,17 @@
 
 #pragma mark - Methods to override the IndexedTableViewController
 
-- (void)setTheElementSectionsToTheFollowing:(NSMutableArray *)array
+- (void)setTheElementSectionsToTheFollowingArray:(NSMutableArray *)array
 {
 	self.listOfPicturesIndexed_theModel = array;
 }
 
-- (NSMutableArray *)getTheElementSections
+- (NSMutableArray *)fetchTheElementSections
 {
 	return self.listOfPicturesIndexed_theModel;
 }
 
-- (NSArray *)getTheRawData
+- (NSArray *)fetchTheRawData
 {
 	return self.listOfPictures_theModel;
 }
@@ -56,9 +56,9 @@
 #pragma mark - Table view data source
 //TODO: refactor this method.
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if ([[[self getTheElementSections] objectAtIndex:section] count] > 0)
+    if ([[[self fetchTheElementSections] objectAtIndex:section] count] > 0)
 	{
-		RefinedElement *refinedElement = [[[self getTheElementSections] objectAtIndex:section] objectAtIndex:0];
+		RefinedElement *refinedElement = [[[self fetchTheElementSections] objectAtIndex:section] objectAtIndex:0];
 		if ([refinedElement.name intValue] == 0) {
 			return @"Right Now";
 		}
@@ -79,7 +79,7 @@
 	cell.detailTextLabel.text = @"";
 	cell.textLabel.text = @"";
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	RefinedElement *refinedElement = [self getTheRefinedElementInTheElementSectionsWithThe:indexPath];
+	RefinedElement *refinedElement = [self getTheRefinedElementInTheElementSectionsWithTheIndexPath:indexPath];
 	NSDictionary *cellDictionary = refinedElement.dictionary;
 	id temporaryTitleString = [cellDictionary objectForKey:@"title"];
 	id temporaryDescriptionDictionary = [cellDictionary objectForKey:@"description"];
@@ -127,7 +127,7 @@
 {
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	
-	RefinedElement *refinedElement = [self getTheRefinedElementInTheElementSectionsWithThe:indexPath];
+	RefinedElement *refinedElement = [self getTheRefinedElementInTheElementSectionsWithTheIndexPath:indexPath];
 	UIImage *image = [UIImage imageWithData:[FlickrFetcher imageDataForPhotoWithFlickrInfo:refinedElement.dictionary format:FlickrFetcherPhotoFormatLarge]];
 	
 	ScrollableImageViewController *imageController = [self.delegate getScrollableImageViewControllerForRequestor:self];

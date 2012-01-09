@@ -11,39 +11,31 @@
 @implementation IndexedTableViewController
 @synthesize dataIndexer = _dataIndexer;
 
-#pragma mark - Initialization
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-	self = [super initWithStyle:style];
-	if (self) 
-	{
-		self.dataIndexer = [[[DataIndexer alloc] init] autorelease];
-	}
-	return self;
-}
-
-//#pragma mark - Convenience method
+//#pragma mark - Initialization
 //
-////TODO: see if I can change the location of this method.
-//- (RefinedElement *)getTheRefinedElementInTheElementSectionsWithThe:(NSIndexPath *)indexPath;
+//- (id)initWithStyle:(UITableViewStyle)style
 //{
-//	return [(NSArray *)[[self getTheElementSections] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+//	self = [super initWithStyle:style];
+//	if (self) 
+//	{
+//		self.dataIndexer = [[[DataIndexer alloc] init] autorelease];
+//	}
+//	return self;
 //}
 
-#pragma mark - Methods to be overridden
+#pragma mark - Methods to override
 
-- (void)setTheElementSectionsToTheFollowing:(NSMutableArray *)array;
+- (void)setTheElementSectionsToTheFollowingArray:(NSMutableArray *)array;
 {
 	return;
 }
 
-- (NSMutableArray *)getTheElementSections;
+- (NSMutableArray *)fetchTheElementSections;
 {
 	return nil;
 }
 
-- (NSArray *)getTheRawData;
+- (NSArray *)fetchTheRawData;
 {
 	return nil;
 }
@@ -53,7 +45,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	[self setTheElementSectionsToTheFollowing:[self.dataIndexer returnTheIndexedSectionsOfTheGiven:[self getTheRawData]]];
+	[self setTheElementSectionsToTheFollowingArray:[self.dataIndexer returnTheIndexedSectionsOfTheGiven:[self fetchTheRawData]]];
 }
 
 - (void)dealloc
@@ -66,19 +58,19 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [[self getTheElementSections] count];
+    return [[self fetchTheElementSections] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [(NSArray *)[[self getTheElementSections] objectAtIndex:section] count];
+    return [(NSArray *)[[self fetchTheElementSections] objectAtIndex:section] count];
 }
 
 #pragma mark - Helper method
 
 //TODO: see if I can change the location of this method.
-- (RefinedElement *)getTheRefinedElementInTheElementSectionsWithThe:(NSIndexPath *)indexPath;
+- (RefinedElement *)getTheRefinedElementInTheElementSectionsWithTheIndexPath:(NSIndexPath *)indexPath;
 {
-	return [(NSArray *)[[self getTheElementSections] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+	return [(NSArray *)[[self fetchTheElementSections] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 }
 @end

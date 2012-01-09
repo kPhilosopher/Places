@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "PlaceTableViewController.h"
-#import "DataReloadForMostRecentTableViewControllerProtocol.h"
+#import "DataReloadForTableViewControllerProtocol.h"
 
 @interface TopPlacesTableViewController : PlaceTableViewController
 {
 	@private
-	id<DataReloadForMostRecentTableViewControllerProtocol> _delegateToUpdateMostRecentPlaces;
+	id<DataReloadForTableViewControllerProtocol> _delegateToUpdateMostRecentPlaces;
 }
-@property (retain) id<DataReloadForMostRecentTableViewControllerProtocol> delegateToUpdateMostRecentPlaces;
+
+@property (retain) id<DataReloadForTableViewControllerProtocol> delegateToUpdateMostRecentPlaces;
+
 @end
