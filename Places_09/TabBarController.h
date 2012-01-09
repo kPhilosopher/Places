@@ -17,10 +17,10 @@
 	UINavigationController *_favoritesNavigationViewController;
 	TopPlacesTableViewController *_topPlacesTableViewController;
 	MostRecentTableViewController *_mostRecentTableViewController;
-	id <PictureListTableViewControllerDelegateProtocol> _delegateToTransfer;
+	id <PictureListTableViewControllerDelegate> _delegateToTransfer;
 }
 
-@property (retain) id <PictureListTableViewControllerDelegateProtocol> delegateToTransfer;
+@property (retain) id <PictureListTableViewControllerDelegate> delegateToTransfer;
 - (id)initWithDelegate:(id)delegate;
 
 @end

@@ -13,12 +13,16 @@
 @synthesize sectionNumber = _sectionNumber;
 @synthesize name = _name;
 
+#pragma mark - View lifecycle
+
 - (void)dealloc
 {
 	[_name release];
 	[_dictionary release];
 	[super dealloc];
 }
+
+#pragma mark - Class methods
 
 + (NSString *)extractNameFromDictionary:(NSDictionary *)rawElement
 {

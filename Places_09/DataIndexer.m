@@ -24,6 +24,7 @@
 	}
 	else
 		return nil;
+	
 	[self setTheSectionNumberForAllTheElementsIn:temporaryDataElements];
 	NSInteger highSection = [self setTheTotalNumberOfSections];
 	

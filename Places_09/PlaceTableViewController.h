@@ -19,11 +19,11 @@
 {
 	@private
 	FlickrDataSource *_flickrDataSource;
-	id <PictureListTableViewControllerDelegateProtocol> _delegateToTransfer;
+	id <PictureListTableViewControllerDelegate> _delegateToTransfer;
 }
 
 @property (retain) FlickrDataSource *flickrDataSource;
-@property (assign) id <PictureListTableViewControllerDelegateProtocol> delegateToTransfer;
+@property (assign) id <PictureListTableViewControllerDelegate> delegateToTransfer;
 
 - (id)initWithStyle:(UITableViewStyle)style withTheFlickrDataSource:(FlickrDataSource *)theFlickrDataSource withTheDataIndexer:(DataIndexer *)dataIndexer;
 

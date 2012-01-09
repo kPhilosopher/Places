@@ -14,11 +14,14 @@
 @private
 	NSDictionary *_dictionary;
 	NSInteger _sectionNumber;
-	@public
 	NSString *_name;
 }
 @property (retain) NSDictionary *dictionary;
 @property NSInteger sectionNumber;
 @property (copy) NSString *name;
+
+#pragma mark - Class methods
+
 +(NSString *)extractNameFromDictionary:(NSDictionary *)rawElement;
+
 @end

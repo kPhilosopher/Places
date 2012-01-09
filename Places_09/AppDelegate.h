@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TabBarController.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, PictureListTableViewControllerDelegateProtocol>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, PictureListTableViewControllerDelegate>
 {
 @private
 	TabBarController *_tab_Bar_Controller;

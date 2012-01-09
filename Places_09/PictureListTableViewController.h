@@ -14,7 +14,7 @@
 
 @class PictureListTableViewController;
 
-@protocol PictureListTableViewControllerDelegateProtocol
+@protocol PictureListTableViewControllerDelegate
 
 -(ScrollableImageViewController *)getScrollableImageViewControllerForRequestor:(PictureListTableViewController *)controller;
 
@@ -25,11 +25,11 @@
 	@private
 	NSArray *_listOfPictures_theModel;
 	NSMutableArray *_listOfPicturesIndexed_theModel;
-	id <PictureListTableViewControllerDelegateProtocol> _delegate;
+	id <PictureListTableViewControllerDelegate> _delegate;
 }
 
 @property (retain) NSArray *listOfPictures_theModel;
 @property (retain) NSMutableArray *listOfPicturesIndexed_theModel;
-@property (retain) id <PictureListTableViewControllerDelegateProtocol> delegate;
+@property (retain) id <PictureListTableViewControllerDelegate> delegate;
 - (id)initWithStyle:(UITableViewStyle)style withPictureList:(NSArray *)pictureList;
 @end

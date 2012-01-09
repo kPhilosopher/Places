@@ -10,6 +10,8 @@
 
 @implementation RefinedElementForPictureList
 
+#pragma mark - Class methods
+
 + (NSString *)extractNameFromDictionary:(NSDictionary *)rawElement
 {
 	NSDate *endDate = [NSDate date];
@@ -26,6 +28,8 @@
 	NSString *string = [NSString stringWithFormat:@"%.2f",number];
 	return string;
 }
+
+#pragma mark - Methods
 
 - (NSComparisonResult)compare:(RefinedElementForPictureList *)aRefinedElementPicture;
 {

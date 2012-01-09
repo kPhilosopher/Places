@@ -24,6 +24,17 @@
 @synthesize mostRecentTableViewController = _mostRecentTableViewController;
 @synthesize delegateToTransfer = _delegateToTransfer;
 
+#pragma mark - View lifecycle
+
+-(void)dealloc
+{
+	[_topPlacesTableViewController release];
+	[_mostRecentTableViewController release];
+	[_topPlacesNavigationViewController release];
+	[_favoritesNavigationViewController release];
+	[super dealloc];
+}
+
 #pragma mark -
 #pragma mark Initalization
 - (id)initWithDelegate:(id)delegate
@@ -42,7 +53,7 @@
     return self;
 }
 #pragma mark Setup Methods
-//TODO: create Dependency injection by creating an object that will take Model, Delegate and TabBarSystemType to streamline the process.
+
 	-(void)setup;
 	{
 		[self allocInitTheNavigationViewControllers];
@@ -107,14 +118,4 @@
 			[self.topPlacesTableViewController release];
 		}
 
-#pragma mark - View lifecycle
-
--(void)dealloc
-{
-	[_topPlacesTableViewController release];
-	[_mostRecentTableViewController release];
-	[_topPlacesNavigationViewController release];
-	[_favoritesNavigationViewController release];
-	[super dealloc];
-}
 @end
