@@ -16,6 +16,7 @@
 {
 	self = [super initWithStyle:style withTheFlickrDataSource:theFlickrDataSource withTheDataIndexer:dataIndexer];
     if (self) {
+		[self.flickrDataSource setupThePropertyForMostRecentPlaces];
 		self.title = @"Most Recent";
 		self.view.accessibilityLabel = @"mostRecentTableView";
     }

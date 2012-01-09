@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface PlaceTableViewController ()
+
+extern NSString *alertTitle;
+extern NSString *alertMessage;
+
 - (NSCharacterSet *)characterSetWithOnlyComma;
+
 @end

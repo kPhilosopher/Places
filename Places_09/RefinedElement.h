@@ -14,6 +14,7 @@
 @private
 	NSDictionary *_dictionary;
 	NSInteger _sectionNumber;
+	@public
 	NSString *_name;
 }
 @property (retain) NSDictionary *dictionary;

@@ -23,7 +23,6 @@
 
 #pragma mark - Methods to override
 
-//TODO: make this a set of protocol methods for the subclasses to implement.
 - (void)setTheElementSectionsToTheFollowingArray:(NSMutableArray *)array;
 - (NSMutableArray *)fetchTheElementSections;
 - (NSArray *)fetchTheRawData;

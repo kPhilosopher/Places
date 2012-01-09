@@ -14,13 +14,13 @@
 
 extern NSString *keyForMostRecentArray;
 extern NSString *keyForMostRecentSet;
-extern NSString *alertTitle;
-extern NSString *alertMessage;
+extern NSString *alertSwitchOff;
+extern NSString *alertSwitchOn;
 
-@property (nonatomic,retain) NSMutableSet *flickrMostRecentPlacesSet;
-@property (retain) FlickrDataHandler *flickrDataHandler;
+@property (nonatomic ,retain) NSMutableSet *flickrMostRecentPlacesSet;
+@property (nonatomic ,retain) FlickrDataHandler *flickrDataHandler;
 
-- (void)setThePropertyForMostRecentPlaces;
+
 - (void)updateMostRecentDataToStandardUserDefaults;
 - (int)returnIndexOf_flickrMostRecentPlacesArray_ThatContains:(NSString *)placed_idOfItsDictionary;
 

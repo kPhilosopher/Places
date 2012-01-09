@@ -31,5 +31,5 @@
 @property (retain) NSArray *listOfPictures_theModel;
 @property (retain) NSMutableArray *listOfPicturesIndexed_theModel;
 @property (retain) id <PictureListTableViewControllerDelegateProtocol> delegate;
-- (id)initWithStyle:(UITableViewStyle)style andWith:(NSArray *)pictureList;
+- (id)initWithStyle:(UITableViewStyle)style withPictureList:(NSArray *)pictureList;
 @end

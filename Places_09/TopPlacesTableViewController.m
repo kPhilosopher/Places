@@ -19,6 +19,7 @@
     self = [super initWithStyle:style withTheFlickrDataSource:theFlickrDataSource withTheDataIndexer:dataIndexer];
     if (self) 
 	{
+		[self.flickrDataSource setupForTopPlacesArrayFromFlickr];
 		self.title = @"Top Places";
 		self.view.accessibilityLabel = @"topPlacesTableView";
 		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStylePlain target:self action:@selector(refreshTheTopPlacesList)];

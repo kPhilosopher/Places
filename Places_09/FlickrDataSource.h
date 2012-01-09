@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "FlickrDataHandler.h"
-#import "DisplayAlertViewProtocol.h"
 
 @interface FlickrDataSource : NSObject
 {
@@ -19,19 +18,25 @@
 	NSMutableArray *_theElementSectionsForMostRecentPlaces;
 	NSMutableSet *_flickrMostRecentPlacesSet;
 	FlickrDataHandler *_flickrDataHandler;
-//	id<DisplayAlertViewProtocol> _alertDelegate;
+	NSString *_alertViewSwitch;
+	NSString *_alertSwitchOn;
+	NSString *_alertSwitchOff;
 }
 
-@property (nonatomic,retain) NSArray *flickrTopPlacesArray;
-@property (nonatomic,retain) NSMutableArray *flickrMostRecentPlacesArray;
-@property (nonatomic,retain) NSMutableArray *theElementSectionsForTopPlaces;
-@property (nonatomic,retain) NSMutableArray *theElementSectionsForMostRecentPlaces;
-//@property (assign) id<DisplayAlertViewProtocol> alertDelegate;
+@property (nonatomic ,retain) NSArray *flickrTopPlacesArray;
+@property (nonatomic ,retain) NSMutableArray *flickrMostRecentPlacesArray;
+@property (nonatomic ,retain) NSMutableArray *theElementSectionsForTopPlaces;
+@property (nonatomic ,retain) NSMutableArray *theElementSectionsForMostRecentPlaces;
+@property (assign) NSString *alertViewSwitch;
+@property (nonatomic ,assign) NSString *alertSwitchOn;
+@property (nonatomic ,assign) NSString *alertSwitchOff;
 
 - (id)initWithFlickrDataHandler:(FlickrDataHandler *)flickrDataHandler;
 - (NSArray *)getPhotoListForSpecificFlickrPlaceID:(NSString *)flickrPlaceId;
 - (void)addToTheMostRecentListOfPlacesTheFollowing:(NSDictionary *)dictionaryToAddToMostRecentList;
 - (void)deleteFromMostRecentListThePlaceWithTheFollowing:(NSDictionary *)dictionaryToDelete;
+//TODO: add tests for these methods.
 - (void)setupForTopPlacesArrayFromFlickr;
+- (void)setupThePropertyForMostRecentPlaces;
 
 @end

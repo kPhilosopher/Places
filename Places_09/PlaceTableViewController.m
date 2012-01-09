@@ -15,6 +15,9 @@
 @synthesize flickrDataSource = _flickrDataSource;
 @synthesize delegateToTransfer = _delegateToTransfer;
 
+NSString *alertTitle = @"Cannot Obtain Data";
+NSString *alertMessage = @"We couldn't get the data from Flickr";
+
 - (id)initWithStyle:(UITableViewStyle)style withTheFlickrDataSource:(FlickrDataSource *)theFlickrDataSource withTheDataIndexer:(DataIndexer *)dataIndexer;
 {
     self = [super initWithStyle:style];
@@ -22,7 +25,7 @@
 	{
 		self.dataIndexer = dataIndexer;
 		self.flickrDataSource = theFlickrDataSource;
-//		self.flickrDataSource.alertDelegate = self;
+		[self.flickrDataSource addObserver:self forKeyPath:@"alertViewSwitch" options:NSKeyValueObservingOptionNew context:NULL];
 	}
     return self;
 }
@@ -85,18 +88,24 @@
 //TODO: refactor this method.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-	
 	RefinedElement *refinedElement = [self getTheRefinedElementInTheElementSectionsWithTheIndexPath:indexPath];
 	NSString *placeId = [refinedElement.dictionary objectForKey:@"place_id"];
-	PictureListTableViewController *pltvc = [[PictureListTableViewController alloc] initWithStyle:UITableViewStylePlain andWith:[self.flickrDataSource getPhotoListForSpecificFlickrPlaceID:placeId]];
-	pltvc.delegate = self.delegateToTransfer;
 	
-	NSString *contentString = [refinedElement.dictionary objectForKey:@"_content"];
-	pltvc.title = [contentString extractTheFirstStringWithCommaDelimeter];
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	
-	[self.navigationController pushViewController:pltvc animated:YES];
-	[pltvc release];
+	NSArray *photoList = [self.flickrDataSource getPhotoListForSpecificFlickrPlaceID:placeId];
+	
+	if ([photoList count] > 0)
+	{
+		PictureListTableViewController *pltvc = [[PictureListTableViewController alloc] initWithStyle:UITableViewStylePlain withPictureList:photoList];
+		pltvc.delegate = self.delegateToTransfer;
+		
+		NSString *contentString = [refinedElement.dictionary objectForKey:@"_content"];
+		pltvc.title = [contentString extractTheFirstStringWithCommaDelimeter];
+		
+		[self.navigationController pushViewController:pltvc animated:YES];
+		[pltvc release];
+	}
 	
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
@@ -108,14 +117,18 @@
 	return [NSCharacterSet characterSetWithCharactersInString:@","];
 }
 
-//#pragma mark - DisplayAlertViewProtocol implementation
-//
-//- (void)displayAlertViewWithTitle:(NSString *)title withMessage:(NSString *)message;
-//{
-//	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//	[alert show];
-//	[alert release];
-//}
+#pragma mark - KVO observer implementation
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+	if ([[change objectForKey:NSKeyValueChangeNewKey] isEqualToString:self.flickrDataSource.alertSwitchOn])
+	{
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:alertTitle message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];	
+		[alert show];
+		[alert release];
+		[object setValue:self.flickrDataSource.alertSwitchOff forKey:keyPath];
+	}
+}
 
 #pragma mark - DataReloadForTableViewControllerProtocol implementation
 

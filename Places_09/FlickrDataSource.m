@@ -18,21 +18,14 @@
 @synthesize theElementSectionsForTopPlaces = _theElementSectionsForTopPlaces;
 @synthesize theElementSectionsForMostRecentPlaces = _theElementSectionsForMostRecentPlaces;
 @synthesize flickrDataHandler = _flickrDataHandler;
-//@synthesize alertDelegate = _alertDelegate;
+@synthesize alertViewSwitch = _alertViewSwitch;
+@synthesize alertSwitchOn = _alertSwitchOn;
+@synthesize alertSwitchOff = _alertSwitchOff;
 
 NSString *keyForMostRecentArray = @"mostRecentArrayKey";
 NSString *keyForMostRecentSet = @"mostRecentSetKey";
-NSString *alertTitle = @"Cannot Obtain Data";
-NSString *alertMessage = @"We couldn't get the data from Flickr";
-
-#pragma mark - DisplayAlertViewProtocol implementation
-
-- (void)displayAlertViewWithTitle:(NSString *)title withMessage:(NSString *)message;
-{
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-	[alert show];
-	[alert release];
-}
+NSString *alertSwitchOff = @"AlertOff";
+NSString *alertSwitchOn = @"AlertOn";
 
 #pragma mark - Initialization sequence
 - (id)init
@@ -44,8 +37,7 @@ NSString *alertMessage = @"We couldn't get the data from Flickr";
 {
 	[super init];
 	self.flickrDataHandler = flickrDataHandler;
-	[self setupForTopPlacesArrayFromFlickr];
-	[self setThePropertyForMostRecentPlaces];
+	self.alertViewSwitch = alertSwitchOff;
 	return self;
 }
 
@@ -59,12 +51,11 @@ NSString *alertMessage = @"We couldn't get the data from Flickr";
 	else
 	{
 		self.flickrTopPlacesArray = [NSArray array];
-//		[self.alertDelegate displayAlertViewWithTitle:alertTitle withMessage:alertMessage];
-		[self displayAlertViewWithTitle:alertTitle withMessage:alertMessage];
+		self.alertViewSwitch = alertSwitchOn;
 	}
 }
 
-- (void)setThePropertyForMostRecentPlaces;
+- (void)setupThePropertyForMostRecentPlaces;
 {
 	self.flickrMostRecentPlacesArray = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:keyForMostRecentArray]];
 	self.flickrMostRecentPlacesSet = [NSMutableSet setWithSet:[NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:keyForMostRecentSet]]];
@@ -140,13 +131,10 @@ NSString *alertMessage = @"We couldn't get the data from Flickr";
 	else
 	{
 		arrayOfPhotos = [NSArray array];
-//		[self.alertDelegate displayAlertViewWithTitle:alertTitle withMessage:alertMessage];
-		[self displayAlertViewWithTitle:alertTitle withMessage:alertMessage];
+		self.alertViewSwitch = alertSwitchOn;
 	}
 	return arrayOfPhotos;
 }
-
-
 
 #pragma mark - Property
 
@@ -162,6 +150,16 @@ NSString *alertMessage = @"We couldn't get the data from Flickr";
 	if (!_flickrMostRecentPlacesSet)
 		_flickrMostRecentPlacesSet = [[NSMutableSet alloc] init];
 	return _flickrMostRecentPlacesSet;
+}
+
+- (NSString *)alertSwitchOff
+{
+	return alertSwitchOff;
+}
+
+- (NSString *)alertSwitchOn
+{
+	return alertSwitchOn;
 }
 
 #pragma mark - Dealloc

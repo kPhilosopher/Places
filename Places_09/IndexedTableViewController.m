@@ -11,18 +11,6 @@
 @implementation IndexedTableViewController
 @synthesize dataIndexer = _dataIndexer;
 
-//#pragma mark - Initialization
-//
-//- (id)initWithStyle:(UITableViewStyle)style
-//{
-//	self = [super initWithStyle:style];
-//	if (self) 
-//	{
-//		self.dataIndexer = [[[DataIndexer alloc] init] autorelease];
-//	}
-//	return self;
-//}
-
 #pragma mark - Methods to override
 
 - (void)setTheElementSectionsToTheFollowingArray:(NSMutableArray *)array;

@@ -13,7 +13,7 @@
 @synthesize listOfPicturesIndexed_theModel = _listOfPicturesIndexed_theModel;
 @synthesize delegate = _delegate;
 
-- (id)initWithStyle:(UITableViewStyle)style andWith:(NSArray *)pictureList
+- (id)initWithStyle:(UITableViewStyle)style withPictureList:(NSArray *)pictureList
 {
     self = [super initWithStyle:style];
     if (self) {

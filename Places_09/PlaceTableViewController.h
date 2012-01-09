@@ -12,10 +12,8 @@
 #import "IndexedTableViewController.h"
 #import "PlacesDataIndexer.h"
 #import "NSString+TitleExtractor.h"
-#import "DisplayAlertViewProtocol.h"
 #import "DataReloadForTableViewControllerProtocol.h"
 
-//@interface PlaceTableViewController : IndexedTableViewController <DisplayAlertViewProtocol, DataReloadForTableViewControllerProtocol>
 @interface PlaceTableViewController : IndexedTableViewController <DataReloadForTableViewControllerProtocol>
 {
 	@private
