@@ -11,7 +11,8 @@
 #import "PictureListTableViewController.h"
 #import "IndexedTableViewController.h"
 #import "PlacesDataIndexer.h"
-#import "NSString+TitleExtractor.h"
+#import "NSString+TitleExtraction.h"
+#import "NSString+FindCharacterInSet.h"
 #import "DataReloadForTableViewControllerProtocol.h"
 
 @interface PlaceTableViewController : IndexedTableViewController <DataReloadForTableViewControllerProtocol>
