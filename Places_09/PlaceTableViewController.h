@@ -13,14 +13,16 @@
 #import "PlacesDataIndexer.h"
 #import "NSString+TitleExtraction.h"
 #import "NSString+FindCharacterInSet.h"
-#import "DataReloadForTableViewControllerProtocol.h"
+#import "TableViewControllerDataReloading.h"
 
-@interface PlaceTableViewController : IndexedTableViewController <DataReloadForTableViewControllerProtocol>
+@interface PlaceTableViewController : IndexedTableViewController <TableViewControllerDataReloading>
 {
 	@private
 	FlickrDataSource *_flickrDataSource;
 	id <PictureListTableViewControllerDelegate> _delegateToTransfer;
 }
+
+extern NSString *PlacesTableViewAccessibilityLabel;
 
 @property (retain) FlickrDataSource *flickrDataSource;
 @property (assign) id <PictureListTableViewControllerDelegate> delegateToTransfer;

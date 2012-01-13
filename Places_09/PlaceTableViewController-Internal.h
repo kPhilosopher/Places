@@ -1,5 +1,5 @@
 //
-//  PlaceTableViewController-Hidden.h
+//  PlaceTableViewController-Internal.h
 //  Places_09
 //
 //  Created by Jinwoo Baek on 12/26/11.

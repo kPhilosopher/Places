@@ -1,5 +1,5 @@
 //
-//  TopPlacesTableViewController+Internal.h
+//  TopPlacesTableViewController-Internal.h
 //  Places_09
 //
 //  Created by Jinwoo Baek on 1/6/12.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TopPlacesTableViewController (Internal)
+@interface TopPlacesTableViewController ()
 
 - (void)refreshTheTopPlacesList;
 

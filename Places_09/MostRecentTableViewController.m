@@ -12,13 +12,15 @@
 
 @implementation MostRecentTableViewController
 
+NSString *MostRecentPlacesViewAccessibilityLabel = @"Most recent places table";
+
 - (id)initWithStyle:(UITableViewStyle)style withTheFlickrDataSource:(FlickrDataSource *)theFlickrDataSource withTheDataIndexer:(DataIndexer *)dataIndexer;
 {
 	self = [super initWithStyle:style withTheFlickrDataSource:theFlickrDataSource withTheDataIndexer:dataIndexer];
     if (self) {
 		[self.flickrDataSource setupThePropertyForMostRecentPlaces];
 		self.title = @"Most Recent";
-		self.view.accessibilityLabel = @"mostRecentTableView";
+		self.view.accessibilityLabel = MostRecentPlacesViewAccessibilityLabel;
     }
     return self;
 }

@@ -24,6 +24,8 @@
 @synthesize mostRecentTableViewController = _mostRecentTableViewController;
 @synthesize delegateToTransfer = _delegateToTransfer;
 
+NSString *TabBarViewAccessibilityLabel = @"Tab Bar";
+
 #pragma mark - View lifecycle
 
 -(void)dealloc
@@ -48,6 +50,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+		self.view.accessibilityLabel = TabBarViewAccessibilityLabel;
     }
 	[self setup];
     return self;

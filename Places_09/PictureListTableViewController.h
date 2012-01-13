@@ -16,7 +16,7 @@
 
 @protocol PictureListTableViewControllerDelegate
 
--(ScrollableImageViewController *)getScrollableImageViewControllerForRequestor:(PictureListTableViewController *)controller;
+-(ScrollableImageViewController *)getScrollableImageViewControllerForRequestor:(id)requestor;
 
 @end
 
@@ -27,6 +27,9 @@
 	NSMutableArray *_listOfPicturesIndexed_theModel;
 	id <PictureListTableViewControllerDelegate> _delegate;
 }
+
+extern NSString *PictureListViewAccessibilityLabel;
+extern NSString *PictureListBackBarButtonAccessibilityLabel;
 
 @property (retain) NSArray *listOfPictures_theModel;
 @property (retain) NSMutableArray *listOfPicturesIndexed_theModel;

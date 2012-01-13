@@ -10,6 +10,7 @@
 #import "PlaceTableViewController.h"
 
 @interface MostRecentTableViewController : PlaceTableViewController
-{
-}
+
+extern NSString *MostRecentPlacesViewAccessibilityLabel;
+
 @end

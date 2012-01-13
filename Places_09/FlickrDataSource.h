@@ -23,6 +23,9 @@
 	NSString *_alertSwitchOff;
 }
 
+extern NSString *alertSwitchOff;
+extern NSString *alertSwitchOn;
+
 @property (nonatomic ,retain) NSArray *flickrTopPlacesArray;
 @property (nonatomic ,retain) NSMutableArray *flickrMostRecentPlacesArray;
 @property (nonatomic ,retain) NSMutableArray *theElementSectionsForTopPlaces;

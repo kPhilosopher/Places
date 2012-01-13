@@ -20,6 +20,8 @@
 	id <PictureListTableViewControllerDelegate> _delegateToTransfer;
 }
 
+extern NSString *TabBarViewAccessibilityLabel;
+
 @property (retain) id <PictureListTableViewControllerDelegate> delegateToTransfer;
 - (id)initWithDelegate:(id)delegate;
 

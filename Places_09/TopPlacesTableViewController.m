@@ -12,6 +12,8 @@
 @implementation TopPlacesTableViewController
 @synthesize delegateToUpdateMostRecentPlaces = _delegateToUpdateMostRecentPlaces;
 
+NSString *TopPlacesViewAccessibilityLabel = @"Top places table";
+
 #pragma mark - Initialization
 
 - (id)initWithStyle:(UITableViewStyle)style withTheFlickrDataSource:(FlickrDataSource *)theFlickrDataSource withTheDataIndexer:(DataIndexer *)dataIndexer;
@@ -21,7 +23,7 @@
 	{
 		[self.flickrDataSource setupForTopPlacesArrayFromFlickr];
 		self.title = @"Top Places";
-		self.view.accessibilityLabel = @"topPlacesTableView";
+		self.view.accessibilityLabel = TopPlacesViewAccessibilityLabel;
 		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStylePlain target:self action:@selector(refreshTheTopPlacesList)];
 	}
     return self;

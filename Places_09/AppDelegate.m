@@ -28,7 +28,7 @@
 {
 	[self setupTheAppDelegateWindow];
 	[self initializeTabBarController];
-	[self setupForScrollableImageViewController];
+	
 	[self determineTheSetupSequenceForDifferingDevices];
 	[self.window makeKeyAndVisible];
 	[self runKIFIfRunningIntegrationTest];
@@ -43,11 +43,6 @@
 	{
 		self.tab_Bar_Controller = [[[TabBarController alloc] initWithDelegate:self] autorelease];
 	}
-	- (void)setupForScrollableImageViewController;
-	{
-		self.scrollableImageVC = [[[ScrollableImageViewController alloc] init] autorelease];
-		self.scrollableImageVC.title = TITLE_OF_SCROLLABLEVIEWCONTROLLER;
-	}
 	- (void)determineTheSetupSequenceForDifferingDevices;
 	{
 		if ([self determineIfTheDeviceIsiPadOrNot])		[self setupForiPad];
@@ -59,12 +54,18 @@
 		}
 		- (void)setupForiPad;
 		{
+			[self setupForScrollableImageViewController];
 			UINavigationController *navcon = [[UINavigationController alloc] init];
 			[self setupSplitViewController:navcon];
 			[navcon pushViewController:self.scrollableImageVC animated:NO];
 			self.window.rootViewController = self.splitVC;
 			[navcon release];
 		}
+			- (void)setupForScrollableImageViewController;
+			{
+				self.scrollableImageVC = [[[ScrollableImageViewController alloc] init] autorelease];
+				self.scrollableImageVC.title = TITLE_OF_SCROLLABLEVIEWCONTROLLER;
+			}
 			- (void)setupSplitViewController:(UINavigationController*)navcon;
 			{
 				self.splitVC = [[[SplitViewController alloc] init] autorelease];

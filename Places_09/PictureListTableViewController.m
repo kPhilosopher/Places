@@ -13,19 +13,36 @@
 @synthesize listOfPicturesIndexed_theModel = _listOfPicturesIndexed_theModel;
 @synthesize delegate = _delegate;
 
+NSString *PictureListViewAccessibilityLabel = @"Picture list";
+NSString *PictureListBackBarButtonAccessibilityLabel = @"Back";
+
+#pragma mark - Initialization
+
 - (id)initWithStyle:(UITableViewStyle)style withPictureList:(NSArray *)pictureList
 {
     self = [super initWithStyle:style];
-    if (self) {
+    if (self)
+	{
 		if (pictureList)
 		{
 			self.dataIndexer = [[[PictureListDataIndexer alloc] init] autorelease];
 			self.listOfPictures_theModel = pictureList;
+			self.view.accessibilityLabel = PictureListViewAccessibilityLabel;
+			self.navigationItem.backBarButtonItem.accessibilityLabel = PictureListBackBarButtonAccessibilityLabel;
 		}
     }
-	self.view.accessibilityLabel = @"pictureListTableView";
     return self;
 }
+
+#pragma mark - View lifecycle
+
+- (void)dealloc
+{
+	[_listOfPictures_theModel release];
+	[_listOfPicturesIndexed_theModel release];
+	[super dealloc];
+}
+
 
 #pragma mark - Methods to override the IndexedTableViewController
 
@@ -42,15 +59,6 @@
 - (NSArray *)fetchTheRawData
 {
 	return self.listOfPictures_theModel;
-}
-
-#pragma mark - View lifecycle
-
-- (void)dealloc
-{
-	[_listOfPictures_theModel release];
-	[_listOfPicturesIndexed_theModel release];
-	[super dealloc];
 }
 
 #pragma mark - Table view data source
@@ -117,7 +125,7 @@
 
 #pragma mark - Table view delegate
 
-- (BOOL)currentDeviceIsiPad_DetermineThatWith:(UIViewController *)imageController
+- (BOOL)currentDeviceIsiPodOriPhone_DetermineThatWithImageController:(UIViewController *)imageController
 {
 	return imageController.view.window == nil;
 }
@@ -131,8 +139,12 @@
 	UIImage *image = [UIImage imageWithData:[FlickrFetcher imageDataForPhotoWithFlickrInfo:refinedElement.dictionary format:FlickrFetcherPhotoFormatLarge]];
 	
 	ScrollableImageViewController *imageController = [self.delegate getScrollableImageViewControllerForRequestor:self];
-	if ([self currentDeviceIsiPad_DetermineThatWith:imageController]) 
+	if ([self currentDeviceIsiPodOriPhone_DetermineThatWithImageController:imageController]) 
+	{
+		imageController = [[[ScrollableImageViewController alloc] init] autorelease];
+		imageController.title = @"Photo";
 		[self.navigationController pushViewController:imageController animated:YES];
+	}
 	[imageController initiateTheImageSetupWithGiven:image];
 	
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;

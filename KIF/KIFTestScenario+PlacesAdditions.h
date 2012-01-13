@@ -8,13 +8,28 @@
 
 #import <Foundation/Foundation.h>
 #import "KIFTestScenario.h"
+#import "TopPlacesTableViewController.h"
+#import "MostRecentTableViewController.h"
+#import "PictureListTableViewController.h"
+#import "ScrollableImageViewController.h"
+#import "TabBarController.h"
+#import "AppDelegate.h"
+
+#import "UIAccessibilityElement-KIFAdditions.h"
+#import "UIApplication-KIFAdditions.h"
 
 @interface KIFTestScenario (PlacesAdditions)
 
-+ (id)scenarioToPressTheTopPlacesTabBarItem;
-+ (id)scenarioToPressTheMostRecentPlacesTabBarItem;
++ (id)scenarioToTapTopRatedTabBarItem;
++ (id)scenarioToTapMostRecentTabBarItem;
 + (id)scenarioToViewTopPlacesTableView;
 + (id)scenarioToViewMostRecentPlacesTableView;
-+ (id)scenarioToViewTheFirstPictureOfThePlace;
++ (id)scenarioToViewTopPlacesPictureList;
++ (id)scenarioToViewMostRecentPlacesPictureList;
++ (id)scenarioToViewScrollableViewInTopPlacesTab;
++ (id)scenarioToViewScrollableViewInMostRecentPlacesTab;
++ (id)scenarioToGoBackToPlacesTableViewForTopPlacesTab;
++ (id)scenarioToGoBackToPlacesTableViewForMostRecentPlacesTab;
++ (id)scenarioToEraseAllTheRowsInMostRecentPlaces;
 
 @end

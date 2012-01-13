@@ -16,22 +16,22 @@
 @implementation ScrollableImageViewController
 @synthesize image = _image;
 @synthesize imageView = _imageView;
+@synthesize imageDictionary = _imageDictionary;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+NSString *ScrollableImageViewAccessibilityLabel = @"Scrollable image";
+NSString *ScrollableImageBackBarButtonAccessibilityLabel = @"Back";
+//TODO: restructure to imageView being a subview not the main view.
+//TODO: download the image in here with multi-threading.
+- (id)init
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
+	self = [super init];
+	if (self)
+	{
+//		self.view.accessibilityLabel = ScrollableImageViewAccessibilityLabel;
+//		self.navigationItem.backBarButtonItem.accessibilityLabel = ScrollableImageBackBarButtonAccessibilityLabel;
+//		self.navigationItem.backBarButtonItem.title = @"whatwhat";
+	}
+	return self;
 }
 
 #pragma mark - Split View Delegate Methods
@@ -95,6 +95,7 @@
 	scrollView.maximumZoomScale = 4;
 	scrollView.contentSize = self.imageView.bounds.size;
 	self.view = scrollView;
+	self.view.accessibilityLabel = ScrollableImageViewAccessibilityLabel;
 	[scrollView release];
 	[self.view addSubview:self.imageView];
 //	[super loadView];
@@ -107,6 +108,10 @@
 
 //-(void) viewWillAppear:(BOOL)animated
 //{
+	//multi-thread it
+//	
+//	[self initiateTheImageSetupWithGiven:self.image];
+//	[super viewWillAppear:animated];
 //	if ([self.view isKindOfClass:[UIScrollView class]])
 //	{
 //		UIScrollView *scrollView = (UIScrollView *)self.view;

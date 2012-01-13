@@ -17,6 +17,9 @@
 
 NSString *alertTitle = @"Cannot Obtain Data";
 NSString *alertMessage = @"We couldn't get the data from Flickr";
+NSString *PlacesTableViewAccessibilityLabel = @"Places table view";
+
+#pragma mark - Initialization
 
 - (id)initWithStyle:(UITableViewStyle)style withTheFlickrDataSource:(FlickrDataSource *)theFlickrDataSource withTheDataIndexer:(DataIndexer *)dataIndexer;
 {
@@ -31,6 +34,12 @@ NSString *alertMessage = @"We couldn't get the data from Flickr";
 }
 
 #pragma mark - View lifecycle
+
+//- (void)loadView;
+//{
+//	[super loadView];
+//	self.tableView.accessibilityLabel = PlacesTableViewAccessibilityLabel;
+//}
 
 - (void)dealloc
 {
@@ -110,23 +119,16 @@ NSString *alertMessage = @"We couldn't get the data from Flickr";
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
-#pragma mark - Helper method
-
-- (NSCharacterSet *)characterSetWithOnlyComma;
-{
-	return [NSCharacterSet characterSetWithCharactersInString:@","];
-}
-
 #pragma mark - KVO observer implementation
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-	if ([[change objectForKey:NSKeyValueChangeNewKey] isEqualToString:self.flickrDataSource.alertSwitchOn])
+	if ([[change objectForKey:NSKeyValueChangeNewKey] isEqualToString:alertSwitchOn])
 	{
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:alertTitle message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];	
 		[alert show];
 		[alert release];
-		[object setValue:self.flickrDataSource.alertSwitchOff forKey:keyPath];
+		[object setValue:alertSwitchOff forKey:keyPath];
 	}
 }
 
@@ -138,5 +140,13 @@ NSString *alertMessage = @"We couldn't get the data from Flickr";
 	 [self.dataIndexer returnTheIndexedSectionsOfTheGiven:[self fetchTheRawData]]];
 	[self.tableView reloadData];
 }
+
+#pragma mark - Helper method
+
+- (NSCharacterSet *)characterSetWithOnlyComma;
+{
+	return [NSCharacterSet characterSetWithCharactersInString:@","];
+}
+
 
 @end

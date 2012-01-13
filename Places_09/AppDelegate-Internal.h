@@ -1,5 +1,5 @@
 //
-//  AppDelegate_Hidden.h
+//  AppDelegate_Internal.h
 //  Places_09
 //
 //  Created by Jinwoo Baek on 12/20/11.

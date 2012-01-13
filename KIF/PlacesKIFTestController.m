@@ -14,12 +14,15 @@
 
 - (void)initializeScenarios;
 {
-    [self addScenario:[KIFTestScenario scenarioToViewTopPlacesTableView]];
-	[self addScenario:[KIFTestScenario scenarioToViewMostRecentPlacesTableView]];
-	[self addScenario:[KIFTestScenario scenarioToPressTheTopPlacesTabBarItem]];
-	[self addScenario:[KIFTestScenario scenarioToViewTheFirstPictureOfThePlace]];
-	[self addScenario:[KIFTestScenario scenarioToPressTheMostRecentPlacesTabBarItem]];
-	[self addScenario:[KIFTestScenario scenarioToViewTheFirstPictureOfThePlace]];
+//	[self addScenario:[KIFTestScenario scenarioToViewTopPlacesTableView]];
+//	[self addScenario:[KIFTestScenario scenarioToViewMostRecentPlacesTableView]];
+//	[self addScenario:[KIFTestScenario scenarioToViewTopPlacesPictureList]];
+//	[self addScenario:[KIFTestScenario scenarioToViewMostRecentPlacesPictureList]];
+//	[self addScenario:[KIFTestScenario scenarioToViewScrollableViewInTopPlacesTab]];
+//	[self addScenario:[KIFTestScenario scenarioToViewScrollableViewInMostRecentPlacesTab]];
+//	[self addScenario:[KIFTestScenario scenarioToGoBackToPlacesTableViewForTopPlacesTab]];
+//	[self addScenario:[KIFTestScenario scenarioToGoBackToPlacesTableViewForMostRecentPlacesTab]];
+	[self addScenario:[KIFTestScenario scenarioToEraseAllTheRowsInMostRecentPlaces]];
 }
 
 @end

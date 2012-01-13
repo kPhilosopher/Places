@@ -13,7 +13,15 @@
 	@private
 	UIImage *_image;
 	UIImageView *_viewWithImage;
+	NSDictionary *_imageDictionary;
 }
+
+extern NSString *ScrollableImageViewAccessibilityLabel;
+extern NSString *ScrollableImageBackBarButtonAccessibilityLabel;
+
 @property (retain) UIImageView *imageView;
+@property (retain) NSDictionary *imageDictionary;
+
 -(void) initiateTheImageSetupWithGiven:(UIImage *)givenImage;
+
 @end
