@@ -16,7 +16,7 @@ NSString *TopPlacesViewAccessibilityLabel = @"Top places table";
 
 #pragma mark - Initialization
 
-- (id)initWithStyle:(UITableViewStyle)style withTheFlickrDataSource:(FlickrDataSource *)theFlickrDataSource withTheDataIndexer:(DataIndexer *)dataIndexer;
+- (id)initWithStyle:(UITableViewStyle)style withTheFlickrDataSource:(PLFlickrDataSource *)theFlickrDataSource withTheDataIndexer:(DataIndexer *)dataIndexer;
 {
     self = [super initWithStyle:style withTheFlickrDataSource:theFlickrDataSource withTheDataIndexer:dataIndexer];
     if (self) 
@@ -58,7 +58,7 @@ NSString *TopPlacesViewAccessibilityLabel = @"Top places table";
 {
 	RefinedElement *refinedElement = [self getTheRefinedElementInTheElementSectionsWithTheIndexPath:indexPath];
 	NSDictionary *dictionaryToAddToMostRecentList = refinedElement.dictionary;
-	[self.flickrDataSource addToTheMostRecentListOfPlacesTheFollowing:dictionaryToAddToMostRecentList];
+	[self.flickrDataSource addToTheMostRecentListOfPlacesTheFollowingDictionary:dictionaryToAddToMostRecentList];
 	[self.delegateToUpdateMostRecentPlaces reIndexTheTableViewData];
 	[super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }

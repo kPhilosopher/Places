@@ -21,7 +21,7 @@ NSString *PlacesTableViewAccessibilityLabel = @"Places table view";
 
 #pragma mark - Initialization
 
-- (id)initWithStyle:(UITableViewStyle)style withTheFlickrDataSource:(FlickrDataSource *)theFlickrDataSource withTheDataIndexer:(DataIndexer *)dataIndexer;
+- (id)initWithStyle:(UITableViewStyle)style withTheFlickrDataSource:(PLFlickrDataSource *)theFlickrDataSource withTheDataIndexer:(DataIndexer *)dataIndexer;
 {
     self = [super initWithStyle:style];
     if (self)

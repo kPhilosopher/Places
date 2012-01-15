@@ -82,7 +82,7 @@ NSString *TabBarViewAccessibilityLabel = @"Tab Bar";
 				FlickrDataHandler *flickrDataHandler = [[FlickrDataHandler alloc] init];
 				PlacesDataIndexer *placesDataIndexerForTopPlaces = [[PlacesDataIndexer alloc] init];
 				PlacesDataIndexer *placesDataIndexerForMostRecentPlaces = [[PlacesDataIndexer alloc] init];
-				FlickrDataSource *theFlickrDataSource = [[FlickrDataSource alloc] initWithFlickrDataHandler:flickrDataHandler];
+				PLFlickrDataSource *theFlickrDataSource = [[PLFlickrDataSource alloc] initWithFlickrDataHandler:flickrDataHandler];
 				self.topPlacesTableViewController = 
 				[[[TopPlacesTableViewController alloc] initWithStyle:UITableViewStylePlain withTheFlickrDataSource:theFlickrDataSource withTheDataIndexer:placesDataIndexerForTopPlaces] autorelease];
 				self.mostRecentTableViewController = 

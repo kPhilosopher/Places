@@ -1,5 +1,5 @@
 //
-//  FlickrDataSourceTests.h
+//  PLFlickrDataSourceTests.h
 //  Places_09
 //
 //  Created by Jinwoo Baek on 12/20/11.
@@ -11,20 +11,20 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import <OCMock/OCMock.h>
-#import "FlickrDataSource.h"
-#import "FlickrDataSource-Internal.h"
+#import "PLFlickrDataSource.h"
+#import "PLFlickrDataSource-Internal.h"
 #import "PlaceTableViewController.h"
 
-@interface FlickrDataSourceTests : SenTestCase
+@interface PLFlickrDataSourceTests : SenTestCase
 {
 	@private
-	FlickrDataSource *_flickrDataSource;
+	PLFlickrDataSource *_flickrDataSource;
 	NSArray *_storedMostRecentPlacesArray;
 	id _mockFlickrDataHandler;
 	id _mockAlertDelegate;
 }
 
-@property (retain) FlickrDataSource *flickrDataSource;
+@property (retain) PLFlickrDataSource *flickrDataSource;
 @property (retain) NSArray *storedMostRecentPlacesArray;
 @property (assign) id mockFlickrDataHandler;
 @property (assign) id mockAlertDelegate;

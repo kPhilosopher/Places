@@ -1,5 +1,5 @@
 //
-//  FlickrDataSourceTests.m
+//  PLFlickrDataSourceTests.m
 //  Places_09
 //
 //  Created by Jinwoo Baek on 12/20/11.
@@ -8,9 +8,9 @@
 
 
 
-#import "FlickrDataSourceTests.h"
+#import "PLFlickrDataSourceTests.h"
 
-@implementation FlickrDataSourceTests
+@implementation PLFlickrDataSourceTests
 @synthesize flickrDataSource = _flickrDataSource;
 @synthesize storedMostRecentPlacesArray = _storedMostRecentPlacesArray;
 @synthesize mockFlickrDataHandler = _mockFlickrDataHandler;
@@ -22,7 +22,7 @@
 	self.mockFlickrDataHandler = [OCMockObject mockForClass:[FlickrDataHandler class]];
 	NSArray *mockTopPlacesArray = [NSArray arrayWithObjects:@"The array",@"Has These",@"Items", nil];
 	[[[self.mockFlickrDataHandler stub] andReturn:mockTopPlacesArray] getTopPlacesFromFlickr];
-	self.flickrDataSource = [[FlickrDataSource alloc] initWithFlickrDataHandler:self.mockFlickrDataHandler];
+	self.flickrDataSource = [[PLFlickrDataSource alloc] initWithFlickrDataHandler:self.mockFlickrDataHandler];
 	
 	self.mockAlertDelegate = [OCMockObject mockForClass:[PlaceTableViewController class]];
 	self.flickrDataSource.alertDelegate = self.mockAlertDelegate;
@@ -49,7 +49,7 @@
 	self.mockFlickrDataHandler = [OCMockObject mockForClass:[FlickrDataHandler class]];
 	id emptyValue = nil;
 	[[[self.mockFlickrDataHandler stub] andReturn:OCMOCK_VALUE(emptyValue)] getTopPlacesFromFlickr];
-	self.flickrDataSource = [[FlickrDataSource alloc] initWithFlickrDataHandler:self.mockFlickrDataHandler];
+	self.flickrDataSource = [[PLFlickrDataSource alloc] initWithFlickrDataHandler:self.mockFlickrDataHandler];
 	
 	self.mockAlertDelegate = [OCMockObject mockForClass:[PlaceTableViewController class]];
 	self.flickrDataSource.alertDelegate = self.mockAlertDelegate;
@@ -84,35 +84,35 @@
 	STAssertTrue(([self.flickrDataSource.flickrMostRecentPlacesArray count] == 0),@"");
 }
 
-- (void)testMethod_02_AddToTheMostRecentListOfPlacesTheFollowing
+- (void)testMethod_02_AddToTheMostRecentListOfPlacesTheFollowingDictionary
 {
 	STAssertTrue([self.flickrDataSource.flickrMostRecentPlacesArray count] == 0,@"");
 	
 	NSDictionary *dictionaryToAdd_01 = [NSDictionary dictionaryWithObjectsAndKeys:@"title_01",@"_content",@"1234",@"place_id", nil];
 	STAssertNotNil(self.flickrDataSource.flickrMostRecentPlacesArray, @"") ;
 	
-	[self.flickrDataSource addToTheMostRecentListOfPlacesTheFollowing:dictionaryToAdd_01];
+	[self.flickrDataSource addToTheMostRecentListOfPlacesTheFollowingDictionary:dictionaryToAdd_01];
 
 	STAssertTrue([self.flickrDataSource.flickrMostRecentPlacesArray count] == 1,@"");
 	STAssertTrue([[[self.flickrDataSource.flickrMostRecentPlacesArray objectAtIndex:0] objectForKey:@"_content"] isEqualToString:[dictionaryToAdd_01 objectForKey:@"_content"]],@"");
 	
 	//check if duplicates are handled
-	[self.flickrDataSource addToTheMostRecentListOfPlacesTheFollowing:dictionaryToAdd_01];
+	[self.flickrDataSource addToTheMostRecentListOfPlacesTheFollowingDictionary:dictionaryToAdd_01];
 	STAssertTrue([self.flickrDataSource.flickrMostRecentPlacesArray count] == 1,@"");
 	
 	//add a second dictionary
 	NSDictionary *dictionaryToAdd_02 = [NSDictionary dictionaryWithObjectsAndKeys:@"title_02",@"_content",@"2345",@"place_id", nil];
-	[self.flickrDataSource addToTheMostRecentListOfPlacesTheFollowing:dictionaryToAdd_02];
+	[self.flickrDataSource addToTheMostRecentListOfPlacesTheFollowingDictionary:dictionaryToAdd_02];
 	STAssertTrue([self.flickrDataSource.flickrMostRecentPlacesArray count] == 2,@"");
 	
 	NSDictionary *dictionaryToAdd_03 = [NSDictionary dictionaryWithObjectsAndKeys:@"title_03",@"_content",@"3456",@"place_id", nil];
-	[self.flickrDataSource addToTheMostRecentListOfPlacesTheFollowing:dictionaryToAdd_03];
+	[self.flickrDataSource addToTheMostRecentListOfPlacesTheFollowingDictionary:dictionaryToAdd_03];
 	STAssertTrue([self.flickrDataSource.flickrMostRecentPlacesArray count] == 3,@"");
 	
 	//check ordering
 	STAssertTrue([[[self.flickrDataSource.flickrMostRecentPlacesArray objectAtIndex:0] objectForKey:@"_content"] isEqualToString:[dictionaryToAdd_03 objectForKey:@"_content"]],@"");
 	
-	[self.flickrDataSource addToTheMostRecentListOfPlacesTheFollowing:dictionaryToAdd_02];
+	[self.flickrDataSource addToTheMostRecentListOfPlacesTheFollowingDictionary:dictionaryToAdd_02];
 	STAssertTrue([self.flickrDataSource.flickrMostRecentPlacesArray count] == 3,@"");
 	STAssertTrue([[[self.flickrDataSource.flickrMostRecentPlacesArray objectAtIndex:0] objectForKey:@"_content"] isEqualToString:[dictionaryToAdd_02 objectForKey:@"_content"]],@"");
 	

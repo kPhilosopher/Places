@@ -18,15 +18,15 @@
 @interface PlaceTableViewController : IndexedTableViewController <TableViewControllerDataReloading>
 {
 	@private
-	FlickrDataSource *_flickrDataSource;
+	PLFlickrDataSource *_flickrDataSource;
 	id <PictureListTableViewControllerDelegate> _delegateToTransfer;
 }
 
 extern NSString *PlacesTableViewAccessibilityLabel;
 
-@property (retain) FlickrDataSource *flickrDataSource;
+@property (retain) PLFlickrDataSource *flickrDataSource;
 @property (assign) id <PictureListTableViewControllerDelegate> delegateToTransfer;
 
-- (id)initWithStyle:(UITableViewStyle)style withTheFlickrDataSource:(FlickrDataSource *)theFlickrDataSource withTheDataIndexer:(DataIndexer *)dataIndexer;
+- (id)initWithStyle:(UITableViewStyle)style withTheFlickrDataSource:(PLFlickrDataSource *)theFlickrDataSource withTheDataIndexer:(DataIndexer *)dataIndexer;
 
 @end

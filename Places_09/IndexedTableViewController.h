@@ -8,7 +8,7 @@
 // !!!: This class is designed to be subclassed along with the Model classes (DataIndexer and RefinedElement) for specific needs
 
 #import <UIKit/UIKit.h>
-#import "FlickrDataSource.h"
+#import "PLFlickrDataSource.h"
 #import "DataIndexer.h"
 
 @interface IndexedTableViewController : UITableViewController
