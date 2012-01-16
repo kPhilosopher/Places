@@ -12,13 +12,13 @@
 @interface PLFlickrDataSource ()
 {
 @private
-	NSArray *_flickrTopPlaces;
-    NSMutableArray *_flickrMostRecentPlacesArray;
-	NSMutableArray *_theElementSectionsOfFlickrTopPlaces;
-	NSMutableArray *_theElementSectionsOfFlickrMostRecentPlaces;
-	NSMutableSet *_flickrMostRecentPlacesSet;
-	FlickrDataHandler *_flickrDataHandler;
-	NSString *_alertViewSwitch;
+	NSArray *PL_flickrTopPlaces;
+    NSMutableArray *PL_flickrMostRecentPlacesArray;
+	NSMutableArray *PL_theElementSectionsOfFlickrTopPlaces;
+	NSMutableArray *PL_theElementSectionsOfFlickrMostRecentPlaces;
+	NSMutableSet *PL_flickrMostRecentPlacesSet;
+	FlickrDataHandler *PL_flickrDataHandler;
+	NSString *PL_alertViewSwitch;
 }
 
 extern NSString *PLKeyForMostRecentArray;

@@ -3,22 +3,19 @@
 //  Places_09
 //
 //  Created by Jinwoo Baek on 10/31/11.
-//  Copyright (c) 2011 Rose-Hulman Institute of Technology. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "TabBarController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, PictureListTableViewControllerDelegate>
-{
-@private
-	TabBarController *_tab_Bar_Controller;
-	ScrollableImageViewController *_scrollableImageVC;
-	UISplitViewController *_splitVC;
-}
+
+extern NSString *PLTitleOfScrollableViewController;
+
+#pragma  mark - Property
 
 @property (strong, nonatomic) UIWindow *window;
-@property (retain) TabBarController *tab_Bar_Controller;
+@property (retain) TabBarController *tabBarController;
 @property (retain) ScrollableImageViewController *scrollableImageVC;
 @property (retain) UISplitViewController *splitVC;
 

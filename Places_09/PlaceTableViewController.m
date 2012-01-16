@@ -81,11 +81,11 @@ NSString *PlacesTableViewAccessibilityLabel = @"Places table view";
 	
 	RefinedElement *refinedElement = [self getTheRefinedElementInTheElementSectionsWithTheIndexPath:indexPath];
 	NSString *contentString = [refinedElement.dictionary objectForKey:@"_content"];
-	cell.textLabel.text = [contentString extractTheFirstStringWithCommaDelimeter];
+	cell.textLabel.text = [contentString initialStringWithDelimiterSet:[NSString characterSetWithComma]];
 	
-	if ([contentString enumerateStringToDetermineTheExistanceOfCharacterOfSet:[self characterSetWithOnlyComma]])
+	if ([contentString enumerateStringToDetermineTheExistanceOfCharacterInSet:[NSString characterSetWithComma]])
 	{
-		int startingIndexOfSubTitle = [contentString rangeOfCharacterFromSet:[self characterSetWithOnlyComma]].location + 1;
+		int startingIndexOfSubTitle = [contentString rangeOfCharacterFromSet:[NSString characterSetWithComma]].location + 1;
 		NSString *subTitle = [contentString substringFromIndex:startingIndexOfSubTitle +1];
 		cell.detailTextLabel.text = [subTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 	}
@@ -110,7 +110,7 @@ NSString *PlacesTableViewAccessibilityLabel = @"Places table view";
 		pltvc.delegate = self.delegateToTransfer;
 		
 		NSString *contentString = [refinedElement.dictionary objectForKey:@"_content"];
-		pltvc.title = [contentString extractTheFirstStringWithCommaDelimeter];
+		pltvc.title = [contentString initialStringWithDelimiterSet:[NSString characterSetWithComma]];
 		
 		[self.navigationController pushViewController:pltvc animated:YES];
 		[pltvc release];
@@ -143,7 +143,7 @@ NSString *PlacesTableViewAccessibilityLabel = @"Places table view";
 
 #pragma mark - Helper method
 
-- (NSCharacterSet *)characterSetWithOnlyComma;
+- (NSCharacterSet *)characterSetWithComma;
 {
 	return [NSCharacterSet characterSetWithCharactersInString:@","];
 }

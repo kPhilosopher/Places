@@ -20,63 +20,63 @@
     [super tearDown];
 }
 
-- (void)testMethod_ExtractTheFirstStringWithCommaDelimeter
+- (void)testMethod_initialStringWithDelimiterSet
 {
 	NSString *input;
 	NSString *output;
 	
 	input = nil;
-	output = [input extractTheFirstStringWithCommaDelimeter];
+	output = [input initialStringWithDelimiterSet:[NSString characterSetWithComma]];
 	STAssertNil(output,@"");
 	
 	input = @"";
-	output = [input extractTheFirstStringWithCommaDelimeter];
+	output = [input initialStringWithDelimiterSet:[NSString characterSetWithComma]];
 	STAssertTrue([output isEqualToString:input],@"");
 	
 	input = @"The String";
-	output = [input extractTheFirstStringWithCommaDelimeter];
+	output = [input initialStringWithDelimiterSet:[NSString characterSetWithComma]];
 	STAssertTrue([output isEqualToString:input],@"");
 	
 	input = @"The String   ";
-	output = [input extractTheFirstStringWithCommaDelimeter];
+	output = [input initialStringWithDelimiterSet:[NSString characterSetWithComma]];
 	STAssertFalse([output isEqualToString:input],@"");
 	
 	input = @"   The String";
-	output = [input extractTheFirstStringWithCommaDelimeter];
+	output = [input initialStringWithDelimiterSet:[NSString characterSetWithComma]];
 	STAssertFalse([output isEqualToString:input],@"");
 	
 	input = @"  The String  ";
-	output = [input extractTheFirstStringWithCommaDelimeter];
+	output = [input initialStringWithDelimiterSet:[NSString characterSetWithComma]];
 	STAssertFalse([output isEqualToString:input],@"");
 	
 	input = @"My Name, Your Name, His/Her Name";
-	output = [input extractTheFirstStringWithCommaDelimeter];
+	output = [input initialStringWithDelimiterSet:[NSString characterSetWithComma]];
 	STAssertTrue([output isEqualToString:@"My Name"],@"");
 	
 	input = @"My Name   , Your Name, His/Her Name";
-	output = [input extractTheFirstStringWithCommaDelimeter];
+	output = [input initialStringWithDelimiterSet:[NSString characterSetWithComma]];
 	STAssertTrue([output isEqualToString:@"My Name"],@"");
 	
 	input = @"    My Name, Your Name, His/Her Name";
-	output = [input extractTheFirstStringWithCommaDelimeter];
+	output = [input initialStringWithDelimiterSet:[NSString characterSetWithComma]];
 	STAssertTrue([output isEqualToString:@"My Name"],@"");
 	
 	
 	input = @"   My Name   , Your Name, His/Her Name";
-	output = [input extractTheFirstStringWithCommaDelimeter];
+	output = [input initialStringWithDelimiterSet:[NSString characterSetWithComma]];
 	STAssertTrue([output isEqualToString:@"My Name"],@"");
 	
 	
 	input = @",My Name, Your Name, His/Her Name";
-	output = [input extractTheFirstStringWithCommaDelimeter];
+	output = [input initialStringWithDelimiterSet:[NSString characterSetWithComma]];
 	STAssertTrue([output isEqualToString:@""],@"");
 	
 	input = @"     ,My Name, Your Name, His/Her Name";
-	output = [input extractTheFirstStringWithCommaDelimeter];
+	output = [input initialStringWithDelimiterSet:[NSString characterSetWithComma]];
 	STAssertTrue([output isEqualToString:@""],@"");
 }	
 
-- (void)testMethod_EnumerateStringToDetermineTheExistanceOfCharacterOfSet
+- (void)testMethod_enumerateStringToDetermineTheExistanceOfCharacterInSet
 {
 	NSString *input;
 	BOOL output;
@@ -84,47 +84,47 @@
 	
 	characterSet = [NSCharacterSet characterSetWithCharactersInString:@","];
 	input = nil;
-	output = [input enumerateStringToDetermineTheExistanceOfCharacterOfSet:characterSet];
+	output = [input enumerateStringToDetermineTheExistanceOfCharacterInSet:characterSet];
 	STAssertTrue(output == NO,@"");
 	
 	characterSet = [NSCharacterSet characterSetWithCharactersInString:@","];
 	input = @"";
-	output = [input enumerateStringToDetermineTheExistanceOfCharacterOfSet:characterSet];
+	output = [input enumerateStringToDetermineTheExistanceOfCharacterInSet:characterSet];
 	STAssertTrue(output == NO,@"");
 	
 	characterSet = [NSCharacterSet characterSetWithCharactersInString:@","];
 	input = @"Hello, World!";
-	output = [input enumerateStringToDetermineTheExistanceOfCharacterOfSet:characterSet];
+	output = [input enumerateStringToDetermineTheExistanceOfCharacterInSet:characterSet];
 	STAssertTrue(output == YES,@"");
 	
 	characterSet = [NSCharacterSet characterSetWithCharactersInString:@"!"];
 	input = @"Hello, World!";
-	output = [input enumerateStringToDetermineTheExistanceOfCharacterOfSet:characterSet];
+	output = [input enumerateStringToDetermineTheExistanceOfCharacterInSet:characterSet];
 	STAssertTrue(output == YES,@"");
 	
 	characterSet = [NSCharacterSet characterSetWithCharactersInString:@","];
 	input = @"Hello World!";
-	output = [input enumerateStringToDetermineTheExistanceOfCharacterOfSet:characterSet];
+	output = [input enumerateStringToDetermineTheExistanceOfCharacterInSet:characterSet];
 	STAssertTrue(output == NO,@"");
 	
 	characterSet = [NSCharacterSet characterSetWithCharactersInString:@",!"];
 	input = @",,,";
-	output = [input enumerateStringToDetermineTheExistanceOfCharacterOfSet:characterSet];
+	output = [input enumerateStringToDetermineTheExistanceOfCharacterInSet:characterSet];
 	STAssertTrue(output == YES,@"");
 	
 	characterSet = [NSCharacterSet characterSetWithCharactersInString:@""];
 	input = @"Hello, World!";
-	output = [input enumerateStringToDetermineTheExistanceOfCharacterOfSet:characterSet];
+	output = [input enumerateStringToDetermineTheExistanceOfCharacterInSet:characterSet];
 	STAssertTrue(output == NO,@"");
 	
 	characterSet = [NSCharacterSet characterSetWithCharactersInString:@""];
 	input = nil;
-	output = [input enumerateStringToDetermineTheExistanceOfCharacterOfSet:characterSet];
+	output = [input enumerateStringToDetermineTheExistanceOfCharacterInSet:characterSet];
 	STAssertTrue(output == NO,@"");
 	
 	characterSet = [NSCharacterSet characterSetWithCharactersInString:@""];
 	input = @"";
-	output = [input enumerateStringToDetermineTheExistanceOfCharacterOfSet:characterSet];
+	output = [input enumerateStringToDetermineTheExistanceOfCharacterInSet:characterSet];
 	STAssertTrue(output == NO,@"");
 }
 

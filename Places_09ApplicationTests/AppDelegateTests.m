@@ -34,7 +34,7 @@
 
 - (void)testTabBarControllerAllocInit
 {
-	STAssertNotNil(self.appDelegate.tab_Bar_Controller, @"the tab bar controller is not allocated and inititated.");
+	STAssertNotNil(self.appDelegate.tabBarController, @"the tab bar controller is not allocated and inititated.");
 }
 
 - (void)testiPadConfiguration
@@ -48,7 +48,7 @@
 		STAssertTrue([[self.appDelegate.splitVC.viewControllers objectAtIndex:1] isKindOfClass:[UINavigationController class]], @"For the iPad configuration, the slave view controller of the split view controller is not a Navigation Controller");
 		UINavigationController *navcon = (UINavigationController*)[self.appDelegate.splitVC.viewControllers objectAtIndex:1];
 		TabBarController *tabcon = (TabBarController*)[self.appDelegate.splitVC.viewControllers objectAtIndex:0];
-		STAssertTrue([tabcon isEqual:self.appDelegate.tab_Bar_Controller],@"For the iPad configuration, the tab bar controller extracted from the split view controller is not the same tab bar controller as given from the app delegate");
+		STAssertTrue([tabcon isEqual:self.appDelegate.tabBarController],@"For the iPad configuration, the tab bar controller extracted from the split view controller is not the same tab bar controller as given from the app delegate");
 		STAssertTrue([navcon.topViewController isKindOfClass:[ScrollableImageViewController class]],@"For the iPad configuration, the top view controller of the navigation controller, which is the slave view controller of the split view controller, is not a Scrollable View Controller.");
 		ScrollableImageViewController *scrollableVC = (ScrollableImageViewController*)navcon.topViewController;
 		STAssertTrue([self.appDelegate.scrollableImageVC isEqual:scrollableVC],@"For the iPad configuration, the scrollabe image view controller extracted from the split view controller is not same scrollable image view controller as given from the app delegate.");
@@ -60,7 +60,7 @@
 {
 	if([[UIScreen mainScreen] bounds].size.height < 500)
 	{
-		STAssertTrue([[self.appDelegate.window.subviews objectAtIndex:0] isEqual:self.appDelegate.tab_Bar_Controller.view],@"For the iPhone or iPod configuration, the subview given to the app delegate does not match the view of the tab bar controller.");
+		STAssertTrue([[self.appDelegate.window.subviews objectAtIndex:0] isEqual:self.appDelegate.tabBarController.view],@"For the iPhone or iPod configuration, the subview given to the app delegate does not match the view of the tab bar controller.");
 	}
 }
 

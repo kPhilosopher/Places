@@ -19,13 +19,13 @@
 {
     [super setUp];
 	self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-	if ([[self.appDelegate.tab_Bar_Controller.viewControllers objectAtIndex:0] isKindOfClass:[UINavigationController class]] &&
-		[[self.appDelegate.tab_Bar_Controller.viewControllers objectAtIndex:1] isKindOfClass:[UINavigationController class]])
+	if ([[self.appDelegate.tabBarController.viewControllers objectAtIndex:0] isKindOfClass:[UINavigationController class]] &&
+		[[self.appDelegate.tabBarController.viewControllers objectAtIndex:1] isKindOfClass:[UINavigationController class]])
 	{
 		self.leftNavigationViewController = 
-		(UINavigationController *)[self.appDelegate.tab_Bar_Controller.viewControllers objectAtIndex:0];
+		(UINavigationController *)[self.appDelegate.tabBarController.viewControllers objectAtIndex:0];
 		self.rightNavigationViewController = 
-		(UINavigationController *)[self.appDelegate.tab_Bar_Controller.viewControllers objectAtIndex:1];
+		(UINavigationController *)[self.appDelegate.tabBarController.viewControllers objectAtIndex:1];
 	}
 	
 	if ([self.leftNavigationViewController.topViewController isKindOfClass:[TopPlacesTableViewController class]] &&

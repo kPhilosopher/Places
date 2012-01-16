@@ -12,7 +12,7 @@
 
 +(NSString *)extractNameFromDictionary:(NSDictionary *)rawElement
 {
-	return [[rawElement objectForKey:@"_content"] extractTheFirstStringWithCommaDelimeter];
+	return [[rawElement objectForKey:@"_content"] initialStringWithDelimiterSet:[NSString characterSetWithComma]];
 }
 
 @end

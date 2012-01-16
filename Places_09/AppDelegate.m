@@ -3,7 +3,6 @@
 //  Places_09
 //
 //  Created by Jinwoo Baek on 10/31/11.
-//  Copyright (c) 2011 Rose-Hulman Institute of Technology. All rights reserved.
 //
 
 #import "AppDelegate-Internal.h"
@@ -12,72 +11,83 @@
 #import "PlacesKIFTestController.h"
 #endif
 
-#define TITLE_OF_SCROLLABLEVIEWCONTROLLER @"Photo"
-
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize tab_Bar_Controller = _tab_Bar_Controller;
-@synthesize scrollableImageVC = _scrollableImageVC;
-@synthesize splitVC = _splitVC;
+@synthesize tabBarController = PL_tabBarController;
+@synthesize scrollableImageVC = PL_scrollableImageVC;
+@synthesize splitVC = PL_splitVC;
 
-#pragma mark -
-#pragma mark didFinishLaunchingWithOptions Sequence
+NSString *PLTitleOfScrollableViewController = @"Photo";
+
+#pragma mark - View lifecycle
+
+- (void)dealloc;
+{
+	[PL_tabBarController release];
+	[PL_scrollableImageVC release];
+	[PL_splitVC release];
+	[_window release];
+    [super dealloc];
+}
+
+#pragma mark - didFinishLaunchingWithOptions sequence
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
 {
-	[self setupTheAppDelegateWindow];
-	[self initializeTabBarController];
-	
-	[self determineTheSetupSequenceForDifferingDevices];
+	[self RD_setupTheAppDelegateWindow];
+	[self RD_initializeTabBarController];
+	[self RD_determineTheSetupSequenceForDifferingDevices];
 	[self.window makeKeyAndVisible];
-	[self runKIFIfRunningIntegrationTest];
+	[self RD_runKIFIfRunningIntegrationTest];
     return YES;
 }
-	- (void)setupTheAppDelegateWindow;
+	- (void)RD_setupTheAppDelegateWindow;
 	{
 		self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
 		self.window.backgroundColor = [UIColor whiteColor];
 	}
-	- (void)initializeTabBarController;
+	- (void)RD_initializeTabBarController;
 	{
-		self.tab_Bar_Controller = [[[TabBarController alloc] initWithDelegate:self] autorelease];
+		self.tabBarController = [[[TabBarController alloc] initWithDelegate:self] autorelease];
 	}
-	- (void)determineTheSetupSequenceForDifferingDevices;
+	- (void)RD_determineTheSetupSequenceForDifferingDevices;
 	{
-		if ([self determineIfTheDeviceIsiPadOrNot])		[self setupForiPad];
-		else											[self setupForiPhoneOriPod];
+		if ([self RD_determineIfTheDeviceIsiPadOrNot])	
+			[self RD_setupForiPad];
+		else
+			[self RD_setupForiPhoneOriPod];
 	}
-		- (BOOL)determineIfTheDeviceIsiPadOrNot;
+		- (BOOL)RD_determineIfTheDeviceIsiPadOrNot;
 		{
 			return ([[UIScreen mainScreen] bounds].size.height > 500);
 		}
-		- (void)setupForiPad;
+		- (void)RD_setupForiPad;
 		{
-			[self setupForScrollableImageViewController];
+			[self RD_setupForScrollableImageViewController];
 			UINavigationController *navcon = [[UINavigationController alloc] init];
-			[self setupSplitViewController:navcon];
 			[navcon pushViewController:self.scrollableImageVC animated:NO];
+			[self RD_setupSplitViewControllerWithNavigationController:navcon];
 			self.window.rootViewController = self.splitVC;
 			[navcon release];
 		}
-			- (void)setupForScrollableImageViewController;
+			- (void)RD_setupForScrollableImageViewController;
 			{
 				self.scrollableImageVC = [[[ScrollableImageViewController alloc] init] autorelease];
-				self.scrollableImageVC.title = TITLE_OF_SCROLLABLEVIEWCONTROLLER;
+				self.scrollableImageVC.title = PLTitleOfScrollableViewController;
 			}
-			- (void)setupSplitViewController:(UINavigationController*)navcon;
+			- (void)RD_setupSplitViewControllerWithNavigationController:(UINavigationController *)navcon;
 			{
 				self.splitVC = [[[SplitViewController alloc] init] autorelease];
 				self.splitVC.delegate = self.scrollableImageVC;
 				self.splitVC.viewControllers = 
-				[NSArray arrayWithObjects:self.tab_Bar_Controller, navcon, nil];
+				[NSArray arrayWithObjects:self.tabBarController, navcon, nil];
 			}
-		- (void)setupForiPhoneOriPod;
+		- (void)RD_setupForiPhoneOriPod;
 		{
-			self.window.rootViewController = self.tab_Bar_Controller;
+			self.window.rootViewController = self.tabBarController;
 		}
-	- (void)runKIFIfRunningIntegrationTest;
+	- (void)RD_runKIFIfRunningIntegrationTest;
 	{
 		#if RUN_KIF_TESTS
 			[[PlacesKIFTestController sharedInstance] startTestingWithCompletionBlock:^{
@@ -87,21 +97,9 @@
 		#endif
 	}
 
-#pragma mark -
-#pragma mark View lifecycle
-- (void)dealloc;
-{
-	[_tab_Bar_Controller release];
-	[_scrollableImageVC release];
-	[_splitVC release];
-	[_window release];
-    [super dealloc];
-}
+#pragma mark - PictureListTableViewController Delegate Protocol Method
 
-#pragma mark -
-#pragma mark PictureListTableViewController Delegate Protocol Method
-
--(ScrollableImageViewController *)getScrollableImageViewControllerForRequestor:(PictureListTableViewController *)controller;
+-(ScrollableImageViewController *)scrollableImageViewControllerForRequestor:(PictureListTableViewController *)controller;
 {
 	return self.scrollableImageVC;
 }

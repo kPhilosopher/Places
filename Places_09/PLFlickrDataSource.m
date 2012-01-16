@@ -10,13 +10,13 @@
 
 @implementation PLFlickrDataSource
 
-@synthesize flickrTopPlaces = _flickrTopPlaces;
-@synthesize flickrMostRecentPlacesArray = _flickrMostRecentPlacesArray;
-@synthesize flickrMostRecentPlacesSet = _flickrMostRecentPlacesSet;
-@synthesize theElementSectionsOfFlickrTopPlaces = _theElementSectionsOfFlickrTopPlaces;
-@synthesize theElementSectionsOfFlickrMostRecentPlaces = _theElementSectionsOfFlickrMostRecentPlaces;
-@synthesize flickrDataHandler = _flickrDataHandler;
-@synthesize alertViewSwitch = _alertViewSwitch;
+@synthesize flickrTopPlaces = PL_flickrTopPlaces;
+@synthesize flickrMostRecentPlacesArray = PL_flickrMostRecentPlacesArray;
+@synthesize flickrMostRecentPlacesSet = PL_flickrMostRecentPlacesSet;
+@synthesize theElementSectionsOfFlickrTopPlaces = PL_theElementSectionsOfFlickrTopPlaces;
+@synthesize theElementSectionsOfFlickrMostRecentPlaces = PL_theElementSectionsOfFlickrMostRecentPlaces;
+@synthesize flickrDataHandler = PL_flickrDataHandler;
+@synthesize alertViewSwitch = PL_alertViewSwitch;
 
 const int PLMaximumOfMostRecentPlacesList = 10;
 
@@ -166,24 +166,24 @@ NSString *PLAlertSwitchOn = @"AlertOn";
 
 - (NSMutableArray *)flickrMostRecentPlacesArray
 {
-	if (!_flickrMostRecentPlacesArray)
-		_flickrMostRecentPlacesArray = [[NSMutableArray alloc] init];
-	return _flickrMostRecentPlacesArray;
+	if (!PL_flickrMostRecentPlacesArray)
+		PL_flickrMostRecentPlacesArray = [[NSMutableArray alloc] init];
+	return PL_flickrMostRecentPlacesArray;
 }
 
 - (NSMutableSet *)flickrMostRecentPlacesSet
 {
-	if (!_flickrMostRecentPlacesSet)
-		_flickrMostRecentPlacesSet = [[NSMutableSet alloc] init];
-	return _flickrMostRecentPlacesSet;
+	if (!PL_flickrMostRecentPlacesSet)
+		PL_flickrMostRecentPlacesSet = [[NSMutableSet alloc] init];
+	return PL_flickrMostRecentPlacesSet;
 }
 
 #pragma mark - Dealloc
 - (void)dealloc
 {
-	[_flickrMostRecentPlacesArray release];
-	[_flickrMostRecentPlacesSet release];
-	[_flickrTopPlaces release];
+	[PL_flickrMostRecentPlacesArray release];
+	[PL_flickrMostRecentPlacesSet release];
+	[PL_flickrTopPlaces release];
 	[super dealloc];
 }
 

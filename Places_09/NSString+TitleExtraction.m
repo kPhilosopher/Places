@@ -3,18 +3,26 @@
 //  Places_09
 //
 //  Created by Jinwoo Baek on 12/26/11.
-//  Copyright (c) 2011 Rose-Hulman Institute of Technology. All rights reserved.
 //
 
 #import "NSString+TitleExtraction.h"
 
 @implementation NSString (TitleExtraction)
 
-- (NSString *)extractTheFirstStringWithCommaDelimeter;
+#pragma mark - Class method
+
++ (NSCharacterSet *)characterSetWithComma;
 {
-	NSArray *arrayOfContentString = [self componentsSeparatedByString:@","];
-	NSString *titleString = [arrayOfContentString objectAtIndex:0];
-	return [titleString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+	return [NSCharacterSet characterSetWithCharactersInString:@","];
+}
+
+#pragma mark - Public method
+
+- (NSString *)initialStringWithDelimiterSet:(NSCharacterSet *)aSet;
+{
+	NSArray *delimitedString = [self componentsSeparatedByCharactersInSet:aSet];
+	NSString *initialString = [delimitedString objectAtIndex:0];
+	return [initialString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 }
 
 @end

@@ -138,7 +138,7 @@ NSString *PictureListBackBarButtonAccessibilityLabel = @"Back";
 	RefinedElement *refinedElement = [self getTheRefinedElementInTheElementSectionsWithTheIndexPath:indexPath];
 	UIImage *image = [UIImage imageWithData:[FlickrFetcher imageDataForPhotoWithFlickrInfo:refinedElement.dictionary format:FlickrFetcherPhotoFormatLarge]];
 	
-	ScrollableImageViewController *imageController = [self.delegate getScrollableImageViewControllerForRequestor:self];
+	ScrollableImageViewController *imageController = [self.delegate scrollableImageViewControllerForRequestor:self];
 	if ([self currentDeviceIsiPodOriPhone_DetermineThatWithImageController:imageController]) 
 	{
 		imageController = [[[ScrollableImageViewController alloc] init] autorelease];

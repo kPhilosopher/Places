@@ -527,6 +527,8 @@
 		CECDBAD214B198D00097C9D7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CE6FB268148993C600DA2A1D /* RefinedElementForPlaces.h */,
+				CE6FB269148993C600DA2A1D /* RefinedElementForPlaces.m */,
 				CED1649714A97CCD008EAF72 /* PlacesDataIndexer.h */,
 				CED1649814A97CCD008EAF72 /* PlacesDataIndexer.m */,
 				CE8098BD147739E80067AAC2 /* PLFlickrDataSource.h */,
@@ -539,6 +541,8 @@
 		CECDBAD314B198ED0097C9D7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CE6FB262148993B400DA2A1D /* RefinedElementForPictureList.h */,
+				CE6FB263148993B400DA2A1D /* RefinedElementForPictureList.m */,
 				CED164A714A99A8A008EAF72 /* PictureListDataIndexer.h */,
 				CED164A814A99A8A008EAF72 /* PictureListDataIndexer.m */,
 			);
@@ -583,10 +587,6 @@
 				CED1648C14A973EB008EAF72 /* DataIndexer.m */,
 				CE6FB26D148993F900DA2A1D /* RefinedElement.h */,
 				CE6FB26E148993F900DA2A1D /* RefinedElement.m */,
-				CE6FB268148993C600DA2A1D /* RefinedElementForPlaces.h */,
-				CE6FB269148993C600DA2A1D /* RefinedElementForPlaces.m */,
-				CE6FB262148993B400DA2A1D /* RefinedElementForPictureList.h */,
-				CE6FB263148993B400DA2A1D /* RefinedElementForPictureList.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
