@@ -10,12 +10,14 @@
 
 @implementation FlickrDataHandler
 
-- (NSArray *)getTopPlacesFromFlickr;
+//change the name to flickrTopPlaces
+- (NSArray *)topPlacesFromFlickr;
 {
 	return [FlickrFetcher topPlaces];
 }
 
-- (NSArray *)getPhotoListsAtPlace:(NSString *)flickrPlaceId;
+//change the name to photoListAtPlace
+- (NSArray *)photoListWithPlaceIDString:(NSString *)flickrPlaceId;
 {
 	return [FlickrFetcher photosAtPlace:flickrPlaceId];
 }

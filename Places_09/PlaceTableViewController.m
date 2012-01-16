@@ -102,7 +102,7 @@ NSString *PlacesTableViewAccessibilityLabel = @"Places table view";
 	
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	
-	NSArray *photoList = [self.flickrDataSource getPhotoListForSpecificFlickrPlaceID:placeId];
+	NSArray *photoList = [self.flickrDataSource photoListWithFlickrPlaceID:placeId];
 	
 	if ([photoList count] > 0)
 	{
@@ -123,12 +123,12 @@ NSString *PlacesTableViewAccessibilityLabel = @"Places table view";
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-	if ([[change objectForKey:NSKeyValueChangeNewKey] isEqualToString:alertSwitchOn])
+	if ([[change objectForKey:NSKeyValueChangeNewKey] isEqualToString:PLAlertSwitchOn])
 	{
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:alertTitle message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];	
 		[alert show];
 		[alert release];
-		[object setValue:alertSwitchOff forKey:keyPath];
+		[object setValue:PLAlertSwitchOff forKey:keyPath];
 	}
 }
 

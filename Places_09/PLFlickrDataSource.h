@@ -1,45 +1,35 @@
 //
 //  PLFlickrDataSource.h
-//  Places
+//  Places_09
 //
 //  Created by Jinwoo Baek on 11/15/11.
-//  Copyright (c) 2011 Rose-Hulman Institute of Technology. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "FlickrDataHandler.h"
 
 @interface PLFlickrDataSource : NSObject
-{
-	@private
-	NSArray *_flickrTopPlacesArray;
-    NSMutableArray *_flickrMostRecentPlacesArray;
-	NSMutableArray *_theElementSectionsForTopPlaces;
-	NSMutableArray *_theElementSectionsForMostRecentPlaces;
-	NSMutableSet *_flickrMostRecentPlacesSet;
-	FlickrDataHandler *_flickrDataHandler;
-	NSString *_alertViewSwitch;
-	NSString *_alertSwitchOn;
-	NSString *_alertSwitchOff;
-}
 
-extern NSString *alertSwitchOff;
-extern NSString *alertSwitchOn;
+extern NSString *PLAlertSwitchOff;
+extern NSString *PLAlertSwitchOn;
+extern NSString *PLPlaceID;
 
-@property (nonatomic ,retain) NSArray *flickrTopPlacesArray;
-@property (nonatomic ,retain) NSMutableArray *flickrMostRecentPlacesArray;
-@property (nonatomic ,retain) NSMutableArray *theElementSectionsForTopPlaces;
-@property (nonatomic ,retain) NSMutableArray *theElementSectionsForMostRecentPlaces;
+#pragma mark - Property
+
+@property (nonatomic, retain) NSArray *flickrTopPlaces;
+@property (nonatomic, retain) NSMutableArray *flickrMostRecentPlacesArray;
+@property (nonatomic, retain) NSMutableArray *theElementSectionsOfFlickrTopPlaces;
+@property (nonatomic, retain) NSMutableArray *theElementSectionsOfFlickrMostRecentPlaces;
 @property (assign) NSString *alertViewSwitch;
-@property (nonatomic ,assign) NSString *alertSwitchOn;
-@property (nonatomic ,assign) NSString *alertSwitchOff;
+
+#pragma mark - Public method
 
 - (id)initWithFlickrDataHandler:(FlickrDataHandler *)flickrDataHandler;
-- (NSArray *)getPhotoListForSpecificFlickrPlaceID:(NSString *)flickrPlaceId;
-- (void)addToTheMostRecentListOfPlacesTheFollowingDictionary:(NSDictionary *)dictionaryToAddToMostRecentList;
-- (void)deleteFromMostRecentListThePlaceWithTheFollowing:(NSDictionary *)dictionaryToDelete;
+- (NSArray *)photoListWithFlickrPlaceID:(NSString *)placeID;
+- (void)addToTheMostRecentPlacesCollectionsTheFollowingDictionary:(NSDictionary *)dictionaryToAddToMostRecentList;
+- (void)removeFromTheMostRecentPlacesCollectionsTheFollowingDictionary:(NSDictionary *)dictionaryToDelete;
 //TODO: add tests for these methods.
-- (void)setupForTopPlacesArrayFromFlickr;
-- (void)setupThePropertyForMostRecentPlaces;
+- (void)setupFlickrTopPlacesWithFlickrFetcher;
+- (void)setupThePropertiesOfMostRecentPlacesWithNSUserDefaults;
 
 @end

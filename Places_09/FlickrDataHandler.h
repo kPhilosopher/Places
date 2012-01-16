@@ -11,6 +11,6 @@
 
 @interface FlickrDataHandler : NSObject
 
-- (NSArray *)getTopPlacesFromFlickr;
-- (NSArray *)getPhotoListsAtPlace:(NSString *)flickrPlaceId;
+- (NSArray *)topPlacesFromFlickr;
+- (NSArray *)photoListWithPlaceIDString:(NSString *)flickrPlaceId;
 @end

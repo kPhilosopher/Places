@@ -184,7 +184,7 @@
 		CE8098AB1477382A0067AAC2 /* Places_09Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Places_09Tests-Info.plist"; sourceTree = "<group>"; };
 		CE8098AD1477382A0067AAC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CE8098BC147739E80067AAC2 /* FlickrAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAPIKey.h; sourceTree = "<group>"; };
-		CE8098BD147739E80067AAC2 /* PLFlickrDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lineEnding = 0; path = PLFlickrDataSource.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		CE8098BD147739E80067AAC2 /* PLFlickrDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PLFlickrDataSource.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		CE8098BE147739E80067AAC2 /* PLFlickrDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PLFlickrDataSource.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		CE8098BF147739E80067AAC2 /* FlickrFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrFetcher.h; sourceTree = "<group>"; };
 		CE8098C0147739E80067AAC2 /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
@@ -218,7 +218,7 @@
 		CECD2C8314A1411400301E45 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CECD2C9414A1A16100301E45 /* FlickrDataSourceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = FlickrDataSourceTests.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		CECD2C9514A1A16100301E45 /* FlickrDataSourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FlickrDataSourceTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		CECD2C9714A1AF1700301E45 /* PLFlickrDataSource-Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lineEnding = 0; path = "PLFlickrDataSource-Internal.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		CECD2C9714A1AF1700301E45 /* PLFlickrDataSource-Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "PLFlickrDataSource-Internal.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		CECDBAC614B1756D0097C9D7 /* RefinedElementTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefinedElementTests.h; sourceTree = "<group>"; };
 		CECDBAC714B1756D0097C9D7 /* RefinedElementTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefinedElementTests.m; sourceTree = "<group>"; };
 		CECDBACC14B181580097C9D7 /* NSString+TitleExtractorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TitleExtractorTests.h"; sourceTree = "<group>"; };

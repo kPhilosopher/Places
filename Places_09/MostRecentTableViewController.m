@@ -18,7 +18,7 @@ NSString *MostRecentPlacesViewAccessibilityLabel = @"Most recent places table";
 {
 	self = [super initWithStyle:style withTheFlickrDataSource:theFlickrDataSource withTheDataIndexer:dataIndexer];
     if (self) {
-		[self.flickrDataSource setupThePropertyForMostRecentPlaces];
+		[self.flickrDataSource setupThePropertiesOfMostRecentPlacesWithNSUserDefaults];
 		self.title = @"Most Recent";
 		self.view.accessibilityLabel = MostRecentPlacesViewAccessibilityLabel;
     }
@@ -29,12 +29,12 @@ NSString *MostRecentPlacesViewAccessibilityLabel = @"Most recent places table";
 
 - (void)setTheElementSectionsToTheFollowingArray:(NSMutableArray *)array
 {
-	self.flickrDataSource.theElementSectionsForMostRecentPlaces = array;
+	self.flickrDataSource.theElementSectionsOfFlickrMostRecentPlaces = array;
 }
 
 - (NSMutableArray *)fetchTheElementSections
 {
-	return self.flickrDataSource.theElementSectionsForMostRecentPlaces;
+	return self.flickrDataSource.theElementSectionsOfFlickrMostRecentPlaces;
 }
 
 - (NSArray *)fetchTheRawData
@@ -68,7 +68,7 @@ NSString *MostRecentPlacesViewAccessibilityLabel = @"Most recent places table";
 		//TODO: refactor the two lines into the helper method in the IndexerTableViewController
 		NSArray *array = [[self fetchTheElementSections] objectAtIndex:indexPath.section];
 		RefinedElementForPlaces *refinedPlace = [array objectAtIndex:indexPath.row];
-		[self.flickrDataSource deleteFromMostRecentListThePlaceWithTheFollowing:refinedPlace.dictionary];
+		[self.flickrDataSource removeFromTheMostRecentPlacesCollectionsTheFollowingDictionary:refinedPlace.dictionary];
 		[super viewDidLoad];
 		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   

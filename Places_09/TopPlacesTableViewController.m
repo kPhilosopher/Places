@@ -21,7 +21,7 @@ NSString *TopPlacesViewAccessibilityLabel = @"Top places table";
     self = [super initWithStyle:style withTheFlickrDataSource:theFlickrDataSource withTheDataIndexer:dataIndexer];
     if (self) 
 	{
-		[self.flickrDataSource setupForTopPlacesArrayFromFlickr];
+		[self.flickrDataSource setupFlickrTopPlacesWithFlickrFetcher];
 		self.title = @"Top Places";
 		self.view.accessibilityLabel = TopPlacesViewAccessibilityLabel;
 		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStylePlain target:self action:@selector(refreshTheTopPlacesList)];
@@ -31,7 +31,7 @@ NSString *TopPlacesViewAccessibilityLabel = @"Top places table";
 
 - (void)refreshTheTopPlacesList;
 {
-	[self.flickrDataSource setupForTopPlacesArrayFromFlickr];
+	[self.flickrDataSource setupFlickrTopPlacesWithFlickrFetcher];
 	[self reIndexTheTableViewData];
 }
 
@@ -39,17 +39,17 @@ NSString *TopPlacesViewAccessibilityLabel = @"Top places table";
 
 - (void)setTheElementSectionsToTheFollowingArray:(NSMutableArray *)array
 {
-	self.flickrDataSource.theElementSectionsForTopPlaces = array;
+	self.flickrDataSource.theElementSectionsOfFlickrTopPlaces = array;
 }
 
 - (NSMutableArray *)fetchTheElementSections
 {
-	return self.flickrDataSource.theElementSectionsForTopPlaces;
+	return self.flickrDataSource.theElementSectionsOfFlickrTopPlaces;
 }
 
 - (NSArray *)fetchTheRawData
 {
-	return self.flickrDataSource.flickrTopPlacesArray;
+	return self.flickrDataSource.flickrTopPlaces;
 }
 
 #pragma mark - Table view delegate
@@ -58,7 +58,7 @@ NSString *TopPlacesViewAccessibilityLabel = @"Top places table";
 {
 	RefinedElement *refinedElement = [self getTheRefinedElementInTheElementSectionsWithTheIndexPath:indexPath];
 	NSDictionary *dictionaryToAddToMostRecentList = refinedElement.dictionary;
-	[self.flickrDataSource addToTheMostRecentListOfPlacesTheFollowingDictionary:dictionaryToAddToMostRecentList];
+	[self.flickrDataSource addToTheMostRecentPlacesCollectionsTheFollowingDictionary:dictionaryToAddToMostRecentList];
 	[self.delegateToUpdateMostRecentPlaces reIndexTheTableViewData];
 	[super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
