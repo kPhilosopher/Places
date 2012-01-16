@@ -3,20 +3,32 @@
 //  Places_09
 //
 //  Created by Jinwoo Baek on 12/20/11.
-//  Copyright (c) 2011 Rose-Hulman Institute of Technology. All rights reserved.
 //
 #import "TabBarController.h"
 
 @interface TabBarController()
+{
+@private
+	UINavigationController *PL_topPlacesNavigationViewController;
+	UINavigationController *PL_favoritesNavigationViewController;
+	TopPlacesTableViewController *PL_topPlacesTableViewController;
+	MostRecentTableViewController *PL_mostRecentTableViewController;
+	id <PictureListTableViewControllerDelegate> PL_delegateToTransfer;
+}
 
-- (void)setup;
-- (void)allocInitTheNavigationViewControllers;
-- (void)setupTheCustomTableViewControllers;
-- (void)pushViewControllersToNavigationViewControllers;
-- (void)setTabBarItemToSystemItems;
-- (void)releaseViewControllersThatArePushedIntoTheViewControllerHierarchy;
-- (void)setDelegateToTransferForTableViewControllers;
-- (void)allocInitThePlaceTableViewControllersWithTheSameFlickrDataSource;
-- (void)addTheNavigationControllersToThisTabBarController;
+#pragma mark - Private method
+
+- (void)PL_setup;
+
+#pragma mark - Readability method
+
+- (void)RD_allocInitTheNavigationViewControllers;
+- (void)RD_setupTheCustomTableViewControllers;
+- (void)RD_pushViewControllersToNavigationViewControllers;
+- (void)RD_setTabBarItemToSystemItems;
+- (void)RD_releaseViewControllersThatArePushedIntoTheViewControllerHierarchy;
+- (void)RD_setDelegateToTransferForTableViewControllersForiPad;
+- (void)RD_allocInitThePlaceTableViewControllersWithTheSameFlickrDataSource;
+- (void)RD_addTheNavigationControllersToThisTabBarController;
 
 @end
