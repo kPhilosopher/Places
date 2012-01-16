@@ -12,8 +12,8 @@
 #import "MostRecentTableViewController.h"
 #import "PictureListTableViewController.h"
 #import "ScrollableImageViewController.h"
-#import "TabBarController.h"
-#import "AppDelegate.h"
+#import "PLTabBarController.h"
+#import "PLAppDelegate.h"
 
 #import "UIAccessibilityElement-KIFAdditions.h"
 #import "UIApplication-KIFAdditions.h"

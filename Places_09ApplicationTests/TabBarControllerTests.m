@@ -18,7 +18,7 @@
 - (void)setUp
 {
     [super setUp];
-	self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+	self.appDelegate = (PLAppDelegate *)[[UIApplication sharedApplication] delegate];
 	if ([[self.appDelegate.tabBarController.viewControllers objectAtIndex:0] isKindOfClass:[UINavigationController class]] &&
 		[[self.appDelegate.tabBarController.viewControllers objectAtIndex:1] isKindOfClass:[UINavigationController class]])
 	{

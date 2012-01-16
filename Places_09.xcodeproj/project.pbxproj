@@ -15,7 +15,7 @@
 		CE50C14414A48C5C00D2E083 /* SplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE50C14114A48C5B00D2E083 /* SplitViewController.m */; };
 		CE553793147B53C100C20686 /* PictureListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE553792147B53C100C20686 /* PictureListTableViewController.m */; };
 		CE553794147B53C100C20686 /* PictureListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE553792147B53C100C20686 /* PictureListTableViewController.m */; };
-		CE5FE1E514A050F300BB682C /* AppDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5FE1E414A050F300BB682C /* AppDelegateTests.m */; };
+		CE5FE1E514A050F300BB682C /* PLAppDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5FE1E414A050F300BB682C /* PLAppDelegateTests.m */; };
 		CE5FE1E814A073E900BB682C /* TabBarControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5FE1E714A073E900BB682C /* TabBarControllerTests.m */; };
 		CE5FE1F014A0759200BB682C /* TopPlacesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5FE1EF14A0759200BB682C /* TopPlacesTableViewController.m */; };
 		CE5FE1F114A0759200BB682C /* TopPlacesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5FE1EF14A0759200BB682C /* TopPlacesTableViewController.m */; };
@@ -31,7 +31,7 @@
 		CE809890147738290067AAC2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE80988F147738290067AAC2 /* CoreGraphics.framework */; };
 		CE8098961477382A0067AAC2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE809894147738290067AAC2 /* InfoPlist.strings */; };
 		CE8098981477382A0067AAC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098971477382A0067AAC2 /* main.m */; };
-		CE80989C1477382A0067AAC2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE80989B1477382A0067AAC2 /* AppDelegate.m */; };
+		CE80989C1477382A0067AAC2 /* PLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE80989B1477382A0067AAC2 /* PLAppDelegate.m */; };
 		CE8098A41477382A0067AAC2 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8098A31477382A0067AAC2 /* SenTestingKit.framework */; };
 		CE8098A51477382A0067AAC2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE80988B147738290067AAC2 /* UIKit.framework */; };
 		CE8098A61477382A0067AAC2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE80988D147738290067AAC2 /* Foundation.framework */; };
@@ -54,8 +54,8 @@
 		CE8098E6147739E80067AAC2 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098CE147739E80067AAC2 /* SBJsonWriter.m */; };
 		CE8098E7147739E80067AAC2 /* ScrollableImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098D0147739E80067AAC2 /* ScrollableImageViewController.m */; };
 		CE8098E8147739E80067AAC2 /* ScrollableImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098D0147739E80067AAC2 /* ScrollableImageViewController.m */; };
-		CE8098E9147739E80067AAC2 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098D2147739E80067AAC2 /* TabBarController.m */; };
-		CE8098EA147739E80067AAC2 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098D2147739E80067AAC2 /* TabBarController.m */; };
+		CE8098E9147739E80067AAC2 /* PLTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098D2147739E80067AAC2 /* PLTabBarController.m */; };
+		CE8098EA147739E80067AAC2 /* PLTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098D2147739E80067AAC2 /* PLTabBarController.m */; };
 		CE8098F614773EE60067AAC2 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8098A31477382A0067AAC2 /* SenTestingKit.framework */; };
 		CE8098F714773EE60067AAC2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE80988B147738290067AAC2 /* UIKit.framework */; };
 		CE8098F814773EE60067AAC2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE80988D147738290067AAC2 /* Foundation.framework */; };
@@ -99,7 +99,7 @@
 		CEF3ADB6149C4E2800D53424 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF3ADB5149C4E2800D53424 /* libOCMock.a */; };
 		CEF3ADB7149C4E2800D53424 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF3ADB5149C4E2800D53424 /* libOCMock.a */; };
 		CEF3ADCA149C4FC600D53424 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098971477382A0067AAC2 /* main.m */; };
-		CEF3ADCB149C4FC600D53424 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE80989B1477382A0067AAC2 /* AppDelegate.m */; };
+		CEF3ADCB149C4FC600D53424 /* PLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE80989B1477382A0067AAC2 /* PLAppDelegate.m */; };
 		CEF3ADCC149C4FC600D53424 /* PLFlickrDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098BE147739E80067AAC2 /* PLFlickrDataSource.m */; };
 		CEF3ADCD149C4FC600D53424 /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098C0147739E80067AAC2 /* FlickrFetcher.m */; };
 		CEF3ADCE149C4FC600D53424 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098C4147739E80067AAC2 /* NSObject+SBJSON.m */; };
@@ -109,7 +109,7 @@
 		CEF3ADD2149C4FC600D53424 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098CC147739E80067AAC2 /* SBJsonParser.m */; };
 		CEF3ADD3149C4FC600D53424 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098CE147739E80067AAC2 /* SBJsonWriter.m */; };
 		CEF3ADD4149C4FC600D53424 /* ScrollableImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098D0147739E80067AAC2 /* ScrollableImageViewController.m */; };
-		CEF3ADD5149C4FC600D53424 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098D2147739E80067AAC2 /* TabBarController.m */; };
+		CEF3ADD5149C4FC600D53424 /* PLTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8098D2147739E80067AAC2 /* PLTabBarController.m */; };
 		CEF3ADD7149C4FC600D53424 /* MostRecentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE80992C147779580067AAC2 /* MostRecentTableViewController.m */; };
 		CEF3ADD8149C4FC600D53424 /* PictureListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE553792147B53C100C20686 /* PictureListTableViewController.m */; };
 		CEF3ADD9149C4FC600D53424 /* PlaceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB4C2C31488C4AC00DDF51F /* PlaceTableViewController.m */; };
@@ -125,7 +125,7 @@
 		CEF3ADF9149C51BD00D53424 /* PlacesKIFTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF3ADF8149C51BD00D53424 /* PlacesKIFTestController.m */; };
 		CEF3ADFD149C51FA00D53424 /* KIFTestScenario+PlacesAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF3ADFC149C51FA00D53424 /* KIFTestScenario+PlacesAdditions.m */; };
 		CEF3AE00149C521400D53424 /* KIFTestStep+PlacesAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF3ADFF149C521400D53424 /* KIFTestStep+PlacesAdditions.m */; };
-		CEF3AE31149CD6E700D53424 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE80989B1477382A0067AAC2 /* AppDelegate.m */; };
+		CEF3AE31149CD6E700D53424 /* PLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE80989B1477382A0067AAC2 /* PLAppDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,16 +154,16 @@
 		CE50C13F14A40E7C00D2E083 /* TableViewControllerDataReloading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewControllerDataReloading.h; sourceTree = "<group>"; };
 		CE50C14014A48C5B00D2E083 /* SplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitViewController.h; sourceTree = "<group>"; };
 		CE50C14114A48C5B00D2E083 /* SplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitViewController.m; sourceTree = "<group>"; };
-		CE5534AA14A1D0DF00068207 /* AppDelegate-Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate-Internal.h"; sourceTree = "<group>"; };
+		CE5534AA14A1D0DF00068207 /* PLAppDelegate-Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PLAppDelegate-Internal.h"; sourceTree = "<group>"; };
 		CE553791147B53C100C20686 /* PictureListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PictureListTableViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		CE553792147B53C100C20686 /* PictureListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PictureListTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		CE5FE1E314A050F300BB682C /* AppDelegateTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegateTests.h; sourceTree = "<group>"; };
-		CE5FE1E414A050F300BB682C /* AppDelegateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegateTests.m; sourceTree = "<group>"; };
+		CE5FE1E314A050F300BB682C /* PLAppDelegateTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLAppDelegateTests.h; sourceTree = "<group>"; };
+		CE5FE1E414A050F300BB682C /* PLAppDelegateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLAppDelegateTests.m; sourceTree = "<group>"; };
 		CE5FE1E614A073E900BB682C /* TabBarControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarControllerTests.h; sourceTree = "<group>"; };
 		CE5FE1E714A073E900BB682C /* TabBarControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarControllerTests.m; sourceTree = "<group>"; };
 		CE5FE1EE14A0759200BB682C /* TopPlacesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopPlacesTableViewController.h; sourceTree = "<group>"; };
 		CE5FE1EF14A0759200BB682C /* TopPlacesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TopPlacesTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		CE5FE1F314A07A0A00BB682C /* TabBarController-Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TabBarController-Internal.h"; sourceTree = "<group>"; };
+		CE5FE1F314A07A0A00BB682C /* PLTabBarController-Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PLTabBarController-Internal.h"; sourceTree = "<group>"; };
 		CE6FB262148993B400DA2A1D /* RefinedElementForPictureList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefinedElementForPictureList.h; sourceTree = "<group>"; };
 		CE6FB263148993B400DA2A1D /* RefinedElementForPictureList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RefinedElementForPictureList.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		CE6FB268148993C600DA2A1D /* RefinedElementForPlaces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefinedElementForPlaces.h; sourceTree = "<group>"; };
@@ -178,7 +178,7 @@
 		CE809895147738290067AAC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CE8098971477382A0067AAC2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CE8098991477382A0067AAC2 /* Places_09-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Places_09-Prefix.pch"; sourceTree = "<group>"; };
-		CE80989B1477382A0067AAC2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		CE80989B1477382A0067AAC2 /* PLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PLAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		CE8098A21477382A0067AAC2 /* Places_09Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Places_09Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8098A31477382A0067AAC2 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		CE8098AB1477382A0067AAC2 /* Places_09Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Places_09Tests-Info.plist"; sourceTree = "<group>"; };
@@ -203,8 +203,8 @@
 		CE8098CE147739E80067AAC2 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		CE8098CF147739E80067AAC2 /* ScrollableImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollableImageViewController.h; sourceTree = "<group>"; };
 		CE8098D0147739E80067AAC2 /* ScrollableImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollableImageViewController.m; sourceTree = "<group>"; };
-		CE8098D1147739E80067AAC2 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
-		CE8098D2147739E80067AAC2 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TabBarController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		CE8098D1147739E80067AAC2 /* PLTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLTabBarController.h; sourceTree = "<group>"; };
+		CE8098D2147739E80067AAC2 /* PLTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PLTabBarController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		CE8098F514773EE60067AAC2 /* Places_09ApplicationTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Places_09ApplicationTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8098FB14773EE60067AAC2 /* Places_09ApplicationTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Places_09ApplicationTests-Info.plist"; sourceTree = "<group>"; };
 		CE8098FD14773EE60067AAC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -215,7 +215,7 @@
 		CEB4432114BAC59B00DF0F57 /* NSString+FindCharacterInSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FindCharacterInSet.m"; sourceTree = "<group>"; };
 		CEB4C2C21488C4AC00DDF51F /* PlaceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PlaceTableViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		CEB4C2C31488C4AC00DDF51F /* PlaceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PlaceTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		CECD2C8314A1411400301E45 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CECD2C8314A1411400301E45 /* PLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PLAppDelegate.h; sourceTree = "<group>"; };
 		CECD2C9414A1A16100301E45 /* FlickrDataSourceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = FlickrDataSourceTests.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		CECD2C9514A1A16100301E45 /* FlickrDataSourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FlickrDataSourceTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		CECD2C9714A1AF1700301E45 /* PLFlickrDataSource-Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "PLFlickrDataSource-Internal.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -503,8 +503,8 @@
 		CE8098F914773EE60067AAC2 /* Places_09ApplicationTests */ = {
 			isa = PBXGroup;
 			children = (
-				CE5FE1E314A050F300BB682C /* AppDelegateTests.h */,
-				CE5FE1E414A050F300BB682C /* AppDelegateTests.m */,
+				CE5FE1E314A050F300BB682C /* PLAppDelegateTests.h */,
+				CE5FE1E414A050F300BB682C /* PLAppDelegateTests.m */,
 				CE5FE1E614A073E900BB682C /* TabBarControllerTests.h */,
 				CE5FE1E714A073E900BB682C /* TabBarControllerTests.m */,
 				CE27531014B8007000E7E489 /* SplitViewControllerTests.h */,
@@ -552,9 +552,9 @@
 		CED1649014A974AB008EAF72 /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
-				CECD2C8314A1411400301E45 /* AppDelegate.h */,
-				CE5534AA14A1D0DF00068207 /* AppDelegate-Internal.h */,
-				CE80989B1477382A0067AAC2 /* AppDelegate.m */,
+				CECD2C8314A1411400301E45 /* PLAppDelegate.h */,
+				CE5534AA14A1D0DF00068207 /* PLAppDelegate-Internal.h */,
+				CE80989B1477382A0067AAC2 /* PLAppDelegate.m */,
 			);
 			name = AppDelegate;
 			sourceTree = "<group>";
@@ -562,9 +562,9 @@
 		CED1649114A974B9008EAF72 /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
-				CE8098D1147739E80067AAC2 /* TabBarController.h */,
-				CE5FE1F314A07A0A00BB682C /* TabBarController-Internal.h */,
-				CE8098D2147739E80067AAC2 /* TabBarController.m */,
+				CE8098D1147739E80067AAC2 /* PLTabBarController.h */,
+				CE5FE1F314A07A0A00BB682C /* PLTabBarController-Internal.h */,
+				CE8098D2147739E80067AAC2 /* PLTabBarController.m */,
 			);
 			name = TabBarController;
 			sourceTree = "<group>";
@@ -836,7 +836,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE8098981477382A0067AAC2 /* main.m in Sources */,
-				CE80989C1477382A0067AAC2 /* AppDelegate.m in Sources */,
+				CE80989C1477382A0067AAC2 /* PLAppDelegate.m in Sources */,
 				CE8098D7147739E80067AAC2 /* PLFlickrDataSource.m in Sources */,
 				CE8098D9147739E80067AAC2 /* FlickrFetcher.m in Sources */,
 				CE8098DB147739E80067AAC2 /* NSObject+SBJSON.m in Sources */,
@@ -846,7 +846,7 @@
 				CE8098E3147739E80067AAC2 /* SBJsonParser.m in Sources */,
 				CE8098E5147739E80067AAC2 /* SBJsonWriter.m in Sources */,
 				CE8098E7147739E80067AAC2 /* ScrollableImageViewController.m in Sources */,
-				CE8098E9147739E80067AAC2 /* TabBarController.m in Sources */,
+				CE8098E9147739E80067AAC2 /* PLTabBarController.m in Sources */,
 				CE80992D147779580067AAC2 /* MostRecentTableViewController.m in Sources */,
 				CE553793147B53C100C20686 /* PictureListTableViewController.m in Sources */,
 				CEB4C2C41488C4AC00DDF51F /* PlaceTableViewController.m in Sources */,
@@ -880,7 +880,7 @@
 				CE8098E4147739E80067AAC2 /* SBJsonParser.m in Sources */,
 				CE8098E6147739E80067AAC2 /* SBJsonWriter.m in Sources */,
 				CE8098E8147739E80067AAC2 /* ScrollableImageViewController.m in Sources */,
-				CE8098EA147739E80067AAC2 /* TabBarController.m in Sources */,
+				CE8098EA147739E80067AAC2 /* PLTabBarController.m in Sources */,
 				CE80992E147779580067AAC2 /* MostRecentTableViewController.m in Sources */,
 				CE553794147B53C100C20686 /* PictureListTableViewController.m in Sources */,
 				CEB4C2C51488C4AC00DDF51F /* PlaceTableViewController.m in Sources */,
@@ -888,7 +888,7 @@
 				CE6FB265148993B400DA2A1D /* RefinedElementForPictureList.m in Sources */,
 				CE6FB26B148993C600DA2A1D /* RefinedElementForPlaces.m in Sources */,
 				CE6FB270148993F900DA2A1D /* RefinedElement.m in Sources */,
-				CEF3AE31149CD6E700D53424 /* AppDelegate.m in Sources */,
+				CEF3AE31149CD6E700D53424 /* PLAppDelegate.m in Sources */,
 				CE5FE1F114A0759200BB682C /* TopPlacesTableViewController.m in Sources */,
 				CECD2C9614A1A16100301E45 /* FlickrDataSourceTests.m in Sources */,
 				CE50C14314A48C5C00D2E083 /* SplitViewController.m in Sources */,
@@ -914,7 +914,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE5FE1E514A050F300BB682C /* AppDelegateTests.m in Sources */,
+				CE5FE1E514A050F300BB682C /* PLAppDelegateTests.m in Sources */,
 				CE5FE1E814A073E900BB682C /* TabBarControllerTests.m in Sources */,
 				CE27531214B8007000E7E489 /* SplitViewControllerTests.m in Sources */,
 			);
@@ -925,7 +925,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEF3ADCA149C4FC600D53424 /* main.m in Sources */,
-				CEF3ADCB149C4FC600D53424 /* AppDelegate.m in Sources */,
+				CEF3ADCB149C4FC600D53424 /* PLAppDelegate.m in Sources */,
 				CEF3ADCC149C4FC600D53424 /* PLFlickrDataSource.m in Sources */,
 				CEF3ADCD149C4FC600D53424 /* FlickrFetcher.m in Sources */,
 				CEF3ADCE149C4FC600D53424 /* NSObject+SBJSON.m in Sources */,
@@ -935,7 +935,7 @@
 				CEF3ADD2149C4FC600D53424 /* SBJsonParser.m in Sources */,
 				CEF3ADD3149C4FC600D53424 /* SBJsonWriter.m in Sources */,
 				CEF3ADD4149C4FC600D53424 /* ScrollableImageViewController.m in Sources */,
-				CEF3ADD5149C4FC600D53424 /* TabBarController.m in Sources */,
+				CEF3ADD5149C4FC600D53424 /* PLTabBarController.m in Sources */,
 				CEF3ADD7149C4FC600D53424 /* MostRecentTableViewController.m in Sources */,
 				CEF3ADD8149C4FC600D53424 /* PictureListTableViewController.m in Sources */,
 				CEF3ADD9149C4FC600D53424 /* PlaceTableViewController.m in Sources */,

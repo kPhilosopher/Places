@@ -63,7 +63,7 @@
 + (id)scenarioToTapTopRatedTabBarItem;
 {
 	KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Scenario of tapping the Top Rated tab bar item."];	
-	[scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:TabBarViewAccessibilityLabel]];
+	[scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:PLTabBarViewAccessibilityLabel]];
 	[scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Top Rated"]];
 	return scenario;
 }
@@ -81,7 +81,7 @@
 + (id)scenarioToTapMostRecentTabBarItem;
 {
 	KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Scenario of tapping the Most Recent tab bar item."];	
-	[scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:TabBarViewAccessibilityLabel]];
+	[scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:PLTabBarViewAccessibilityLabel]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Most Recent"]];
 	return scenario;
 }
@@ -153,7 +153,7 @@
 + (id)scenarioToGoBackToPlacesTableViewForTopPlacesTab;
 {
 	KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test to go back to places table view for top places tab"];
-	[scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:TabBarViewAccessibilityLabel]];
+	[scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:PLTabBarViewAccessibilityLabel]];
 	[scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Top Rated"]];
 	//TODO: figure out why this would create an error.
 //	KIFTestScenario *preliminaryScenario = [KIFTestScenario scenarioToTapTopRatedTabBarItem];
@@ -161,7 +161,7 @@
 	[scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:ScrollableImageViewAccessibilityLabel]];
 	//extract the place title to put in place
 	id windowID = [[[UIApplication sharedApplication] windows] objectAtIndex:0];
-	TabBarController *tabBarController;
+	PLTabBarController *tabBarController;
 	UINavigationController *navcon;
 	NSString **referenceString;
 	if ([windowID isKindOfClass:[UIWindow class]])
@@ -169,9 +169,9 @@
 		UIWindow *window = (UIWindow *)windowID;
 		
 		UIViewController *theRootController =  window.rootViewController;
-		if ([theRootController isKindOfClass:[TabBarController class]])
+		if ([theRootController isKindOfClass:[PLTabBarController class]])
 		{
-			tabBarController = (TabBarController *)theRootController;
+			tabBarController = (PLTabBarController *)theRootController;
 		}
 		navcon = [tabBarController.viewControllers objectAtIndex:INDEX_IN_TAB_BAR_FOR_TOP_PLACES];
 	}
@@ -195,12 +195,12 @@
 + (id)scenarioToGoBackToPlacesTableViewForMostRecentPlacesTab;
 {
 	KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test"];
-	[scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:TabBarViewAccessibilityLabel]];
+	[scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:PLTabBarViewAccessibilityLabel]];
 	[scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Most Recent"]];
 	[scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:ScrollableImageViewAccessibilityLabel]];
 	//extract the place title to put in place
 	id windowID = [[[UIApplication sharedApplication] windows] objectAtIndex:0];
-	TabBarController *tabBarController;
+	PLTabBarController *tabBarController;
 	UINavigationController *navcon;
 	NSString **referenceString;
 	if ([windowID isKindOfClass:[UIWindow class]])
@@ -208,9 +208,9 @@
 		UIWindow *window = (UIWindow *)windowID;
 		
 		UIViewController *theRootController =  window.rootViewController;
-		if ([theRootController isKindOfClass:[TabBarController class]])
+		if ([theRootController isKindOfClass:[PLTabBarController class]])
 		{
-			tabBarController = (TabBarController *)theRootController;
+			tabBarController = (PLTabBarController *)theRootController;
 		}
 		navcon = [tabBarController.viewControllers objectAtIndex:INDEX_IN_TAB_BAR_FOR_MOST_RECENT_PLACES];
 	}
@@ -238,7 +238,7 @@
 	*referenceString = @"";
 	KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test to erase all the rows in most recent places"];
 
-	[scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:TabBarViewAccessibilityLabel]];
+	[scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:PLTabBarViewAccessibilityLabel]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Most Recent"]];
 	[scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Edit"]];
 	NSIndexPath *path = [NSIndexPath indexPathForRow:2 inSection:0];

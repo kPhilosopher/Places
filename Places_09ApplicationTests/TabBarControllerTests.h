@@ -7,19 +7,19 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
-#import "AppDelegate.h"
+#import "PLAppDelegate.h"
 
 @interface TabBarControllerTests : SenTestCase
 {
 @private
-	AppDelegate *_appDelegate;
+	PLAppDelegate *_appDelegate;
 	UINavigationController *_rightNavigationViewController;
 	UINavigationController *_leftNavigationViewController;
 	TopPlacesTableViewController *_topPlacesTableViewController;
 	MostRecentTableViewController *_mostRecentTableViewController;
 }
 
-@property (retain) AppDelegate *appDelegate;
+@property (retain) PLAppDelegate *appDelegate;
 @property (retain) UINavigationController *leftNavigationViewController;
 @property (retain) UINavigationController *rightNavigationViewController;
 @property (retain) TopPlacesTableViewController *topPlacesTableViewController;
