@@ -33,7 +33,7 @@ extern NSString *PLKeyForMostRecentSet;
 
 - (void)PL_updateMostRecentPlacesCollectionsInStandardUserDefaults;
 - (int)PL_indexOfFlickrMostRecentPlacesArrayContainingPlaceIDString:(NSString *)placeID;
-- (void)PL_mutateKeyValueObservedPropertyAlertViewSwitchToAlertSwitchOn;
+- (void)PL_mutateKeyValueObservedPropertyAlertViewSwitchToPLAlertSwitchOn;
 
 #pragma mark - Readability method
 
@@ -42,5 +42,6 @@ extern NSString *PLKeyForMostRecentSet;
 - (void)RD_dequeueIfTheMostRecentPlacesArrayReachesMaximumSize;
 - (void)RD_determineIfMostRecentPlacesSetIncludesPlaceIDString:(NSString *)placeID;
 - (void)RD_jumpOutOfForLoopWithCounter:(int)counter;
+- (BOOL)RD_nonNegativeValueIsReturnedWithIndexToRemove:(int)indexToRemove;
 
 @end

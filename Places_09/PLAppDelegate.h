@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PLTabBarController.h"
+#import "PLSplitViewController.h"
 
 @interface PLAppDelegate : UIResponder <UIApplicationDelegate, PictureListTableViewControllerDelegate>
 
@@ -17,6 +18,6 @@ extern NSString *PLTitleOfScrollableViewController;
 @property (strong, nonatomic) UIWindow *window;
 @property (retain) PLTabBarController *tabBarController;
 @property (retain) ScrollableImageViewController *scrollableImageVC;
-@property (retain) UISplitViewController *splitVC;
+@property (retain) PLSplitViewController *splitVC;
 
 @end

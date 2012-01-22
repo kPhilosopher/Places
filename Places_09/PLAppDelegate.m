@@ -6,7 +6,7 @@
 //
 
 #import "PLAppDelegate-Internal.h"
-#import "SplitViewController.h"
+
 #if RUN_KIF_TESTS
 #import "PlacesKIFTestController.h"
 #endif
@@ -78,7 +78,7 @@ NSString *PLTitleOfScrollableViewController = @"Photo";
 			}
 			- (void)RD_setupSplitViewControllerWithNavigationController:(UINavigationController *)navcon;
 			{
-				self.splitVC = [[[SplitViewController alloc] init] autorelease];
+				self.splitVC = [[[PLSplitViewController alloc] init] autorelease];
 				self.splitVC.delegate = self.scrollableImageVC;
 				self.splitVC.viewControllers = 
 				[NSArray arrayWithObjects:self.tabBarController, navcon, nil];

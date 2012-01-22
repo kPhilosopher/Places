@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		CE22D30E14897F8000E5973F /* IndexedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE22D30D14897F8000E5973F /* IndexedTableViewController.m */; };
 		CE22D30F14897F8000E5973F /* IndexedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE22D30D14897F8000E5973F /* IndexedTableViewController.m */; };
-		CE27531214B8007000E7E489 /* SplitViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE27531114B8007000E7E489 /* SplitViewControllerTests.m */; };
-		CE50C14214A48C5C00D2E083 /* SplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE50C14114A48C5B00D2E083 /* SplitViewController.m */; };
-		CE50C14314A48C5C00D2E083 /* SplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE50C14114A48C5B00D2E083 /* SplitViewController.m */; };
-		CE50C14414A48C5C00D2E083 /* SplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE50C14114A48C5B00D2E083 /* SplitViewController.m */; };
+		CE27531214B8007000E7E489 /* PLSplitViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE27531114B8007000E7E489 /* PLSplitViewControllerTests.m */; };
+		CE50C14214A48C5C00D2E083 /* PLSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE50C14114A48C5B00D2E083 /* PLSplitViewController.m */; };
+		CE50C14314A48C5C00D2E083 /* PLSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE50C14114A48C5B00D2E083 /* PLSplitViewController.m */; };
+		CE50C14414A48C5C00D2E083 /* PLSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE50C14114A48C5B00D2E083 /* PLSplitViewController.m */; };
 		CE553793147B53C100C20686 /* PictureListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE553792147B53C100C20686 /* PictureListTableViewController.m */; };
 		CE553794147B53C100C20686 /* PictureListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE553792147B53C100C20686 /* PictureListTableViewController.m */; };
 		CE5FE1E514A050F300BB682C /* PLAppDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5FE1E414A050F300BB682C /* PLAppDelegateTests.m */; };
@@ -148,12 +148,12 @@
 /* Begin PBXFileReference section */
 		CE22D30C14897F8000E5973F /* IndexedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IndexedTableViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		CE22D30D14897F8000E5973F /* IndexedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = IndexedTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		CE27531014B8007000E7E489 /* SplitViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitViewControllerTests.h; sourceTree = "<group>"; };
-		CE27531114B8007000E7E489 /* SplitViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitViewControllerTests.m; sourceTree = "<group>"; };
+		CE27531014B8007000E7E489 /* PLSplitViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLSplitViewControllerTests.h; sourceTree = "<group>"; };
+		CE27531114B8007000E7E489 /* PLSplitViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLSplitViewControllerTests.m; sourceTree = "<group>"; };
 		CE27531614B81B8500E7E489 /* TopPlacesTableViewController-Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TopPlacesTableViewController-Internal.h"; sourceTree = "<group>"; };
 		CE50C13F14A40E7C00D2E083 /* TableViewControllerDataReloading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewControllerDataReloading.h; sourceTree = "<group>"; };
-		CE50C14014A48C5B00D2E083 /* SplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitViewController.h; sourceTree = "<group>"; };
-		CE50C14114A48C5B00D2E083 /* SplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitViewController.m; sourceTree = "<group>"; };
+		CE50C14014A48C5B00D2E083 /* PLSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLSplitViewController.h; sourceTree = "<group>"; };
+		CE50C14114A48C5B00D2E083 /* PLSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLSplitViewController.m; sourceTree = "<group>"; };
 		CE5534AA14A1D0DF00068207 /* PLAppDelegate-Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PLAppDelegate-Internal.h"; sourceTree = "<group>"; };
 		CE553791147B53C100C20686 /* PictureListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PictureListTableViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		CE553792147B53C100C20686 /* PictureListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PictureListTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -326,8 +326,8 @@
 		CE50C14514A48C6600D2E083 /* iPadMVC */ = {
 			isa = PBXGroup;
 			children = (
-				CE50C14014A48C5B00D2E083 /* SplitViewController.h */,
-				CE50C14114A48C5B00D2E083 /* SplitViewController.m */,
+				CE50C14014A48C5B00D2E083 /* PLSplitViewController.h */,
+				CE50C14114A48C5B00D2E083 /* PLSplitViewController.m */,
 			);
 			name = iPadMVC;
 			sourceTree = "<group>";
@@ -507,8 +507,8 @@
 				CE5FE1E414A050F300BB682C /* PLAppDelegateTests.m */,
 				CE5FE1E614A073E900BB682C /* TabBarControllerTests.h */,
 				CE5FE1E714A073E900BB682C /* TabBarControllerTests.m */,
-				CE27531014B8007000E7E489 /* SplitViewControllerTests.h */,
-				CE27531114B8007000E7E489 /* SplitViewControllerTests.m */,
+				CE27531014B8007000E7E489 /* PLSplitViewControllerTests.h */,
+				CE27531114B8007000E7E489 /* PLSplitViewControllerTests.m */,
 				CE8098FA14773EE60067AAC2 /* Supporting Files */,
 			);
 			path = Places_09ApplicationTests;
@@ -855,7 +855,7 @@
 				CE6FB26A148993C600DA2A1D /* RefinedElementForPlaces.m in Sources */,
 				CE6FB26F148993F900DA2A1D /* RefinedElement.m in Sources */,
 				CE5FE1F014A0759200BB682C /* TopPlacesTableViewController.m in Sources */,
-				CE50C14214A48C5C00D2E083 /* SplitViewController.m in Sources */,
+				CE50C14214A48C5C00D2E083 /* PLSplitViewController.m in Sources */,
 				CED1648D14A973EB008EAF72 /* DataIndexer.m in Sources */,
 				CED1649914A97CCD008EAF72 /* PlacesDataIndexer.m in Sources */,
 				CED164A914A99A8A008EAF72 /* PictureListDataIndexer.m in Sources */,
@@ -891,7 +891,7 @@
 				CEF3AE31149CD6E700D53424 /* PLAppDelegate.m in Sources */,
 				CE5FE1F114A0759200BB682C /* TopPlacesTableViewController.m in Sources */,
 				CECD2C9614A1A16100301E45 /* FlickrDataSourceTests.m in Sources */,
-				CE50C14314A48C5C00D2E083 /* SplitViewController.m in Sources */,
+				CE50C14314A48C5C00D2E083 /* PLSplitViewController.m in Sources */,
 				CED1648E14A973EB008EAF72 /* DataIndexer.m in Sources */,
 				CED1649A14A97CCD008EAF72 /* PlacesDataIndexer.m in Sources */,
 				CED164AA14A99A8A008EAF72 /* PictureListDataIndexer.m in Sources */,
@@ -916,7 +916,7 @@
 			files = (
 				CE5FE1E514A050F300BB682C /* PLAppDelegateTests.m in Sources */,
 				CE5FE1E814A073E900BB682C /* TabBarControllerTests.m in Sources */,
-				CE27531214B8007000E7E489 /* SplitViewControllerTests.m in Sources */,
+				CE27531214B8007000E7E489 /* PLSplitViewControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -947,7 +947,7 @@
 				CEF3ADFD149C51FA00D53424 /* KIFTestScenario+PlacesAdditions.m in Sources */,
 				CEF3AE00149C521400D53424 /* KIFTestStep+PlacesAdditions.m in Sources */,
 				CE5FE1F214A0759200BB682C /* TopPlacesTableViewController.m in Sources */,
-				CE50C14414A48C5C00D2E083 /* SplitViewController.m in Sources */,
+				CE50C14414A48C5C00D2E083 /* PLSplitViewController.m in Sources */,
 				CED1648F14A973EB008EAF72 /* DataIndexer.m in Sources */,
 				CED1649B14A97CCD008EAF72 /* PlacesDataIndexer.m in Sources */,
 				CED164AB14A99A8A008EAF72 /* PictureListDataIndexer.m in Sources */,

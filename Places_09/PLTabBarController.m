@@ -54,7 +54,7 @@ NSString *PLTabBarViewAccessibilityLabel = @"Tab bar";
 	[super dealloc];
 }
 
-#pragma mark Setup sequence
+#pragma mark - Setup sequence
 
 -(void)PL_setup;
 {
@@ -93,7 +93,7 @@ NSString *PLTabBarViewAccessibilityLabel = @"Tab bar";
 			[placesDataIndexerForTopPlaces release];
 		}
 		- (void)RD_setDelegateToTransferForTableViewControllersForiPad;
-		{
+		{ 
 			self.topPlacesTableViewController.delegateToTransfer = self.delegateToTransfer;
 			self.mostRecentTableViewController.delegateToTransfer = self.delegateToTransfer;
 		}

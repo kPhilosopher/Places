@@ -19,6 +19,7 @@
 @synthesize alertViewSwitch = PL_alertViewSwitch;
 
 const int PLMaximumOfMostRecentPlacesList = 10;
+const int PLIndexIsNegativeOne = -1;
 
 NSString *PLKeyForMostRecentArray = @"mostRecentArrayKey";
 NSString *PLKeyForMostRecentSet = @"mostRecentSetKey";
@@ -46,10 +47,10 @@ NSString *PLAlertSwitchOn = @"AlertOn";
 
 - (void)setupFlickrTopPlacesWithFlickrFetcher;
 {
-	id rawFlickrTopPlaces = [self.flickrDataHandler topPlacesFromFlickr];
-	if ([rawFlickrTopPlaces isKindOfClass:[NSArray class]])
-			self.flickrTopPlaces = (NSArray *)rawFlickrTopPlaces;
-	else	[self PL_mutateKeyValueObservedPropertyAlertViewSwitchToAlertSwitchOn];
+	id undeterminedFlickrTopPlaces = [self.flickrDataHandler topPlacesFromFlickr];
+	if ([undeterminedFlickrTopPlaces isKindOfClass:[NSArray class]])
+			self.flickrTopPlaces = (NSArray *)undeterminedFlickrTopPlaces;
+	else	[self PL_mutateKeyValueObservedPropertyAlertViewSwitchToPLAlertSwitchOn];
 }
 
 - (void)setupThePropertiesOfMostRecentPlacesWithNSUserDefaults;
@@ -63,21 +64,21 @@ NSString *PLAlertSwitchOn = @"AlertOn";
 - (NSArray *)photoListWithFlickrPlaceID:(NSString *)placeID
 {
 	NSArray *flickrPhotoList = nil;
-	id rawFlickrPhotoList = [self.flickrDataHandler photoListWithPlaceIDString:placeID];
-	if ([rawFlickrPhotoList isKindOfClass:[NSArray class]])
-		flickrPhotoList = (NSArray *) rawFlickrPhotoList;
+	id undeterminedFlickrPhotoList = [self.flickrDataHandler photoListWithPlaceIDString:placeID];
+	if ([undeterminedFlickrPhotoList isKindOfClass:[NSArray class]])
+		flickrPhotoList = (NSArray *)undeterminedFlickrPhotoList;
 	else
-		[self PL_mutateKeyValueObservedPropertyAlertViewSwitchToAlertSwitchOn];
+		[self PL_mutateKeyValueObservedPropertyAlertViewSwitchToPLAlertSwitchOn];
 	return flickrPhotoList;
 }
 
 - (void)addToTheMostRecentPlacesCollectionsTheFollowingDictionary:(NSDictionary *)dictionary;
 {
 	NSString *placeID;
-	id rawPlaceID = [dictionary objectForKey:PLPlaceID];
-	if ([rawPlaceID isKindOfClass:[NSString class]])
+	id undeterminedPlaceID = [dictionary objectForKey:PLPlaceID];
+	if ([undeterminedPlaceID isKindOfClass:[NSString class]])
 	{
-		placeID = (NSString *)rawPlaceID;
+		placeID = (NSString *)undeterminedPlaceID;
 		[self RD_determineIfMostRecentPlacesSetIncludesPlaceIDString:placeID];
 		[self RD_enqueueIntoTheMostRecentPlacesArrayTheFollowingDictionary:dictionary];
 		[self RD_dequeueIfTheMostRecentPlacesArrayReachesMaximumSize];
@@ -89,20 +90,23 @@ NSString *PLAlertSwitchOn = @"AlertOn";
 
 - (void)removeFromTheMostRecentPlacesCollectionsTheFollowingDictionary:(NSDictionary *)dictionaryToDelete;
 {
-	[self.flickrMostRecentPlacesSet removeObject:[dictionaryToDelete valueForKey:PLPlaceID]];
-	
-	int indexToRemove = [self PL_indexOfFlickrMostRecentPlacesArrayContainingPlaceIDString:
-						 [dictionaryToDelete valueForKey:PLPlaceID]];
-	if (indexToRemove != -1)
+//	[self.flickrMostRecentPlacesSet removeObject:[dictionaryToDelete valueForKey:PLPlaceID]];
+	if ([self.flickrMostRecentPlacesSet member:[dictionaryToDelete valueForKey:PLPlaceID]])
 	{
-		[self.flickrMostRecentPlacesArray removeObjectAtIndex:indexToRemove];
+		int indexToRemove = [self PL_indexOfFlickrMostRecentPlacesArrayContainingPlaceIDString:
+							 [dictionaryToDelete valueForKey:PLPlaceID]];
+		if ([self RD_nonNegativeValueIsReturnedWithIndexToRemove:indexToRemove])
+		{
+			[self.flickrMostRecentPlacesSet removeObject:[dictionaryToDelete valueForKey:PLPlaceID]];
+			[self.flickrMostRecentPlacesArray removeObjectAtIndex:indexToRemove];
+			[self PL_updateMostRecentPlacesCollectionsInStandardUserDefaults];
+		}
 	}
-	[self PL_updateMostRecentPlacesCollectionsInStandardUserDefaults];
 }
 
 #pragma mark - Convenience method
 
-- (void)PL_mutateKeyValueObservedPropertyAlertViewSwitchToAlertSwitchOn;
+- (void)PL_mutateKeyValueObservedPropertyAlertViewSwitchToPLAlertSwitchOn;
 {
 	self.alertViewSwitch = PLAlertSwitchOn;
 }
@@ -116,7 +120,7 @@ NSString *PLAlertSwitchOn = @"AlertOn";
 
 - (int)PL_indexOfFlickrMostRecentPlacesArrayContainingPlaceIDString:(NSString *)placeID;
 {
-	int indexToRemove = -1;
+	int indexToRemove = PLIndexIsNegativeOne;
 	for (int counter = 0; self.flickrMostRecentPlacesArray.count > counter ; counter++) 
 	{
 		if ([[self.flickrMostRecentPlacesArray objectAtIndex:counter] isKindOfClass:[NSDictionary class]])
@@ -149,7 +153,7 @@ NSString *PLAlertSwitchOn = @"AlertOn";
 - (void)RD_removeFromFlickrMostRecentPlacesArrayTheDictionaryWithTheFollowingPlaceIDString:(NSString *)placeID;
 {
 	int indexToRemove = [self PL_indexOfFlickrMostRecentPlacesArrayContainingPlaceIDString:placeID];
-	if (indexToRemove != -1)
+	if (indexToRemove != PLIndexIsNegativeOne)
 		[self.flickrMostRecentPlacesArray removeObjectAtIndex:indexToRemove];
 }
 - (void)RD_enqueueIntoTheMostRecentPlacesArrayTheFollowingDictionary:(NSDictionary *)dictionary;
@@ -160,6 +164,11 @@ NSString *PLAlertSwitchOn = @"AlertOn";
 {
 	if ([self.flickrMostRecentPlacesArray count] > PLMaximumOfMostRecentPlacesList) 
 		[self.flickrMostRecentPlacesArray removeLastObject];
+}
+
+- (BOOL)RD_nonNegativeValueIsReturnedWithIndexToRemove:(int)indexToRemove;
+{
+	return (indexToRemove > PLIndexIsNegativeOne);
 }
 
 #pragma mark - Property

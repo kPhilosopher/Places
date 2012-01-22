@@ -12,7 +12,7 @@
 @private
 	PLTabBarController *PL_tabBarController;
 	ScrollableImageViewController *PL_scrollableImageVC;
-	UISplitViewController *PL_splitVC;
+	PLSplitViewController *PL_splitVC;
 }
 
 #pragma mark - Readability method
