@@ -19,6 +19,9 @@
 
 //#import "KIFTestController.h"
 
+static NSString *referenceString = nil;
+
+
 @implementation KIFTestScenario (PlacesAdditions)
 
 //+ (id)scenarioToGoBackToPictureListFromImage
@@ -163,7 +166,7 @@
 	id windowID = [[[UIApplication sharedApplication] windows] objectAtIndex:0];
 	PLTabBarController *tabBarController;
 	UINavigationController *navcon;
-	NSString **referenceString;
+//	NSString **referenceString;
 	if ([windowID isKindOfClass:[UIWindow class]])
 	{
 		UIWindow *window = (UIWindow *)windowID;
@@ -179,13 +182,17 @@
 		if ([navcon.viewControllers objectAtIndex:INDEX_IN_NAVCON_FOR_PICTURE_LIST])
 		{
 			PictureListTableViewController *pictureList = [navcon.viewControllers objectAtIndex:INDEX_IN_NAVCON_FOR_PICTURE_LIST];
-			*referenceString = pictureList.title;
+			referenceString = [pictureList.title copy];
 			return KIFTestStepResultSuccess;
 		}
 		return KIFTestStepResultFailure;
 	}]];
 	
-	[scenario addStep:[KIFTestStep stepToTapViewWithStringReference:referenceString]];
+	[scenario addStep:[KIFTestStep stepToTapViewWithStringReference:&referenceString]];
+	[scenario addStep:[KIFTestStep stepWithDescription:@"release the hounds" executionBlock:^(KIFTestStep *step, NSError **error){
+		[referenceString release];
+		return KIFTestStepResultSuccess;
+	}]];
 	[scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:PictureListViewAccessibilityLabel]];
 	[scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Top Places"]];
 	[scenario addStep:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:TopPlacesViewAccessibilityLabel]];
@@ -202,7 +209,7 @@
 	id windowID = [[[UIApplication sharedApplication] windows] objectAtIndex:0];
 	PLTabBarController *tabBarController;
 	UINavigationController *navcon;
-	NSString **referenceString;
+//	NSString **referenceString;
 	if ([windowID isKindOfClass:[UIWindow class]])
 	{
 		UIWindow *window = (UIWindow *)windowID;
@@ -218,13 +225,18 @@
 		if ([navcon.viewControllers objectAtIndex:INDEX_IN_NAVCON_FOR_PICTURE_LIST])
 		{
 			PictureListTableViewController *pictureList = [navcon.viewControllers objectAtIndex:INDEX_IN_NAVCON_FOR_PICTURE_LIST];
-			*referenceString = pictureList.title;
+			referenceString = pictureList.title;
 			return KIFTestStepResultSuccess;
 		}
 		return KIFTestStepResultFailure;
 	}]];
 	
-	[scenario addStep:[KIFTestStep stepToTapViewWithStringReference:referenceString]];
+	[scenario addStep:[KIFTestStep stepToTapViewWithStringReference:&referenceString]];
+	[scenario addStep:[KIFTestStep stepWithDescription:@"release the hounds" executionBlock:^(KIFTestStep *step, NSError **error){
+		[referenceString release];
+		return KIFTestStepResultSuccess;
+	}]];
+
 	[scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:PictureListViewAccessibilityLabel]];
 	[scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Most Recent"]];
 	[scenario addStep:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:MostRecentPlacesViewAccessibilityLabel]];
@@ -234,8 +246,8 @@
 //delete all the contents of the most recent places
 + (id)scenarioToEraseAllTheRowsInMostRecentPlaces;
 {	
-	NSString **referenceString;
-	*referenceString = @"";
+//	NSString **referenceString;
+//	*referenceString = @"";
 	KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test to erase all the rows in most recent places"];
 
 	[scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:PLTabBarViewAccessibilityLabel]];
@@ -247,7 +259,7 @@
 	[scenario addStep:[KIFTestStep stepWithDescription:@"Get The Delete Label" executionBlock:^(KIFTestStep *step, NSError **error){
 		UIAccessibilityElement *element = [[UIApplication sharedApplication] accessibilityElementWithLabel:MostRecentPlacesViewAccessibilityLabel];
         KIFTestCondition(element, error, @"View with label %@ not found", MostRecentPlacesViewAccessibilityLabel);
-        UITableView *tableView = (UITableView*)[UIAccessibilityElement viewContainingAccessibilityElement:element];
+        UITableView *tableView = (UITableView *)[UIAccessibilityElement viewContainingAccessibilityElement:element];
         
         KIFTestCondition([tableView isKindOfClass:[UITableView class]], error, @"Specified view is not a UITableView");
         
@@ -258,11 +270,43 @@
 		label = [label stringByAppendingString:cell.textLabel.text];
 		label = [label stringByAppendingString:@", "];
 		label = [label stringByAppendingString:cell.detailTextLabel.text];
-		*referenceString = label;
+		NSLog(@"++++++");NSLog(@"-------");NSLog(@"-------");
+		NSLog(label);
+		NSLog(@"-------");NSLog(@"-------");NSLog(@"++++++");
+		referenceString = [label copy];
 		return KIFTestStepResultSuccess;
 	}]];
-	
-	[scenario addStep:[KIFTestStep stepToTapViewWithStringReference:referenceString]];
+	[scenario addStep:[KIFTestStep stepToTapViewWithStringReference:&referenceString]];
+	[scenario addStep:[KIFTestStep stepWithDescription:@"release the hounds" executionBlock:^(KIFTestStep *step, NSError **error){
+		[referenceString release];
+		return KIFTestStepResultSuccess;
+	}]];
+
+	[scenario addStep:[KIFTestStep stepWithDescription:@"Get The Delete Label" executionBlock:^(KIFTestStep *step, NSError **error){
+		UIAccessibilityElement *element = [[UIApplication sharedApplication] accessibilityElementWithLabel:MostRecentPlacesViewAccessibilityLabel];
+        KIFTestCondition(element, error, @"View with label %@ not found", MostRecentPlacesViewAccessibilityLabel);
+        UITableView *tableView = (UITableView *)[UIAccessibilityElement viewContainingAccessibilityElement:element];
+        
+        KIFTestCondition([tableView isKindOfClass:[UITableView class]], error, @"Specified view is not a UITableView");
+        
+        KIFTestCondition(tableView, error, @"Table view with label %@ not found", MostRecentPlacesViewAccessibilityLabel);
+        
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:path];
+		NSString *label = @"Confirm Deletion for ";
+		label = [label stringByAppendingString:cell.textLabel.text];
+		label = [label stringByAppendingString:@", "];
+		label = [label stringByAppendingString:cell.detailTextLabel.text];
+		NSLog(@"++++++");NSLog(@"-------");NSLog(@"-------");
+		NSLog(label);
+		NSLog(@"-------");NSLog(@"-------");NSLog(@"++++++");
+		referenceString = [label copy];
+		return KIFTestStepResultSuccess;
+	}]];
+	[scenario addStep:[KIFTestStep stepToTapViewWithStringReference:&referenceString]];
+	[scenario addStep:[KIFTestStep stepWithDescription:@"release the hounds" executionBlock:^(KIFTestStep *step, NSError **error){
+		[referenceString release];
+		return KIFTestStepResultSuccess;
+	}]];
 //	[scenario addStep:[KIFTestStep stepToDeleteRowInTableViewWithAccessibilityLabel:MostRecentPlacesViewAccessibilityLabel atIndexPath:path]];
 //	[scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Delete"]];
 	[scenario addStep:[KIFTestStep stepToWaitForTimeInterval:2 description:@"   "]];
